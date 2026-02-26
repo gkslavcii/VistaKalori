@@ -229,8 +229,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);max
     <input type="text" class="search-box" placeholder="🔍 Yemek ara..." id="foodSearch" oninput="handleSearch()">
     <div class="source-tabs">
       <button class="source-tab active" onclick="switchSource('local')">🇹🇷 Türk Yemekleri</button>
-      <button class="source-tab" onclick="switchSource('api')">🌍 USDA Ara</button>
-      <button class="source-tab" onclick="switchSource('custom')">✏️ Kendin Ekle</button>
+      <button class="source-tab" onclick="switchSource('api')">🌍 Ara</button>
+      <button class="source-tab" onclick="switchSource('custom')">✏️ Ekle</button>
     </div>
     <div id="localPanel">
       <div class="cat-pills" id="catPills"></div>
@@ -238,7 +238,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);max
       <div class="db-count" id="dbCount"></div>
     </div>
     <div id="apiPanel" style="display:none">
-      <div class="api-status" id="apiStatus">🌍 İngilizce veya Türkçe yemek adı yazıp arayın</div>
+      <div class="api-status" id="apiStatus">🌍 Yemek adı yazıp arayın</div>
       <div class="food-db-list" id="apiResults"></div>
     </div>
     <div id="customPanel" style="display:none">
