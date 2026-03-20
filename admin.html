@@ -512,6 +512,9 @@ async function addRecipeToFirebase(){
   }
 }
 
+var _allRecipeDocs=[];
+var _recipeFilterCat='all';
+
 async function loadRecipeList(){
   var listEl=document.getElementById('recipeList');
   var countEl=document.getElementById('recipeCount');
@@ -519,24 +522,54 @@ async function loadRecipeList(){
   listEl.innerHTML='<div style="color:#8a8d9b;font-size:.78rem">Yükleniyor...</div>';
   try{
     var snap=await db.collection('recipes').orderBy('name').get();
-    var docs=snap.docs;
-    if(countEl) countEl.textContent=docs.length+' tarif';
-    if(!docs.length){listEl.innerHTML='<div style="color:#8a8d9b;font-size:.78rem">Henüz tarif yok</div>';return;}
-    listEl.innerHTML=docs.map(function(d){
-      var r=d.data();
-      return '<div class="food-row">'
-        +'<span class="fe">'+r.emoji+'</span>'
-        +'<div class="fn">'+r.name+'</div>'
-        +'<div class="fd">'+r.cat+' · '+r.time+'dk</div>'
-        +'<div class="fc">'+r.cal+' kcal</div>'
-        +'<div class="acts">'
-        +'<button style="background:#ff5c5c22;color:#ff5c5c;border:1px solid #ff5c5c33" onclick="deleteRecipe(\''+d.id+'\')">🗑️</button>'
-        +'</div>'
-        +'</div>';
-    }).join('');
+    _allRecipeDocs=snap.docs;
+    if(countEl) countEl.textContent=snap.docs.length+' tarif';
+    _recipeFilterCat='all';
+    renderRecipeListFiltered();
   }catch(e){
     listEl.innerHTML='<div style="color:#ff5c5c;font-size:.78rem">❌ '+e.message+'</div>';
   }
+}
+
+function filterRecipeList(){
+  renderRecipeListFiltered();
+}
+
+function filterRecipeListByCat(cat){
+  _recipeFilterCat=cat;
+  renderRecipeListFiltered();
+}
+
+function renderRecipeListFiltered(){
+  var listEl=document.getElementById('recipeList');
+  if(!listEl||!_allRecipeDocs.length){
+    if(listEl)listEl.innerHTML='<div style="color:#8a8d9b;font-size:.78rem">Henüz tarif yok</div>';
+    return;
+  }
+  var search=(document.getElementById('recipeSearchBox').value||'').toLowerCase().trim();
+  var filtered=_allRecipeDocs.filter(function(d){
+    var r=d.data();
+    if(_recipeFilterCat!=='all'&&r.cat!==_recipeFilterCat)return false;
+    if(search&&!r.name.toLowerCase().includes(search))return false;
+    return true;
+  });
+  var countEl=document.getElementById('recipeCount');
+  if(countEl)countEl.textContent=filtered.length+'/'+_allRecipeDocs.length;
+  if(!filtered.length){
+    listEl.innerHTML='<div style="color:#8a8d9b;font-size:.78rem;padding:12px;text-align:center">Sonuç bulunamadı</div>';
+    return;
+  }
+  listEl.innerHTML=filtered.map(function(d){
+    var r=d.data();
+    var hasImg=r.img&&r.img.length>5;
+    return '<div class="food-row" onclick="openRecipeEdit(\''+d.id+'\')" style="cursor:pointer">'
+      +(hasImg?'<img src="'+r.img+'" style="width:32px;height:32px;border-radius:6px;object-fit:cover;flex-shrink:0" onerror="this.style.display=\'none\'">':'<span class="fe">'+r.emoji+'</span>')
+      +'<div class="fn">'+r.name+'</div>'
+      +'<div class="fd">'+r.cat+(r.time?' · '+r.time+'dk':'')+'</div>'
+      +'<div class="fc">'+r.cal+' kcal</div>'
+      +'<div style="font-size:.7rem;color:#8a8d9b;flex-shrink:0">✏️</div>'
+      +'</div>';
+  }).join('');
 }
 
 async function deleteRecipe(id){
@@ -544,6 +577,98 @@ async function deleteRecipe(id){
   try{
     await db.collection('recipes').doc(id).delete();
     showToast('✅ Tarif silindi');
+    loadRecipeList();
+  }catch(e){alert('❌ '+e.message);}
+}
+
+// ═══ TARIF DÜZENLEME MODAL ═══
+var _editRecipeId=null;
+
+function openRecipeEdit(docId){
+  var doc=_allRecipeDocs.find(function(d){return d.id===docId;});
+  if(!doc)return;
+  _editRecipeId=docId;
+  var r=doc.data();
+  document.getElementById('reName').value=r.name||'';
+  document.getElementById('reEmoji').value=r.emoji||'🍽️';
+  document.getElementById('reCat').value=r.cat||'klasik';
+  document.getElementById('reImg').value=r.img||'';
+  document.getElementById('reDesc').value=r.desc||'';
+  document.getElementById('reCal').value=r.cal||'';
+  document.getElementById('reProt').value=r.prot||'';
+  document.getElementById('reCarb').value=r.carb||'';
+  document.getElementById('reFat').value=r.fat||'';
+  document.getElementById('reTime').value=r.time||'';
+  document.getElementById('reServ').value=r.serv||'';
+  document.getElementById('reTags').value=(r.tags||[]).join(',');
+  document.getElementById('reIng').value=(r.ing||[]).join('\n');
+  document.getElementById('reSteps').value=(r.steps||[]).join('\n');
+  document.getElementById('reStatus').textContent='';
+  previewRecipeImg();
+  document.getElementById('recipeEditModal').classList.add('show');
+}
+
+function closeRecipeEdit(){
+  document.getElementById('recipeEditModal').classList.remove('show');
+  _editRecipeId=null;
+}
+
+function previewRecipeImg(){
+  var url=(document.getElementById('reImg').value||'').trim();
+  var wrap=document.getElementById('reImgPreview');
+  var img=document.getElementById('reImgTag');
+  if(url&&url.startsWith('http')){
+    img.src=url;
+    wrap.style.display='block';
+    img.onerror=function(){wrap.style.display='none';};
+  }else{
+    wrap.style.display='none';
+  }
+}
+
+async function saveRecipeEdit(){
+  if(!_editRecipeId)return;
+  var st=document.getElementById('reStatus');
+  var name=document.getElementById('reName').value.trim();
+  if(!name){st.textContent='❌ Tarif adı gerekli';return;}
+  var ing=document.getElementById('reIng').value.split('\n').map(function(s){return s.trim();}).filter(Boolean);
+  var steps=document.getElementById('reSteps').value.split('\n').map(function(s){return s.trim();}).filter(Boolean);
+  var tags=document.getElementById('reTags').value.split(',').map(function(s){return s.trim();}).filter(Boolean);
+  var update={
+    name:name,
+    emoji:document.getElementById('reEmoji').value.trim()||'🍽️',
+    cat:document.getElementById('reCat').value,
+    img:(document.getElementById('reImg').value||'').trim(),
+    desc:document.getElementById('reDesc').value.trim(),
+    time:parseInt(document.getElementById('reTime').value)||30,
+    serv:parseInt(document.getElementById('reServ').value)||2,
+    cal:parseInt(document.getElementById('reCal').value)||0,
+    prot:parseInt(document.getElementById('reProt').value)||0,
+    carb:parseInt(document.getElementById('reCarb').value)||0,
+    fat:parseInt(document.getElementById('reFat').value)||0,
+    ing:ing,steps:steps,tags:tags,
+    updatedAt:Date.now()
+  };
+  try{
+    st.textContent='💾 Kaydediliyor...';
+    await db.collection('recipes').doc(_editRecipeId).update(update);
+    st.textContent='✅ Güncellendi!';
+    showToast('✅ '+name+' güncellendi');
+    loadRecipeList();
+    setTimeout(closeRecipeEdit,800);
+  }catch(e){
+    st.textContent='❌ Hata: '+e.message;
+  }
+}
+
+async function deleteRecipeFromEdit(){
+  if(!_editRecipeId)return;
+  var name=document.getElementById('reName').value;
+  if(!confirm('"'+name+'" tarifi silinecek. Emin misin?'))return;
+  try{
+    await db.collection('recipes').doc(_editRecipeId).delete();
+    showToast('🗑️ '+name+' silindi');
+    closeRecipeEdit();
     loadRecipeList();
   }catch(e){alert('❌ '+e.message);}
 }
@@ -1100,11 +1225,63 @@ async function saveSpoonRecipes(){
 
   <div class="card">
     <h2>📋 Mevcut Tarifler</h2>
-    <div style="display:flex;gap:6px;margin-bottom:8px">
-      <button class="btn-o btn-sm" onclick="loadRecipeList()">🔄 Yenile</button>
-      <span id="recipeCount" style="font-size:.75rem;color:#8a8d9b;line-height:32px"></span>
+    <div style="display:flex;gap:6px;margin-bottom:8px;align-items:center">
+      <input type="text" id="recipeSearchBox" placeholder="🔍 Tarif ara..." oninput="filterRecipeList()" style="flex:1;margin:0">
+      <button class="btn-o btn-sm" onclick="loadRecipeList()">🔄</button>
+      <span id="recipeCount" style="font-size:.75rem;color:#8a8d9b;white-space:nowrap"></span>
+    </div>
+    <div style="display:flex;gap:4px;margin-bottom:8px;overflow-x:auto">
+      <button class="btn-sm btn-o" style="border-radius:8px;font-size:.65rem" onclick="filterRecipeListByCat('all')">Tümü</button>
+      <button class="btn-sm btn-o" style="border-radius:8px;font-size:.65rem" onclick="filterRecipeListByCat('klasik')">Klasik</button>
+      <button class="btn-sm btn-o" style="border-radius:8px;font-size:.65rem" onclick="filterRecipeListByCat('corba')">Çorba</button>
+      <button class="btn-sm btn-o" style="border-radius:8px;font-size:.65rem" onclick="filterRecipeListByCat('fit')">Fit</button>
+      <button class="btn-sm btn-o" style="border-radius:8px;font-size:.65rem" onclick="filterRecipeListByCat('tatli')">Tatlı</button>
+      <button class="btn-sm btn-o" style="border-radius:8px;font-size:.65rem" onclick="filterRecipeListByCat('sebze')">Sebze</button>
+      <button class="btn-sm btn-o" style="border-radius:8px;font-size:.65rem" onclick="filterRecipeListByCat('hizli')">Hızlı</button>
+      <button class="btn-sm btn-o" style="border-radius:8px;font-size:.65rem" onclick="filterRecipeListByCat('vegan')">Vegan</button>
     </div>
     <div id="recipeList" class="list-scroll"></div>
+  </div>
+</div>
+
+<!-- TARIF DÜZENLEME MODAL -->
+<div class="edit-modal" id="recipeEditModal">
+  <div class="edit-box" style="max-width:460px;max-height:90vh;overflow-y:auto">
+    <h2>✏️ Tarif Düzenle</h2>
+    <!-- Fotoğraf önizleme -->
+    <div id="reImgPreview" style="margin-bottom:10px;border-radius:10px;overflow:hidden;max-height:140px;display:none">
+      <img id="reImgTag" src="" style="width:100%;height:140px;object-fit:cover;display:block">
+    </div>
+    <input type="text" id="reName" placeholder="Tarif adı">
+    <div class="row">
+      <input type="text" id="reEmoji" placeholder="Emoji" style="max-width:55px;text-align:center">
+      <select id="reCat">
+        <option value="klasik">Klasik</option><option value="fit">Fit</option><option value="hizli">Hızlı</option>
+        <option value="vegan">Vegan</option><option value="sebze">Sebze</option><option value="corba">Çorba</option>
+        <option value="tatli">Tatlı</option><option value="hamur">Hamur</option>
+      </select>
+    </div>
+    <input type="text" id="reImg" placeholder="📷 Fotoğraf URL" oninput="previewRecipeImg()">
+    <textarea id="reDesc" placeholder="Kısa açıklama" style="width:100%;padding:8px;border:1.5px solid #2a2d38;border-radius:10px;background:#0d0f14;color:#e8e8ec;font-family:inherit;font-size:.82rem;resize:vertical;min-height:40px;margin-bottom:6px;outline:none"></textarea>
+    <div class="row">
+      <input type="number" id="reCal" placeholder="Kalori">
+      <input type="number" id="reProt" placeholder="Protein">
+      <input type="number" id="reCarb" placeholder="Karb">
+      <input type="number" id="reFat" placeholder="Yağ">
+    </div>
+    <div class="row">
+      <input type="number" id="reTime" placeholder="Süre (dk)">
+      <input type="number" id="reServ" placeholder="Kişi">
+    </div>
+    <input type="text" id="reTags" placeholder="Etiketler: kolay,saglikli,proteinli">
+    <textarea id="reIng" placeholder="Malzemeler (her satıra bir)" style="width:100%;padding:8px;border:1.5px solid #2a2d38;border-radius:10px;background:#0d0f14;color:#e8e8ec;font-family:inherit;font-size:.82rem;resize:vertical;min-height:80px;margin-bottom:6px;outline:none"></textarea>
+    <textarea id="reSteps" placeholder="Yapılış adımları (her satıra bir)" style="width:100%;padding:8px;border:1.5px solid #2a2d38;border-radius:10px;background:#0d0f14;color:#e8e8ec;font-family:inherit;font-size:.82rem;resize:vertical;min-height:100px;margin-bottom:6px;outline:none"></textarea>
+    <div id="reStatus" style="font-size:.72rem;color:#8a8d9b;margin-bottom:6px;min-height:14px"></div>
+    <div class="row">
+      <button class="btn-u" onclick="saveRecipeEdit()">💾 Kaydet</button>
+      <button class="btn-o" onclick="closeRecipeEdit()">Kapat</button>
+    </div>
+    <button class="btn-r" onclick="deleteRecipeFromEdit()" style="margin-top:6px;font-size:.72rem">🗑️ Bu Tarifi Sil</button>
   </div>
 </div>
 
