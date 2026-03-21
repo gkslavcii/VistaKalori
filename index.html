@@ -4625,7 +4625,7 @@ const RECIPE_CATS=[
   {id:'fit',label:'💪 Fit',color:'#3dd68c'},
   {id:'corba',label:'🍲 Çorbalar',color:'#f0a030'},
   {id:'tatli',label:'🍮 Tatlılar',color:'#a07cf8'},
-  {id:'hizli',label:'⚡ Hızlı',color:'#5b9cf6'},
+  {id:'pratik',label:'⚡ Pratik',color:'#5b9cf6'},
   {id:'sebze',label:'🥬 Sebze',color:'#22d3ee'},
   {id:'vegan',label:'🌱 Vegan',color:'#3dd68c'},
   {id:'sandvic',label:'🥪 Sandviçler',color:'#f0a030'},
@@ -4812,7 +4812,7 @@ function renderRecipeCarousel(recipes){
   // En popüler 8'i al, eğer görüntülenme yoksa rastgele
   const hasViews=sorted.some(function(r){return(views[r.name]||0)>0;});
   const picked=hasViews?sorted.slice(0,8):[...withImg].sort(()=>Math.random()-.5).slice(0,8);
-  const catLabels={fit:'💪 Fit',klasik:'🍲 Klasik',hizli:'⚡ Hızlı',vegan:'🌱 Vegan',sebze:'🥬 Sebze',corba:'🍲 Çorba',tatli:'🍮 Tatlı',meze:'🫒 Meze'};
+  const catLabels={fit:'💪 Fit',klasik:'🍲 Klasik',hizli:'⚡ Pratik',vegan:'🌱 Vegan',sebze:'🥬 Sebze',corba:'🍲 Çorba',tatli:'🍮 Tatlı',meze:'🫒 Meze'};
 
   track.innerHTML=picked.map((r,i)=>{
     const idx=RECIPES.findIndex(x=>(x.id&&x.id===r.id)||x.name===r.name);
@@ -4874,8 +4874,8 @@ function openRecipeDetail(idx){
   const score=getRecipeScore(r);
   const sColor=getScoreColor(score);
   const sLabel=getScoreLabel(score);
-  const catLabels={fit:'💪 Fit',klasik:'🍲 Klasik',hizli:'⚡ Hızlı',vegan:'🌱 Vegan',sebze:'🥬 Sebze',corba:'🍲 Çorba',tatli:'🍮 Tatlı',meze:'🫒 Meze'};
-  const tags=(r.tags||[]).map(t=>({kolay:'⭐ Kolay',hizli:'⚡ Hızlı',vejetaryen:'🌿 Vejetaryen',vegan:'🌱 Vegan',proteinli:'💪 Proteinli',ekonomik:'💰 Ekonomik',saglikli:'✅ Sağlıklı'}[t]||t)).join(' · ');
+  const catLabels={fit:'💪 Fit',klasik:'🍲 Klasik',hizli:'⚡ Pratik',vegan:'🌱 Vegan',sebze:'🥬 Sebze',corba:'🍲 Çorba',tatli:'🍮 Tatlı',meze:'🫒 Meze'};
+  const tags=(r.tags||[]).map(t=>({kolay:'⭐ Kolay',hizli:'⚡ Pratik',vejetaryen:'🌿 Vejetaryen',vegan:'🌱 Vegan',proteinli:'💪 Proteinli',ekonomik:'💰 Ekonomik',saglikli:'✅ Sağlıklı'}[t]||t)).join(' · ');
 
   // Makro bar yüzdeleri
   const totalMacroCal=((r.prot||0)*4)+((r.carb||0)*4)+((r.fat||0)*9);
@@ -7016,10 +7016,10 @@ const EXERCISE_DB = [
   // KARDİO
   {name:'Yavaş Yürüyüş (3 km/s)',emoji:'🚶',cat:'kardio',met:2.8,desc:'Rahat tempoda yürüyüş'},
   {name:'Orta Yürüyüş (5 km/s)',emoji:'🚶',cat:'kardio',met:3.5,desc:'Normal tempo'},
-  {name:'Hızlı Yürüyüş (6 km/s)',emoji:'🚶',cat:'kardio',met:4.8,desc:'Tempolu yürüyüş'},
+  {name:'Pratik Yürüyüş (6 km/s)',emoji:'🚶',cat:'kardio',met:4.8,desc:'Tempolu yürüyüş'},
   {name:'Hafif Koşu (8 km/s)',emoji:'🏃',cat:'kardio',met:8.0,desc:'Jogging'},
   {name:'Orta Koşu (10 km/s)',emoji:'🏃',cat:'kardio',met:10.0,desc:'Kondisyon koşusu'},
-  {name:'Hızlı Koşu (12 km/s)',emoji:'🏃',cat:'kardio',met:12.0,desc:'Hız koşusu'},
+  {name:'Pratik Koşu (12 km/s)',emoji:'🏃',cat:'kardio',met:12.0,desc:'Hız koşusu'},
   {name:'Düşük Tempo Bisiklet',emoji:'🚴',cat:'kardio',met:5.5,desc:'15 km/s, rahat'},
   {name:'Orta Tempo Bisiklet',emoji:'🚴',cat:'kardio',met:7.5,desc:'20 km/s'},
   {name:'Yüksek Tempo Bisiklet',emoji:'🚴',cat:'kardio',met:10.0,desc:'25+ km/s'},
@@ -7029,7 +7029,7 @@ const EXERCISE_DB = [
   {name:'Yüzme (orta)',emoji:'🏊',cat:'su',met:8.0,desc:'Serbest stil, orta'},
   {name:'Yüzme (yoğun)',emoji:'🏊',cat:'su',met:10.0,desc:'Serbest stil, hızlı'},
   {name:'İp Atlama (orta)',emoji:'🪢',cat:'kardio',met:10.0,desc:'Orta tempo'},
-  {name:'İp Atlama (hızlı)',emoji:'🪢',cat:'kardio',met:12.0,desc:'Hızlı tempo'},
+  {name:'İp Atlama (hızlı)',emoji:'🪢',cat:'kardio',met:12.0,desc:'Pratik tempo'},
   {name:'Aerobik (hafif)',emoji:'💃',cat:'kardio',met:4.5,desc:'Low impact aerobik'},
   {name:'Aerobik (yoğun)',emoji:'💃',cat:'kardio',met:7.0,desc:'High impact aerobik'},
   {name:'HIIT',emoji:'⚡',cat:'kardio',met:10.0,desc:'Yüksek yoğunluklu interval'},
