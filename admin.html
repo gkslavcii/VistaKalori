@@ -550,13 +550,14 @@ function renderRecipeListFiltered(){
   var search=(document.getElementById('recipeSearchBox').value||'').toLowerCase().trim();
   var filtered=_allRecipeDocs.filter(function(d){
     var r=d.data();
+    // Arama filtresi (her durumda uygula)
+    if(search&&!r.name.toLowerCase().includes(search))return false;
     // Özel filtreler
     if(_recipeFilterCat==='_unreviewed') return !r.updatedAt;
     if(_recipeFilterCat==='_reviewed') return !!r.updatedAt;
-    if(_recipeFilterCat==='_noimg') return !r.img||r.img.length<5;
+    if(_recipeFilterCat==='_noimg') return !r.img||!r.img.trim()||r.img.trim().length<10;
     // Normal kategori filtresi
     if(_recipeFilterCat!=='all'&&r.cat!==_recipeFilterCat)return false;
-    if(search&&!r.name.toLowerCase().includes(search))return false;
     return true;
   });
   var countEl=document.getElementById('recipeCount');
@@ -564,7 +565,7 @@ function renderRecipeListFiltered(){
   var totalCount=_allRecipeDocs.length;
   var reviewedCount=_allRecipeDocs.filter(function(d){return !!d.data().updatedAt;}).length;
   var unrevCount=totalCount-reviewedCount;
-  var noImgCount=_allRecipeDocs.filter(function(d){var r=d.data();return !r.img||r.img.length<5;}).length;
+  var noImgCount=_allRecipeDocs.filter(function(d){var r=d.data();return !r.img||!r.img.trim()||r.img.trim().length<10;}).length;
   if(countEl)countEl.innerHTML=filtered.length+'/'+totalCount+' <span style="font-size:.6rem;color:#f0a030">⚠️'+unrevCount+'</span> <span style="font-size:.6rem;color:#ff5c5c">📷'+noImgCount+'</span>';
   if(!filtered.length){
     listEl.innerHTML='<div style="color:#8a8d9b;font-size:.78rem;padding:12px;text-align:center">Sonuç bulunamadı</div>';
@@ -1180,6 +1181,225 @@ async function saveSpoonRecipes(){
   }
 }
 
+// ═══════ YEMEK DB → TARİF EŞLEŞTİRİCİ ═══════
+var _unmatchedFoods=[];
+var _matchBatchReady=[];
+
+// Kategoriye göre şablon malzeme/adım üretici
+function generateTemplateRecipe(food){
+  var cat=food.cat||'';
+  var n=food.name;
+  var nl=n.toLowerCase();
+  var r={
+    name:n,
+    emoji:food.emoji||'🍽️',
+    cat:mapFoodCatToRecipeCat(cat,nl),
+    desc:generateDesc(n,cat),
+    time:estimateTime(cat,nl),
+    serv:estimateServing(cat,nl),
+    cal:food.cal||0,
+    prot:food.prot||0,
+    carb:food.carb||0,
+    fat:food.fat||0,
+    ing:generateIngredients(n,cat,nl),
+    steps:generateSteps(n,cat,nl),
+    tags:generateTags(food),
+    img:'https://source.unsplash.com/600x400/?'+encodeURIComponent(n.replace(/\(.*?\)/g,'').trim()+' food turkish'),
+    source:'db-matched',
+    createdAt:Date.now()
+  };
+  return r;
+}
+
+function mapFoodCatToRecipeCat(cat,nl){
+  if(cat==='corba')return'corba';
+  if(cat==='tatli')return'tatli';
+  if(cat==='kahvalti')return'pratik';
+  if(cat==='balik')return'klasik';
+  if(cat==='baklagil')return'klasik';
+  if(cat==='hamur')return'hamur';
+  if(cat==='meyve'||cat==='kuruyemis')return'fit';
+  if(cat==='sporcu')return'fit';
+  if(cat==='sebze'){
+    if(nl.includes('salata')||nl.includes('cacık')||nl.includes('ezme'))return'meze';
+    return'sebze';
+  }
+  if(cat==='et'){
+    if(nl.includes('kebap')||nl.includes('köfte')||nl.includes('döner'))return'klasik';
+    return'klasik';
+  }
+  if(cat==='fastfood')return'pratik';
+  return'klasik';
+}
+
+function generateDesc(name,cat){
+  var descs={
+    corba:' çorbası, sıcacık ve doyurucu',
+    tatli:'Geleneksel Türk tatlısı',
+    kahvalti:'Pratik ve lezzetli kahvaltılık',
+    et:'Türk mutfağının vazgeçilmez et yemeği',
+    balik:'Taze ve sağlıklı balık yemeği',
+    sebze:'Hafif ve besleyici sebze yemeği',
+    baklagil:'Protein deposu baklagil yemeği',
+    hamur:'Ev yapımı nefis hamur işi',
+    meyve:'Taze ve vitamin dolu',
+    sporcu:'Sağlıklı ve besleyici',
+    fastfood:'Pratik ve doyurucu lezzet'
+  };
+  return name+' — '+(descs[cat]||'Türk mutfağından lezzetli tarif');
+}
+
+function estimateTime(cat,nl){
+  if(cat==='corba')return 35;
+  if(cat==='tatli')return nl.includes('baklava')||nl.includes('künefe')?60:40;
+  if(cat==='kahvalti')return 15;
+  if(cat==='fastfood')return 15;
+  if(nl.includes('haşla'))return 30;
+  if(nl.includes('fırın'))return 50;
+  if(nl.includes('kızart'))return 20;
+  if(cat==='et')return 45;
+  if(cat==='balik')return 25;
+  if(cat==='baklagil')return 50;
+  if(cat==='sebze')return 35;
+  return 30;
+}
+
+function estimateServing(cat,nl){
+  if(cat==='corba')return 4;
+  if(cat==='tatli')return 6;
+  if(cat==='fastfood'||cat==='kahvalti')return 1;
+  return 4;
+}
+
+function generateIngredients(name,cat,nl){
+  // Genel şablon malzemeler — düzenlenecek
+  var base=['(Malzeme listesi düzenlenecek)'];
+  if(cat==='corba') base=['1 soğan','2 yemek kaşığı tereyağı','1 yemek kaşığı salça','6 su bardağı su','Tuz, karabiber, pul biber'];
+  else if(cat==='et') base=['Ana malzeme: '+name,'1 soğan','2 domates','2 yemek kaşığı sıvıyağ','Tuz, karabiber, baharat'];
+  else if(cat==='balik') base=['Ana malzeme: '+name,'1 limon','2 diş sarımsak','1 yemek kaşığı zeytinyağı','Tuz, karabiber'];
+  else if(cat==='sebze') base=['Ana malzeme: '+name,'1 soğan','2 domates','2 yemek kaşığı zeytinyağı','Tuz'];
+  else if(cat==='baklagil') base=['Ana malzeme: '+name,'1 soğan','1 yemek kaşığı salça','Sıvıyağ','Tuz, karabiber'];
+  else if(cat==='tatli') base=['Ana malzeme: '+name,'Şeker','Tereyağı','Su'];
+  else if(cat==='hamur') base=['Un','Su','Tuz','Yağ','İç malzeme'];
+  else if(cat==='kahvalti') base=['Ana malzeme: '+name,'Tereyağı veya zeytinyağı','Tuz'];
+  return base;
+}
+
+function generateSteps(name,cat,nl){
+  if(cat==='corba') return['Soğanı tereyağında kavurun.','Salçayı ekleyip 1 dakika kavurun.','Ana malzemeyi ilave edip suyu ekleyin.','Kaynamaya başlayınca kısık ateşte 25 dakika pişirin.','Blenderdan geçirin veya olduğu gibi bırakın.','Tuz ve baharatını ayarlayıp servis yapın.'];
+  if(cat==='et') return['Eti yıkayıp hazırlayın.','Yağda soğanla birlikte kavurun.','Domates ve baharatları ekleyin.','Gerekirse su ilave edip pişirin.','Kıvamını alınca ateşten alın.','Sıcak servis yapın.'];
+  if(cat==='balik') return['Balığı temizleyip hazırlayın.','Limon suyu ve baharatlarla marine edin.','Tercih ettiğiniz yöntemle pişirin.','Yanına salata veya sebze hazırlayın.','Limon ile servis yapın.'];
+  if(cat==='sebze') return['Sebzeleri yıkayıp doğrayın.','Zeytinyağında soğanı kavurun.','Sebzeleri ekleyip soteleyin.','Gerekirse su ekleyin, kısık ateşte pişirin.','Baharatları ayarlayın.','Sıcak veya soğuk servis yapın.'];
+  if(cat==='baklagil') return['Baklagili önceden ıslatın.','Haşlayıp süzün.','Soğan ve salçayı kavurun.','Baklagili ekleyin, su ilave edin.','Kısık ateşte yumuşayana kadar pişirin.','Pilav eşliğinde servis yapın.'];
+  if(cat==='tatli') return['Malzemeleri hazırlayın.','Tarife göre pişirme işlemini yapın.','Şerbetli ise şerbeti ayrı hazırlayın.','Soğumaya bırakın.','Süsleyerek servis yapın.'];
+  if(cat==='hamur') return['Hamuru yoğurup dinlendirin.','İç harcını hazırlayın.','Hamuru açıp şekil verin.','İç malzemeyi yerleştirin.','Fırında veya tavada pişirin.','Sıcak servis yapın.'];
+  return['Malzemeleri hazırlayın.','Tarife göre pişirin.','Baharatları ayarlayın.','Servis yapın.'];
+}
+
+function generateTags(food){
+  var tags=[];
+  if(food.cal&&food.cal<200)tags.push('saglikli');
+  if(food.prot&&food.prot>15)tags.push('proteinli');
+  if(food.fat&&food.fat<5)tags.push('dusukyag');
+  if(food.cat==='sebze'||food.cat==='meyve')tags.push('saglikli');
+  if(food.cat==='baklagil')tags.push('ekonomik');
+  return tags;
+}
+
+async function scanUnmatchedFoods(){
+  var st=document.getElementById('matchStatus');
+  var list=document.getElementById('matchList');
+  var catFilter=document.getElementById('matchCatFilter').value;
+  st.textContent='🔍 Yemek DB ve Tarif DB karşılaştırılıyor...';
+  list.innerHTML='';
+  _unmatchedFoods=[];
+  _matchBatchReady=[];
+
+  try{
+    // Mevcut tarifleri çek
+    var snap=await db.collection('recipes').get();
+    var recipeNames=snap.docs.map(function(d){return d.data().name.toLowerCase();});
+
+    // FOOD_DB'den tarifi olmayanları bul
+    var allFoods=typeof ALL_FOODS!=='undefined'?ALL_FOODS:[];
+    if(!allFoods.length){st.textContent='❌ ALL_FOODS verisi bulunamadı';return;}
+
+    var unmatched=allFoods.filter(function(f){
+      // Çiğ/hammadde/sos olanları atla
+      var nl=f.name.toLowerCase();
+      if(nl.includes('(çiğ)')||nl.includes('(çiğ,')||nl.includes('çiğ)'))return false;
+      if(f.cat==='sos'||f.cat==='ambalajli'||f.cat==='icecek')return false;
+      if(nl.includes('(kuru)')||nl.includes('protein bar')||nl.includes('whey')||nl.includes('bcaa'))return false;
+      // Kategori filtresi
+      if(catFilter!=='all'&&f.cat!==catFilter)return false;
+      // Tarif DB'de var mı kontrol
+      return !recipeNames.includes(f.name.toLowerCase());
+    });
+
+    _unmatchedFoods=unmatched;
+    st.textContent='✅ '+unmatched.length+' yemek tarif DB\'sinde yok (toplam: '+allFoods.length+', tarif: '+snap.docs.length+')';
+
+    if(!unmatched.length){
+      list.innerHTML='<div style="color:#3dd68c;padding:12px;text-align:center;font-size:.78rem">🎉 Tüm yemeklerin tarifi mevcut!</div>';
+      return;
+    }
+
+    // Önizleme listesi
+    list.innerHTML=unmatched.slice(0,50).map(function(f,i){
+      return '<div style="display:flex;align-items:center;gap:6px;padding:6px 4px;border-bottom:1px solid #2a2d38;font-size:.75rem">'
+        +'<input type="checkbox" checked data-idx="'+i+'" class="match-cb" style="flex-shrink:0">'
+        +'<span style="flex-shrink:0">'+f.emoji+'</span>'
+        +'<span style="flex:1;font-weight:600;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+f.name+'</span>'
+        +'<span style="color:#8a8d9b;flex-shrink:0">'+f.cat+'</span>'
+        +'<span style="color:#ff6b3d;font-weight:700;flex-shrink:0">'+f.cal+'</span>'
+        +'</div>';
+    }).join('')
+    +(unmatched.length>50?'<div style="color:#8a8d9b;font-size:.7rem;padding:8px;text-align:center">ve '+(unmatched.length-50)+' yemek daha...</div>':'');
+    
+    document.getElementById('matchActions').style.display='flex';
+
+  }catch(e){
+    st.textContent='❌ Hata: '+e.message;
+  }
+}
+
+async function generateAndSaveMatched(){
+  var st=document.getElementById('matchStatus');
+  // Seçili olanları al
+  var checkboxes=document.querySelectorAll('.match-cb:checked');
+  var selectedIdxs=[];
+  checkboxes.forEach(function(cb){selectedIdxs.push(parseInt(cb.dataset.idx));});
+
+  if(!selectedIdxs.length){st.textContent='❌ Hiç yemek seçilmedi';return;}
+
+  var toProcess=selectedIdxs.map(function(i){return _unmatchedFoods[i];}).filter(Boolean);
+  st.textContent='📦 '+toProcess.length+' tarif oluşturuluyor...';
+
+  try{
+    // Mevcut isimleri tekrar kontrol et
+    var snap=await db.collection('recipes').get();
+    var existing=snap.docs.map(function(d){return d.data().name;});
+
+    var saved=0,skipped=0;
+    for(var i=0;i<toProcess.length;i++){
+      var food=toProcess[i];
+      if(existing.includes(food.name)){skipped++;continue;}
+      var recipe=generateTemplateRecipe(food);
+      await db.collection('recipes').add(recipe);
+      saved++;
+      st.textContent='📦 '+saved+'/'+toProcess.length+' kaydedildi...'+(skipped?' ('+skipped+' atlandı)':'');
+    }
+    st.textContent='✅ '+saved+' tarif oluşturuldu!'+(skipped?' ('+skipped+' zaten vardı)':'');
+    loadRecipeList();
+  }catch(e){
+    st.textContent='❌ Hata: '+e.message;
+  }
+}
+
+function toggleAllMatchCb(checked){
+  document.querySelectorAll('.match-cb').forEach(function(cb){cb.checked=checked;});
+}
+
 </script>
 <div id="sec-recipes" class="section">
   <div class="card">
@@ -1337,6 +1557,41 @@ async function saveSpoonRecipes(){
     <input type="text" id="rImg" placeholder="📷 Fotoğraf URL (Unsplash, Pexels vb.)" style="margin-top:2px">
     <button class="btn-u" onclick="addRecipeToFirebase()">💾 Kaydet</button>
     <div id="rStatus" style="font-size:.75rem;color:#8a8d9b;margin-top:6px;min-height:16px"></div>
+  </div>
+
+  <div class="card">
+    <h2>🔗 Yemek DB → Tarif Eşleştirici</h2>
+    <p>Yemek DB'sinde olup tarif DB'sinde olmayan yemekleri tespit et, otomatik tarif taslağı oluştur</p>
+    <div class="row" style="margin-bottom:8px">
+      <div style="flex:1">
+        <label style="font-size:.72rem;color:#8a8d9b;display:block;margin-bottom:3px">Kategori Filtre</label>
+        <select id="matchCatFilter">
+          <option value="all">Tümü</option>
+          <option value="et">Et</option>
+          <option value="sebze">Sebze</option>
+          <option value="corba">Çorba</option>
+          <option value="balik">Balık</option>
+          <option value="baklagil">Baklagil</option>
+          <option value="tatli">Tatlı</option>
+          <option value="hamur">Hamur</option>
+          <option value="kahvalti">Kahvaltı</option>
+          <option value="meyve">Meyve</option>
+          <option value="kuruyemis">Kuruyemiş</option>
+          <option value="sporcu">Sporcu</option>
+          <option value="fastfood">Fast Food</option>
+        </select>
+      </div>
+      <div style="flex:1;display:flex;align-items:flex-end">
+        <button class="btn-e" onclick="scanUnmatchedFoods()" style="width:100%">🔍 Tara</button>
+      </div>
+    </div>
+    <div id="matchStatus" style="font-size:.75rem;color:#8a8d9b;margin-bottom:8px;min-height:18px"></div>
+    <div id="matchList" class="list-scroll" style="max-height:300px;margin-bottom:8px"></div>
+    <div class="row" style="display:none" id="matchActions">
+      <button class="btn-o btn-sm" onclick="toggleAllMatchCb(true)">☑️ Tümünü Seç</button>
+      <button class="btn-o btn-sm" onclick="toggleAllMatchCb(false)">☐ Tümünü Kaldır</button>
+    </div>
+    <button class="btn-u" onclick="generateAndSaveMatched()" style="margin-top:6px">🚀 Seçilenleri Tarif Olarak Kaydet</button>
   </div>
 
   <div class="card">
