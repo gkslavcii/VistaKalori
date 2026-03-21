@@ -1460,7 +1460,15 @@ function renderAdminCatOrder(){
 }
 function moveAdminCat(i,d){var o=getAdminCatOrder();var t=i+d;if(t<0||t>=o.length)return;var tmp=o[i];o[i]=o[t];o[t]=tmp;localStorage.setItem('fs_cat_order',JSON.stringify(o));renderAdminCatOrder();}
 function toggleAdminCatVis(id){var o=getAdminCatOrder();var it=o.find(function(x){return x.id===id;});if(it)it.visible=!it.visible;localStorage.setItem('fs_cat_order',JSON.stringify(o));renderAdminCatOrder();}
-function saveAdminCatOrder(){showToast('✅ Sıralama kaydedildi! Ana uygulamada görünecek.');}
+async function saveAdminCatOrder(){
+  var order=getAdminCatOrder();
+  try{
+    await db.collection('settings').doc('cat_order').set({order:order,updatedAt:Date.now()});
+    showToast('✅ Sıralama Firebase\'e kaydedildi! Tüm kullanıcılar görecek.');
+  }catch(e){
+    showToast('❌ Hata: '+e.message);
+  }
+}
 setTimeout(renderAdminCatOrder,500);
 
 </script>
