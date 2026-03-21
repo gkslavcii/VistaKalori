@@ -910,7 +910,10 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <div class="page" id="page-oneri">
   <div class="content">
     <div class="profile-card" style="animation-delay:.06s;padding:14px 0 18px">
-      <h3 style="padding:0 18px;margin-bottom:10px">📖 Tarifler</h3>
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:0 18px;margin-bottom:10px">
+        <h3 style="margin:0">📖 Tarifler</h3>
+        <button onclick="openCatOrderModal()" style="background:var(--glass);border:1px solid var(--border);border-radius:8px;padding:4px 10px;font-family:var(--font,system-ui);font-size:.68rem;font-weight:700;color:var(--text2);cursor:pointer">⇅ Sırala</button>
+      </div>
 
       <!-- ═══ ARAMA ═══ -->
       <div style="padding:0 18px 10px">
@@ -968,7 +971,20 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
       </div>
     </div>
 
-    <!-- ═══ ARAMA MODAL ═══ -->
+    <!-- ═══ KATEGORİ SIRALAMA MODAL ═══ -->
+    <div class="modal-overlay" id="catOrderModal" onclick="if(event.target===this)closeCatOrderModal()">
+      <div class="modal-content" style="width:100%">
+        <div class="modal" style="max-height:92vh;padding:16px 20px 28px">
+          <div class="modal-handle"></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+            <h2 style="margin:0">⇅ Kategori Sıralaması</h2>
+            <button onclick="saveCatOrder();closeCatOrderModal()" style="background:var(--accent);color:#fff;border:none;border-radius:10px;padding:6px 14px;font-family:var(--font,system-ui);font-size:.75rem;font-weight:700;cursor:pointer">💾 Kaydet</button>
+          </div>
+          <p style="font-size:.72rem;color:var(--text2);margin-bottom:12px">Kategorileri yukarı/aşağı taşıyarak sıralayın. Görmek istemediğinizi gizleyin.</p>
+          <div id="catOrderList"></div>
+        </div>
+      </div>
+    </div>
     <div id="recipeSearchModal" style="position:fixed;top:0;left:0;right:0;bottom:0;background:var(--bg);z-index:120;display:none;flex-direction:column;max-width:430px;margin:0 auto">
       <div style="padding:max(14px,env(safe-area-inset-top)) 16px 10px;border-bottom:1px solid var(--border);flex-shrink:0;background:var(--card);backdrop-filter:blur(20px)">
         <div style="display:flex;align-items:center;gap:10px">
@@ -4678,6 +4694,79 @@ async function filterRecipes(cat){
   renderCategoryRows();
 }
 
+// ═══ KATEGORİ SIRALAMA ═══
+function getSavedCatOrder(){
+  try{
+    var saved=JSON.parse(localStorage.getItem('fs_cat_order')||'null');
+    if(saved&&saved.length)return saved;
+  }catch(e){}
+  return null;
+}
+
+function getOrderedCats(){
+  var saved=getSavedCatOrder();
+  if(!saved)return RECIPE_CATS.map(function(c){return{id:c.id,visible:true};});
+  // Merge: saved order + any new cats not in saved
+  var ordered=[];
+  saved.forEach(function(s){
+    var cat=RECIPE_CATS.find(function(c){return c.id===s.id;});
+    if(cat)ordered.push({id:s.id,visible:s.visible!==false});
+  });
+  RECIPE_CATS.forEach(function(c){
+    if(!ordered.find(function(o){return o.id===c.id;}))ordered.push({id:c.id,visible:true});
+  });
+  return ordered;
+}
+
+function openCatOrderModal(){
+  var order=getOrderedCats();
+  var list=document.getElementById('catOrderList');
+  list.innerHTML=order.map(function(o,i){
+    var cat=RECIPE_CATS.find(function(c){return c.id===o.id;});
+    if(!cat)return'';
+    var items=getRecipesForCat(cat);
+    return '<div data-catid="'+o.id+'" style="display:flex;align-items:center;gap:8px;padding:10px;margin-bottom:6px;background:var(--glass);border:1.5px solid var(--border);border-radius:10px'+(o.visible?'':';opacity:.4')+'">'
+      +'<div style="display:flex;flex-direction:column;gap:2px;flex-shrink:0">'
+        +'<button onclick="moveCatOrder('+i+',-1)" style="background:none;border:none;color:var(--text2);cursor:pointer;font-size:.75rem;padding:0;line-height:1">▲</button>'
+        +'<button onclick="moveCatOrder('+i+',1)" style="background:none;border:none;color:var(--text2);cursor:pointer;font-size:.75rem;padding:0;line-height:1">▼</button>'
+      +'</div>'
+      +'<div style="flex:1;min-width:0">'
+        +'<div style="font-weight:700;font-size:.84rem">'+cat.label+'</div>'
+        +'<div style="font-size:.62rem;color:var(--text2)">'+items.length+' tarif</div>'
+      +'</div>'
+      +'<button onclick="toggleCatVisibility(\''+o.id+'\')" style="background:'+(o.visible?'var(--green)':'var(--red)')+';color:#fff;border:none;border-radius:8px;padding:5px 10px;font-size:.68rem;font-weight:700;cursor:pointer;flex-shrink:0">'+(o.visible?'👁 Görünür':'🚫 Gizli')+'</button>'
+    +'</div>';
+  }).join('');
+  document.getElementById('catOrderModal').classList.add('show');
+}
+
+function closeCatOrderModal(){document.getElementById('catOrderModal').classList.remove('show')}
+
+function moveCatOrder(fromIdx,direction){
+  var order=getOrderedCats();
+  var toIdx=fromIdx+direction;
+  if(toIdx<0||toIdx>=order.length)return;
+  var temp=order[fromIdx];
+  order[fromIdx]=order[toIdx];
+  order[toIdx]=temp;
+  localStorage.setItem('fs_cat_order',JSON.stringify(order));
+  openCatOrderModal(); // refresh
+}
+
+function toggleCatVisibility(catId){
+  var order=getOrderedCats();
+  var item=order.find(function(o){return o.id===catId;});
+  if(item)item.visible=!item.visible;
+  localStorage.setItem('fs_cat_order',JSON.stringify(order));
+  openCatOrderModal(); // refresh
+}
+
+function saveCatOrder(){
+  // Zaten her değişiklikte kaydediliyor, burada sadece listeyi yenile
+  renderCategoryRows();
+  showToast('✅ Kategori sıralaması kaydedildi');
+}
+
 function renderCategoryRows(){
   const container=document.getElementById('recipeCatRows');
   if(!container)return;
@@ -4685,8 +4774,13 @@ function renderCategoryRows(){
     container.innerHTML='<div style="text-align:center;padding:30px;color:var(--text2);font-size:.82rem">📭 Henüz tarif eklenmemiş</div>';
     return;
   }
+  // Kayıtlı sıralama ve görünürlük
+  var orderedCats=getOrderedCats();
   let html='';
-  RECIPE_CATS.forEach(function(cat){
+  orderedCats.forEach(function(o){
+    if(!o.visible)return; // gizli kategoriyi atla
+    var cat=RECIPE_CATS.find(function(c){return c.id===o.id;});
+    if(!cat)return;
     const items=getRecipesForCat(cat);
     if(!items.length)return;
     html+=`<div style="margin-bottom:16px">
@@ -7405,6 +7499,7 @@ function addManualExercise(){
     if(id==='insightModal')return ()=>closeInsightModal&&closeInsightModal();
     if(id==='goalsModal')return ()=>closeGoalsModal&&closeGoalsModal();
     if(id==='prepModal')return ()=>closePrepModal&&closePrepModal();
+    if(id==='catOrderModal')return ()=>closeCatOrderModal&&closeCatOrderModal();
     if(id==='exerciseModal')return ()=>closeExerciseModal&&closeExerciseModal();
     return ()=>overlay.classList.remove('show');
   }
