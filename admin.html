@@ -1039,19 +1039,29 @@ async function fetchSpoonRecipes(){
 
   var spoonType=FS_TO_SPOON[cat]||'main course';
   var url='https://api.spoonacular.com/recipes/complexSearch?apiKey='+SPOON_KEY
-    +'&type='+encodeURIComponent(spoonType)
     +'&number='+count
     +'&addRecipeInformation=true'
     +'&addRecipeNutrition=true'
     +'&fillIngredients=true'
     +'&instructionsRequired=true';
+  // Query varsa type filtresini koyma (çakışıyor), yoksa type ekle
+  if(query){
+    url+='&query='+encodeURIComponent(query);
+  }else{
+    url+='&type='+encodeURIComponent(spoonType);
+    // Rastgele offset sadece query yokken
+    url+='&offset='+Math.floor(Math.random()*50);
+  }
   if(diet&&diet!=='any')url+='&diet='+diet;
-  if(cuisine&&cuisine!=='any')url+='&cuisine='+encodeURIComponent(cuisine);
-  if(query)url+='&query='+encodeURIComponent(query);
-  // Rastgele sonuçlar için offset
-  url+='&offset='+Math.floor(Math.random()*50);
+  // Cuisine: "turkish" çok az sonuç veriyor, "mediterranean,middle eastern" ile genişlet
+  if(cuisine&&cuisine!=='any'){
+    if(cuisine==='turkish')url+='&cuisine=Mediterranean,Middle+Eastern';
+    else url+='&cuisine='+encodeURIComponent(cuisine);
+  }
 
   try{
+    console.log('Spoonacular URL:',url);
+    st.textContent='🔍 Aranıyor... '+(query?'(arama: '+query+')':'(kategori: '+spoonType+')');
     var resp=await fetch(url);
     if(!resp.ok)throw new Error('Spoonacular API hatası: '+resp.status);
     var data=await resp.json();
@@ -1434,6 +1444,179 @@ function toggleAllMatchCb(checked){
   document.querySelectorAll('.match-cb').forEach(function(cb){cb.checked=checked;});
 }
 
+// ═══════ THEMEALDB (TÜRK TARİFLERİ) ═══════
+var _mealDbResults=[];
+
+async function fetchMealDbTurkish(){
+  var st=document.getElementById('mealDbStatus');
+  var preview=document.getElementById('mealDbPreview');
+  var saveBtn=document.getElementById('mealDbSaveBtn');
+  var searchQuery=document.getElementById('mealDbQuery').value.trim();
+  var mode=document.getElementById('mealDbMode').value;
+
+  st.textContent='🔍 TheMealDB\'den tarifler çekiliyor...';
+  preview.innerHTML='';
+  saveBtn.style.display='none';
+  _mealDbResults=[];
+
+  try{
+    var meals=[];
+    if(searchQuery){
+      // İsimle ara
+      var resp=await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s='+encodeURIComponent(searchQuery));
+      var data=await resp.json();
+      if(data.meals)meals=data.meals;
+    }else if(mode==='turkish'){
+      var resp=await fetch('https://www.themealdb.com/api/json/v1/1/filter.php?a=Turkish');
+      var data=await resp.json();
+      if(data.meals){
+        // filter sadece id/name/img veriyor, detay çekmemiz lazım
+        st.textContent='🔍 '+data.meals.length+' tarif bulundu, detayları çekiliyor...';
+        for(var i=0;i<data.meals.length;i++){
+          var detail=await fetch('https://www.themealdb.com/api/json/v1/1/lookup.php?i='+data.meals[i].idMeal);
+          var dd=await detail.json();
+          if(dd.meals&&dd.meals[0])meals.push(dd.meals[0]);
+          st.textContent='🔍 Detay çekiliyor: '+(i+1)+'/'+data.meals.length;
+        }
+      }
+    }else{
+      // Diğer area'lar
+      var resp=await fetch('https://www.themealdb.com/api/json/v1/1/filter.php?a='+encodeURIComponent(mode));
+      var data=await resp.json();
+      if(data.meals){
+        st.textContent='🔍 '+data.meals.length+' tarif bulundu, detayları çekiliyor...';
+        for(var i=0;i<Math.min(data.meals.length,20);i++){
+          var detail=await fetch('https://www.themealdb.com/api/json/v1/1/lookup.php?i='+data.meals[i].idMeal);
+          var dd=await detail.json();
+          if(dd.meals&&dd.meals[0])meals.push(dd.meals[0]);
+          st.textContent='🔍 Detay: '+(i+1)+'/'+Math.min(data.meals.length,20);
+        }
+      }
+    }
+
+    if(!meals.length){
+      st.textContent='❌ Sonuç bulunamadı.';
+      return;
+    }
+
+    st.textContent='🌐 '+meals.length+' tarif bulundu. Türkçeye çevriliyor...';
+
+    var recipes=[];
+    for(var i=0;i<meals.length;i++){
+      var m=meals[i];
+      st.textContent='🌐 Çevriliyor: '+(i+1)+'/'+meals.length+' — '+m.strMeal;
+
+      // Malzemeleri çıkar
+      var ings=[];
+      for(var j=1;j<=20;j++){
+        var ing=m['strIngredient'+j];
+        var measure=m['strMeasure'+j];
+        if(ing&&ing.trim()){
+          ings.push((measure?measure.trim()+' ':'')+ing.trim());
+        }
+      }
+
+      // Adımları çıkar (instructions paragrafları)
+      var steps=[];
+      if(m.strInstructions){
+        steps=m.strInstructions.split(/\r?\n/).filter(function(s){return s.trim().length>10;});
+        if(steps.length<=1)steps=m.strInstructions.split('.').filter(function(s){return s.trim().length>10;}).map(function(s){return s.trim()+'.'});
+      }
+
+      // Çevir
+      var trTitle=await translateText(m.strMeal,'en','tr');
+      var trIngs=await translateArray(ings,'en','tr');
+      var trSteps=await translateArray(steps.slice(0,8),'en','tr');
+      await new Promise(function(r){setTimeout(r,100);});
+
+      // Kategori mapping
+      var catMap={'Beef':'klasik','Chicken':'klasik','Lamb':'klasik','Pork':'klasik','Seafood':'balik','Vegetarian':'sebze','Vegan':'vegan','Side':'sebze','Pasta':'hamur','Dessert':'tatli','Breakfast':'pratik','Starter':'meze','Miscellaneous':'klasik','Goat':'klasik'};
+      var cat=catMap[m.strCategory]||'klasik';
+
+      // Etiketler
+      var tags=[];
+      if(m.strTags)tags=m.strTags.split(',').map(function(t){return t.trim().toLowerCase();});
+
+      recipes.push({
+        name:trTitle,
+        emoji:cat==='corba'?'🍲':cat==='tatli'?'🍮':cat==='meze'?'🫒':cat==='sebze'?'🥬':cat==='balik'?'🐟':'🍽️',
+        cat:cat,
+        desc:trTitle,
+        time:30,
+        serv:4,
+        cal:0,prot:0,carb:0,fat:0,
+        ing:trIngs,
+        steps:trSteps,
+        tags:tags,
+        img:m.strMealThumb||'',
+        mealDbId:m.idMeal,
+        source:'themealdb'
+      });
+    }
+
+    _mealDbResults=recipes;
+    st.textContent='✅ '+recipes.length+' tarif çevrildi!';
+
+    // Önizleme
+    preview.innerHTML=recipes.map(function(r,i){
+      return '<div style="background:#0d0f14;border:1px solid #2a2d38;border-radius:12px;margin-bottom:8px;overflow:hidden">'
+        +(r.img?'<div style="position:relative"><img src="'+r.img+'" style="width:100%;height:120px;object-fit:cover;display:block"><div style="position:absolute;top:6px;right:6px"><button onclick="_mealDbResults.splice('+i+',1);renderMealDbPreview()" style="background:rgba(0,0,0,.6);color:#ff5c5c;border:none;border-radius:6px;padding:4px 8px;font-size:.7rem;cursor:pointer">✕</button></div></div>':'')
+        +'<div style="padding:10px 12px">'
+        +'<div style="font-weight:700;font-size:.88rem;margin-bottom:4px">'+r.emoji+' '+r.name+'</div>'
+        +'<div style="font-size:.65rem;color:#8a8d9b;margin-bottom:4px">'+r.cat+' · '+r.ing.length+' malzeme · '+r.steps.length+' adım</div>'
+        +'<details><summary style="font-size:.72rem;font-weight:700;color:#8a8d9b;cursor:pointer">🧾 Malzemeler</summary><div style="font-size:.68rem;color:#8a8d9b;padding:6px 0;line-height:1.6">'+r.ing.map(function(x){return '• '+x;}).join('<br>')+'</div></details>'
+        +'<details><summary style="font-size:.72rem;font-weight:700;color:#8a8d9b;cursor:pointer">👩‍🍳 Yapılış</summary><div style="font-size:.68rem;color:#8a8d9b;padding:6px 0;line-height:1.6">'+r.steps.map(function(s,j){return '<strong>'+(j+1)+'.</strong> '+s;}).join('<br>')+'</div></details>'
+        +'</div></div>';
+    }).join('');
+    saveBtn.style.display='block';
+
+  }catch(e){
+    st.textContent='❌ Hata: '+e.message;
+    console.error(e);
+  }
+}
+
+function renderMealDbPreview(){
+  var preview=document.getElementById('mealDbPreview');
+  if(!_mealDbResults.length){preview.innerHTML='';document.getElementById('mealDbSaveBtn').style.display='none';return;}
+  preview.innerHTML=_mealDbResults.map(function(r,i){
+    return '<div style="background:#0d0f14;border:1px solid #2a2d38;border-radius:10px;padding:8px;margin-bottom:4px;display:flex;align-items:center;gap:8px">'
+      +(r.img?'<img src="'+r.img+'" style="width:36px;height:36px;border-radius:6px;object-fit:cover">':'')
+      +'<span style="flex:1;font-weight:600;font-size:.78rem">'+r.name+'</span>'
+      +'<button onclick="_mealDbResults.splice('+i+',1);renderMealDbPreview()" style="background:#ff5c5c22;color:#ff5c5c;border:1px solid #ff5c5c33;border-radius:6px;padding:2px 6px;font-size:.6rem;cursor:pointer">✕</button>'
+      +'</div>';
+  }).join('');
+  document.getElementById('mealDbStatus').textContent=_mealDbResults.length+' tarif hazır';
+}
+
+async function saveMealDbRecipes(){
+  if(!_mealDbResults.length){alert('Kaydedilecek tarif yok');return;}
+  var st=document.getElementById('mealDbStatus');
+  st.textContent='🔍 Mevcut tarifler kontrol ediliyor...';
+  try{
+    var snap=await db.collection('recipes').get();
+    var existing=snap.docs.map(function(d){return d.data().name;});
+    var toAdd=_mealDbResults.filter(function(r){return !existing.includes(r.name);});
+    if(!toAdd.length){st.textContent='✅ Bu tarifler zaten mevcut!';return;}
+    st.textContent='💾 '+toAdd.length+' tarif kaydediliyor...';
+    var saved=0;
+    for(var i=0;i<toAdd.length;i++){
+      var r=Object.assign({},toAdd[i]);
+      r.createdAt=Date.now();
+      await db.collection('recipes').add(r);
+      saved++;
+      st.textContent='💾 '+saved+'/'+toAdd.length+' kaydedildi...';
+    }
+    st.textContent='✅ '+saved+' tarif Firebase\'e kaydedildi!';
+    _mealDbResults=[];
+    document.getElementById('mealDbPreview').innerHTML='';
+    document.getElementById('mealDbSaveBtn').style.display='none';
+    loadRecipeList();
+  }catch(e){
+    st.textContent='❌ Hata: '+e.message;
+  }
+}
+
 // ═══ KATEGORİ SIRALAMA (ADMIN) ═══
 var ADMIN_CATS=[
   {id:'klasik',label:'🍲 Klasik'},{id:'fit',label:'💪 Fit'},{id:'corba',label:'🍲 Çorbalar'},
@@ -1505,7 +1688,7 @@ setTimeout(renderAdminCatOrder,500);
       <div style="flex:1">
         <label style="font-size:.75rem;color:#8a8d9b;display:block;margin-bottom:3px">Mutfak</label>
         <select id="spoonCuisine">
-          <option value="turkish">🇹🇷 Türk</option>
+          <option value="turkish">🇹🇷 Türk / Akdeniz / Ortadoğu</option>
           <option value="middle eastern">🧆 Orta Doğu</option>
           <option value="mediterranean">🫒 Akdeniz</option>
           <option value="greek">🇬🇷 Yunan</option>
@@ -1562,6 +1745,36 @@ setTimeout(renderAdminCatOrder,500);
     <div id="spoonStatus" style="font-size:.75rem;color:#8a8d9b;margin-top:8px;min-height:18px"></div>
     <div id="spoonPreview" style="max-height:350px;overflow-y:auto;margin-top:8px"></div>
     <button id="spoonSaveBtn" class="btn-g" onclick="saveSpoonRecipes()" style="display:none;margin-top:8px">💾 Firebase'e Kaydet</button>
+  </div>
+
+  <div class="card">
+    <h2>🇹🇷 TheMealDB — Türk Tarifleri</h2>
+    <p>Ücretsiz, API key gerektirmez! Türk ve komşu mutfak tarifleri — fotoğraf + malzeme + yapılış dahil</p>
+    <div class="row" style="margin-bottom:6px">
+      <div style="flex:1">
+        <label style="font-size:.72rem;color:#8a8d9b;display:block;margin-bottom:3px">Mutfak / Area</label>
+        <select id="mealDbMode">
+          <option value="turkish">🇹🇷 Türk</option>
+          <option value="Greek">🇬🇷 Yunan</option>
+          <option value="Egyptian">🇪🇬 Mısır</option>
+          <option value="Moroccan">🇲🇦 Fas</option>
+          <option value="Croatian">🇭🇷 Hırvat</option>
+          <option value="French">🇫🇷 Fransız</option>
+          <option value="Italian">🇮🇹 İtalyan</option>
+          <option value="Indian">🇮🇳 Hint</option>
+          <option value="Japanese">🇯🇵 Japon</option>
+          <option value="Mexican">🇲🇽 Meksika</option>
+        </select>
+      </div>
+      <div style="flex:2">
+        <label style="font-size:.72rem;color:#8a8d9b;display:block;margin-bottom:3px">Arama (İngilizce — opsiyonel)</label>
+        <input type="text" id="mealDbQuery" placeholder="kebab, baklava, lamb...">
+      </div>
+    </div>
+    <button class="btn-u" onclick="fetchMealDbTurkish()" style="background:#e74c3c">🇹🇷 Tarifleri Çek & Çevir</button>
+    <div id="mealDbStatus" style="font-size:.75rem;color:#8a8d9b;margin-top:8px;min-height:18px"></div>
+    <div id="mealDbPreview" style="max-height:400px;overflow-y:auto;margin-top:8px"></div>
+    <button id="mealDbSaveBtn" class="btn-g" onclick="saveMealDbRecipes()" style="display:none;margin-top:8px">💾 Firebase'e Kaydet</button>
   </div>
 
   <div class="card">
