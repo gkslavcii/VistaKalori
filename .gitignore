@@ -1,0 +1,34 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build outputs
+dist/
+build/
+.cache/
+.tmp/
+
+# Firebase
+.firebase/
+functions/node_modules/
+.firebaserc
+
+# Logs
+logs/
+*.log
+debug.log
+
+# IDE / System
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.production
+.env.test
