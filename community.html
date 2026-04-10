@@ -82,6 +82,8 @@
 
 <script>
 var _comPhoto=null,_comData=null,_blocked=JSON.parse(localStorage.getItem('fs_blocked_users')||'[]');
+var _comLastDoc=null,_comLoading=false,_comAllLoaded=false;
+var COM_PAGE_SIZE=10;
 
 function comInit(){
   if(typeof auth!=='undefined'&&auth.currentUser){comShow();comLoad()}
@@ -170,55 +172,85 @@ async function comPost(){
   }
 }
 
-// ═══ FEED YÜKLE ═══
-async function comLoad(){
-  var el=document.getElementById('comFeed');
-  try{var snap=await db.collection('community_posts').orderBy('createdAt','desc').limit(40).get();
-    if(snap.empty){el.innerHTML='<div class="com-empty">🍽️ İlk paylaşımı sen yap!</div>';return}
-    var html='';snap.forEach(function(doc){var p=doc.data(),id=doc.id;
-      // Engellenen kullanıcıları atla
-      if(_blocked.indexOf(p.uid)>=0)return;
-      var ago=comAgo(p.createdAt);var liked=auth.currentUser&&(p.likes||[]).indexOf(auth.currentUser.uid)>=0;
-      var isMe=auth.currentUser&&p.uid===auth.currentUser.uid;
-      html+='<div class="com-card">';
-      // Header
-      html+='<div class="com-card-head">';
-      if(p.photoURL)html+='<img class="com-av" src="'+esc(p.photoURL)+'" onerror="this.outerHTML=\'<div class=com-av-ph>'+esc((p.displayName||'?')[0].toUpperCase())+'</div>\'">';
-      else html+='<div class="com-av-ph">'+esc((p.displayName||'?')[0].toUpperCase())+'</div>';
-      html+='<div class="com-uinfo"><div class="com-uname">'+esc(p.displayName||'Anonim');
-      if(p.streak>0)html+=' <span style="font-size:.6rem;color:var(--accent)">🔥'+p.streak+'</span>';
-      html+='</div><div class="com-time">'+ago+'</div></div>';
-      html+='<button class="com-more" onclick="comMenu(\''+esc(id)+'\',\''+esc(p.uid)+'\','+isMe+')">⋯</button></div>';
-      // Fotoğraf
-      if(p.image)html+='<img class="com-card-img" src="'+esc(p.image)+'" onclick="comFullImg(this.src)" loading="lazy">';
-      // Body
-      html+='<div class="com-card-body">';
-      if(p.text)html+='<div class="com-card-text">'+esc(p.text)+'</div>';
-      if(p.data){var d=p.data,pc=d.target?Math.round(d.cal/d.target*100):0;
-        html+='<div class="com-macros"><span style="color:var(--accent)">🔥'+d.cal+' kcal ('+pc+'%)</span><span style="color:#ff7a7a">P:'+d.prot+'g</span><span style="color:#22d3ee">K:'+d.carb+'g</span><span style="color:#ffcc55">Y:'+d.fat+'g</span>';
-        if(d.water)html+='<span>💧'+(d.water/1000).toFixed(1)+'L</span>';
-        html+='</div>';
-        html+='<div style="height:3px;background:var(--glass);border-radius:2px;overflow:hidden"><div style="height:100%;width:'+Math.min(pc,100)+'%;background:var(--accent);border-radius:2px"></div></div>'}
-      html+='</div>';
-      // Footer — beğeni + yorum
-      html+='<div class="com-card-foot">';
-      html+='<button class="com-act'+(liked?' liked':'')+'" onclick="comLike(\''+esc(id)+'\')">'+(liked?'❤️':'🤍')+' <span style="font-size:.72rem;font-weight:700">'+(p.likeCount||0)+'</span></button>';
-      html+='<button class="com-act" onclick="comToggleComments(\''+esc(id)+'\')">💬 <span style="font-size:.72rem;font-weight:700">'+(p.comments||[]).length+'</span></button>';
-      if(isMe)html+='<button class="com-act" style="margin-left:auto" onclick="comDel(\''+esc(id)+'\')">🗑️</button>';
-      html+='</div>';
-      // Yorumlar (gizli)
-      html+='<div id="comCom_'+esc(id)+'" style="display:none">';
-      (p.comments||[]).slice(-5).forEach(function(c){
-        html+='<div class="com-comments"><div class="com-comment"><span class="com-comment-name">'+esc(c.name)+'</span><span class="com-comment-text">'+esc(c.text)+'</span></div></div>'});
-      html+='<div class="com-comment-input"><input type="text" id="comIn_'+esc(id)+'" placeholder="Yorum yaz..." maxlength="200"><button onclick="comComment(\''+esc(id)+'\')">→</button></div>';
-      html+='</div></div>'});
-    el.innerHTML=html}
-  catch(e){el.innerHTML='<div class="com-empty">⚠️ '+esc(e.message)+'<br><br><button onclick="comLoad()" style="background:var(--accent);color:#fff;border:none;border-radius:8px;padding:8px 16px;font-size:.78rem;cursor:pointer">Tekrar Dene</button></div>'}}
+// ═══ TEK POST HTML ═══
+function comRenderPost(id,p){
+  var ago=comAgo(p.createdAt);var liked=auth.currentUser&&(p.likes||[]).indexOf(auth.currentUser.uid)>=0;
+  var isMe=auth.currentUser&&p.uid===auth.currentUser.uid;
+  var html='<div class="com-card" data-post-id="'+esc(id)+'">';
+  // Header
+  html+='<div class="com-card-head">';
+  if(p.photoURL)html+='<img class="com-av" src="'+esc(p.photoURL)+'" onerror="this.outerHTML=\'<div class=com-av-ph>'+esc((p.displayName||'?')[0].toUpperCase())+'</div>\'">';
+  else html+='<div class="com-av-ph">'+esc((p.displayName||'?')[0].toUpperCase())+'</div>';
+  html+='<div class="com-uinfo"><div class="com-uname">'+esc(p.displayName||'Anonim');
+  if(p.streak>0)html+=' <span style="font-size:.6rem;color:var(--accent)">🔥'+p.streak+'</span>';
+  html+='</div><div class="com-time">'+ago+'</div></div>';
+  html+='<button class="com-more" onclick="comMenu(\''+esc(id)+'\',\''+esc(p.uid)+'\','+isMe+')">⋯</button></div>';
+  // Fotoğraf
+  if(p.image)html+='<img class="com-card-img" src="'+esc(p.image)+'" onclick="comFullImg(this.src)" loading="lazy">';
+  // Body
+  html+='<div class="com-card-body">';
+  if(p.text)html+='<div class="com-card-text">'+esc(p.text)+'</div>';
+  if(p.data){var d=p.data,pc=d.target?Math.round(d.cal/d.target*100):0;
+    html+='<div class="com-macros"><span style="color:var(--accent)">🔥'+d.cal+' kcal ('+pc+'%)</span><span style="color:#ff7a7a">P:'+d.prot+'g</span><span style="color:#22d3ee">K:'+d.carb+'g</span><span style="color:#ffcc55">Y:'+d.fat+'g</span>';
+    if(d.water)html+='<span>💧'+(d.water/1000).toFixed(1)+'L</span>';
+    html+='</div>';
+    html+='<div style="height:3px;background:var(--glass);border-radius:2px;overflow:hidden"><div style="height:100%;width:'+Math.min(pc,100)+'%;background:var(--accent);border-radius:2px"></div></div>'}
+  html+='</div>';
+  // Footer
+  html+='<div class="com-card-foot">';
+  html+='<button class="com-act'+(liked?' liked':'')+'" data-like-btn="'+esc(id)+'" onclick="comLike(\''+esc(id)+'\')">'+(liked?'❤️':'🤍')+' <span style="font-size:.72rem;font-weight:700">'+(p.likeCount||0)+'</span></button>';
+  html+='<button class="com-act" data-comment-toggle="'+esc(id)+'" onclick="comToggleComments(\''+esc(id)+'\')">💬 <span style="font-size:.72rem;font-weight:700">'+(p.comments||[]).length+'</span></button>';
+  if(isMe)html+='<button class="com-act" style="margin-left:auto" onclick="comDel(\''+esc(id)+'\')">🗑️</button>';
+  html+='</div>';
+  // Yorumlar (gizli)
+  html+='<div id="comCom_'+esc(id)+'" style="display:none">';
+  html+='<div data-comments-list="'+esc(id)+'">';
+  (p.comments||[]).slice(-5).forEach(function(c){
+    html+='<div class="com-comments"><div class="com-comment"><span class="com-comment-name">'+esc(c.name)+'</span><span class="com-comment-text">'+esc(c.text)+'</span></div></div>'});
+  html+='</div>';
+  html+='<div class="com-comment-input"><input type="text" id="comIn_'+esc(id)+'" placeholder="Yorum yaz..." maxlength="200"><button onclick="comComment(\''+esc(id)+'\')">→</button></div>';
+  html+='</div></div>';
+  return html}
 
-// ═══ BEĞENİ ═══
+// ═══ FEED YÜKLE ═══
+async function comLoad(loadMore){
+  if(_comLoading)return;
+  _comLoading=true;
+  var el=document.getElementById('comFeed');
+  if(!loadMore){_comLastDoc=null;_comAllLoaded=false;el.innerHTML='<div class="com-empty"><span class="spinner" style="width:20px;height:20px;border-width:2px"></span><br><br>Yükleniyor...</div>'}
+  try{
+    var q=db.collection('community_posts').orderBy('createdAt','desc').limit(COM_PAGE_SIZE);
+    if(loadMore&&_comLastDoc)q=q.startAfter(_comLastDoc);
+    var snap=await q.get();
+    if(!loadMore&&snap.empty){el.innerHTML='<div class="com-empty">🍽️ İlk paylaşımı sen yap!</div>';_comLoading=false;return}
+    if(snap.docs.length>0)_comLastDoc=snap.docs[snap.docs.length-1];
+    if(snap.docs.length<COM_PAGE_SIZE)_comAllLoaded=true;
+    var html='';
+    snap.forEach(function(doc){var p=doc.data(),id=doc.id;
+      if(_blocked.indexOf(p.uid)>=0)return;
+      html+=comRenderPost(id,p)});
+    // Remove existing load-more button before appending
+    var oldBtn=document.getElementById('comLoadMore');
+    if(oldBtn)oldBtn.remove();
+    if(!loadMore)el.innerHTML=html;
+    else el.insertAdjacentHTML('beforeend',html);
+    // Add load-more button if there are more posts
+    if(!_comAllLoaded){
+      el.insertAdjacentHTML('beforeend','<div id="comLoadMore" style="text-align:center;padding:12px"><button onclick="comLoad(true)" style="background:var(--accent);color:#fff;border:none;border-radius:10px;padding:10px 28px;font-size:.82rem;font-weight:700;cursor:pointer;font-family:var(--font,system-ui)">Daha fazla göster</button></div>')}
+  }catch(e){
+    if(!loadMore)el.innerHTML='<div class="com-empty">⚠️ '+esc(e.message)+'<br><br><button onclick="comLoad()" style="background:var(--accent);color:#fff;border:none;border-radius:8px;padding:8px 16px;font-size:.78rem;cursor:pointer">Tekrar Dene</button></div>';
+    else if(typeof showToast==='function')showToast('⚠️ '+e.message);
+  }finally{_comLoading=false}}
+
+// ═══ BEĞENİ (delta update) ═══
 async function comLike(id){if(!auth.currentUser)return;var uid=auth.currentUser.uid,ref=db.collection('community_posts').doc(id);
   try{var doc=await ref.get();if(!doc.exists)return;var lk=doc.data().likes||[];var i=lk.indexOf(uid);
-    if(i>=0)lk.splice(i,1);else lk.push(uid);await ref.update({likes:lk,likeCount:lk.length});comLoad()}catch(e){}}
+    if(i>=0)lk.splice(i,1);else lk.push(uid);await ref.update({likes:lk,likeCount:lk.length});
+    // Delta update: only touch the like button in the DOM
+    var btn=document.querySelector('[data-like-btn="'+id+'"]');
+    if(btn){var nowLiked=lk.indexOf(uid)>=0;
+      btn.className='com-act'+(nowLiked?' liked':'');
+      btn.innerHTML=(nowLiked?'❤️':'🤍')+' <span style="font-size:.72rem;font-weight:700">'+lk.length+'</span>'}}catch(e){}}
 
 // ═══ YORUM ═══
 function comToggleComments(id){var el=document.getElementById('comCom_'+id);el.style.display=el.style.display==='none'?'block':'none'}
@@ -226,12 +258,28 @@ function comToggleComments(id){var el=document.getElementById('comCom_'+id);el.s
 async function comComment(id){var input=document.getElementById('comIn_'+id);var text=(input.value||'').trim();
   if(!text||!auth.currentUser)return;var ref=db.collection('community_posts').doc(id);
   try{var doc=await ref.get();if(!doc.exists)return;var cms=doc.data().comments||[];
-    cms.push({uid:auth.currentUser.uid,name:auth.currentUser.displayName||'Anonim',text:text,createdAt:Date.now()});
-    await ref.update({comments:cms});input.value='';comLoad();if(typeof showToast==='function')showToast('💬 Yorum eklendi')}catch(e){}}
+    var newComment={uid:auth.currentUser.uid,name:auth.currentUser.displayName||'Anonim',text:text,createdAt:Date.now()};
+    cms.push(newComment);
+    await ref.update({comments:cms});input.value='';
+    // Delta update: append comment to DOM and update count
+    var listEl=document.querySelector('[data-comments-list="'+id+'"]');
+    if(listEl){
+      // Keep only last 5 visible: if already 5, remove the first one
+      var existing=listEl.querySelectorAll('.com-comments');
+      if(existing.length>=5&&existing[0])existing[0].remove();
+      listEl.insertAdjacentHTML('beforeend','<div class="com-comments"><div class="com-comment"><span class="com-comment-name">'+esc(newComment.name)+'</span><span class="com-comment-text">'+esc(newComment.text)+'</span></div></div>')}
+    // Update comment count in footer
+    var toggleBtn=document.querySelector('[data-comment-toggle="'+id+'"]');
+    if(toggleBtn){toggleBtn.innerHTML='💬 <span style="font-size:.72rem;font-weight:700">'+cms.length+'</span>'}
+    if(typeof showToast==='function')showToast('💬 Yorum eklendi')}catch(e){}}
 
 // ═══ SİL ═══
 async function comDel(id){if(!confirm('Gönderi silinsin mi?'))return;
-  try{await db.collection('community_posts').doc(id).delete();comLoad();if(typeof showToast==='function')showToast('🗑️ Silindi')}catch(e){}}
+  try{await db.collection('community_posts').doc(id).delete();
+    // Delta update: remove the card from DOM
+    var card=document.querySelector('[data-post-id="'+id+'"]');
+    if(card)card.remove();
+    if(typeof showToast==='function')showToast('🗑️ Silindi')}catch(e){}}
 
 // ═══ MENÜ — ŞİKAYET & ENGELLE ═══
 function comMenu(postId,userId,isMe){
@@ -256,7 +304,13 @@ function comBlock(userId){
   if(!confirm('Bu kullanıcı engellensin mi? Paylaşımlarını görmezsin.'))return;
   if(_blocked.indexOf(userId)<0)_blocked.push(userId);
   localStorage.setItem('fs_blocked_users',JSON.stringify(_blocked));
-  comCloseMenu();comLoad();if(typeof showToast==='function')showToast('🚫 Kullanıcı engellendi')}
+  comCloseMenu();
+  // Delta update: remove all cards from this user
+  document.querySelectorAll('.com-card').forEach(function(card){
+    var menuBtn=card.querySelector('.com-more');
+    if(menuBtn){var oc=menuBtn.getAttribute('onclick')||'';
+      if(oc.indexOf("'"+userId+"'")>=0)card.remove()}});
+  if(typeof showToast==='function')showToast('🚫 Kullanıcı engellendi')}
 
 // ═══ TAM EKRAN FOTOĞRAF ═══
 function comFullImg(src){
