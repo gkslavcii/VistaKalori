@@ -441,15 +441,15 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <style>@keyframes bounceIn{from{opacity:0;transform:scale(.8) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}</style>
 <script>setTimeout(()=>{const s=document.getElementById('splashScreen');if(s){s.style.opacity='0';setTimeout(()=>s.remove(),500)}},3200)</script>
 
-<div class="header">
+<header class="header" role="banner">
   <div class="header-top">
     <div style="display:flex;align-items:center;gap:8px"><div style="filter:drop-shadow(0 3px 12px rgba(255,107,61,.4))"><svg width="54" height="54" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ff6b3d"/><stop offset="100%" stop-color="#ffaa55"/></linearGradient><linearGradient id="hfg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ff8f5a" stop-opacity=".7"/><stop offset="100%" stop-color="#ff6b3d" stop-opacity=".25"/></linearGradient><linearGradient id="hkg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#aab0c8" stop-opacity=".6"/><stop offset="100%" stop-color="#7a8099" stop-opacity=".2"/></linearGradient></defs><path d="M55 32 C55 28 57 26 57 32 L57 52" stroke="url(#hfg)" stroke-width="2.2" stroke-linecap="round" fill="none"/><path d="M60 31 C60 27 62 25 62 31 L62 52" stroke="url(#hfg)" stroke-width="2.2" stroke-linecap="round" fill="none"/><path d="M65 31 C65 27 67 25 67 31 L67 52" stroke="url(#hfg)" stroke-width="2.2" stroke-linecap="round" fill="none"/><path d="M70 32 C70 28 72 26 72 32 L72 52" stroke="url(#hfg)" stroke-width="2.2" stroke-linecap="round" fill="none"/><path d="M57 52 Q57 59 63 60 Q69 61 72 52" fill="none" stroke="url(#hfg)" stroke-width="2.2" stroke-linecap="round"/><path d="M63 60 Q62.5 65 63 68" stroke="url(#hfg)" stroke-width="2.8" stroke-linecap="round" fill="none"/><path d="M63 68 Q62 80 62.5 96 Q63 110 63.5 128" stroke="url(#hfg)" stroke-width="3" stroke-linecap="round" fill="none"/><path d="M62 126 Q63.5 130 65 126" fill="none" stroke="url(#hfg)" stroke-width="2.2" stroke-linecap="round"/><line x1="93" y1="30" x2="93" y2="60" stroke="url(#hkg)" stroke-width="2" stroke-linecap="round"/><path d="M93 30 Q103 32 104 42 Q105 52 98 60 L93 60" fill="rgba(170,176,200,.07)" stroke="url(#hkg)" stroke-width="2.2" stroke-linecap="round"/><rect x="91.5" y="60" width="5" height="5" rx="1" fill="rgba(170,176,200,.2)"/><path d="M93.5 65 Q92.5 80 93 100 Q93.5 115 93 128" stroke="url(#hkg)" stroke-width="3.2" stroke-linecap="round" fill="none"/><path d="M95.5 65 Q94.5 80 95 100 Q95.5 115 95 128" stroke="url(#hkg)" stroke-width="1.2" stroke-linecap="round" fill="none" opacity=".5"/><path d="M91.5 126 Q93 130 94.5 126" fill="none" stroke="url(#hkg)" stroke-width="2" stroke-linecap="round"/><circle cx="80" cy="80" r="60" fill="rgba(255,107,61,.05)"/><circle cx="80" cy="80" r="54" stroke="rgba(255,107,61,.1)" stroke-width="9"/><circle cx="80" cy="80" r="54" fill="none" stroke="url(#hg)" stroke-width="9" stroke-linecap="round" stroke-dasharray="283 94" transform="rotate(135 80 80)"/><circle cx="80" cy="64" r="4.5" fill="#ff6b3d"/><circle cx="80" cy="80" r="3.5" fill="#ff8f5a" opacity=".75"/><circle cx="80" cy="96" r="2.5" fill="#ffaa55" opacity=".5"/></svg></div><div><h1><span style="color:#ff6b3d">Fit</span><span>Sofra</span></h1><div class="date" id="todayDate"></div><div id="weeklyPlanBadge" style="display:none;font-size:.6rem;font-weight:700;color:var(--accent);opacity:.8;margin-top:1px">📆 Haftalık plan aktif</div></div></div>
     <div style="display:flex;align-items:center;gap:6px">
       <span id="headerSyncIcon" style="font-size:.75rem;opacity:.5;display:none">☁️</span>
-      <button class="icon-btn" onclick="openInsightModal()" id="insightBtn" title="İlerlemeler" style="font-size:.78rem">📊</button>
-      <button class="icon-btn" onclick="openPrepModal()" id="prepBtn" title="Hazırla" style="font-size:.78rem">🍱</button>
-      <button class="icon-btn" onclick="openGoalsModal()" id="goalsBtn" title="Kalori Planlaması" style="font-size:.7rem;font-weight:800;letter-spacing:-.3px">🎯</button>
-      <button class="icon-btn" onclick="toggleTheme()" id="themeBtn" title="Tema değiştir">🌙</button>
+      <button class="icon-btn" onclick="openInsightModal()" id="insightBtn" title="İlerlemeler" aria-label="İlerlemeler" style="font-size:.78rem">📊</button>
+      <button class="icon-btn" onclick="openPrepModal()" id="prepBtn" title="Hazırla" aria-label="Hazırla" style="font-size:.78rem">🍱</button>
+      <button class="icon-btn" onclick="openGoalsModal()" id="goalsBtn" title="Kalori Planlaması" aria-label="Kalori Planlaması" style="font-size:.7rem;font-weight:800;letter-spacing:-.3px">🎯</button>
+      <button class="icon-btn" onclick="toggleTheme()" id="themeBtn" title="Tema değiştir" aria-label="Tema değiştir">🌙</button>
     </div>
   </div>
   <div id="streakBadge" style="display:none;text-align:right;padding:0 2px 4px 0;position:relative;z-index:2"><span style="font-size:.56rem;font-weight:700;color:rgba(255,255,255,.5);letter-spacing:.3px">🔥 <span id="streakCount">0</span> gün seri</span></div>
@@ -472,25 +472,25 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
       <div class="macro-row" style="margin-top:4px"><div class="macro-dot" style="background:#22d3ee"></div><span class="macro-name">Su</span><div class="macro-bar-bg" style="position:relative;overflow:visible"><div class="macro-bar-fill" id="waterBar" style="width:0%;background:linear-gradient(90deg,#3aaff0,#22d3ee)"></div><div class="macro-bar-over" id="waterBarOver" style="width:0%;background:#0ea5d4;position:absolute;top:0;left:0;height:100%;border-radius:4px;transition:width .8s cubic-bezier(.25,1,.5,1);opacity:.85"></div><div class="macro-bar-over" id="waterBarOver2" style="width:0%;background:#ff8c3a;position:absolute;top:0;left:0;height:100%;border-radius:4px;transition:width .8s cubic-bezier(.25,1,.5,1);opacity:.8"></div></div><span class="macro-val" id="waterVal">0L</span></div>
     </div>
   </div>
-</div>
+</header>
 
-<div class="date-nav">
-  <button onclick="changeDate(-1)">◀</button>
-  <span class="current-date" id="navDate" onclick="openDatePicker()" style="cursor:pointer;user-select:none" title="Tarihe git">Bugün</span>
-  <button onclick="changeDate(1)">▶</button>
+<nav class="date-nav" aria-label="Tarih gezinme">
+  <button onclick="changeDate(-1)" aria-label="Önceki gün">◀</button>
+  <span class="current-date" id="navDate" onclick="openDatePicker()" style="cursor:pointer;user-select:none" title="Tarihe git" role="button" aria-label="Tarih seç">Bugün</span>
+  <button onclick="changeDate(1)" aria-label="Sonraki gün">▶</button>
   <button class="today-btn" id="todayBtn" onclick="goToday()">Bugün</button>
-</div>
+</nav>
 
 <!-- Tarih Seçici Modal -->
-<div class="modal-overlay" id="datePickerModal" onclick="if(event.target===this)closeDatePicker()" style="justify-content:stretch">
+<div class="modal-overlay" id="datePickerModal" onclick="if(event.target===this)closeDatePicker()" role="dialog" aria-label="Tarih seçici" style="justify-content:stretch">
   <div class="modal-content" id="goalsModalContent">
     <div class="modal" style="padding:16px 16px 28px;max-width:100%;width:100%">
       <div class="modal-handle"></div>
       <!-- Ay navigasyonu -->
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
-        <button onclick="calChangeMonth(-1)" style="width:34px;height:34px;border-radius:50%;border:1.5px solid var(--border);background:var(--glass);color:var(--text);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center">◀</button>
+        <button onclick="calChangeMonth(-1)" aria-label="Önceki ay" style="width:34px;height:34px;border-radius:50%;border:1.5px solid var(--border);background:var(--glass);color:var(--text);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center">◀</button>
         <div id="calMonthTitle" style="font-weight:800;font-size:.95rem;text-align:center"></div>
-        <button onclick="calChangeMonth(1)" style="width:34px;height:34px;border-radius:50%;border:1.5px solid var(--border);background:var(--glass);color:var(--text);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center">▶</button>
+        <button onclick="calChangeMonth(1)" aria-label="Sonraki ay" style="width:34px;height:34px;border-radius:50%;border:1.5px solid var(--border);background:var(--glass);color:var(--text);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center">▶</button>
       </div>
       <!-- Gün isimleri -->
       <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:6px">
@@ -521,13 +521,13 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
      HEDEFLER MODAL
 ═══════════════════════════════════════════ -->
 <!-- GÜNLÜK BESLENME YORUMU MODAL -->
-<div class="modal-overlay" id="insightModal" onclick="if(event.target===this)closeInsightModal()">
+<div class="modal-overlay" id="insightModal" onclick="if(event.target===this)closeInsightModal()" role="dialog" aria-label="İlerlemeler">
   <div class="modal-content" style="width:100%">
     <div class="modal" style="max-width:100%;width:100%">
       <div class="modal-handle"></div>
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
         <h2 style="margin:0">📊 İlerlemeler</h2>
-        <button onclick="closeInsightModal()" style="background:var(--glass);border:1px solid var(--border);border-radius:10px;padding:5px 12px;font-family:var(--font,system-ui);font-size:.75rem;font-weight:700;color:var(--text2);cursor:pointer">Kapat</button>
+        <button onclick="closeInsightModal()" aria-label="Kapat" style="background:var(--glass);border:1px solid var(--border);border-radius:10px;padding:5px 12px;font-family:var(--font,system-ui);font-size:.75rem;font-weight:700;color:var(--text2);cursor:pointer">Kapat</button>
       </div>
       <div id="insightSummaryBar" style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:14px"></div>
       <div id="insightModalContent" style="font-size:.83rem;line-height:1.7;color:var(--text)"></div>
@@ -540,7 +540,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 </div>
 
 <!-- HAZIRLA MODAL -->
-<div class="modal-overlay" id="prepModal" onclick="if(event.target===this)closePrepModal()">
+<div class="modal-overlay" id="prepModal" onclick="if(event.target===this)closePrepModal()" role="dialog" aria-label="Hazırla">
   <div class="modal-content" style="width:100%">
     <div class="modal" style="max-height:92vh;width:100%;padding:16px 18px 28px">
       <div class="modal-handle"></div>
@@ -653,7 +653,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
   </div>
 </div>
 
-<div class="modal-overlay" id="goalsModal" onclick="if(event.target===this)closeGoalsModal()">
+<div class="modal-overlay" id="goalsModal" onclick="if(event.target===this)closeGoalsModal()" role="dialog" aria-label="Kalori Planlaması">
   <div class="modal-content" style="width:100%">
     <div class="modal" id="goalsModalInner" style="max-height:94vh;width:100%;max-width:100%;border-radius:20px 20px 0 0">
       <div class="modal-handle"></div>
@@ -893,7 +893,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <!-- ═══════════════════════════════════════════════
      EGZERSİZ EKLE MODAL
 ═══════════════════════════════════════════════ -->
-<div class="modal-overlay" id="exerciseModal" onclick="if(event.target===this)closeExerciseModal()">
+<div class="modal-overlay" id="exerciseModal" onclick="if(event.target===this)closeExerciseModal()" role="dialog" aria-label="Egzersiz ekle">
   <div class="modal-content">
     <div class="modal" id="exerciseModalInner">
       <div class="modal-handle"></div>
@@ -949,7 +949,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 
 
 
-<div class="page active" id="page-gunluk"><div id="dailyBanner" style="margin:10px 16px 0;padding:12px 14px;border-radius:var(--radius-sm);background:linear-gradient(135deg,var(--accent-glow),rgba(160,124,248,.05));border:1px solid var(--border);font-size:.78rem;line-height:1.5;display:none;animation:fadeUp .3s ease"></div><div class="content" id="mealsContainer"></div></div>
+<main class="page active" id="page-gunluk" role="main"><div id="dailyBanner" style="margin:10px 16px 0;padding:12px 14px;border-radius:var(--radius-sm);background:linear-gradient(135deg,var(--accent-glow),rgba(160,124,248,.05));border:1px solid var(--border);font-size:.78rem;line-height:1.5;display:none;animation:fadeUp .3s ease"></div><div class="content" id="mealsContainer"></div></main>
 <div class="page" id="page-istatistik"><div class="content" id="statsContainer" style="padding-left:8px;padding-right:8px"></div></div>
 <div class="page" id="page-profil">
   <div class="content">
@@ -1328,16 +1328,16 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
   </div>
 </div>
 
-<div class="bottom-nav">
-  <button class="nav-item active" onclick="switchTab('gunluk')" id="nav-gunluk"><span class="nav-icon">🍽️</span><span class="nav-label">Günlük</span></button>
-  <button class="nav-item" onclick="switchTab('oneri')" id="nav-oneri"><span class="nav-icon">📖</span><span class="nav-label">Tarifler</span></button>
-  <button class="nav-item" onclick="switchTab('topluluk')" id="nav-topluluk"><span class="nav-icon">👥</span><span class="nav-label">Topluluk</span></button>
-  <button class="nav-item" onclick="switchTab('istatistik')" id="nav-istatistik"><span class="nav-icon">📊</span><span class="nav-label">İstatistik</span></button>
-  <button class="nav-item" onclick="switchTab('profil')" id="nav-profil"><span class="nav-icon">👤</span><span class="nav-label">Profil</span></button>
-</div>
+<nav class="bottom-nav" role="navigation" aria-label="Ana gezinme">
+  <button class="nav-item active" onclick="switchTab('gunluk')" id="nav-gunluk" aria-label="Günlük"><span class="nav-icon" aria-hidden="true">🍽️</span><span class="nav-label">Günlük</span></button>
+  <button class="nav-item" onclick="switchTab('oneri')" id="nav-oneri" aria-label="Tarifler"><span class="nav-icon" aria-hidden="true">📖</span><span class="nav-label">Tarifler</span></button>
+  <button class="nav-item" onclick="switchTab('topluluk')" id="nav-topluluk" aria-label="Topluluk"><span class="nav-icon" aria-hidden="true">👥</span><span class="nav-label">Topluluk</span></button>
+  <button class="nav-item" onclick="switchTab('istatistik')" id="nav-istatistik" aria-label="İstatistik"><span class="nav-icon" aria-hidden="true">📊</span><span class="nav-label">İstatistik</span></button>
+  <button class="nav-item" onclick="switchTab('profil')" id="nav-profil" aria-label="Profil"><span class="nav-icon" aria-hidden="true">👤</span><span class="nav-label">Profil</span></button>
+</nav>
 
 <!-- Add Food Modal -->
-<div class="modal-overlay" id="addFoodModal">
+<div class="modal-overlay" id="addFoodModal" role="dialog" aria-label="Yemek Ekle">
   <div class="modal">
     <div class="modal-handle"></div>
     <h2 id="modalTitle">🍽️ Yemek Ekle</h2>
@@ -1376,7 +1376,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 </div>
 
 <!-- Portion Modal -->
-<div class="modal-overlay" id="portionModal">
+<div class="modal-overlay" id="portionModal" role="dialog" aria-label="Porsiyon seç">
   <div class="modal">
     <div class="modal-handle"></div>
     <h2 id="portionTitle">Porsiyon Ayarla</h2>
@@ -1433,7 +1433,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <!-- ═══════════════════════════════════════════════
      ÖĞÜN KOPYALAMA MODAL
 ═══════════════════════════════════════════════ -->
-<div class="modal-overlay" id="copyMealModal" onclick="if(event.target===this)closeCopyMealModal()">
+<div class="modal-overlay" id="copyMealModal" onclick="if(event.target===this)closeCopyMealModal()" role="dialog" aria-label="Öğün kopyala">
   <div class="modal-content">
     <div class="modal">
       <div class="modal-handle"></div>
@@ -1487,7 +1487,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
   </div>
 </div>
 
-<div class="modal-overlay" id="tplModal">
+<div class="modal-overlay" id="tplModal" role="dialog" aria-label="Şablon">
   <div class="modal">
     <div class="modal-handle"></div>
     <h2 id="tplModalTitle">📋 Kayıtlı Öğünler</h2>
@@ -1497,7 +1497,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 </div>
 
 <!-- Barcode Scanner Modal -->
-<div class="modal-overlay" id="barcodeModal">
+<div class="modal-overlay" id="barcodeModal" role="dialog" aria-label="Barkod okuyucu">
   <div class="modal" style="max-height:90vh">
     <div class="modal-handle"></div>
     <h2>📷 Barkod Tara</h2>
@@ -1513,7 +1513,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 </div>
 
 <!-- Tarifi Öğüne Ekle Modal -->
-<div class="modal-overlay" id="addRecipeModal" onclick="if(event.target===this)closeAddRecipeModal()" style="z-index:150">
+<div class="modal-overlay" id="addRecipeModal" onclick="if(event.target===this)closeAddRecipeModal()" role="dialog" aria-label="Tarif ekle" style="z-index:150">
   <div class="modal-content" style="width:100%">
     <div class="modal" style="padding:18px 18px 28px;max-width:100%;width:100%">
       <div class="modal-handle"></div>
@@ -1548,16 +1548,16 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <!-- Photo Lightbox -->
 <div id="photoLightbox" onclick="closeRecipePhoto()" style="position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.92);z-index:200;display:none;align-items:center;justify-content:center;cursor:zoom-out;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)">
   <img id="lightboxImg" src="" style="max-width:95%;max-height:85vh;object-fit:contain;border-radius:12px;box-shadow:0 8px 40px rgba(0,0,0,.6);transition:transform .3s cubic-bezier(.34,1.56,.64,1);animation:lbZoomIn .3s ease">
-  <div style="position:absolute;top:max(16px,env(safe-area-inset-top));right:16px;width:36px;height:36px;background:rgba(255,255,255,.12);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:#fff;cursor:pointer;backdrop-filter:blur(8px)">✕</div>
+  <div style="position:absolute;top:max(16px,env(safe-area-inset-top));right:16px;width:36px;height:36px;background:rgba(255,255,255,.12);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:#fff;cursor:pointer;backdrop-filter:blur(8px)" role="button" aria-label="Kapat">✕</div>
 </div>
 <style>@keyframes lbZoomIn{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}</style>
 
-<div class="modal-overlay" id="recipeDetailModal">
+<div class="modal-overlay" id="recipeDetailModal" role="dialog" aria-label="Tarif detayı">
   <div class="modal" id="recipeDetailContent" style="max-width:100%;width:100%"></div>
 </div>
 
 <!-- Edit Food Modal -->
-<div class="modal-overlay" id="editFoodModal">
+<div class="modal-overlay" id="editFoodModal" role="dialog" aria-label="Yemek düzenle">
   <div class="modal">
     <div class="modal-handle"></div>
     <!-- Başlık + yüzeysel bilgi -->
@@ -1608,7 +1608,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <!-- ═══════════════════════════════════════════
      ⑥ ONBOARDING MODAL
 ═══════════════════════════════════════════ -->
-<div class="modal-overlay" id="onboardingModal" style="z-index:160">
+<div class="modal-overlay" id="onboardingModal" role="dialog" aria-label="Hoş geldiniz" style="z-index:160">
   <div class="modal-content" style="width:100%">
     <div class="modal" style="max-height:92vh;padding:24px 20px 32px;text-align:center">
       <div id="onboardStep1" class="onboard-step">
@@ -1649,7 +1649,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <!-- ═══════════════════════════════════════════
      ⑧ PAYLAŞIM KARTI MODAL
 ═══════════════════════════════════════════ -->
-<div class="modal-overlay" id="shareCardModal" onclick="if(event.target===this)closeShareCard()">
+<div class="modal-overlay" id="shareCardModal" onclick="if(event.target===this)closeShareCard()" role="dialog" aria-label="Paylaş">
   <div class="modal-content" style="width:100%">
     <div class="modal" style="max-height:92vh;padding:18px 18px 28px">
       <div class="modal-handle"></div>
@@ -1707,6 +1707,63 @@ function sanitizeEmoji(s) {
   if (cleaned.length > 4) cleaned = cleaned.substring(0, 4);
   return cleaned || '🍽️';
 }
+
+// ═══════════════════════════════════════════
+//  PERFORMANS: Debounce / Throttle / Cache
+// ═══════════════════════════════════════════
+
+function debounce(fn, ms) {
+  var timer;
+  return function() {
+    var ctx = this, args = arguments;
+    clearTimeout(timer);
+    timer = setTimeout(function() { fn.apply(ctx, args); }, ms);
+  };
+}
+
+function throttle(fn, ms) {
+  var last = 0;
+  return function() {
+    var now = Date.now();
+    if (now - last >= ms) { last = now; fn.apply(this, arguments); }
+  };
+}
+
+// Boyut sınırlı cache — max N entry, LRU benzeri
+function LimitedCache(maxSize) {
+  this._data = {};
+  this._expiry = {};
+  this._keys = [];
+  this._max = maxSize || 100;
+}
+LimitedCache.prototype.get = function(key) {
+  if (this._data[key] && this._expiry[key] > Date.now()) return this._data[key];
+  if (this._expiry[key] && this._expiry[key] <= Date.now()) this.del(key);
+  return null;
+};
+LimitedCache.prototype.set = function(key, val, ttl) {
+  if (this._keys.length >= this._max && !this._data[key]) {
+    var oldest = this._keys.shift();
+    delete this._data[oldest];
+    delete this._expiry[oldest];
+  }
+  this._data[key] = val;
+  this._expiry[key] = Date.now() + (ttl || 86400000);
+  var idx = this._keys.indexOf(key);
+  if (idx > -1) this._keys.splice(idx, 1);
+  this._keys.push(key);
+};
+LimitedCache.prototype.del = function(key) {
+  delete this._data[key];
+  delete this._expiry[key];
+  var idx = this._keys.indexOf(key);
+  if (idx > -1) this._keys.splice(idx, 1);
+};
+LimitedCache.prototype.clear = function() {
+  this._data = {};
+  this._expiry = {};
+  this._keys = [];
+};
 
 // ═══════════════════════════════════════════
 //  MERKEZİ YAPILANDIRMA
@@ -2556,10 +2613,10 @@ function handleSearch(){
     }
   }
 }
-const searchCache={};
+const searchCache=new LimitedCache(50);
 async function searchOFF(query){
   const cacheKey='off_'+query.toLowerCase();
-  if(searchCache[cacheKey])return searchCache[cacheKey];
+  var cached=searchCache.get(cacheKey);if(cached)return cached;
   try{
     // First try Turkey-specific, then global
     var results=[];
@@ -2600,29 +2657,30 @@ async function searchOFF(query){
     // Dedup by name
     var seen=new Set();
     var deduped=foods.filter(function(f){var k=f.name.toLowerCase();if(seen.has(k))return false;seen.add(k);return true;});
-    searchCache[cacheKey]=deduped.slice(0,20);
-    return searchCache[cacheKey];
+    var result=deduped.slice(0,20);
+    searchCache.set(cacheKey,result,APP_CONFIG.limits.searchCacheTTL);
+    return result;
   }catch(e){return[]}
 }
 
 
 // ═══════ FATSECRET API ENTEGRASYONU (Cloud Function Proxy) ═══════
 var FatSecret={
-  _searchCache:{},_cacheExpiry:{},
+  _cache:new LimitedCache(50),
   CACHE_TTL:APP_CONFIG.limits.searchCacheTTL,
 
   search:async function(query){
     if(!query||query.length<2)return[];
     var cacheKey='fatsecret_'+query.toLowerCase().trim();
-    // Memory cache
-    if(this._searchCache[cacheKey]&&this._cacheExpiry[cacheKey]>Date.now())return this._searchCache[cacheKey];
+    // Memory cache (LimitedCache ile boyut sınırlı)
+    var memCached=this._cache.get(cacheKey);if(memCached)return memCached;
     // localStorage cache (24h)
     try{
       var lsCache=localStorage.getItem(cacheKey);
       var lsExpiry=parseInt(localStorage.getItem(cacheKey+'_exp'))||0;
       if(lsCache&&lsExpiry>Date.now()){
         var parsed=JSON.parse(lsCache);
-        this._searchCache[cacheKey]=parsed;this._cacheExpiry[cacheKey]=lsExpiry;
+        this._cache.set(cacheKey,parsed,lsExpiry-Date.now());
         return parsed;
       }
     }catch(e){}
@@ -2639,9 +2697,8 @@ var FatSecret={
         if(dbNames.has(k)||seen.has(k))return false;
         seen.add(k);return f.cal>0;
       }).slice(0,20);
-      // Cache 24h
-      this._searchCache[cacheKey]=filtered;
-      this._cacheExpiry[cacheKey]=Date.now()+this.CACHE_TTL;
+      // Cache (LimitedCache)
+      this._cache.set(cacheKey,filtered,this.CACHE_TTL);
       try{localStorage.setItem(cacheKey,JSON.stringify(filtered));localStorage.setItem(cacheKey+'_exp',String(Date.now()+this.CACHE_TTL));}catch(e){}
       return filtered;
     }catch(e){
@@ -2656,7 +2713,7 @@ var FatSecret={
   },
 
   clearCache:function(){
-    this._searchCache={};this._cacheExpiry={};
+    this._cache.clear();
     var keysToRemove=[];
     for(var i=0;i<localStorage.length;i++){
       var k=localStorage.key(i);

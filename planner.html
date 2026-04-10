@@ -73,11 +73,91 @@ var pWO=0,pSD=0,_pTgt=null;
 function pKey(w,d){var dt=pDate(w,d);return'fs_plan_'+dt.toISOString().split('T')[0]}
 function pDate(w,d){var n=new Date,m=new Date(n);m.setDate(n.getDate()-((n.getDay()+6)%7)+w*7+d);m.setHours(0,0,0,0);return m}
 function pGet(w,d){var r=localStorage.getItem(pKey(w,d));return r?JSON.parse(r):{kahvalti:[],ogle:[],aksam:[],atistirmalik:[]}}
-function pSet(w,d,v){localStorage.setItem(pKey(w,d),JSON.stringify(v))}
+function pSet(w,d,v){
+  localStorage.setItem(pKey(w,d),JSON.stringify(v));
+  // Firestore sync (arka planda)
+  pSyncToCloud(pKey(w,d),v);
+}
+
+// ═══════ FIRESTORE SYNC ═══════
+var _pSyncTimer=null;
+var _pSyncQueue={};
+
+function pSyncToCloud(key,data){
+  if(typeof db==='undefined'||typeof auth==='undefined')return;
+  if(!auth.currentUser)return;
+  _pSyncQueue[key]=data;
+  // Debounce: 2sn içinde gelen yazmaları birleştir
+  clearTimeout(_pSyncTimer);
+  _pSyncTimer=setTimeout(pFlushSync,2000);
+}
+
+function pFlushSync(){
+  if(typeof db==='undefined'||!auth.currentUser)return;
+  var uid=auth.currentUser.uid;
+  var batch=db.batch();
+  var keys=Object.keys(_pSyncQueue);
+  if(!keys.length)return;
+  keys.forEach(function(key){
+    var ref=db.collection('user_data').doc(uid).collection('plans').doc(key);
+    batch.set(ref,{data:_pSyncQueue[key],updatedAt:firebase.firestore.FieldValue.serverTimestamp()});
+  });
+  _pSyncQueue={};
+  batch.commit().catch(function(e){console.warn('Plan sync hatası:',e.message)});
+}
+
+// Firestore'dan planları yükle (ilk açılışta)
+function pSyncFromCloud(){
+  if(typeof db==='undefined'||typeof auth==='undefined')return;
+  if(!auth.currentUser)return;
+  var uid=auth.currentUser.uid;
+  // Bu haftanın 7 gününü kontrol et
+  for(var d=0;d<7;d++){
+    var key=pKey(pWO,d);
+    var local=localStorage.getItem(key);
+    // localStorage'da yoksa Firestore'dan çek
+    if(!local){
+      (function(k,dayIdx){
+        db.collection('user_data').doc(uid).collection('plans').doc(k).get()
+          .then(function(doc){
+            if(doc.exists&&doc.data().data){
+              localStorage.setItem(k,JSON.stringify(doc.data().data));
+              rDays();if(dayIdx===pSD)rDay();
+            }
+          }).catch(function(){});
+      })(key,d);
+    }
+  }
+  // Kayıtlı planları da sync et
+  pSyncSavedPlans();
+}
+
+function pSyncSavedPlans(){
+  if(typeof db==='undefined'||!auth.currentUser)return;
+  var uid=auth.currentUser.uid;
+  var local=localStorage.getItem('fs_saved_plans');
+  if(local){
+    // Yerel varsa Firestore'a yaz
+    db.collection('user_data').doc(uid).collection('plans').doc('_saved').set({
+      data:JSON.parse(local),updatedAt:firebase.firestore.FieldValue.serverTimestamp()
+    },{merge:true}).catch(function(){});
+  }else{
+    // Yerel yoksa Firestore'dan çek
+    db.collection('user_data').doc(uid).collection('plans').doc('_saved').get()
+      .then(function(doc){
+        if(doc.exists&&doc.data().data){
+          localStorage.setItem('fs_saved_plans',JSON.stringify(doc.data().data));
+          rSaved();
+        }
+      }).catch(function(){});
+  }
+}
 
 (function(){
   var today=new Date;pSD=(today.getDay()+6)%7;
-  planWeek(0);rTpls();rSaved()
+  planWeek(0);rTpls();rSaved();
+  // Auth hazır olduğunda Firestore'dan sync et
+  if(typeof auth!=='undefined'){auth.onAuthStateChanged(function(u){if(u)pSyncFromCloud()})}
 })();
 
 function planWeek(dir){
@@ -177,12 +257,12 @@ function pTpl(i){var t=TPLS[i];if(!t||!confirm('"'+t.name+'" → '+DF[pSD]+'?'))
 function pSave(){var n=document.getElementById('pSaveName').value.trim();if(!n){if(typeof showToast==='function')showToast('⚠️ Ad girin');return}
   var wd=[];for(var d=0;d<7;d++)wd.push(pGet(pWO,d));var sv=JSON.parse(localStorage.getItem('fs_saved_plans')||'[]');
   sv.unshift({id:Date.now(),name:n,weekData:wd,createdAt:new Date().toLocaleDateString('tr-TR')});if(sv.length>20)sv=sv.slice(0,20);
-  localStorage.setItem('fs_saved_plans',JSON.stringify(sv));document.getElementById('pSaveName').value='';rSaved();if(typeof showToast==='function')showToast('💾 Kaydedildi!')}
+  localStorage.setItem('fs_saved_plans',JSON.stringify(sv));pSyncSavedPlans();document.getElementById('pSaveName').value='';rSaved();if(typeof showToast==='function')showToast('💾 Kaydedildi!')}
 function rSaved(){var sv=JSON.parse(localStorage.getItem('fs_saved_plans')||'[]');
   if(!sv.length){document.getElementById('pSaved').innerHTML='<div style="font-size:.78rem;color:var(--text2);text-align:center;padding:12px">Henüz plan yok</div>';return}
   var h='';sv.forEach(function(p){var tC=0,nD=0;(p.weekData||[]).forEach(function(dd){var dc=0;ML.forEach(function(m){(dd[m]||[]).forEach(function(f){dc+=f.cal||0})});tC+=dc;if(dc>0)nD++});
     h+='<div style="background:var(--glass);border:1px solid var(--border);border-radius:10px;padding:10px 12px;margin-bottom:6px;display:flex;align-items:center;gap:10px"><div style="flex:1;min-width:0"><div style="font-weight:700;font-size:.82rem">'+escHTML(p.name)+'</div><div style="font-size:.65rem;color:var(--text2)">'+escHTML(p.createdAt)+' · '+nD+' gün · ~'+Math.round(tC/(nD||1))+' kcal</div></div><button onclick="pLoad('+p.id+')" style="background:var(--accent);color:#fff;border:none;border-radius:8px;padding:6px 12px;font-size:.68rem;font-weight:700;cursor:pointer">📥</button><button onclick="pDel('+p.id+')" style="background:none;border:1px solid var(--border);border-radius:8px;padding:6px 8px;font-size:.68rem;cursor:pointer;color:var(--text2)">🗑️</button></div>'});
   document.getElementById('pSaved').innerHTML=h}
 function pLoad(id){var sv=JSON.parse(localStorage.getItem('fs_saved_plans')||'[]'),p=sv.find(function(x){return x.id===id});if(!p||!confirm('"'+p.name+'" uygulanacak?'))return;(p.weekData||[]).forEach(function(dd,i){if(i<7)pSet(pWO,i,dd)});rDays();rDay();if(typeof showToast==='function')showToast('📥 Uygulandı!')}
-function pDel(id){if(!confirm('Silinsin mi?'))return;var sv=JSON.parse(localStorage.getItem('fs_saved_plans')||'[]');sv=sv.filter(function(x){return x.id!==id});localStorage.setItem('fs_saved_plans',JSON.stringify(sv));rSaved()}
+function pDel(id){if(!confirm('Silinsin mi?'))return;var sv=JSON.parse(localStorage.getItem('fs_saved_plans')||'[]');sv=sv.filter(function(x){return x.id!==id});localStorage.setItem('fs_saved_plans',JSON.stringify(sv));pSyncSavedPlans();rSaved()}
 </script>
