@@ -1574,48 +1574,70 @@ function confirmAddRecipeToMeal(){
 }
 function clearFreqHistory(){if(!confirm('Sık kullanılanlar ve geçmiş temizlensin mi?'))return;localStorage.removeItem('fs_food_freq');localStorage.removeItem('fs_food_recent');showToast('🗑️ Liste temizlendi')}
 
-// Tarifler Firebase'den yüklenir, cache'lenir
+// Tarifler: Built-in (turkish-recipes-db.js) + Firebase birleştirilir
 let RECIPES = [];
 let _recipesLoaded = false;
 
+function _getBuiltinRecipes() {
+  return (window.TURKISH_RECIPES_DB && window.TURKISH_RECIPES_DB.length) ? window.TURKISH_RECIPES_DB : [];
+}
+
+function _mergeRecipes(builtIn, cloud) {
+  // Cloud tarifler built-in ile aynı id'ye sahipse cloud versiyonu kazanır
+  var merged = builtIn.slice();
+  var idSet = {};
+  for (var i = 0; i < merged.length; i++) idSet[merged[i].id] = true;
+  for (var j = 0; j < cloud.length; j++) {
+    if (!idSet[cloud[j].id]) {
+      merged.push(cloud[j]);
+      idSet[cloud[j].id] = true;
+    }
+  }
+  return merged;
+}
+
 async function loadRecipesFromFirebase() {
   if (_recipesLoaded && RECIPES.length) return;
-  // Önce cache'e bak
-  const cached = localStorage.getItem('fs_recipes_cache');
-  const cacheTime = parseInt(localStorage.getItem('fs_recipes_cache_time') || '0');
-  const now = Date.now();
+  var builtIn = _getBuiltinRecipes();
+
+  // Önce built-in + cache ile hızlı başlat
+  var cached = localStorage.getItem('fs_recipes_cache');
+  var cacheTime = parseInt(localStorage.getItem('fs_recipes_cache_time') || '0');
+  var now = Date.now();
   if (cached && (now - cacheTime) < 30 * 60 * 1000) {
     try {
-      const parsed = JSON.parse(cached);
+      var parsed = JSON.parse(cached);
       if (parsed && parsed.length) {
-        RECIPES = parsed;
+        RECIPES = _mergeRecipes(builtIn, parsed);
         _recipesLoaded = true;
-
         return;
       }
     } catch(e) {}
   }
+
   // Firebase'den çek
   try {
+    var snap = await db.collection('recipes').orderBy('name').get();
+    var cloudRecipes = snap.docs.map(function(d) { return {id: d.id, ...d.data()}; });
 
-    const snap = await db.collection('recipes').orderBy('name').get();
-    RECIPES = snap.docs.map(d => ({id: d.id, ...d.data()}));
-
-    if (RECIPES.length) {
-      localStorage.setItem('fs_recipes_cache', JSON.stringify(RECIPES));
+    if (cloudRecipes.length) {
+      localStorage.setItem('fs_recipes_cache', JSON.stringify(cloudRecipes));
       localStorage.setItem('fs_recipes_cache_time', String(now));
     }
+    RECIPES = _mergeRecipes(builtIn, cloudRecipes);
     _recipesLoaded = true;
   } catch(e) {
     console.warn('[Tarifler] Firebase hatası:', e.code, e.message);
     // Offline fallback — cache varsa kullan
     if (cached) {
       try {
-        const parsed = JSON.parse(cached);
-        if (parsed && parsed.length) { RECIPES = parsed; _recipesLoaded = true; return; }
+        var parsed2 = JSON.parse(cached);
+        if (parsed2 && parsed2.length) { RECIPES = _mergeRecipes(builtIn, parsed2); _recipesLoaded = true; return; }
       } catch(e2) {}
     }
-    _recipesLoaded = true; // Sürekli retry döngüsünü engelle
+    // Hiçbir cloud/cache yoksa sadece built-in tarifler
+    RECIPES = builtIn;
+    _recipesLoaded = true;
   }
 }
 
