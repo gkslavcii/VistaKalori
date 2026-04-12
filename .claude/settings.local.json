@@ -1,7 +1,25 @@
 {
   "permissions": {
     "allow": [
-      "Bash(find C:UsersWindowsDesktopFitSofra-main -type f \\\\\\(-name *.json -o -name README* -o -name *.md \\\\\\))"
+      "Bash(find C:UsersWindowsDesktopFitSofra-main -type f \\\\\\(-name *.json -o -name README* -o -name *.md \\\\\\))",
+      "Bash(git status:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(grep -n \"^//.*═\" \"C:\\\\Users\\\\Windows\\\\Desktop\\\\FitSofra-main\\\\index.html\")",
+      "Bash(python -c \":*)",
+      "Bash(npx firebase-tools:*)",
+      "Bash(grep -E \"\\\\.js$|\\\\.json$\")",
+      "Bash(git pull:*)",
+      "Bash(git stash:*)",
+      "Bash(grep -rn \"TODO\\\\|FIXME\\\\|XXX\\\\|HACK\\\\|BUG\" /c/Users/Windows/Desktop/FitSofra-main/*.js /c/Users/Windows/Desktop/FitSofra-main/js/*.js)",
+      "Bash(grep -rho \"localStorage\\\\.\\\\\\(getItem\\\\|setItem\\\\|removeItem\\\\\\)\\(''''fs_[^'''']*''''\" /c/Users/Windows/Desktop/FitSofra-main/js/ /c/Users/Windows/Desktop/FitSofra-main/*.js)",
+      "Bash(grep -rn \"TODO\\\\|FIXME\\\\|XXX\\\\|HACK\\\\|BUG\\\\|PLACEHOLDER\\\\|BROKEN\" /c/Users/Windows/Desktop/FitSofra-main/index.html /c/Users/Windows/Desktop/FitSofra-main/js/*.js /c/Users/Windows/Desktop/FitSofra-main/*.html)",
+      "Bash(grep -rn \"collection\\\\|doc\\\\|database\\\\|firestore\" /c/Users/Windows/Desktop/FitSofra-main/index.html /c/Users/Windows/Desktop/FitSofra-main/js/*.js)",
+      "Bash(ls -la /c/Users/Windows/Desktop/FitSofra-main/*.html /c/Users/Windows/Desktop/FitSofra-main/*.js)",
+      "Bash(grep -E \"\\\\.\\(html|js\\)$\")",
+      "Bash(grep -n \"voice\\\\|microphone\\\\|speech\\\\|recognition\\\\|webkitSpeechRecognition\\\\|SpeechRecognition\" /c/Users/Windows/Desktop/FitSofra-main/js/*.js /c/Users/Windows/Desktop/FitSofra-main/index.html)",
+      "Bash(wc -l /c/Users/Windows/Desktop/FitSofra-main/index.html /c/Users/Windows/Desktop/FitSofra-main/planner.html /c/Users/Windows/Desktop/FitSofra-main/js/*.js)"
     ]
   }
 }
