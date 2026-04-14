@@ -1591,3 +1591,93 @@ window.TURKISH_RECIPES_DB = [
   ]
 }
 ];
+
+// ══════════════════════════════════════════════════════════════════
+//  TARİF FOTOĞRAFLARI — Wikimedia Commons lisanslı görseller
+//  ID → img URL eşleştirmesi (enrichment pattern)
+// ══════════════════════════════════════════════════════════════════
+(function(){
+  var RECIPE_PHOTOS={
+    "r_iskender":"https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/%C4%B0skender_kebap.jpg/640px-%C4%B0skender_kebap.jpg",
+    "r_hunkar":"https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/H%C3%BCnk%C3%A2rbegendi.jpg/640px-H%C3%BCnk%C3%A2rbegendi.jpg",
+    "r_karniyarik":"https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Karn%C4%B1yar%C4%B1k.jpg/640px-Karn%C4%B1yar%C4%B1k.jpg",
+    "r_imam_bayildi":"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Imam_bayildi.jpg/640px-Imam_bayildi.jpg",
+    "r_etli_nohut":"https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Etli_nohut.jpg/640px-Etli_nohut.jpg",
+    "r_etli_kuru_fasulye":"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Kuru_fasulye.jpg/640px-Kuru_fasulye.jpg",
+    "r_yaprak_sarma":"https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Sarma_%28leaf_rolls%29.jpg/640px-Sarma_%28leaf_rolls%29.jpg",
+    "r_manti":"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Mant%C4%B1.jpg/640px-Mant%C4%B1.jpg",
+    "r_mercimek_kofte":"https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Mercimek_k%C3%B6ftesi.jpg/640px-Mercimek_k%C3%B6ftesi.jpg",
+    "r_mercimek_corbasi":"https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Mercimek_%C3%87orbas%C4%B1.jpg/640px-Mercimek_%C3%87orbas%C4%B1.jpg",
+    "r_ezogelin":"https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Ezogelin_soup.jpg/640px-Ezogelin_soup.jpg",
+    "r_yayla":"https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Yayla_%C3%A7orbas%C4%B1.jpg/640px-Yayla_%C3%A7orbas%C4%B1.jpg",
+    "r_tarhana":"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Tarhana_soup.jpg/640px-Tarhana_soup.jpg",
+    "r_iskembe":"https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Iskembe_corbasi.jpg/640px-Iskembe_corbasi.jpg",
+    "r_dugun_corbasi":"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/D%C3%BC%C4%9F%C3%BCn_%C3%A7orbas%C4%B1.jpg/640px-D%C3%BC%C4%9F%C3%BCn_%C3%A7orbas%C4%B1.jpg",
+    "r_beyran":"https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Beyran_%C3%87orbas%C4%B1.jpg/640px-Beyran_%C3%87orbas%C4%B1.jpg",
+    "r_fit_tavuk_izgara":"https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Grilled_chicken_breast.jpg/640px-Grilled_chicken_breast.jpg",
+    "r_fit_ton_salata":"https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Salad_Nicoise.jpg/640px-Salad_Nicoise.jpg",
+    "r_fit_bulgur_pilavı":"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Bulgur_pilav%C4%B1.jpg/640px-Bulgur_pilav%C4%B1.jpg",
+    "r_menemen":"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Menemen.jpg/640px-Menemen.jpg",
+    "r_sigara_boregi":"https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Sigara_b%C3%B6re%C4%9Fi.jpg/640px-Sigara_b%C3%B6re%C4%9Fi.jpg",
+    "r_coban_salata":"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/%C3%87oban_salatas%C4%B1.jpg/640px-%C3%87oban_salatas%C4%B1.jpg",
+    "r_makarna_soslu":"https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Pasta-with-tomato-sauce.jpg/640px-Pasta-with-tomato-sauce.jpg",
+    "r_biber_dolma":"https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Biber_dolmas%C4%B1.jpg/640px-Biber_dolmas%C4%B1.jpg",
+    "r_patlican_musakka":"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Musakka.jpg/640px-Musakka.jpg",
+    "r_zeytinyagli_fasulye":"https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Zeytinya%C4%9Fl%C4%B1_taze_fasulye.jpg/640px-Zeytinya%C4%9Fl%C4%B1_taze_fasulye.jpg",
+    "r_ispanak_yemegi":"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Ispanak_yumurta.jpg/640px-Ispanak_yumurta.jpg",
+    "r_mantar_sote":"https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Mantar_sote.jpg/640px-Mantar_sote.jpg",
+    "r_sutlac":"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/F%C4%B1r%C4%B1n_S%C3%BCtla%C3%A7.jpg/640px-F%C4%B1r%C4%B1n_S%C3%BCtla%C3%A7.jpg",
+    "r_kabak_tatlisi":"https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Kabak_tatl%C4%B1s%C4%B1.jpg/640px-Kabak_tatl%C4%B1s%C4%B1.jpg",
+    "r_asure":"https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/A%C5%9Fure.jpg/640px-A%C5%9Fure.jpg",
+    "r_sekerpare":"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/%C5%9Eekerpare.jpg/640px-%C5%9Eekerpare.jpg",
+    "r_revani":"https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Revani.jpg/640px-Revani.jpg",
+    "r_kisir":"https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/K%C4%B1s%C4%B1r.jpg/640px-K%C4%B1s%C4%B1r.jpg",
+    "r_humus":"https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Hummus_from_The_Nile.jpg/640px-Hummus_from_The_Nile.jpg",
+    "r_falafel":"https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Falafel_balls.jpg/640px-Falafel_balls.jpg",
+    "r_saksuka":"https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Shakshuka_by_Calliopejen1.jpg/640px-Shakshuka_by_Calliopejen1.jpg",
+    "r_kasarli_tost":"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Grilled-Cheese-Sandwich.jpg/640px-Grilled-Cheese-Sandwich.jpg",
+    "r_tavuk_durum":"https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Durum_chicken.jpg/640px-Durum_chicken.jpg",
+    "r_cigkofte_durum":"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/%C3%87i%C4%9Fk%C3%B6fte_d%C3%BCr%C3%BCm.jpg/640px-%C3%87i%C4%9Fk%C3%B6fte_d%C3%BCr%C3%BCm.jpg",
+    "r_gavurdagi":"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Gavurda%C4%9F%C4%B1_salatas%C4%B1.jpg/640px-Gavurda%C4%9F%C4%B1_salatas%C4%B1.jpg",
+    "r_piyaz":"https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Piyaz.jpg/640px-Piyaz.jpg",
+    "r_su_boregi":"https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Su_b%C3%B6re%C4%9Fi.jpg/640px-Su_b%C3%B6re%C4%9Fi.jpg",
+    "r_gozleme":"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/G%C3%B6zleme.jpg/640px-G%C3%B6zleme.jpg",
+    "r_kiymali_pide":"https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Turkish_Pide.jpg/640px-Turkish_Pide.jpg",
+    "r_lahmacun":"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Lahmacun.jpg/640px-Lahmacun.jpg",
+    "r_haydari":"https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Haydari.jpg/640px-Haydari.jpg",
+    "r_babaganus":"https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Baba_ghanoush.jpg/640px-Baba_ghanoush.jpg",
+    "r_acili_ezme":"https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Ac%C4%B1l%C4%B1_ezme.jpg/640px-Ac%C4%B1l%C4%B1_ezme.jpg",
+    "r_atom":"https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Ezme.jpg/640px-Ezme.jpg",
+    "r_topik":"https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Topik.jpg/640px-Topik.jpg",
+    "r_ali_nazik":"https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Ali_Nazik.jpg/640px-Ali_Nazik.jpg",
+    "r_cerkez_tavugu":"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/%C3%87erkez_tavugu.jpg/640px-%C3%87erkez_tavugu.jpg",
+    "r_tas_kebabi":"https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Tas_kebab%C4%B1.jpg/640px-Tas_kebab%C4%B1.jpg",
+    "r_kuzu_tandir":"https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Lamb_tandir.jpg/640px-Lamb_tandir.jpg",
+    "r_pilav_ustu_kuru":"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Kuru_fasulye.jpg/640px-Kuru_fasulye.jpg",
+    "r_icki_kofte":"https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/I%C3%A7li_k%C3%B6fte.jpg/640px-I%C3%A7li_k%C3%B6fte.jpg",
+    "r_et_sote":"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Et_sote.jpg/640px-Et_sote.jpg",
+    "r_bezelye":"https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Etli_bezelye.jpg/640px-Etli_bezelye.jpg",
+    "r_sac_kavurma":"https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Kavurma.jpg/640px-Kavurma.jpg",
+    "r_arnavut_cigeri":"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Arnavut_ci%C4%9Feri.jpg/640px-Arnavut_ci%C4%9Feri.jpg",
+    "r_kofte_izgara":"https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Turkish_k%C3%B6fte.jpg/640px-Turkish_k%C3%B6fte.jpg",
+    "r_tantuni":"https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Tantuni.jpg/640px-Tantuni.jpg",
+    "r_fit_kinoa_salata":"https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Quinoa_salad.jpg/640px-Quinoa_salad.jpg",
+    "r_fit_balik":"https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Salmon_with_lemon.jpg/640px-Salmon_with_lemon.jpg",
+    "r_fit_chia_puding":"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Chia_seed_pudding.jpg/640px-Chia_seed_pudding.jpg",
+    "r_fit_yumurta_muffin":"https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Egg_muffins.jpg/640px-Egg_muffins.jpg",
+    "r_fit_yulaf_kase":"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Oatmeal_with_fruits.jpg/640px-Oatmeal_with_fruits.jpg",
+    "r_fit_omlet":"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Omelette_with_vegetables.jpg/640px-Omelette_with_vegetables.jpg",
+    "r_fit_tavuk_salata":"https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Caesar_salad_%281%29.jpg/640px-Caesar_salad_%281%29.jpg",
+    "r_fit_smoothie_bowl":"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Smoothie_bowl.jpg/640px-Smoothie_bowl.jpg",
+    "r_patates_kizartma":"https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/F%C4%B1r%C4%B1nda_patates.jpg/640px-F%C4%B1r%C4%B1nda_patates.jpg",
+    "r_yumurta_haslama":"https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Sahanda_yumurta.jpg/640px-Sahanda_yumurta.jpg",
+    "r_roka_salata":"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Rocket_salad.jpg/640px-Rocket_salad.jpg",
+    "r_karışık_tost":"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Grilled-Cheese-Sandwich.jpg/640px-Grilled-Cheese-Sandwich.jpg"
+  };
+
+  window.TURKISH_RECIPES_DB.forEach(function(r){
+    if(!r.img&&RECIPE_PHOTOS[r.id]){
+      r.img=RECIPE_PHOTOS[r.id];
+    }
+  });
+})();
