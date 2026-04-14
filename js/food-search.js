@@ -273,6 +273,13 @@ function setRecipeScale(s) {
   if (protEl) protEl.textContent = Math.round((r.prot || 0) * s) + 'g';
   if (carbEl) carbEl.textContent = Math.round((r.carb || 0) * s) + 'g';
   if (fatEl) fatEl.textContent = Math.round((r.fat || 0) * s) + 'g';
+  // Kişi sayısını güncelle
+  var servEl = document.getElementById('rdScaleServ');
+  if (servEl) {
+    var baseServ = parseFloat(r.serv) || 1;
+    var newServ = Math.round(baseServ * s * 10) / 10;
+    servEl.textContent = '👥 ' + (newServ % 1 === 0 ? newServ.toFixed(0) : newServ.toFixed(1)) + ' porsiyon';
+  }
   // Buton aktifliği
   document.querySelectorAll('.scale-btn').forEach(function(b) {
     b.style.background = parseFloat(b.dataset.s) === s ? 'var(--accent)' : 'var(--glass)';
@@ -334,7 +341,7 @@ function openRecipeDetail(idx){
           <div style="font-size:.56rem;color:var(--text2);font-weight:600">dakika</div>
         </div>
         <div style="text-align:center;padding:8px 4px;background:var(--glass);border-radius:10px;border:1px solid var(--border)">
-          <div style="font-weight:800;color:var(--text);font-size:.95rem">👥 ${r.serv||'1 porsiyon'}</div>
+          <div id="rdScaleServ" style="font-weight:800;color:var(--text);font-size:.95rem">👥 ${r.serv||'1 porsiyon'}</div>
           <div style="font-size:.56rem;color:var(--text2);font-weight:600">kişilik</div>
         </div>
       </div>

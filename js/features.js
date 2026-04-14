@@ -2387,17 +2387,32 @@ var DIET_PRESETS=[
   {id:'vegan',name:'🌱 Vegan',desc:'Bitkisel kaynaklı beslenme',macros:{prot:20,carb:55,fat:25},calAdj:0}
 ];
 
+function _calcBaseTDEE(profile){
+  // Vücut verisi varsa Mifflin-St Jeor ile TDEE hesapla
+  var w=parseFloat(profile.weight),h=parseFloat(profile.height),a=parseFloat(profile.age),act=parseFloat(profile.activity)||1.55;
+  if(w>0&&h>0&&a>0){
+    var bmr;
+    if(profile.gender==='male')bmr=10*w+6.25*h-5*a+5;
+    else bmr=10*w+6.25*h-5*a-161;
+    return Math.round(bmr*act);
+  }
+  // Vücut verisi yoksa, preset uygulanmamış orijinal hedefi kullan
+  return parseInt(profile.baseCal)||parseInt(profile.calTarget)||2000;
+}
+
 function applyDietPreset(presetId){
   var preset=DIET_PRESETS.find(function(p){return p.id===presetId});
   if(!preset){showToast('Preset bulunamadı');return}
   var profile=JSON.parse(localStorage.getItem('fs_profile')||'{}');
-  var baseCal=parseInt(profile.calTarget)||2000;
+  // Her zaman vücut verisinden TDEE hesapla — kümülatif kayma olmaz
+  var baseCal=_calcBaseTDEE(profile);
   var newCal=baseCal+preset.calAdj;
   // Makroları gram olarak hesapla
   var protG=Math.round((newCal*preset.macros.prot/100)/4);
   var carbG=Math.round((newCal*preset.macros.carb/100)/4);
   var fatG=Math.round((newCal*preset.macros.fat/100)/9);
-  // Hedefleri güncelle
+  // Hedefleri güncelle (baseCal ayrı sakla)
+  profile.baseCal=baseCal;
   profile.calTarget=newCal;
   profile.protTarget=protG;
   profile.carbTarget=carbG;
@@ -2427,16 +2442,18 @@ function applyDietPreset(presetId){
   if(dpg)dpg.innerHTML=renderDietPresetsHTML();
   var dpc=document.getElementById('dietPresetsContainer');
   if(dpc)dpc.innerHTML=renderDietPresetsHTML();
-  showToast('✅ '+preset.name+' uygulandı! ('+newCal+' kcal)');
+  showToast('✅ '+preset.name+' uygulandı! ('+newCal+' kcal, baz: '+baseCal+')');
 }
 
 function renderDietPresetsHTML(){
   var profile=JSON.parse(localStorage.getItem('fs_profile')||'{}');
   var activePreset=profile.dietPreset||'';
+  var baseCal=_calcBaseTDEE(profile);
   var h='<div style="display:flex;flex-direction:column;gap:8px">';
+  h+='<div style="font-size:.72rem;color:var(--text2);margin-bottom:4px;text-align:center">Bazal TDEE: <strong style="color:var(--accent)">'+baseCal+' kcal</strong></div>';
   DIET_PRESETS.forEach(function(p){
     var isActive=p.id===activePreset;
-    var cal=(parseInt(profile.calTarget)||2000)+p.calAdj;
+    var cal=baseCal+p.calAdj;
     h+='<div style="background:var(--glass);border:1.5px solid '+(isActive?'var(--accent)':'var(--border)')+';border-radius:12px;padding:12px;cursor:pointer;transition:all .2s" onclick="applyDietPreset(\''+p.id+'\')">';
     h+='<div style="display:flex;align-items:center;gap:8px"><div style="flex:1"><div style="font-size:.84rem;font-weight:700">'+p.name+(isActive?' ✅':'')+'</div><div style="font-size:.68rem;color:var(--text2);margin-top:2px">'+p.desc+'</div></div></div>';
     h+='<div style="display:flex;gap:6px;margin-top:8px;font-size:.65rem;font-weight:700">';
