@@ -386,7 +386,7 @@ function showToast(msg){var t=document.getElementById('adminToast');if(!t){t=doc
 function showTab(id,btn){document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));document.querySelectorAll(".tab-btn").forEach(t=>t.classList.remove("active"));document.getElementById("sec-"+id).classList.add("active");btn.classList.add("active");if(id==="requests"){loadRequests();loadTickets()}if(id==="recipes")loadRecipeList();if(id==="browse"){renderList();}if(id==="notifs"){loadAdminNotifHistory();loadFCMTokenCount();}if(id==="settings"){checkApiKeyStatus();checkFatSecretStatus();}}
 
 function showRecipeSub(panel){
-  var panels=['Mevcut','Ekle','Api','Seed'];
+  var panels=['Mevcut','Ekle','Api','Seed','Turkdb'];
   panels.forEach(function(p){
     var el=document.getElementById('rPanel'+p);
     if(el)el.style.display=p.toLowerCase()===panel.toLowerCase()?'block':'none';
@@ -2057,6 +2057,7 @@ setTimeout(renderAdminCatOrder,500);
     <button class="btn-sm btn-o rSubBtn" id="rSubEkle" onclick="showRecipeSub('ekle')" style="border-radius:8px;font-size:.7rem;padding:6px 12px">➕ Ekle</button>
     <button class="btn-sm btn-o rSubBtn" id="rSubApi" onclick="showRecipeSub('api')" style="border-radius:8px;font-size:.7rem;padding:6px 12px">🌐 API</button>
     <button class="btn-sm btn-o rSubBtn" id="rSubSeed" onclick="showRecipeSub('seed')" style="border-radius:8px;font-size:.7rem;padding:6px 12px">📦 Paket</button>
+    <button class="btn-sm btn-o rSubBtn" id="rSubTurkdb" onclick="showRecipeSub('turkdb')" style="border-radius:8px;font-size:.7rem;padding:6px 12px">🇹🇷 Türk DB</button>
   </div>
 
   <!-- ═══ PANEL: Mevcut Tarifler ═══ -->
@@ -2261,9 +2262,11 @@ setTimeout(renderAdminCatOrder,500);
     <div id="seedStatus" style="font-size:.75rem;color:#8a8d9b;margin-top:8px;min-height:18px"></div>
     <button class="btn-r" onclick="reuploadSeedRecipes()" style="margin-top:6px;font-size:.72rem;background:#ff5c5c22;color:#ff5c5c;border:1px solid #ff5c5c33">🔄 Seed Tarifleri Sil & Yeniden Yükle</button>
     </div>
+  </div>
 
-    <!-- Genişletilmiş Türk Mutfağı DB -->
-    <div class="card" style="margin-top:12px;border-color:#3dd68c44">
+  <!-- ═══ PANEL: Türk DB ═══ -->
+  <div id="rPanelTurkdb" style="display:none">
+    <div class="card" style="border-color:#3dd68c44">
       <h2 style="color:#3dd68c">🇹🇷 Genişletilmiş Türk Mutfağı DB</h2>
       <p>turkish-recipes-db.js dosyasındaki 80+ tarifi Firebase'e yükle (fotoğraflı, makrolu, adım adım tarifli)</p>
       <div class="row" style="margin-bottom:8px">
