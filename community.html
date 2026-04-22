@@ -792,12 +792,21 @@ function sofraGenerateShopList(){
       box.innerHTML='<div style="font-size:.72rem;color:var(--text2);text-align:center;padding:8px">Henüz menü boş — önce yemek ekle.</div>';
       return;
     }
-    var h='<div style="font-size:.78rem;font-weight:800;margin-bottom:8px">🧾 Haftalık Alışveriş Listesi ('+items.length+' malzeme)</div>';
-    h+='<div style="max-height:300px;overflow-y:auto">';
+    var rawCount=items.filter(function(x){return x.raw;}).length;
+    var recipeCount=items.length-rawCount;
+    var h='<div style="font-size:.78rem;font-weight:800;margin-bottom:4px">🧾 Haftalık Alışveriş Listesi</div>';
+    h+='<div style="font-size:.64rem;color:var(--text2);margin-bottom:8px">'+items.length+' hammadde • '+recipeCount+' tariften, '+rawCount+' direkt</div>';
+    h+='<div style="max-height:320px;overflow-y:auto">';
     items.forEach(function(it){
-      h+='<div style="display:flex;align-items:center;gap:8px;padding:6px 4px;border-bottom:1px solid var(--border)">';
-      h+='<span style="flex:1;font-size:.74rem">'+esc(it.name)+'</span>';
-      h+='<span style="font-size:.66rem;color:var(--text2)">'+it.count+' yemek</span>';
+      var amtStr=it.amounts&&it.amounts.length?it.amounts.join(', '):'';
+      var rawBadge=it.raw?'<span style="font-size:.56rem;background:var(--accent-glow);color:var(--accent);padding:1px 5px;border-radius:4px;font-weight:800;margin-left:4px">hammadde</span>':'';
+      var icon=it.raw?'🥦':'🥄';
+      h+='<div style="display:flex;align-items:center;gap:8px;padding:7px 4px;border-bottom:1px solid var(--border)">';
+      h+='<span style="font-size:1rem">'+icon+'</span>';
+      h+='<div style="flex:1;min-width:0"><div style="font-size:.74rem;font-weight:600">'+esc(it.name)+rawBadge+'</div>';
+      if(amtStr) h+='<div style="font-size:.62rem;color:var(--text2)">'+esc(amtStr)+'</div>';
+      h+='</div>';
+      h+='<span style="font-size:.64rem;color:var(--text2);white-space:nowrap">×'+it.count+'</span>';
       h+='</div>';
     });
     h+='</div>';
@@ -809,7 +818,10 @@ function sofraGenerateShopList(){
 
 function _sofraCopyShopList(){
   var items=window._sofraShopItems||[]; if(!items.length)return;
-  var txt='🛒 Sofra Alışveriş Listesi\n\n'+items.map(function(it){return '• '+it.name;}).join('\n');
+  var txt='🛒 Sofra Alışveriş Listesi\n\n'+items.map(function(it){
+    var amt=it.amounts&&it.amounts.length?' ('+it.amounts.join(', ')+')':'';
+    return '☐ '+it.name+amt;
+  }).join('\n');
   if(navigator.clipboard&&navigator.clipboard.writeText){
     navigator.clipboard.writeText(txt).then(function(){ if(typeof showToast==='function')showToast('📋 Kopyalandı'); });
   }
@@ -828,6 +840,17 @@ function _sofraBuildShopList(){
   })).then(function(days){
     var RECIPES=(window.TURKISH_RECIPES_DB||[]).concat(typeof window.RECIPES!=='undefined'?window.RECIPES:[]);
     var counts={}, ML=['kahvalti','ogle','aksam','atistirmalik'];
+    function _addI(name,amount,isRaw){
+      var nm=String(name).trim(); if(!nm) return;
+      var k=nm.toLowerCase();
+      if(!counts[k]) counts[k]={name:nm,count:0,amounts:[],raw:!!isRaw};
+      counts[k].count++;
+      if(isRaw) counts[k].raw=true;
+      if(amount){
+        var a=String(amount).trim();
+        if(a && counts[k].amounts.indexOf(a)<0) counts[k].amounts.push(a);
+      }
+    }
     days.forEach(function(dt){
       ML.forEach(function(m){(dt[m]||[]).forEach(function(f){
         var fn=(f.name||'').toLowerCase();
@@ -835,22 +858,21 @@ function _sofraBuildShopList(){
         for(var ri=0;ri<RECIPES.length;ri++){
           if(RECIPES[ri].name && RECIPES[ri].name.toLowerCase()===fn && RECIPES[ri].ingredients){
             RECIPES[ri].ingredients.forEach(function(ing){
-              var nm=(ing.item||ing.name||String(ing));
-              var k=nm.toLowerCase();
-              if(!counts[k]) counts[k]={name:nm,count:0};
-              counts[k].count++;
+              _addI(ing.item||ing.name||String(ing), ing.amount||'', false);
             });
             matched=true; break;
           }
         }
         if(!matched && f.name){
-          var k=f.name.toLowerCase();
-          if(!counts[k]) counts[k]={name:f.name,count:0};
-          counts[k].count++;
+          _addI(f.name, f.amount?(f.amount+'g'):'', true);
         }
       });});
     });
-    return Object.keys(counts).map(function(k){return counts[k];}).sort(function(a,b){return b.count-a.count;});
+    return Object.keys(counts).map(function(k){return counts[k];}).sort(function(a,b){
+      // Önce tariften gelen (raw=false), sonra hammadde (raw=true); her biri içinde count desc
+      if(a.raw!==b.raw) return a.raw?1:-1;
+      return b.count-a.count;
+    });
   });
 }
 
