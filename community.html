@@ -521,13 +521,16 @@ function _sofraRenderMenuPreview(){
 
   _sofraTeardownPlanSync();
   _sfDays={};
-  // Her gün için onSnapshot kur — canlı sync
+  // Her gün için onSnapshot kur — canlı sync (data + servings birlikte)
   dates.forEach(function(iso){
     var unsub=db.collection('sofras').doc(sId).collection('plans').doc('fs_plan_'+iso)
       .onSnapshot(function(s){
-        _sfDays[iso] = s.exists ? (s.data().data||{}) : {};
+        if(s.exists){
+          var d=s.data();
+          _sfDays[iso] = { data: d.data||{}, servings: d.servings||{} };
+        } else { _sfDays[iso] = {data:{}, servings:{}}; }
         _sofraRenderMenuGrid();
-      }, function(){ _sfDays[iso]=_sfDays[iso]||{}; _sofraRenderMenuGrid(); });
+      }, function(){ _sfDays[iso]=_sfDays[iso]||{data:{},servings:{}}; _sofraRenderMenuGrid(); });
     _sfUnsubs.push(unsub);
   });
   _sofraRenderMenuGrid();
@@ -542,7 +545,9 @@ function _sofraRenderMenuGrid(){
   dates.forEach(function(iso,idx){
     var isToday=(iso===todayIso);
     var isOpen=(_sfExpanded===iso);
-    var d=_sfDays[iso]||{};
+    var dd=_sfDays[iso]||{data:{},servings:{}};
+    var d=dd.data||{};
+    var srv=dd.servings||{};
     var total=0; _SF_ML.forEach(function(m){ total+=(d[m]||[]).length; });
 
     gh+='<div style="background:var(--bg);border:1.5px solid '+(isToday?'var(--accent)':'var(--border)')+';border-radius:10px;overflow:hidden">';
@@ -557,10 +562,16 @@ function _sofraRenderMenuGrid(){
       gh+='<div style="padding:8px 12px 12px;border-top:1px solid var(--border)">';
       _SF_ML.forEach(function(m){
         var arr=d[m]||[];
+        var sCount=Math.max(1, parseInt(srv[m])||1);
+        var sIsScaled=(sCount>1);
         gh+='<div style="margin-bottom:10px">';
-        gh+='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">';
+        gh+='<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;gap:6px;flex-wrap:wrap">';
         gh+='<div style="font-size:.72rem;font-weight:800;color:var(--text2)">'+_SF_MLABEL[m]+'</div>';
+        gh+='<div style="display:flex;gap:4px;align-items:center">';
+        // Kişi sayısı butonu
+        gh+='<button onclick="sfSetServings(\''+iso+'\',\''+m+'\')" title="Kişi sayısı" style="background:'+(sIsScaled?'var(--accent-glow)':'var(--glass)')+';color:'+(sIsScaled?'var(--accent)':'var(--text)')+';border:1px solid '+(sIsScaled?'var(--accent)':'var(--border)')+';border-radius:6px;padding:3px 8px;font-size:.62rem;font-weight:800;cursor:pointer;font-family:var(--font,system-ui)">👥 '+sCount+(sIsScaled?' kişi':'')+'</button>';
         gh+='<button onclick="sfAdd(\''+iso+'\',\''+m+'\')" style="background:var(--accent);color:#fff;border:none;border-radius:6px;padding:4px 10px;font-size:.66rem;font-weight:700;cursor:pointer;font-family:var(--font,system-ui)">+ Ekle</button>';
+        gh+='</div>';
         gh+='</div>';
         if(arr.length){
           arr.forEach(function(f,fi){
@@ -630,6 +641,50 @@ function sfDirect(food){
     },{merge:true});
   }).then(function(){
     if(typeof showToast==='function') showToast('✅ '+item.name+' Sofra menüsüne eklendi');
+  }).catch(function(e){
+    if(typeof showToast==='function') showToast('❌ '+(e.message||'hata'));
+  });
+}
+
+// Kişi sayısı seç (porsiyon ölçekleme)
+function sfSetServings(iso,meal){
+  if(!window.Sofra)return;
+  var sId=window.Sofra.getActive(); if(!sId)return;
+  if(typeof db==='undefined'||!auth.currentUser)return;
+
+  // Seçim modal'ı
+  var existing=document.getElementById('sfServModal'); if(existing) existing.remove();
+  var cur=((_sfDays[iso]||{}).servings||{})[meal]||1;
+  var m=document.createElement('div');
+  m.id='sfServModal';
+  m.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9999;display:flex;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(4px)';
+  var opts=[1,2,3,4,5,6,7,8,10,12];
+  var h='<div style="background:var(--card,#1a1a1a);border:1px solid var(--border);border-radius:16px;max-width:340px;width:100%;padding:16px;font-family:var(--font,system-ui);color:var(--text)">';
+  h+='<div style="font-size:.95rem;font-weight:800;margin-bottom:4px">👥 Kişi Sayısı</div>';
+  h+='<div style="font-size:.66rem;color:var(--text2);margin-bottom:14px;line-height:1.5">Bu öğün kaç kişilik? Alışveriş listesi seçtiğin sayıya göre çarpılır. (Kalori/makro etkilenmez — Sofra zaten göstermiyor.)</div>';
+  h+='<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:14px">';
+  opts.forEach(function(n){
+    var sel=(n===cur);
+    h+='<button onclick="_sfApplyServings(\''+iso+'\',\''+meal+'\','+n+')" style="padding:10px 4px;background:'+(sel?'var(--accent)':'var(--glass)')+';color:'+(sel?'#fff':'var(--text)')+';border:1px solid '+(sel?'var(--accent)':'var(--border)')+';border-radius:10px;font-size:.82rem;font-weight:800;cursor:pointer;font-family:inherit">'+n+'</button>';
+  });
+  h+='</div>';
+  h+='<button onclick="document.getElementById(\'sfServModal\').remove()" style="width:100%;padding:10px;background:transparent;border:1px solid var(--border);border-radius:10px;font-size:.78rem;font-weight:700;cursor:pointer;color:var(--text2);font-family:inherit">Kapat</button>';
+  h+='</div>';
+  m.innerHTML=h;
+  document.body.appendChild(m);
+}
+
+function _sfApplyServings(iso,meal,count){
+  var mod=document.getElementById('sfServModal'); if(mod) mod.remove();
+  if(!window.Sofra)return;
+  var sId=window.Sofra.getActive(); if(!sId)return;
+  if(typeof db==='undefined'||!auth.currentUser)return;
+  var name=(auth.currentUser.displayName||auth.currentUser.email||'Üye').substring(0,20);
+  var ref=db.collection('sofras').doc(sId).collection('plans').doc('fs_plan_'+iso);
+  var upd={updatedAt:firebase.firestore.FieldValue.serverTimestamp(), updatedByUid:auth.currentUser.uid, updatedByName:name};
+  upd['servings.'+meal] = parseInt(count)||1;
+  ref.set(upd,{merge:true}).then(function(){
+    if(typeof showToast==='function') showToast('👥 '+count+' kişi olarak ayarlandı');
   }).catch(function(e){
     if(typeof showToast==='function') showToast('❌ '+(e.message||'hata'));
   });
@@ -769,6 +824,9 @@ function sofraGenerateShopList(){
     }
     var h='<div style="font-size:.78rem;font-weight:800;margin-bottom:4px">🧾 Haftalık Alışveriş Listesi</div>';
     h+='<div style="font-size:.64rem;color:var(--text2);margin-bottom:8px">'+items.length+' hammadde • '+res.recipeCount+' tariften, '+res.rawCount+' direkt</div>';
+    if(res.scaleInfo && res.scaleInfo.scaled){
+      h+='<div style="font-size:.62rem;color:var(--accent);background:var(--accent-glow);border:1px solid var(--accent);border-radius:8px;padding:6px 8px;margin-bottom:8px;font-weight:700">👥 Porsiyon ölçekleme aktif: '+res.scaleInfo.totalFoodSlots+' öğün → '+res.scaleInfo.totalWithServings+' kişilik miktar</div>';
+    }
     h+='<div style="max-height:320px;overflow-y:auto">';
     items.forEach(function(it){
       var amtStr=it.amountText||'';
@@ -842,12 +900,31 @@ function _sofraBuildShopList(){
   var dates=[]; for(var i=0;i<7;i++){var dd=new Date(mon);dd.setDate(mon.getDate()+i);dates.push(_iso(dd));}
   return Promise.all(dates.map(function(iso){
     return db.collection('sofras').doc(sId).collection('plans').doc('fs_plan_'+iso).get()
-      .then(function(s){return s.exists?(s.data().data||{}):{};}).catch(function(){return {};});
+      .then(function(s){
+        if(!s.exists) return {data:{}, servings:{}};
+        var dd=s.data();
+        return {data:dd.data||{}, servings:dd.servings||{}};
+      }).catch(function(){return {data:{},servings:{}};});
   })).then(function(days){
     var foods=[], ML=['kahvalti','ogle','aksam','atistirmalik'];
-    days.forEach(function(dt){ ML.forEach(function(m){(dt[m]||[]).forEach(function(f){foods.push(f);});});});
+    var totalServMult=0, totalFoodSlots=0;
+    days.forEach(function(dt){
+      ML.forEach(function(m){
+        var arr=dt.data[m]||[];
+        var srv=Math.max(1, parseInt((dt.servings||{})[m])||1);
+        arr.forEach(function(f){
+          totalFoodSlots++;
+          // Porsiyon ölçekleme: srv kez aynı yemeği resolver'a gönder
+          // parser aynı birimleri topladığı için otomatik doğru miktar çıkar
+          for(var k=0;k<srv;k++){ foods.push(f); }
+          totalServMult+=srv;
+        });
+      });
+    });
     if(window.IngredientResolver && window.IngredientResolver.buildShoppingList){
-      return window.IngredientResolver.buildShoppingList(foods);
+      var res=window.IngredientResolver.buildShoppingList(foods);
+      res.scaleInfo = { totalFoodSlots:totalFoodSlots, totalWithServings:totalServMult, scaled: totalServMult>totalFoodSlots };
+      return res;
     }
     return {resolved:[],unresolved:[],rawCount:0,recipeCount:0,total:0};
   });
