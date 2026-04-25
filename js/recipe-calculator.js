@@ -1,0 +1,428 @@
+// ╔══════════════════════════════════════════════════════════════════════╗
+// ║  FitSofra — Tarif Makro Hesaplayıcı (Recipe Calculator)             ║
+// ║  TURKISH_HAMMADDE_DB + tarif malzemeleri → otomatik makro           ║
+// ║                                                                      ║
+// ║  Akış:                                                               ║
+// ║   1) Malzeme adını TURKISH_HAMMADDE_INDEX'te ara (fuzzy)            ║
+// ║   2) Miktarı AmountParser ile parse et (value + unit)               ║
+// ║   3) hammadde.units[unit] ile gram'a çevir                          ║
+// ║   4) per100g makroyu gram ile çarp                                  ║
+// ║   5) Tüm malzemeleri topla → porsiyon başına böl                    ║
+// ║                                                                      ║
+// ║  Bağımlılıklar: AmountParser, TURKISH_HAMMADDE_DB/INDEX             ║
+// ╚══════════════════════════════════════════════════════════════════════╝
+(function(){
+  'use strict';
+
+  // İsim normalleştirme (hammadde lookup için)
+  // NFD + combining-mark sıyırma: JS'nin varsayılan toLowerCase() Türkçe `İ`yi
+  // `i̇` (i + U+0307 combining dot above) yapar; bu da DB indeksinde `irmik`
+  // yerine `i̇rmik` üretiyor. Bunu temizliyoruz.
+  function _norm(s){
+    if(!s) return '';
+    var t=String(s);
+    // Türkçe locale-aware lowercase (varsa) + NFD + combining mark strip
+    try { t = t.toLocaleLowerCase('tr-TR'); } catch(e){ t = t.toLowerCase(); }
+    if(t.normalize) t = t.normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+    return t
+      .replace(/\([^)]*\)/g,' ')        // parantez içi notları at
+      .replace(/[^a-zçğıöşü\s,]/gi,' ') // virgül kalsın (split için)
+      .replace(/\s+/g,' ').trim();
+  }
+
+  // Türkçe stem: yaygın çekim eklerini sıyır (kaba; tam morfolojik değil)
+  function _stem(s){
+    var n=_norm(s);
+    return n.replace(/(ları|leri|larım|lerim|larin|lerin|ların|nızı|nın|nin|nun|nün|sı|si|su|sü|ı|i|u|ü)$/,'').trim();
+  }
+
+  // Niteleyicileri sıyır: "sıcak su"→"su", "ince irmik"→"irmik"
+  var QUALIFIERS=[
+    'sicak','sıcak','ilik','ılık','soguk','soğuk',
+    'taze','kuru','ince','kalin','kalın','iri','küçük','kucuk','büyük','buyuk','orta',
+    'haslanmis','haşlanmış','pisirilmis','pişirilmiş','kizarmis','kızarmış',
+    'rendelenmis','rendelenmiş','dogranmiş','doğranmış','kiyilmis','kıyılmış',
+    'isteğe','isteğe bağlı','istege','istege bagli','tatlandirici','tatlandırıcı'
+  ];
+  function _stripQualifiers(s){
+    var tokens=s.split(/\s+/).filter(function(t){
+      return QUALIFIERS.indexOf(t)<0;
+    });
+    return tokens.join(' ').trim();
+  }
+
+  // Yaygın eşdeğerler — DB'de olmayan ama makro açısından yakın olanlar
+  var ALIAS_MAP={
+    'lavas':'pide ekmegi',     // pide DB'de yok ama ALIAS zincirine bakalım
+    'lavaş':'pide ekmegi',
+    'pide':'pide ekmegi',
+    'pide ekmegi':'ekmek beyaz',
+    'pide ekmeği':'ekmek beyaz',
+    'tost ekmegi':'ekmek beyaz',
+    'tost ekmeği':'ekmek beyaz',
+    'ekmek ici':'ekmek beyaz',
+    'ekmek içi':'ekmek beyaz',
+    'sandvic ekmegi':'ekmek beyaz',
+    'sandviç ekmeği':'ekmek beyaz',
+    'bazlama':'ekmek beyaz',
+    'yufka':'ekmek beyaz',
+    'spagetti':'makarna spagetti',
+    'spaghetti':'makarna spagetti',
+    'penne':'makarna boru',
+    'fusilli':'makarna burgu',
+    'quinoa':'kinoa',
+    'kus uzumu':'kuru uzum',
+    'kuş üzümü':'kuru uzum',
+    'kusuzumu':'kuru uzum',
+    'kuşüzümü':'kuru uzum',
+    'parmesan':'kasar peyniri',
+    'mozzarella':'kasar peyniri',
+    'cheddar':'kasar peyniri',
+    'sicak su':'su',
+    'ilik su':'su',
+    'soguk su':'su',
+    'kaynamis su':'su',
+    'maden suyu':'su',
+    'limon suyu':'limon',
+    'protein tozu':'',           // makrosu çok değişken — atla
+    'kizartma yagi':'aycicek yagi',
+    'kızartma yağı':'ayçiçek yağı',
+    'sivi yag':'aycicek yagi',
+    'sıvı yağ':'ayçiçek yağı',
+    'sebze suyu':'su',
+    'tavuk suyu':'su',
+    'et suyu':'su',
+    'meyve':'elma',              // jenerik meyve → elma proxy
+    'sebze':'kabak',             // jenerik sebze → kabak proxy
+    'baharat':'',                // makrosu yok say
+    'baharatlar':'',
+    'kekik':'',                  // çoğu DB'de yok, makro ihmal
+    'nane':'maydanoz',           // benzer makro proxy
+    'roka':'maydanoz',
+    'tere':'maydanoz'
+  };
+  function _resolveAlias(key){
+    if(ALIAS_MAP[key]!=null) return ALIAS_MAP[key];
+    return key;
+  }
+
+  // Genel "adet → gram" fallback'leri (hammadde'da o birim yoksa)
+  // Sadece güvenli, yaygın ortalamalar
+  var GENERIC_UNIT_FALLBACK={
+    'yk':15,           // yemek kaşığı (sıvı/toz orta)
+    'tk':10,           // tatlı kaşığı
+    'çk':5,            // çay kaşığı
+    'bardak':200,      // su bardağı
+    'çay bardağı':100,
+    'çimdik':1,
+    'avuç':30,
+    'demet':50,
+    'diş':4,           // diş sarımsak gibi
+    'dilim':20,
+    'paket':250,
+    'porsiyon':150,
+    'kase':250,
+    'adet':100         // çok jenerik son çare
+  };
+
+  // ═══ Yerel İndeks (NFD-temiz) ═══════════════════════════════════════
+  // hammadde-db'nin TURKISH_HAMMADDE_INDEX'i Türkçe `İ`yi combining-dot ile
+  // indeksliyor — biz NFD-temizlenmiş kendi indeksimizi kuruyoruz.
+  var _localIdx=null;
+  function _buildLocalIndex(){
+    var arr=window.TURKISH_HAMMADDE_DB||[];
+    var idx={};
+    for(var i=0;i<arr.length;i++){
+      var key=_norm(arr[i].name);
+      if(key && !idx[key]) idx[key]=arr[i];
+    }
+    return idx;
+  }
+  function _idx(){
+    if(!_localIdx) _localIdx=_buildLocalIndex();
+    return _localIdx;
+  }
+
+  // ═══ Hammadde Lookup ════════════════════════════════════════════════
+  function _lookupSingle(rawKey){
+    var idx=_idx();
+    var key=rawKey;
+    if(!key) return null;
+
+    // Niteleyicileri temizle ve alias çözümle
+    key=_stripQualifiers(key);
+    key=_resolveAlias(key);
+    if(!key) return null;             // alias '' ise: makro yok say
+    if(idx[key]) return idx[key];
+
+    var keys=Object.keys(idx);
+    // Anahtarın bir parçası: "kıyma" → "dana kıyma"
+    for(var i=0;i<keys.length;i++){
+      if(keys[i]===key) return idx[keys[i]];
+    }
+    for(var j=0;j<keys.length;j++){
+      if(keys[j].indexOf(key)>=0 || key.indexOf(keys[j])>=0) return idx[keys[j]];
+    }
+
+    // Stem
+    var stem=_stem(key);
+    if(stem && stem!==key){
+      if(idx[stem]) return idx[stem];
+      for(var s=0;s<keys.length;s++){
+        if(keys[s].indexOf(stem)>=0) return idx[keys[s]];
+      }
+    }
+
+    // Token bazlı
+    var tokens=key.split(/\s+/).filter(function(t){return t.length>=3;});
+    for(var t=0;t<tokens.length;t++){
+      var tok=tokens[t];
+      for(var k=0;k<keys.length;k++){
+        if(keys[k].split(/\s+/).indexOf(tok)>=0) return idx[keys[k]];
+      }
+    }
+    return null;
+  }
+
+  function lookup(name){
+    if(!name) return null;
+    var key=_norm(name);
+    if(!key) return null;
+
+    // Tek deneme
+    var hit=_lookupSingle(key);
+    if(hit) return hit;
+
+    // Virgülle birleşik malzeme: "Tuz, karabiber" → ilk eşleşeni döndür
+    if(key.indexOf(',')>=0){
+      var parts=key.split(',').map(function(p){return p.trim();}).filter(Boolean);
+      for(var i=0;i<parts.length;i++){
+        var h=_lookupSingle(parts[i]);
+        if(h) return h;
+      }
+    }
+    return null;
+  }
+
+  // ═══ Miktar → Gram ══════════════════════════════════════════════════
+  /**
+   * Bir malzeme miktarını grama çevirir.
+   * @param {string} amountStr - "150g", "2 adet", "1 yk" vs.
+   * @param {object} hammadde - TURKISH_HAMMADDE_DB öğesi
+   * @returns {{grams:number, source:'unit'|'fallback'|'weight', unit:string}|null}
+   */
+  function toGrams(amountStr, hammadde){
+    if(!window.AmountParser) return null;
+    var p=window.AmountParser.parseOne(amountStr);
+    if(!p) return null;
+
+    // Direkt ağırlık birimi
+    if(p.unit==='g') return {grams:p.value, source:'weight', unit:'g'};
+    if(p.unit==='kg') return {grams:p.value*1000, source:'weight', unit:'kg'};
+
+    // Sıvı: ml/l (su yoğunluğunda kabul; yağ vs. için hammadde.units öncelikli)
+    var units=(hammadde&&hammadde.units)||{};
+    if(units[p.unit]!=null){
+      return {grams:p.value*units[p.unit], source:'unit', unit:p.unit};
+    }
+    // ml/l fallback (su yoğunluğu)
+    if(p.unit==='ml') return {grams:p.value, source:'fallback', unit:'ml'};
+    if(p.unit==='l')  return {grams:p.value*1000, source:'fallback', unit:'l'};
+
+    // Generic fallback (adet, yk, bardak vs.)
+    if(GENERIC_UNIT_FALLBACK[p.unit]!=null){
+      return {grams:p.value*GENERIC_UNIT_FALLBACK[p.unit], source:'fallback', unit:p.unit};
+    }
+    return null;
+  }
+
+  // ═══ Tek Malzeme Hesabı ═════════════════════════════════════════════
+  /**
+   * @param {{item:string, amount:string}} ing
+   * @returns {{matched:bool, grams:number, macro:{cal,prot,carb,fat}, hammadde:object|null, reason:string}}
+   */
+  function calcIngredient(ing){
+    var name=ing&&(ing.item||ing.name);
+    var amount=ing&&ing.amount;
+    var hm=lookup(name);
+    if(!hm){
+      return {matched:false, grams:0, macro:{cal:0,prot:0,carb:0,fat:0}, hammadde:null, reason:'no-hammadde'};
+    }
+    // Miktar boş → "tadına göre" varsayımı: matched ama 0g (genelde tuz/baharat).
+    // Yağ/un gibi yüksek-kalorili maddeler için breakdown.note ile uyarı kalır.
+    if(amount==null || !String(amount).trim()){
+      return {
+        matched:true, grams:0,
+        macro:{cal:0,prot:0,carb:0,fat:0},
+        hammadde:hm, reason:'no-amount-assumed-pinch'
+      };
+    }
+    var g=toGrams(amount, hm);
+    if(!g){
+      return {matched:false, grams:0, macro:{cal:0,prot:0,carb:0,fat:0}, hammadde:hm, reason:'unparseable-amount'};
+    }
+    var per=hm.per100g||{cal:0,prot:0,carb:0,fat:0};
+    var f=g.grams/100;
+    return {
+      matched:true,
+      grams:g.grams,
+      macro:{
+        cal:per.cal*f,
+        prot:(per.prot||0)*f,
+        carb:(per.carb||0)*f,
+        fat:(per.fat||0)*f
+      },
+      hammadde:hm,
+      conversion:g,
+      reason:'ok'
+    };
+  }
+
+  // ═══ Porsiyon Sayısı ────────────────────────────────────────────────
+  function _parseServings(serv){
+    if(!serv) return 1;
+    if(typeof serv==='number') return serv;
+    var m=String(serv).match(/(\d+(?:[.,]\d+)?)/);
+    if(!m) return 1;
+    var n=parseFloat(m[1].replace(',','.'));
+    return n>0 ? n : 1;
+  }
+
+  // ═══ Tarif Toplamı ──────────────────────────────────────────────────
+  /**
+   * @param {object} recipe
+   * @returns {{
+   *   total:{cal,prot,carb,fat,grams},
+   *   perServing:{cal,prot,carb,fat,grams},
+   *   servings:number,
+   *   coverage:{matched, total, missing:Array<{name,reason}>},
+   *   breakdown:Array
+   * }}
+   */
+  function calcRecipe(recipe){
+    var ings=(recipe&&recipe.ingredients)||[];
+    var total={cal:0,prot:0,carb:0,fat:0,grams:0};
+    var matched=0;
+    var missing=[];
+    var breakdown=[];
+
+    ings.forEach(function(ing){
+      var c=calcIngredient(ing);
+      breakdown.push({
+        item:ing.item||ing.name,
+        amount:ing.amount,
+        matched:c.matched,
+        grams:c.grams,
+        macro:c.macro,
+        hammadde:c.hammadde?c.hammadde.name:null,
+        reason:c.reason
+      });
+      if(c.matched){
+        matched++;
+        total.cal+=c.macro.cal;
+        total.prot+=c.macro.prot;
+        total.carb+=c.macro.carb;
+        total.fat+=c.macro.fat;
+        total.grams+=c.grams;
+      } else {
+        missing.push({name:ing.item||ing.name, reason:c.reason});
+      }
+    });
+
+    var servings=_parseServings(recipe&&recipe.serv);
+    var per={
+      cal:total.cal/servings,
+      prot:total.prot/servings,
+      carb:total.carb/servings,
+      fat:total.fat/servings,
+      grams:total.grams/servings
+    };
+
+    return {
+      total:_round(total),
+      perServing:_round(per),
+      servings:servings,
+      coverage:{
+        matched:matched,
+        total:ings.length,
+        missing:missing,
+        ratio:ings.length?matched/ings.length:0
+      },
+      breakdown:breakdown
+    };
+  }
+
+  function _round(o){
+    return {
+      cal:Math.round(o.cal),
+      prot:Math.round((o.prot||0)*10)/10,
+      carb:Math.round((o.carb||0)*10)/10,
+      fat:Math.round((o.fat||0)*10)/10,
+      grams:Math.round(o.grams||0)
+    };
+  }
+
+  // ═══ Karşılaştırma & Toplu Doğrulama ────────────────────────────────
+  /**
+   * Tariften okunan elle yazılmış makrolarla, hesaplananı karşılaştır.
+   * @returns {{cal:{stored,calc,diff,pct}, prot:..., carb:..., fat:...}}
+   */
+  function compareToStored(recipe){
+    var calc=calcRecipe(recipe).perServing;
+    function pair(stored, c){
+      var s=stored||0;
+      var d=c-s;
+      var pct=s? Math.round((d/s)*100):null;
+      return {stored:s, calc:c, diff:Math.round(d*10)/10, pct:pct};
+    }
+    return {
+      cal:pair(recipe.cal, calc.cal),
+      prot:pair(recipe.prot, calc.prot),
+      carb:pair(recipe.carb, calc.carb),
+      fat:pair(recipe.fat, calc.fat),
+      coverage:calcRecipe(recipe).coverage
+    };
+  }
+
+  /**
+   * Tüm DB üzerinde toplu rapor — tarif kalitesini denetlemek için.
+   */
+  function auditAll(){
+    var arr=window.TURKISH_RECIPES_DB||[];
+    var rows=[];
+    var sumCov=0, full=0, partial=0, none=0;
+    arr.forEach(function(r){
+      var res=calcRecipe(r);
+      sumCov+=res.coverage.ratio;
+      if(res.coverage.ratio===1) full++;
+      else if(res.coverage.ratio>0) partial++;
+      else none++;
+      rows.push({
+        id:r.id, name:r.name, cat:r.cat,
+        stored:{cal:r.cal,prot:r.prot,carb:r.carb,fat:r.fat},
+        calc:res.perServing,
+        coverage:res.coverage.ratio,
+        missing:res.coverage.missing.length
+      });
+    });
+    return {
+      total:arr.length,
+      avgCoverage:arr.length?sumCov/arr.length:0,
+      fullCoverage:full, partialCoverage:partial, noCoverage:none,
+      rows:rows
+    };
+  }
+
+  window.RecipeCalculator={
+    lookup:lookup,
+    toGrams:toGrams,
+    calcIngredient:calcIngredient,
+    calcRecipe:calcRecipe,
+    compareToStored:compareToStored,
+    auditAll:auditAll
+  };
+
+  if(typeof console!=='undefined'&&console.log){
+    console.log('✅ RecipeCalculator yüklendi (TURKISH_HAMMADDE_DB tabanlı)');
+  }
+})();

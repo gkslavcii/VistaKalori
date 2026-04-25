@@ -90,6 +90,16 @@
       return {type:'unresolved', items:[{name:food.name, amount:'', raw:false}]};
     }
 
+    // 2b) Hammadde DB'de var mı? (374 hammadde · TürKomp+USDA)
+    var hIdx=window.TURKISH_HAMMADDE_INDEX;
+    if(hIdx){
+      var key=_norm(food.name);
+      if(hIdx[key]){
+        var amtH=food.amount?(food.amount+'g'):'';
+        return {type:'hammadde', items:[{name:food.name, amount:amtH, raw:true}]};
+      }
+    }
+
     // 3) Food DB'de de yok — isim tahmini: basit hammadde mi?
     var n=_norm(food.name);
     if(_looksLikeHammadde(n)){
