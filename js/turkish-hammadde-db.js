@@ -425,6 +425,113 @@ window.TURKISH_HAMMADDE_DB = [
 
 ];
 
+// ╔══════════════════════════════════════════════════════════════════════╗
+// ║  MİKRO BESİN ÖĞELERİ (per 100g) — Faz 1                             ║
+// ║  En çok kullanılan ~60 hammadde için TürKomp/USDA referans değerler  ║
+// ║  Birim: fiber=g · sodium/ca/fe/k/mg/vitC=mg · vitA/b12/folat=µg      ║
+// ║  ca=kalsiyum · fe=demir · k=potasyum · mg=magnezyum · folat=B9       ║
+// ║  Kapsam dışı hammadde için micro=undefined → calculator skip eder    ║
+// ╚══════════════════════════════════════════════════════════════════════╝
+window.TURKISH_HAMMADDE_MICRO = {
+  // Tahıl & un
+  "Buğday Unu (Beyaz)":{fiber:2.7,sodium:2,ca:15,fe:1.2,k:107,mg:22,vitC:0,vitA:0,b12:0,folat:26},
+  "Tam Buğday Unu":{fiber:10.7,sodium:2,ca:34,fe:3.6,k:363,mg:138,vitC:0,vitA:0,b12:0,folat:44},
+  "Mısır Unu":{fiber:7.3,sodium:5,ca:7,fe:2.4,k:315,mg:93,vitC:0,vitA:11,b12:0,folat:25},
+  "Bulgur (Pilavlık)":{fiber:18.3,sodium:17,ca:35,fe:2.5,k:410,mg:164,vitC:0,vitA:0,b12:0,folat:27},
+  "Bulgur (Köftelik)":{fiber:18.3,sodium:17,ca:35,fe:2.5,k:410,mg:164,vitC:0,vitA:0,b12:0,folat:27},
+  "Pirinç (Baldo)":{fiber:1.3,sodium:5,ca:28,fe:0.8,k:115,mg:25,vitC:0,vitA:0,b12:0,folat:8},
+  "Pirinç (Osmancık)":{fiber:1.3,sodium:5,ca:28,fe:0.8,k:115,mg:25,vitC:0,vitA:0,b12:0,folat:8},
+  "Esmer Pirinç":{fiber:3.5,sodium:7,ca:33,fe:1.5,k:223,mg:143,vitC:0,vitA:0,b12:0,folat:20},
+  "Yulaf Ezmesi":{fiber:10.6,sodium:3,ca:54,fe:4.7,k:429,mg:177,vitC:0,vitA:0,b12:0,folat:56},
+  "Makarna (Spagetti)":{fiber:3.2,sodium:6,ca:21,fe:1.3,k:223,mg:53,vitC:0,vitA:0,b12:0,folat:18},
+  "Makarna (Burgu)":{fiber:3.2,sodium:6,ca:21,fe:1.3,k:223,mg:53,vitC:0,vitA:0,b12:0,folat:18},
+  "Makarna (Boru)":{fiber:3.2,sodium:6,ca:21,fe:1.3,k:223,mg:53,vitC:0,vitA:0,b12:0,folat:18},
+  "Makarna (Şehriye)":{fiber:3.2,sodium:6,ca:21,fe:1.3,k:223,mg:53,vitC:0,vitA:0,b12:0,folat:18},
+  "Ekmek (Beyaz)":{fiber:2.7,sodium:491,ca:144,fe:3.6,k:115,mg:25,vitC:0,vitA:0,b12:0,folat:99},
+  "Ekmek (Tam Buğday)":{fiber:6,sodium:455,ca:107,fe:2.5,k:230,mg:81,vitC:0,vitA:0,b12:0,folat:42},
+  "Lavaş":{fiber:1.6,sodium:476,ca:91,fe:3.1,k:120,mg:24,vitC:0,vitA:0,b12:0,folat:90},
+  "Yulaf Unu":{fiber:6.5,sodium:6,ca:55,fe:4,k:371,mg:144,vitC:0,vitA:0,b12:0,folat:32},
+  // Yağ
+  "Zeytinyağı (Sızma)":{fiber:0,sodium:2,ca:1,fe:0.6,k:1,mg:0,vitC:0,vitA:0,b12:0,folat:0},
+  "Zeytinyağı (Riviera)":{fiber:0,sodium:2,ca:1,fe:0.6,k:1,mg:0,vitC:0,vitA:0,b12:0,folat:0},
+  "Ayçiçek Yağı":{fiber:0,sodium:0,ca:0,fe:0,k:0,mg:0,vitC:0,vitA:0,b12:0,folat:0},
+  "Tereyağı":{fiber:0,sodium:11,ca:24,fe:0,k:24,mg:2,vitC:0,vitA:684,b12:0.2,folat:3},
+  // Baklagil
+  "Kırmızı Mercimek":{fiber:11,sodium:6,ca:35,fe:6.5,k:677,mg:47,vitC:1.5,vitA:1,b12:0,folat:181},
+  "Yeşil Mercimek":{fiber:30.5,sodium:6,ca:35,fe:7.5,k:677,mg:47,vitC:1.5,vitA:2,b12:0,folat:479},
+  "Sarı Mercimek":{fiber:10.7,sodium:6,ca:35,fe:6.5,k:677,mg:47,vitC:1.5,vitA:1,b12:0,folat:180},
+  "Nohut":{fiber:17.4,sodium:24,ca:105,fe:6.2,k:875,mg:115,vitC:4,vitA:3,b12:0,folat:557},
+  "Kuru Fasulye":{fiber:15.2,sodium:24,ca:113,fe:5.5,k:1406,mg:140,vitC:4.5,vitA:0,b12:0,folat:394},
+  "Barbunya (Kuru)":{fiber:24.9,sodium:12,ca:143,fe:5,k:1359,mg:138,vitC:4,vitA:0,b12:0,folat:604},
+  // Et
+  "Dana Kıyma":{fiber:0,sodium:75,ca:18,fe:2.6,k:318,mg:21,vitC:0,vitA:0,b12:2.6,folat:7},
+  "Dana Kuşbaşı":{fiber:0,sodium:55,ca:11,fe:1.9,k:357,mg:22,vitC:0,vitA:0,b12:2.4,folat:7},
+  "Dana Bonfile":{fiber:0,sodium:50,ca:8,fe:2.1,k:340,mg:22,vitC:0,vitA:0,b12:2.5,folat:6},
+  "Tavuk Göğüs":{fiber:0,sodium:74,ca:11,fe:0.7,k:256,mg:25,vitC:0,vitA:6,b12:0.3,folat:4},
+  "Tavuk But":{fiber:0,sodium:84,ca:12,fe:1.3,k:230,mg:23,vitC:0,vitA:18,b12:0.3,folat:8},
+  "Tavuk Kanat":{fiber:0,sodium:78,ca:14,fe:1.2,k:210,mg:20,vitC:0,vitA:42,b12:0.3,folat:5},
+  "Kuzu Kıyma":{fiber:0,sodium:65,ca:17,fe:1.5,k:222,mg:21,vitC:0,vitA:0,b12:2.7,folat:18},
+  "Kuzu Kuşbaşı":{fiber:0,sodium:67,ca:9,fe:1.6,k:230,mg:24,vitC:0,vitA:0,b12:2.5,folat:19},
+  "Hindi Göğüs":{fiber:0,sodium:55,ca:8,fe:0.5,k:339,mg:32,vitC:0,vitA:0,b12:0.4,folat:5},
+  // Süt ve süt ürünleri
+  "Süt (Tam Yağlı)":{fiber:0,sodium:43,ca:113,fe:0,k:132,mg:10,vitC:0,vitA:46,b12:0.5,folat:5},
+  "Süt (Yarım Yağlı)":{fiber:0,sodium:44,ca:120,fe:0,k:150,mg:11,vitC:0,vitA:21,b12:0.5,folat:5},
+  "Yoğurt (Tam Yağlı)":{fiber:0,sodium:46,ca:121,fe:0.1,k:155,mg:12,vitC:0.5,vitA:27,b12:0.4,folat:7},
+  "Yoğurt (Light)":{fiber:0,sodium:51,ca:143,fe:0.1,k:184,mg:14,vitC:0.5,vitA:1,b12:0.4,folat:9},
+  "Beyaz Peynir (Tam Yağlı)":{fiber:0,sodium:1116,ca:493,fe:0.7,k:62,mg:18,vitC:0,vitA:198,b12:1.3,folat:32},
+  "Beyaz Peynir (Light)":{fiber:0,sodium:1080,ca:560,fe:0.5,k:80,mg:20,vitC:0,vitA:90,b12:1.3,folat:32},
+  "Kaşar Peyniri":{fiber:0,sodium:621,ca:721,fe:0.7,k:98,mg:28,vitC:0,vitA:265,b12:0.8,folat:18},
+  "Lor Peyniri":{fiber:0,sodium:330,ca:83,fe:0.1,k:104,mg:11,vitC:0,vitA:42,b12:1.3,folat:27},
+  "Tavuk Yumurtası":{fiber:0,sodium:142,ca:56,fe:1.8,k:138,mg:12,vitC:0,vitA:160,b12:0.9,folat:47},
+  // Sebze
+  "Domates":{fiber:1.2,sodium:5,ca:10,fe:0.3,k:237,mg:11,vitC:14,vitA:42,b12:0,folat:15},
+  "Soğan":{fiber:1.7,sodium:4,ca:23,fe:0.2,k:146,mg:10,vitC:7,vitA:0,b12:0,folat:19},
+  "Sarımsak":{fiber:2.1,sodium:17,ca:181,fe:1.7,k:401,mg:25,vitC:31,vitA:0,b12:0,folat:3},
+  "Patates":{fiber:2.2,sodium:6,ca:12,fe:0.8,k:421,mg:23,vitC:20,vitA:1,b12:0,folat:15},
+  "Havuç":{fiber:2.8,sodium:69,ca:33,fe:0.3,k:320,mg:12,vitC:6,vitA:835,b12:0,folat:19},
+  "Yeşil Biber":{fiber:1.7,sodium:3,ca:10,fe:0.3,k:175,mg:10,vitC:80,vitA:18,b12:0,folat:10},
+  "Kırmızı Biber":{fiber:2.1,sodium:4,ca:7,fe:0.4,k:211,mg:12,vitC:128,vitA:157,b12:0,folat:46},
+  "Salatalık":{fiber:0.5,sodium:2,ca:16,fe:0.3,k:147,mg:13,vitC:2.8,vitA:5,b12:0,folat:7},
+  "Patlıcan":{fiber:3,sodium:2,ca:9,fe:0.2,k:229,mg:14,vitC:2.2,vitA:1,b12:0,folat:22},
+  "Kabak (Yeşil)":{fiber:1,sodium:8,ca:16,fe:0.4,k:262,mg:18,vitC:17,vitA:10,b12:0,folat:24},
+  "Brokoli":{fiber:2.6,sodium:33,ca:47,fe:0.7,k:316,mg:21,vitC:89,vitA:31,b12:0,folat:63},
+  "Karnabahar":{fiber:2,sodium:30,ca:22,fe:0.4,k:299,mg:15,vitC:48,vitA:0,b12:0,folat:57},
+  "Ispanak":{fiber:2.2,sodium:79,ca:99,fe:2.7,k:558,mg:79,vitC:28,vitA:469,b12:0,folat:194},
+  "Marul":{fiber:1.3,sodium:28,ca:36,fe:0.9,k:194,mg:13,vitC:9,vitA:166,b12:0,folat:38},
+  "Roka":{fiber:1.6,sodium:27,ca:160,fe:1.5,k:369,mg:47,vitC:15,vitA:119,b12:0,folat:97},
+  "Maydanoz":{fiber:3.3,sodium:56,ca:138,fe:6.2,k:554,mg:50,vitC:133,vitA:421,b12:0,folat:152},
+  "Dereotu":{fiber:2.1,sodium:61,ca:208,fe:6.6,k:738,mg:55,vitC:85,vitA:386,b12:0,folat:150},
+  "Lahana":{fiber:2.5,sodium:18,ca:40,fe:0.5,k:170,mg:12,vitC:36,vitA:5,b12:0,folat:43},
+  "Pırasa":{fiber:1.8,sodium:20,ca:59,fe:2.1,k:180,mg:28,vitC:12,vitA:83,b12:0,folat:64},
+  // Meyve
+  "Limon":{fiber:2.8,sodium:2,ca:26,fe:0.6,k:138,mg:8,vitC:53,vitA:1,b12:0,folat:11},
+  "Elma":{fiber:2.4,sodium:1,ca:6,fe:0.1,k:107,mg:5,vitC:4.6,vitA:3,b12:0,folat:3},
+  "Muz":{fiber:2.6,sodium:1,ca:5,fe:0.3,k:358,mg:27,vitC:9,vitA:3,b12:0,folat:20},
+  "Portakal":{fiber:2.4,sodium:0,ca:40,fe:0.1,k:181,mg:10,vitC:53,vitA:11,b12:0,folat:30},
+  "Çilek":{fiber:2,sodium:1,ca:16,fe:0.4,k:153,mg:13,vitC:59,vitA:1,b12:0,folat:24},
+  // Kuruyemiş
+  "Ceviz":{fiber:6.7,sodium:2,ca:98,fe:2.9,k:441,mg:158,vitC:1.3,vitA:1,b12:0,folat:98},
+  "Badem":{fiber:12.5,sodium:1,ca:269,fe:3.7,k:733,mg:270,vitC:0,vitA:0,b12:0,folat:44},
+  "Fındık":{fiber:9.7,sodium:0,ca:114,fe:4.7,k:680,mg:163,vitC:6,vitA:1,b12:0,folat:113},
+  "Tahin":{fiber:9.3,sodium:115,ca:426,fe:8.9,k:412,mg:95,vitC:0,vitA:1,b12:0,folat:98},
+  // Sos & baharat (yüksek mikro)
+  "Domates Salçası":{fiber:4.1,sodium:59,ca:36,fe:2.9,k:1014,mg:42,vitC:21,vitA:54,b12:0,folat:21},
+  "Biber Salçası":{fiber:4,sodium:600,ca:35,fe:2.5,k:850,mg:35,vitC:35,vitA:140,b12:0,folat:18},
+  "Pul Biber":{fiber:34,sodium:30,ca:148,fe:7.8,k:2014,mg:152,vitC:76,vitA:2081,b12:0,folat:106},
+  "Karabiber":{fiber:25.3,sodium:20,ca:443,fe:9.7,k:1329,mg:171,vitC:0,vitA:27,b12:0,folat:17},
+  "Tuz":{fiber:0,sodium:38758,ca:24,fe:0.3,k:8,mg:1,vitC:0,vitA:0,b12:0,folat:0},
+  "Sirke (Üzüm)":{fiber:0,sodium:5,ca:6,fe:0.2,k:73,mg:5,vitC:0,vitA:0,b12:0,folat:0},
+  "Sirke (Elma)":{fiber:0,sodium:5,ca:7,fe:0.2,k:73,mg:5,vitC:0,vitA:0,b12:0,folat:0}
+};
+
+// Mikro veriyi DB entry'lerine merge et
+(function _mergeMicro(){
+  var m=window.TURKISH_HAMMADDE_MICRO; if(!m) return;
+  (window.TURKISH_HAMMADDE_DB||[]).forEach(function(h){
+    var data=m[h.name]; if(data) h.micro=data;
+  });
+})();
+
 // Hızlı erişim lookup: isimden hammadde bulma (normalized key)
 window.TURKISH_HAMMADDE_INDEX = (function(){
   var idx={};
@@ -436,4 +543,8 @@ window.TURKISH_HAMMADDE_INDEX = (function(){
   return idx;
 })();
 
-console.log('✅ TURKISH_HAMMADDE_DB yüklendi:', window.TURKISH_HAMMADDE_DB.length, 'hammadde');
+(function(){
+  var withMicro=(window.TURKISH_HAMMADDE_DB||[]).filter(function(h){return !!h.micro;}).length;
+  var total=(window.TURKISH_HAMMADDE_DB||[]).length;
+  console.log('✅ TURKISH_HAMMADDE_DB yüklendi:', total, 'hammadde · mikro veri:', withMicro+'/'+total, '(%'+Math.round(withMicro/total*100)+')');
+})();
