@@ -908,6 +908,7 @@ async function bulkDeleteRecipes(){
       st.textContent=deleted+'/'+checked.length;
     }catch(e){console.error(e);}
   }
+  if(deleted) await _bumpRecipesVersion();
   showToast('🗑️ '+deleted+' tarif silindi');
   loadRecipeList();
 }
@@ -916,6 +917,7 @@ async function deleteRecipe(id){
   if(!confirm('Bu tarifi sil?'))return;
   try{
     await db.collection('recipes').doc(id).delete();
+    await _bumpRecipesVersion();
     showToast('✅ Tarif silindi');
     loadRecipeList();
   }catch(e){alert('❌ '+e.message);}
@@ -1151,6 +1153,7 @@ async function saveRecipeEdit(){
   try{
     st.textContent='💾 Kaydediliyor...';
     await db.collection('recipes').doc(_editRecipeId).update(update);
+    await _bumpRecipesVersion();
     st.textContent='✅ Güncellendi!';
     showToast('✅ '+name+' güncellendi');
     loadRecipeList();
@@ -1166,10 +1169,18 @@ async function deleteRecipeFromEdit(){
   if(!confirm('"'+name+'" tarifi silinecek. Emin misin?'))return;
   try{
     await db.collection('recipes').doc(_editRecipeId).delete();
+    await _bumpRecipesVersion();
     showToast('🗑️ '+name+' silindi');
     closeRecipeEdit();
     loadRecipeList();
   }catch(e){alert('❌ '+e.message);}
+}
+
+// meta/recipes.updatedAt damgasını yeniler — ana app cache revalidation için kullanır
+async function _bumpRecipesVersion(){
+  try{
+    await db.collection('meta').doc('recipes').set({updatedAt:Date.now()},{merge:true});
+  }catch(e){ /* sessiz: meta yazılamasa bile asıl güncelleme tamam */ }
 }
 
 // Tarif listesi showTab'dan tetiklenir
