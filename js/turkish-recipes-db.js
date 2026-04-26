@@ -3847,7 +3847,7 @@ window.TURKISH_RECIPES_DB = [
 },
 {
   id:"r_salata_akdeniz",name:"Akdeniz Salatası",cat:"salata",
-  emoji:"🥗",cal:984,prot:3.3,carb:7.1,fat:107.3,serv:"6 porsiyon",yieldServings:6,time:15,
+  emoji:"🥗",cal:162,prot:5.3,carb:11.4,fat:12,serv:"4 porsiyon",yieldServings:4,time:15,
   tags:["salata","akdeniz","saglikli","fit"],
   ingredients:[
     {item:"Karışık yeşillik",amount:"2 avuç"},
