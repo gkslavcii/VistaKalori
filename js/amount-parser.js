@@ -33,7 +33,9 @@
     'çimdik':'çimdik','cimdik':'çimdik','tutam':'çimdik',
     'dal':'çimdik','yaprak':'çimdik',           // 1 dal/yaprak ≈ az miktar
     'ölçek':'çk','olcek':'çk','küp':'adet','kup':'adet',
-    'kupa':'bardak','kupası':'bardak','kupasi':'bardak'
+    'kupa':'bardak','kupası':'bardak','kupasi':'bardak',
+    'göbek':'adet','gobek':'adet','baş':'adet','bas':'adet',
+    'boy':'adet','iri':'adet','salkim':'demet','salkım':'demet'
   };
 
   // "yarım", "çeyrek" gibi sayısal niceleyiciler

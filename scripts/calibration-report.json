@@ -10,34 +10,30 @@
       "fat": 26
     },
     "calcTotal": {
-      "cal": 780,
-      "prot": 49.3,
-      "carb": 13.3,
-      "fat": 58.9,
-      "grams": 469
+      "cal": 1058,
+      "prot": 50,
+      "carb": 122.7,
+      "fat": 39.8,
+      "grams": 569
     },
     "coverage": 1,
     "inference": {
-      "yields": 1,
-      "reason": "stored-ok",
-      "ratio": 1.5
+      "yields": 2,
+      "reason": "multi-portion",
+      "ratio": 2.0346153846153845,
+      "perGram": 284.5,
+      "gramOk": true
     },
-    "yieldServings": 1,
+    "yieldServings": 2,
     "newPer": {
-      "cal": 780,
-      "prot": 49.3,
-      "carb": 13.3,
-      "fat": 58.9,
-      "grams": 469
+      "cal": 529,
+      "prot": 25,
+      "carb": 61.4,
+      "fat": 19.9,
+      "grams": 285
     },
     "servCheck": {
-      "ok": false,
-      "reason": "too-heavy",
-      "range": [
-        200,
-        450
-      ],
-      "val": 469
+      "ok": true
     },
     "missing": []
   },
@@ -46,10 +42,10 @@
     "name": "Hünkar Beğendi",
     "cat": "klasik",
     "stored": {
-      "cal": 323,
-      "prot": 17.7,
-      "carb": 21.1,
-      "fat": 19.9
+      "cal": 258,
+      "prot": 14.2,
+      "carb": 16.8,
+      "fat": 15.9
     },
     "calcTotal": {
       "cal": 1292,
@@ -62,7 +58,7 @@
     "inference": {
       "yields": 5,
       "reason": "multi-portion",
-      "ratio": 4,
+      "ratio": 5.007751937984496,
       "perGram": 326.4,
       "gramOk": true
     },
@@ -122,10 +118,10 @@
     "name": "İmam Bayıldı",
     "cat": "klasik",
     "stored": {
-      "cal": 141,
-      "prot": 2.7,
-      "carb": 15,
-      "fat": 8.9
+      "cal": 176,
+      "prot": 3.4,
+      "carb": 18.8,
+      "fat": 11.1
     },
     "calcTotal": {
       "cal": 704,
@@ -138,7 +134,7 @@
     "inference": {
       "yields": 4,
       "reason": "multi-portion",
-      "ratio": 4.99290780141844,
+      "ratio": 4,
       "perGram": 293.5,
       "gramOk": true
     },
@@ -160,10 +156,10 @@
     "name": "Etli Nohut",
     "cat": "klasik",
     "stored": {
-      "cal": 265,
-      "prot": 15.8,
-      "carb": 34.8,
-      "fat": 7.8
+      "cal": 531,
+      "prot": 31.6,
+      "carb": 69.7,
+      "fat": 15.6
     },
     "calcTotal": {
       "cal": 1061,
@@ -176,7 +172,7 @@
     "inference": {
       "yields": 2,
       "reason": "multi-portion",
-      "ratio": 4.003773584905661,
+      "ratio": 1.9981167608286252,
       "perGram": 242,
       "gramOk": true
     },
@@ -198,10 +194,10 @@
     "name": "Etli Kuru Fasulye",
     "cat": "klasik",
     "stored": {
-      "cal": 230,
-      "prot": 14.4,
-      "carb": 28.4,
-      "fat": 7.1
+      "cal": 383,
+      "prot": 24,
+      "carb": 47.3,
+      "fat": 11.8
     },
     "calcTotal": {
       "cal": 1148,
@@ -212,28 +208,22 @@
     },
     "coverage": 1,
     "inference": {
-      "yields": 3,
+      "yields": 2,
       "reason": "multi-portion",
-      "ratio": 4.991304347826087,
-      "perGram": 185.33333333333334,
-      "gramOk": false
+      "ratio": 2.9973890339425586,
+      "perGram": 278,
+      "gramOk": true
     },
-    "yieldServings": 3,
+    "yieldServings": 2,
     "newPer": {
-      "cal": 383,
-      "prot": 24,
-      "carb": 47.3,
-      "fat": 11.8,
-      "grams": 185
+      "cal": 574,
+      "prot": 36.1,
+      "carb": 70.9,
+      "fat": 17.8,
+      "grams": 278
     },
     "servCheck": {
-      "ok": false,
-      "reason": "too-light",
-      "range": [
-        200,
-        450
-      ],
-      "val": 185
+      "ok": true
     },
     "missing": []
   },
@@ -242,31 +232,31 @@
     "name": "Yaprak Sarma (Zeytinyağlı)",
     "cat": "klasik",
     "stored": {
-      "cal": 120,
-      "prot": 2,
-      "carb": 15,
-      "fat": 6
+      "cal": 375,
+      "prot": 17.6,
+      "carb": 64.3,
+      "fat": 11.2
     },
     "calcTotal": {
-      "cal": 5245,
-      "prot": 245.7,
-      "carb": 899.8,
+      "cal": 5209,
+      "prot": 245,
+      "carb": 891.9,
       "fat": 156.5,
-      "grams": 4681
+      "grams": 4671
     },
     "coverage": 1,
     "inference": {
       "yields": 14,
       "reason": "large-batch",
-      "ratio": 43.708333333333336,
-      "perGram": 334.35714285714283,
+      "ratio": 13.890666666666666,
+      "perGram": 333.64285714285717,
       "gramOk": true
     },
     "yieldServings": 14,
     "newPer": {
-      "cal": 375,
-      "prot": 17.6,
-      "carb": 64.3,
+      "cal": 372,
+      "prot": 17.5,
+      "carb": 63.7,
       "fat": 11.2,
       "grams": 334
     },
@@ -280,10 +270,10 @@
     "name": "Kayseri Mantısı",
     "cat": "klasik",
     "stored": {
-      "cal": 431,
-      "prot": 16.6,
-      "carb": 52.6,
-      "fat": 16.9
+      "cal": 575,
+      "prot": 22.1,
+      "carb": 70.1,
+      "fat": 22.5
     },
     "calcTotal": {
       "cal": 1725,
@@ -296,7 +286,7 @@
     "inference": {
       "yields": 3,
       "reason": "multi-portion",
-      "ratio": 4.002320185614849,
+      "ratio": 3,
       "perGram": 276,
       "gramOk": true
     },
@@ -318,10 +308,10 @@
     "name": "Mercimek Köftesi",
     "cat": "klasik",
     "stored": {
-      "cal": 45,
-      "prot": 2,
-      "carb": 7,
-      "fat": 1
+      "cal": 594,
+      "prot": 24.4,
+      "carb": 93.2,
+      "fat": 15.6
     },
     "calcTotal": {
       "cal": 1781,
@@ -333,8 +323,8 @@
     "coverage": 1,
     "inference": {
       "yields": 3,
-      "reason": "large-batch",
-      "ratio": 39.577777777777776,
+      "reason": "multi-portion",
+      "ratio": 2.9983164983164983,
       "perGram": 260.6666666666667,
       "gramOk": true
     },
@@ -356,10 +346,10 @@
     "name": "Mercimek Çorbası",
     "cat": "corba",
     "stored": {
-      "cal": 56,
-      "prot": 4,
-      "carb": 9,
-      "fat": 1
+      "cal": 513,
+      "prot": 26.9,
+      "carb": 85.3,
+      "fat": 8.5
     },
     "calcTotal": {
       "cal": 1025,
@@ -371,8 +361,8 @@
     "coverage": 1,
     "inference": {
       "yields": 2,
-      "reason": "large-batch",
-      "ratio": 18.303571428571427,
+      "reason": "multi-portion",
+      "ratio": 1.9980506822612085,
       "perGram": 339.5,
       "gramOk": true
     },
@@ -400,27 +390,27 @@
       "fat": 2
     },
     "calcTotal": {
-      "cal": 1021,
-      "prot": 54.6,
-      "carb": 171.1,
+      "cal": 1014,
+      "prot": 54.4,
+      "carb": 169.5,
       "fat": 14.3,
-      "grams": 434
+      "grams": 432
     },
     "coverage": 1,
     "inference": {
       "yields": 1,
       "reason": "large-batch",
-      "ratio": 15.014705882352942,
-      "perGram": 434,
+      "ratio": 14.911764705882353,
+      "perGram": 432,
       "gramOk": true
     },
     "yieldServings": 1,
     "newPer": {
-      "cal": 1021,
-      "prot": 54.6,
-      "carb": 171.1,
+      "cal": 1014,
+      "prot": 54.4,
+      "carb": 169.5,
       "fat": 14.3,
-      "grams": 434
+      "grams": 432
     },
     "servCheck": {
       "ok": true
@@ -432,33 +422,33 @@
     "name": "Yayla Çorbası",
     "cat": "corba",
     "stored": {
-      "cal": 77,
-      "prot": 2.9,
-      "carb": 7.9,
-      "fat": 3.9
-    },
-    "calcTotal": {
-      "cal": 465,
-      "prot": 17.2,
-      "carb": 47.2,
-      "fat": 23.1,
-      "grams": 316
-    },
-    "coverage": 1,
-    "inference": {
-      "yields": 4,
-      "reason": "multi-portion",
-      "ratio": 6.038961038961039,
-      "perGram": 79,
-      "gramOk": false
-    },
-    "yieldServings": 4,
-    "newPer": {
       "cal": 116,
       "prot": 4.3,
       "carb": 11.8,
-      "fat": 5.8,
-      "grams": 79
+      "fat": 5.8
+    },
+    "calcTotal": {
+      "cal": 454,
+      "prot": 17,
+      "carb": 44.8,
+      "fat": 23.1,
+      "grams": 313
+    },
+    "coverage": 1,
+    "inference": {
+      "yields": 2,
+      "reason": "multi-portion",
+      "ratio": 3.913793103448276,
+      "perGram": 156.5,
+      "gramOk": false
+    },
+    "yieldServings": 2,
+    "newPer": {
+      "cal": 227,
+      "prot": 8.5,
+      "carb": 22.4,
+      "fat": 11.6,
+      "grams": 157
     },
     "servCheck": {
       "ok": false,
@@ -467,7 +457,7 @@
         250,
         450
       ],
-      "val": 79
+      "val": 157
     },
     "missing": []
   },
@@ -476,10 +466,10 @@
     "name": "Tarhana Çorbası",
     "cat": "corba",
     "stored": {
-      "cal": 67,
-      "prot": 1.5,
-      "carb": 6,
-      "fat": 4.2
+      "cal": 101,
+      "prot": 2.3,
+      "carb": 9,
+      "fat": 6.4
     },
     "calcTotal": {
       "cal": 201,
@@ -492,7 +482,7 @@
     "inference": {
       "yields": 2,
       "reason": "multi-portion",
-      "ratio": 3,
+      "ratio": 1.99009900990099,
       "perGram": 322,
       "gramOk": true
     },
@@ -514,10 +504,10 @@
     "name": "İşkembe Çorbası",
     "cat": "corba",
     "stored": {
-      "cal": 72,
-      "prot": 6,
-      "carb": 4,
-      "fat": 4
+      "cal": 383,
+      "prot": 32.9,
+      "carb": 9.5,
+      "fat": 24
     },
     "calcTotal": {
       "cal": 766,
@@ -529,8 +519,8 @@
     "coverage": 1,
     "inference": {
       "yields": 2,
-      "reason": "large-batch",
-      "ratio": 10.63888888888889,
+      "reason": "multi-portion",
+      "ratio": 2,
       "perGram": 302,
       "gramOk": true
     },
@@ -590,10 +580,10 @@
     "name": "Beyran Çorbası",
     "cat": "corba",
     "stored": {
-      "cal": 110,
-      "prot": 9,
-      "carb": 6,
-      "fat": 6
+      "cal": 875,
+      "prot": 54.2,
+      "carb": 41.9,
+      "fat": 54.3
     },
     "calcTotal": {
       "cal": 1749,
@@ -605,8 +595,8 @@
     "coverage": 1,
     "inference": {
       "yields": 2,
-      "reason": "large-batch",
-      "ratio": 15.9,
+      "reason": "multi-portion",
+      "ratio": 1.9988571428571429,
       "perGram": 322,
       "gramOk": true
     },
@@ -634,25 +624,24 @@
       "fat": 5
     },
     "calcTotal": {
-      "cal": 55,
-      "prot": 0.5,
+      "cal": 220,
+      "prot": 35,
       "carb": 2.8,
-      "fat": 5.1,
+      "fat": 7.3,
       "grams": 175
     },
     "coverage": 1,
     "inference": {
       "yields": 1,
-      "reason": "stored-too-high",
-      "ratio": 0.3055555555555556,
-      "flag": true
+      "reason": "stored-ok",
+      "ratio": 1.2222222222222223
     },
     "yieldServings": 1,
     "newPer": {
-      "cal": 55,
-      "prot": 0.5,
+      "cal": 220,
+      "prot": 35,
       "carb": 2.8,
-      "fat": 5.1,
+      "fat": 7.3,
       "grams": 175
     },
     "servCheck": {
@@ -782,10 +771,10 @@
     "name": "Sebzeli Bulgur Pilavı",
     "cat": "fit",
     "stored": {
-      "cal": 161,
-      "prot": 4.9,
-      "carb": 30.1,
-      "fat": 3.3
+      "cal": 269,
+      "prot": 8.2,
+      "carb": 50.1,
+      "fat": 5.6
     },
     "calcTotal": {
       "cal": 806,
@@ -796,28 +785,22 @@
     },
     "coverage": 1,
     "inference": {
-      "yields": 3,
+      "yields": 2,
       "reason": "multi-portion",
-      "ratio": 5.0062111801242235,
-      "perGram": 163,
-      "gramOk": false
+      "ratio": 2.996282527881041,
+      "perGram": 244.5,
+      "gramOk": true
     },
-    "yieldServings": 3,
+    "yieldServings": 2,
     "newPer": {
-      "cal": 269,
-      "prot": 8.2,
-      "carb": 50.1,
-      "fat": 5.6,
-      "grams": 163
+      "cal": 403,
+      "prot": 12.3,
+      "carb": 75.2,
+      "fat": 8.4,
+      "grams": 245
     },
     "servCheck": {
-      "ok": false,
-      "reason": "too-light",
-      "range": [
-        200,
-        450
-      ],
-      "val": 163
+      "ok": true
     },
     "missing": []
   },
@@ -832,24 +815,24 @@
       "fat": 14
     },
     "calcTotal": {
-      "cal": 216,
-      "prot": 6.2,
+      "cal": 348,
+      "prot": 33.8,
       "carb": 4.2,
-      "fat": 20.1,
+      "fat": 21.9,
       "grams": 237
     },
     "coverage": 0.8571428571428571,
     "inference": {
       "yields": 1,
       "reason": "stored-ok",
-      "ratio": 0.7714285714285715
+      "ratio": 1.2428571428571429
     },
     "yieldServings": 1,
     "newPer": {
-      "cal": 216,
-      "prot": 6.2,
+      "cal": 348,
+      "prot": 33.8,
       "carb": 4.2,
-      "fat": 20.1,
+      "fat": 21.9,
       "grams": 237
     },
     "servCheck": {
@@ -870,25 +853,25 @@
       "fat": 6
     },
     "calcTotal": {
-      "cal": 295,
-      "prot": 11.9,
-      "carb": 50.8,
-      "fat": 6.5,
-      "grams": 309
+      "cal": 265,
+      "prot": 15.8,
+      "carb": 37.1,
+      "fat": 6.6,
+      "grams": 289
     },
     "coverage": 1,
     "inference": {
       "yields": 1,
       "reason": "stored-ok",
-      "ratio": 0.9833333333333333
+      "ratio": 0.8833333333333333
     },
     "yieldServings": 1,
     "newPer": {
-      "cal": 295,
-      "prot": 11.9,
-      "carb": 50.8,
-      "fat": 6.5,
-      "grams": 309
+      "cal": 265,
+      "prot": 15.8,
+      "carb": 37.1,
+      "fat": 6.6,
+      "grams": 289
     },
     "servCheck": {
       "ok": true
@@ -938,33 +921,33 @@
     "name": "Sigara Böreği",
     "cat": "pratik",
     "stored": {
-      "cal": 90,
-      "prot": 3,
-      "carb": 8,
-      "fat": 5
+      "cal": 594,
+      "prot": 39.4,
+      "carb": 6.7,
+      "fat": 45.7
     },
     "calcTotal": {
-      "cal": 1188,
-      "prot": 78.7,
-      "carb": 13.4,
-      "fat": 91.4,
-      "grams": 530
+      "cal": 977,
+      "prot": 54,
+      "carb": 75.4,
+      "fat": 52.5,
+      "grams": 450
     },
     "coverage": 1,
     "inference": {
       "yields": 2,
-      "reason": "large-batch",
-      "ratio": 13.2,
-      "perGram": 265,
+      "reason": "multi-portion",
+      "ratio": 1.6447811447811447,
+      "perGram": 225,
       "gramOk": true
     },
     "yieldServings": 2,
     "newPer": {
-      "cal": 594,
-      "prot": 39.4,
-      "carb": 6.7,
-      "fat": 45.7,
-      "grams": 265
+      "cal": 489,
+      "prot": 27,
+      "carb": 37.7,
+      "fat": 26.3,
+      "grams": 225
     },
     "servCheck": {
       "ok": true
@@ -976,10 +959,10 @@
     "name": "Çoban Salatası",
     "cat": "pratik",
     "stored": {
-      "cal": 60,
-      "prot": 2,
-      "carb": 8,
-      "fat": 3
+      "cal": 125,
+      "prot": 3,
+      "carb": 14,
+      "fat": 7.6
     },
     "calcTotal": {
       "cal": 250,
@@ -992,7 +975,7 @@
     "inference": {
       "yields": 2,
       "reason": "multi-portion",
-      "ratio": 4.166666666666667,
+      "ratio": 2,
       "perGram": 282,
       "gramOk": true
     },
@@ -1052,10 +1035,10 @@
     "name": "Domates Soslu Makarna",
     "cat": "pratik",
     "stored": {
-      "cal": 180,
-      "prot": 6,
-      "carb": 30,
-      "fat": 4
+      "cal": 248,
+      "prot": 7.1,
+      "carb": 38,
+      "fat": 8
     },
     "calcTotal": {
       "cal": 496,
@@ -1068,7 +1051,7 @@
     "inference": {
       "yields": 2,
       "reason": "multi-portion",
-      "ratio": 2.7555555555555555,
+      "ratio": 2,
       "perGram": 233,
       "gramOk": true
     },
@@ -1132,33 +1115,33 @@
     "name": "Biber Dolma (Etli)",
     "cat": "sebze",
     "stored": {
-      "cal": 185,
-      "prot": 10,
-      "carb": 17,
-      "fat": 9
+      "cal": 224,
+      "prot": 10.5,
+      "carb": 27.5,
+      "fat": 8.6
     },
     "calcTotal": {
-      "cal": 1122,
-      "prot": 52.5,
-      "carb": 137.5,
+      "cal": 1104,
+      "prot": 52.2,
+      "carb": 133.5,
       "fat": 42.9,
-      "grams": 1460
+      "grams": 1455
     },
     "coverage": 1,
     "inference": {
       "yields": 5,
       "reason": "multi-portion",
-      "ratio": 6.064864864864865,
-      "perGram": 292,
+      "ratio": 4.928571428571429,
+      "perGram": 291,
       "gramOk": true
     },
     "yieldServings": 5,
     "newPer": {
-      "cal": 224,
-      "prot": 10.5,
-      "carb": 27.5,
+      "cal": 221,
+      "prot": 10.4,
+      "carb": 26.7,
       "fat": 8.6,
-      "grams": 292
+      "grams": 291
     },
     "servCheck": {
       "ok": true
@@ -1208,10 +1191,10 @@
     "name": "Zeytinyağlı Taze Fasulye",
     "cat": "sebze",
     "stored": {
-      "cal": 90,
-      "prot": 3,
-      "carb": 10,
-      "fat": 4
+      "cal": 713,
+      "prot": 40.3,
+      "carb": 108.3,
+      "fat": 15.5
     },
     "calcTotal": {
       "cal": 2139,
@@ -1223,8 +1206,8 @@
     "coverage": 1,
     "inference": {
       "yields": 3,
-      "reason": "large-batch",
-      "ratio": 23.766666666666666,
+      "reason": "multi-portion",
+      "ratio": 3,
       "perGram": 310.6666666666667,
       "gramOk": true
     },
@@ -1246,10 +1229,10 @@
     "name": "Ispanaklı Yumurta",
     "cat": "sebze",
     "stored": {
-      "cal": 124,
-      "prot": 7.7,
-      "carb": 8.5,
-      "fat": 7.4
+      "cal": 186,
+      "prot": 11.5,
+      "carb": 12.8,
+      "fat": 11.1
     },
     "calcTotal": {
       "cal": 372,
@@ -1262,7 +1245,7 @@
     "inference": {
       "yields": 2,
       "reason": "multi-portion",
-      "ratio": 3,
+      "ratio": 2,
       "perGram": 282,
       "gramOk": true
     },
@@ -1284,10 +1267,10 @@
     "name": "Mantar Sote",
     "cat": "sebze",
     "stored": {
-      "cal": 82,
-      "prot": 4,
-      "carb": 9.2,
-      "fat": 4.2
+      "cal": 123,
+      "prot": 6,
+      "carb": 13.8,
+      "fat": 6.3
     },
     "calcTotal": {
       "cal": 245,
@@ -1300,7 +1283,7 @@
     "inference": {
       "yields": 2,
       "reason": "multi-portion",
-      "ratio": 2.9878048780487805,
+      "ratio": 1.991869918699187,
       "perGram": 251,
       "gramOk": true
     },
@@ -1322,33 +1305,33 @@
     "name": "Fırın Sütlaç",
     "cat": "tatli",
     "stored": {
-      "cal": 180,
-      "prot": 5,
-      "carb": 28,
-      "fat": 5
-    },
-    "calcTotal": {
-      "cal": 1527,
-      "prot": 42.6,
-      "carb": 242.8,
-      "fat": 42.6,
-      "grams": 1262
-    },
-    "coverage": 1,
-    "inference": {
-      "yields": 11,
-      "reason": "large-batch",
-      "ratio": 8.483333333333333,
-      "perGram": 114.72727272727273,
-      "gramOk": true
-    },
-    "yieldServings": 11,
-    "newPer": {
       "cal": 139,
       "prot": 3.9,
       "carb": 22.1,
-      "fat": 3.9,
-      "grams": 115
+      "fat": 3.9
+    },
+    "calcTotal": {
+      "cal": 1509,
+      "prot": 42.3,
+      "carb": 238.8,
+      "fat": 42.6,
+      "grams": 1257
+    },
+    "coverage": 1,
+    "inference": {
+      "yields": 10,
+      "reason": "large-batch",
+      "ratio": 10.856115107913668,
+      "perGram": 125.7,
+      "gramOk": true
+    },
+    "yieldServings": 10,
+    "newPer": {
+      "cal": 151,
+      "prot": 4.2,
+      "carb": 23.9,
+      "fat": 4.3,
+      "grams": 126
     },
     "servCheck": {
       "ok": true
@@ -1372,69 +1355,74 @@
       "fat": 50.1,
       "grams": 782
     },
-    "coverage": 0.8,
+    "coverage": 1,
     "inference": {
-      "yields": null,
-      "reason": "low-coverage"
+      "yields": 7,
+      "reason": "large-batch",
+      "ratio": 9.475,
+      "perGram": 111.71428571428571,
+      "gramOk": true
     },
-    "yieldServings": null,
-    "newPer": null,
+    "yieldServings": 7,
+    "newPer": {
+      "cal": 217,
+      "prot": 2.6,
+      "carb": 38.8,
+      "fat": 7.2,
+      "grams": 112
+    },
     "servCheck": {
       "ok": true
     },
-    "missing": [
-      "Kaymak"
-    ]
+    "missing": []
   },
   {
     "id": "r_asure",
     "name": "Aşure",
     "cat": "tatli",
     "stored": {
-      "cal": 200,
-      "prot": 4,
-      "carb": 40,
-      "fat": 3
+      "cal": 286,
+      "prot": 7.6,
+      "carb": 63.1,
+      "fat": 1.3
     },
     "calcTotal": {
-      "cal": 2000,
-      "prot": 53,
-      "carb": 441.9,
-      "fat": 8.9,
-      "grams": 829
+      "cal": 1989,
+      "prot": 52.8,
+      "carb": 439.5,
+      "fat": 8.8,
+      "grams": 826
     },
-    "coverage": 0.8888888888888888,
+    "coverage": 1,
     "inference": {
       "yields": 7,
-      "reason": "large-batch",
-      "ratio": 10,
-      "perGram": 118.42857142857143,
+      "reason": "multi-portion",
+      "ratio": 6.954545454545454,
+      "perGram": 118,
       "gramOk": true
     },
     "yieldServings": 7,
     "newPer": {
-      "cal": 286,
-      "prot": 7.6,
-      "carb": 63.1,
+      "cal": 284,
+      "prot": 7.5,
+      "carb": 62.8,
       "fat": 1.3,
       "grams": 118
     },
     "servCheck": {
       "ok": true
     },
-    "missing": [
-      "Ceviz, nar"
-    ]
+    "missing": []
   },
   {
     "id": "r_sekerpare",
     "name": "Şekerpare",
     "cat": "tatli",
     "stored": {
-      "cal": 180,
-      "prot": 3,
-      "carb": 28,
-      "fat": 7
+      "cal": 320,
+      "prot": 3.9,
+      "carb": 58.7,
+      "fat": 8.2
     },
     "calcTotal": {
       "cal": 3518,
@@ -1447,7 +1435,7 @@
     "inference": {
       "yields": 11,
       "reason": "large-batch",
-      "ratio": 19.544444444444444,
+      "ratio": 10.99375,
       "perGram": 116.27272727272727,
       "gramOk": true
     },
@@ -1471,10 +1459,10 @@
     "name": "Revani",
     "cat": "tatli",
     "stored": {
-      "cal": 200,
-      "prot": 3,
-      "carb": 32,
-      "fat": 7
+      "cal": 265,
+      "prot": 4.3,
+      "carb": 59.1,
+      "fat": 1.7
     },
     "calcTotal": {
       "cal": 3713,
@@ -1487,7 +1475,7 @@
     "inference": {
       "yields": 14,
       "reason": "large-batch",
-      "ratio": 18.565,
+      "ratio": 14.011320754716982,
       "perGram": 117.85714285714286,
       "gramOk": true
     },
@@ -1511,10 +1499,10 @@
     "name": "Kısır",
     "cat": "vegan",
     "stored": {
-      "cal": 188,
-      "prot": 4.2,
-      "carb": 28.5,
-      "fat": 7.5
+      "cal": 283,
+      "prot": 6.3,
+      "carb": 42.8,
+      "fat": 11.2
     },
     "calcTotal": {
       "cal": 1130,
@@ -1525,28 +1513,22 @@
     },
     "coverage": 0.875,
     "inference": {
-      "yields": 4,
+      "yields": 2,
       "reason": "multi-portion",
-      "ratio": 6.01063829787234,
-      "perGram": 106.25,
-      "gramOk": false
+      "ratio": 3.9929328621908127,
+      "perGram": 212.5,
+      "gramOk": true
     },
-    "yieldServings": 4,
+    "yieldServings": 2,
     "newPer": {
-      "cal": 283,
-      "prot": 6.3,
-      "carb": 42.8,
-      "fat": 11.2,
-      "grams": 106
+      "cal": 565,
+      "prot": 12.5,
+      "carb": 85.6,
+      "fat": 22.5,
+      "grams": 213
     },
     "servCheck": {
-      "ok": false,
-      "reason": "too-light",
-      "range": [
-        200,
-        450
-      ],
-      "val": 106
+      "ok": true
     },
     "missing": [
       "Domates, salatalık"
@@ -1557,10 +1539,10 @@
     "name": "Humus",
     "cat": "vegan",
     "stored": {
-      "cal": 166,
-      "prot": 8,
-      "carb": 14,
-      "fat": 10
+      "cal": 1008,
+      "prot": 43.3,
+      "carb": 129.4,
+      "fat": 39
     },
     "calcTotal": {
       "cal": 2016,
@@ -1572,8 +1554,8 @@
     "coverage": 1,
     "inference": {
       "yields": 2,
-      "reason": "large-batch",
-      "ratio": 12.144578313253012,
+      "reason": "multi-portion",
+      "ratio": 2,
       "perGram": 258,
       "gramOk": true
     },
@@ -1633,10 +1615,10 @@
     "name": "Şakşuka",
     "cat": "vegan",
     "stored": {
-      "cal": 100,
-      "prot": 2.3,
-      "carb": 11,
-      "fat": 6.1
+      "cal": 125,
+      "prot": 2.9,
+      "carb": 13.8,
+      "fat": 7.6
     },
     "calcTotal": {
       "cal": 498,
@@ -1649,7 +1631,7 @@
     "inference": {
       "yields": 4,
       "reason": "multi-portion",
-      "ratio": 4.98,
+      "ratio": 3.984,
       "perGram": 289,
       "gramOk": true
     },
@@ -1677,24 +1659,24 @@
       "fat": 14
     },
     "calcTotal": {
-      "cal": 369,
-      "prot": 22.5,
-      "carb": 2,
-      "fat": 30.2,
+      "cal": 365,
+      "prot": 17.4,
+      "carb": 30.2,
+      "fat": 19.2,
       "grams": 115
     },
     "coverage": 1,
     "inference": {
       "yields": 1,
       "reason": "stored-ok",
-      "ratio": 1.3178571428571428
+      "ratio": 1.3035714285714286
     },
     "yieldServings": 1,
     "newPer": {
-      "cal": 369,
-      "prot": 22.5,
-      "carb": 2,
-      "fat": 30.2,
+      "cal": 365,
+      "prot": 17.4,
+      "carb": 30.2,
+      "fat": 19.2,
       "grams": 115
     },
     "servCheck": {
@@ -1719,26 +1701,26 @@
       "fat": 21.3
     },
     "calcTotal": {
-      "cal": 520,
-      "prot": 30.4,
-      "carb": 4.3,
-      "fat": 42.5,
+      "cal": 516,
+      "prot": 25.3,
+      "carb": 32.5,
+      "fat": 31.5,
       "grams": 190
     },
     "coverage": 1,
     "inference": {
       "yields": 1,
       "reason": "multi-portion",
-      "ratio": 2,
+      "ratio": 1.9846153846153847,
       "perGram": 190,
       "gramOk": true
     },
     "yieldServings": 1,
     "newPer": {
-      "cal": 520,
-      "prot": 30.4,
-      "carb": 4.3,
-      "fat": 42.5,
+      "cal": 516,
+      "prot": 25.3,
+      "carb": 32.5,
+      "fat": 31.5,
       "grams": 190
     },
     "servCheck": {
@@ -1757,25 +1739,25 @@
       "fat": 16
     },
     "calcTotal": {
-      "cal": 313,
-      "prot": 19,
-      "carb": 9.9,
-      "fat": 22.2,
-      "grams": 313
+      "cal": 339,
+      "prot": 34.2,
+      "carb": 40.9,
+      "fat": 4.5,
+      "grams": 273
     },
     "coverage": 1,
     "inference": {
       "yields": 1,
       "reason": "stored-ok",
-      "ratio": 0.8236842105263158
+      "ratio": 0.8921052631578947
     },
     "yieldServings": 1,
     "newPer": {
-      "cal": 313,
-      "prot": 19,
-      "carb": 9.9,
-      "fat": 22.2,
-      "grams": 313
+      "cal": 339,
+      "prot": 34.2,
+      "carb": 40.9,
+      "fat": 4.5,
+      "grams": 273
     },
     "servCheck": {
       "ok": true
@@ -1793,27 +1775,27 @@
       "fat": 7
     },
     "calcTotal": {
-      "cal": 635,
-      "prot": 29.6,
-      "carb": 73,
-      "fat": 31.7,
-      "grams": 302
+      "cal": 858,
+      "prot": 21.1,
+      "carb": 65.7,
+      "fat": 63.1,
+      "grams": 262
     },
     "coverage": 1,
     "inference": {
       "yields": 1,
       "reason": "multi-portion",
-      "ratio": 2.54,
-      "perGram": 302,
+      "ratio": 3.432,
+      "perGram": 262,
       "gramOk": true
     },
     "yieldServings": 1,
     "newPer": {
-      "cal": 635,
-      "prot": 29.6,
-      "carb": 73,
-      "fat": 31.7,
-      "grams": 302
+      "cal": 858,
+      "prot": 21.1,
+      "carb": 65.7,
+      "fat": 63.1,
+      "grams": 262
     },
     "servCheck": {
       "ok": true
@@ -1825,10 +1807,10 @@
     "name": "Gavurdağı Salatası",
     "cat": "salata",
     "stored": {
-      "cal": 97,
-      "prot": 1.7,
-      "carb": 8.4,
-      "fat": 6.9
+      "cal": 166,
+      "prot": 3.2,
+      "carb": 14.9,
+      "fat": 11.6
     },
     "calcTotal": {
       "cal": 498,
@@ -1839,19 +1821,19 @@
     },
     "coverage": 1,
     "inference": {
-      "yields": 3,
+      "yields": 2,
       "reason": "multi-portion",
-      "ratio": 5.134020618556701,
-      "perGram": 171.33333333333334,
+      "ratio": 3,
+      "perGram": 257,
       "gramOk": true
     },
-    "yieldServings": 3,
+    "yieldServings": 2,
     "newPer": {
-      "cal": 166,
-      "prot": 3.2,
-      "carb": 14.9,
-      "fat": 11.6,
-      "grams": 171
+      "cal": 249,
+      "prot": 4.8,
+      "carb": 22.4,
+      "fat": 17.4,
+      "grams": 257
     },
     "servCheck": {
       "ok": true
@@ -1863,10 +1845,10 @@
     "name": "Piyaz",
     "cat": "salata",
     "stored": {
-      "cal": 130,
-      "prot": 6,
-      "carb": 16,
-      "fat": 5
+      "cal": 354,
+      "prot": 20,
+      "carb": 49.4,
+      "fat": 9.9
     },
     "calcTotal": {
       "cal": 1061,
@@ -1878,8 +1860,8 @@
     "coverage": 1,
     "inference": {
       "yields": 3,
-      "reason": "large-batch",
-      "ratio": 8.161538461538461,
+      "reason": "multi-portion",
+      "ratio": 2.9971751412429377,
       "perGram": 206.66666666666666,
       "gramOk": true
     },
@@ -1901,10 +1883,10 @@
     "name": "Roka Salatası",
     "cat": "salata",
     "stored": {
-      "cal": 85,
-      "prot": 2.4,
-      "carb": 3.1,
-      "fat": 7.5
+      "cal": 169,
+      "prot": 4.9,
+      "carb": 6.2,
+      "fat": 14.9
     },
     "calcTotal": {
       "cal": 338,
@@ -1915,28 +1897,22 @@
     },
     "coverage": 1,
     "inference": {
-      "yields": 2,
+      "yields": 1,
       "reason": "multi-portion",
-      "ratio": 3.976470588235294,
-      "perGram": 75,
-      "gramOk": false
+      "ratio": 2,
+      "perGram": 150,
+      "gramOk": true
     },
-    "yieldServings": 2,
+    "yieldServings": 1,
     "newPer": {
-      "cal": 169,
-      "prot": 4.9,
-      "carb": 6.2,
-      "fat": 14.9,
-      "grams": 75
+      "cal": 338,
+      "prot": 9.7,
+      "carb": 12.3,
+      "fat": 29.8,
+      "grams": 150
     },
     "servCheck": {
-      "ok": false,
-      "reason": "too-light",
-      "range": [
-        150,
-        350
-      ],
-      "val": 75
+      "ok": true
     },
     "missing": []
   },
@@ -1945,32 +1921,32 @@
     "name": "Su Böreği",
     "cat": "hamur",
     "stored": {
-      "cal": 240,
-      "prot": 8,
-      "carb": 22,
-      "fat": 13
-    },
-    "calcTotal": {
-      "cal": 3725,
-      "prot": 185.7,
-      "carb": 34,
-      "fat": 315.6,
-      "grams": 1436
-    },
-    "coverage": 1,
-    "inference": {
-      "yields": 6,
-      "reason": "large-batch",
-      "ratio": 15.520833333333334,
-      "perGram": 239.33333333333334,
-      "gramOk": true
-    },
-    "yieldServings": 6,
-    "newPer": {
       "cal": 621,
       "prot": 31,
       "carb": 5.7,
-      "fat": 52.6,
+      "fat": 52.6
+    },
+    "calcTotal": {
+      "cal": 3090,
+      "prot": 111.6,
+      "carb": 220,
+      "fat": 198.8,
+      "grams": 1196
+    },
+    "coverage": 1,
+    "inference": {
+      "yields": 5,
+      "reason": "multi-portion",
+      "ratio": 4.975845410628019,
+      "perGram": 239.2,
+      "gramOk": true
+    },
+    "yieldServings": 5,
+    "newPer": {
+      "cal": 618,
+      "prot": 22.3,
+      "carb": 44,
+      "fat": 39.8,
       "grams": 239
     },
     "servCheck": {
@@ -1995,29 +1971,36 @@
       "fat": 35.8,
       "grams": 576
     },
-    "coverage": 0.8333333333333334,
+    "coverage": 1,
     "inference": {
-      "yields": null,
-      "reason": "low-coverage"
+      "yields": 3,
+      "reason": "multi-portion",
+      "ratio": 5.24,
+      "perGram": 192,
+      "gramOk": true
     },
-    "yieldServings": null,
-    "newPer": null,
+    "yieldServings": 3,
+    "newPer": {
+      "cal": 437,
+      "prot": 17.8,
+      "carb": 63.7,
+      "fat": 11.9,
+      "grams": 192
+    },
     "servCheck": {
       "ok": true
     },
-    "missing": [
-      "Tereyağı"
-    ]
+    "missing": []
   },
   {
     "id": "r_kiymali_pide",
     "name": "Kıymalı Pide",
     "cat": "hamur",
     "stored": {
-      "cal": 279,
-      "prot": 11.9,
-      "carb": 38.5,
-      "fat": 8.2
+      "cal": 459,
+      "prot": 19.7,
+      "carb": 62.6,
+      "fat": 13.9
     },
     "calcTotal": {
       "cal": 2297,
@@ -2029,8 +2012,8 @@
     "coverage": 1,
     "inference": {
       "yields": 5,
-      "reason": "large-batch",
-      "ratio": 8.232974910394265,
+      "reason": "multi-portion",
+      "ratio": 5.004357298474946,
       "perGram": 227.8,
       "gramOk": true
     },
@@ -2052,10 +2035,10 @@
     "name": "Lahmacun",
     "cat": "hamur",
     "stored": {
-      "cal": 210,
-      "prot": 9,
-      "carb": 28,
-      "fat": 7
+      "cal": 309,
+      "prot": 13.4,
+      "carb": 43.4,
+      "fat": 8.9
     },
     "calcTotal": {
       "cal": 1543,
@@ -2064,38 +2047,36 @@
       "fat": 44.5,
       "grams": 886
     },
-    "coverage": 0.8888888888888888,
+    "coverage": 1,
     "inference": {
-      "yields": 5,
+      "yields": 4,
       "reason": "multi-portion",
-      "ratio": 7.347619047619047,
-      "perGram": 177.2,
+      "ratio": 4.993527508090615,
+      "perGram": 221.5,
       "gramOk": true
     },
-    "yieldServings": 5,
+    "yieldServings": 4,
     "newPer": {
-      "cal": 309,
-      "prot": 13.4,
-      "carb": 43.4,
-      "fat": 8.9,
-      "grams": 177
+      "cal": 386,
+      "prot": 16.8,
+      "carb": 54.2,
+      "fat": 11.1,
+      "grams": 222
     },
     "servCheck": {
       "ok": true
     },
-    "missing": [
-      "Limon"
-    ]
+    "missing": []
   },
   {
     "id": "r_haydari",
     "name": "Haydari",
     "cat": "meze",
     "stored": {
-      "cal": 95,
-      "prot": 5,
-      "carb": 4,
-      "fat": 7
+      "cal": 121,
+      "prot": 6.1,
+      "carb": 5,
+      "fat": 8.7
     },
     "calcTotal": {
       "cal": 726,
@@ -2106,19 +2087,19 @@
     },
     "coverage": 1,
     "inference": {
-      "yields": 6,
+      "yields": 5,
       "reason": "multi-portion",
-      "ratio": 7.6421052631578945,
-      "perGram": 109.5,
+      "ratio": 6,
+      "perGram": 131.4,
       "gramOk": true
     },
-    "yieldServings": 6,
+    "yieldServings": 5,
     "newPer": {
-      "cal": 121,
-      "prot": 6.1,
-      "carb": 5,
-      "fat": 8.7,
-      "grams": 110
+      "cal": 145,
+      "prot": 7.3,
+      "carb": 6,
+      "fat": 10.5,
+      "grams": 131
     },
     "servCheck": {
       "ok": true
@@ -2168,10 +2149,10 @@
     "name": "Acılı Ezme",
     "cat": "meze",
     "stored": {
-      "cal": 62,
-      "prot": 1.6,
-      "carb": 9.1,
-      "fat": 2.8
+      "cal": 75,
+      "prot": 1.9,
+      "carb": 10.9,
+      "fat": 3.3
     },
     "calcTotal": {
       "cal": 373,
@@ -2184,7 +2165,7 @@
     "inference": {
       "yields": 5,
       "reason": "multi-portion",
-      "ratio": 6.016129032258065,
+      "ratio": 4.973333333333334,
       "perGram": 146.6,
       "gramOk": true
     },
@@ -2206,10 +2187,10 @@
     "name": "Atom (Antep Ezmesi)",
     "cat": "meze",
     "stored": {
-      "cal": 70,
-      "prot": 2,
-      "carb": 5,
-      "fat": 5
+      "cal": 488,
+      "prot": 9.3,
+      "carb": 14.8,
+      "fat": 47.3
     },
     "calcTotal": {
       "cal": 975,
@@ -2221,8 +2202,8 @@
     "coverage": 1,
     "inference": {
       "yields": 2,
-      "reason": "large-batch",
-      "ratio": 13.928571428571429,
+      "reason": "multi-portion",
+      "ratio": 1.9979508196721312,
       "perGram": 95.5,
       "gramOk": true
     },
@@ -2244,10 +2225,10 @@
     "name": "Topik",
     "cat": "meze",
     "stored": {
-      "cal": 120,
-      "prot": 4,
-      "carb": 14,
-      "fat": 5
+      "cal": 244,
+      "prot": 9.5,
+      "carb": 37.9,
+      "fat": 7.2
     },
     "calcTotal": {
       "cal": 1464,
@@ -2259,8 +2240,8 @@
     "coverage": 1,
     "inference": {
       "yields": 6,
-      "reason": "large-batch",
-      "ratio": 12.2,
+      "reason": "multi-portion",
+      "ratio": 6,
       "perGram": 145.33333333333334,
       "gramOk": true
     },
@@ -2282,10 +2263,10 @@
     "name": "Ali Nazik",
     "cat": "klasik",
     "stored": {
-      "cal": 298,
-      "prot": 18.4,
-      "carb": 18.9,
-      "fat": 17.8
+      "cal": 223,
+      "prot": 13.8,
+      "carb": 14.2,
+      "fat": 13.4
     },
     "calcTotal": {
       "cal": 893,
@@ -2298,7 +2279,7 @@
     "inference": {
       "yields": 4,
       "reason": "multi-portion",
-      "ratio": 2.9966442953020134,
+      "ratio": 4.004484304932736,
       "perGram": 294,
       "gramOk": true
     },
@@ -2320,32 +2301,32 @@
     "name": "Çerkez Tavuğu",
     "cat": "klasik",
     "stored": {
-      "cal": 348,
-      "prot": 8.2,
-      "carb": 7.9,
-      "fat": 34.3
+      "cal": 604,
+      "prot": 17.5,
+      "carb": 12.5,
+      "fat": 58
     },
     "calcTotal": {
-      "cal": 1207,
-      "prot": 35,
-      "carb": 25,
-      "fat": 115.9,
+      "cal": 1533,
+      "prot": 98.9,
+      "carb": 53.2,
+      "fat": 109.5,
       "grams": 526
     },
     "coverage": 1,
     "inference": {
       "yields": 2,
       "reason": "multi-portion",
-      "ratio": 3.468390804597701,
+      "ratio": 2.5380794701986753,
       "perGram": 263,
       "gramOk": true
     },
     "yieldServings": 2,
     "newPer": {
-      "cal": 604,
-      "prot": 17.5,
-      "carb": 12.5,
-      "fat": 58,
+      "cal": 767,
+      "prot": 49.5,
+      "carb": 26.6,
+      "fat": 54.8,
       "grams": 263
     },
     "servCheck": {
@@ -2396,9 +2377,9 @@
     "name": "Kuzu Tandır",
     "cat": "klasik",
     "stored": {
-      "cal": 437,
+      "cal": 440,
       "prot": 34.8,
-      "carb": 10.9,
+      "carb": 11.6,
       "fat": 28.5
     },
     "calcTotal": {
@@ -2412,7 +2393,7 @@
     "inference": {
       "yields": 3,
       "reason": "multi-portion",
-      "ratio": 3.022883295194508,
+      "ratio": 3.0022727272727274,
       "perGram": 340,
       "gramOk": true
     },
@@ -2434,33 +2415,33 @@
     "name": "Pilav Üstü Kuru Fasulye",
     "cat": "klasik",
     "stored": {
-      "cal": 411,
-      "prot": 20.1,
-      "carb": 72,
-      "fat": 5.1
+      "cal": 822,
+      "prot": 40.2,
+      "carb": 144.1,
+      "fat": 10.3
     },
     "calcTotal": {
-      "cal": 1643,
-      "prot": 80.3,
-      "carb": 288.1,
-      "fat": 20.5,
-      "grams": 649
+      "cal": 1607,
+      "prot": 79.6,
+      "carb": 280.2,
+      "fat": 20.4,
+      "grams": 639
     },
     "coverage": 1,
     "inference": {
       "yields": 2,
       "reason": "multi-portion",
-      "ratio": 3.997566909975669,
-      "perGram": 324.5,
+      "ratio": 1.9549878345498783,
+      "perGram": 319.5,
       "gramOk": true
     },
     "yieldServings": 2,
     "newPer": {
-      "cal": 822,
-      "prot": 40.2,
-      "carb": 144.1,
-      "fat": 10.3,
-      "grams": 325
+      "cal": 804,
+      "prot": 39.8,
+      "carb": 140.1,
+      "fat": 10.2,
+      "grams": 320
     },
     "servCheck": {
       "ok": true
@@ -2472,10 +2453,10 @@
     "name": "İçli Köfte",
     "cat": "klasik",
     "stored": {
-      "cal": 160,
-      "prot": 8,
-      "carb": 18,
-      "fat": 6
+      "cal": 817,
+      "prot": 32.9,
+      "carb": 119.2,
+      "fat": 26.1
     },
     "calcTotal": {
       "cal": 2450,
@@ -2487,8 +2468,8 @@
     "coverage": 1,
     "inference": {
       "yields": 3,
-      "reason": "large-batch",
-      "ratio": 15.3125,
+      "reason": "multi-portion",
+      "ratio": 2.998776009791922,
       "perGram": 330,
       "gramOk": true
     },
@@ -2548,10 +2529,10 @@
     "name": "Etli Bezelye",
     "cat": "klasik",
     "stored": {
-      "cal": 199,
-      "prot": 13.9,
-      "carb": 23.5,
-      "fat": 6.1
+      "cal": 265,
+      "prot": 18.5,
+      "carb": 31.4,
+      "fat": 8.1
     },
     "calcTotal": {
       "cal": 796,
@@ -2564,7 +2545,7 @@
     "inference": {
       "yields": 3,
       "reason": "multi-portion",
-      "ratio": 4,
+      "ratio": 3.0037735849056606,
       "perGram": 286.3333333333333,
       "gramOk": true
     },
@@ -2662,32 +2643,32 @@
     "name": "Izgara Köfte",
     "cat": "klasik",
     "stored": {
-      "cal": 90,
-      "prot": 9,
-      "carb": 2,
-      "fat": 5
+      "cal": 752,
+      "prot": 49.9,
+      "carb": 9.3,
+      "fat": 56
     },
     "calcTotal": {
-      "cal": 1503,
-      "prot": 99.7,
-      "carb": 18.6,
-      "fat": 112,
+      "cal": 1501,
+      "prot": 97.1,
+      "carb": 32.7,
+      "fat": 106.5,
       "grams": 772
     },
     "coverage": 1,
     "inference": {
       "yields": 2,
-      "reason": "large-batch",
-      "ratio": 16.7,
+      "reason": "multi-portion",
+      "ratio": 1.9960106382978724,
       "perGram": 386,
       "gramOk": true
     },
     "yieldServings": 2,
     "newPer": {
-      "cal": 752,
-      "prot": 49.9,
-      "carb": 9.3,
-      "fat": 56,
+      "cal": 751,
+      "prot": 48.6,
+      "carb": 16.4,
+      "fat": 53.3,
       "grams": 386
     },
     "servCheck": {
@@ -2700,33 +2681,33 @@
     "name": "Tantuni",
     "cat": "klasik",
     "stored": {
-      "cal": 380,
-      "prot": 25,
-      "carb": 30,
-      "fat": 18
+      "cal": 592,
+      "prot": 41.5,
+      "carb": 12.6,
+      "fat": 42.4
     },
     "calcTotal": {
-      "cal": 1184,
-      "prot": 83,
-      "carb": 25.2,
-      "fat": 84.7,
-      "grams": 736
+      "cal": 972,
+      "prot": 58.3,
+      "carb": 87.2,
+      "fat": 45.7,
+      "grams": 656
     },
     "coverage": 1,
     "inference": {
       "yields": 2,
       "reason": "multi-portion",
-      "ratio": 3.1157894736842104,
-      "perGram": 368,
+      "ratio": 1.6418918918918919,
+      "perGram": 328,
       "gramOk": true
     },
     "yieldServings": 2,
     "newPer": {
-      "cal": 592,
-      "prot": 41.5,
-      "carb": 12.6,
-      "fat": 42.4,
-      "grams": 368
+      "cal": 486,
+      "prot": 29.2,
+      "carb": 43.6,
+      "fat": 22.9,
+      "grams": 328
     },
     "servCheck": {
       "ok": true
@@ -2738,10 +2719,10 @@
     "name": "Kinoalı Salata",
     "cat": "fit",
     "stored": {
-      "cal": 210,
-      "prot": 8,
-      "carb": 28,
-      "fat": 8
+      "cal": 326,
+      "prot": 8.5,
+      "carb": 37.7,
+      "fat": 17.3
     },
     "calcTotal": {
       "cal": 651,
@@ -2754,7 +2735,7 @@
     "inference": {
       "yields": 2,
       "reason": "multi-portion",
-      "ratio": 3.1,
+      "ratio": 1.9969325153374233,
       "perGram": 242,
       "gramOk": true
     },
@@ -2852,10 +2833,10 @@
     "name": "Sebzeli Yumurta Muffin",
     "cat": "fit",
     "stored": {
-      "cal": 70,
-      "prot": 6,
-      "carb": 2,
-      "fat": 4
+      "cal": 300,
+      "prot": 24.4,
+      "carb": 5.2,
+      "fat": 19.9
     },
     "calcTotal": {
       "cal": 600,
@@ -2867,8 +2848,8 @@
     "coverage": 1,
     "inference": {
       "yields": 2,
-      "reason": "large-batch",
-      "ratio": 8.571428571428571,
+      "reason": "multi-portion",
+      "ratio": 2,
       "perGram": 262.5,
       "gramOk": true
     },
@@ -2890,33 +2871,33 @@
     "name": "Adana Kebap",
     "cat": "klasik",
     "stored": {
-      "cal": 651,
-      "prot": 32.3,
-      "carb": 42.6,
-      "fat": 39.8
+      "cal": 787,
+      "prot": 41,
+      "carb": 43.6,
+      "fat": 50.6
     },
     "calcTotal": {
-      "cal": 1573,
-      "prot": 82,
-      "carb": 87.2,
-      "fat": 101.1,
-      "grams": 676
+      "cal": 1467,
+      "prot": 69.6,
+      "carb": 118.2,
+      "fat": 81.6,
+      "grams": 636
     },
     "coverage": 1,
     "inference": {
       "yields": 2,
       "reason": "multi-portion",
-      "ratio": 2.4162826420890937,
-      "perGram": 338,
+      "ratio": 1.864040660736976,
+      "perGram": 318,
       "gramOk": true
     },
     "yieldServings": 2,
     "newPer": {
-      "cal": 787,
-      "prot": 41,
-      "carb": 43.6,
-      "fat": 50.6,
-      "grams": 338
+      "cal": 734,
+      "prot": 34.8,
+      "carb": 59.1,
+      "fat": 40.8,
+      "grams": 318
     },
     "servCheck": {
       "ok": true
@@ -2928,33 +2909,33 @@
     "name": "Urfa Kebap",
     "cat": "klasik",
     "stored": {
-      "cal": 469,
-      "prot": 19.6,
-      "carb": 11.4,
-      "fat": 38.8
+      "cal": 605,
+      "prot": 28.4,
+      "carb": 12.4,
+      "fat": 49.6
     },
     "calcTotal": {
-      "cal": 1210,
-      "prot": 56.7,
-      "carb": 24.8,
-      "fat": 99.1,
-      "grams": 577
+      "cal": 1105,
+      "prot": 44.4,
+      "carb": 55.8,
+      "fat": 79.7,
+      "grams": 537
     },
     "coverage": 1,
     "inference": {
       "yields": 2,
       "reason": "multi-portion",
-      "ratio": 2.579957356076759,
-      "perGram": 288.5,
+      "ratio": 1.8264462809917354,
+      "perGram": 268.5,
       "gramOk": true
     },
     "yieldServings": 2,
     "newPer": {
-      "cal": 605,
-      "prot": 28.4,
-      "carb": 12.4,
-      "fat": 49.6,
-      "grams": 289
+      "cal": 553,
+      "prot": 22.2,
+      "carb": 27.9,
+      "fat": 39.9,
+      "grams": 269
     },
     "servCheck": {
       "ok": true
@@ -2966,33 +2947,33 @@
     "name": "Şiş Kebap",
     "cat": "klasik",
     "stored": {
-      "cal": 420,
-      "prot": 38,
-      "carb": 12,
-      "fat": 25
-    },
-    "calcTotal": {
-      "cal": 1130,
-      "prot": 63.1,
-      "carb": 30.8,
-      "fat": 85.5,
-      "grams": 810
-    },
-    "coverage": 1,
-    "inference": {
-      "yields": 3,
-      "reason": "multi-portion",
-      "ratio": 2.6904761904761907,
-      "perGram": 270,
-      "gramOk": true
-    },
-    "yieldServings": 3,
-    "newPer": {
       "cal": 377,
       "prot": 21,
       "carb": 10.3,
-      "fat": 28.5,
-      "grams": 270
+      "fat": 28.5
+    },
+    "calcTotal": {
+      "cal": 1024,
+      "prot": 50.8,
+      "carb": 61.8,
+      "fat": 66,
+      "grams": 770
+    },
+    "coverage": 1,
+    "inference": {
+      "yields": 2,
+      "reason": "multi-portion",
+      "ratio": 2.716180371352785,
+      "perGram": 385,
+      "gramOk": true
+    },
+    "yieldServings": 2,
+    "newPer": {
+      "cal": 512,
+      "prot": 25.4,
+      "carb": 30.9,
+      "fat": 33,
+      "grams": 385
     },
     "servCheck": {
       "ok": true
@@ -3040,33 +3021,33 @@
     "name": "Cağ Kebabı",
     "cat": "klasik",
     "stored": {
-      "cal": 490,
-      "prot": 32,
-      "carb": 20,
-      "fat": 30
+      "cal": 518,
+      "prot": 28.9,
+      "carb": 11.4,
+      "fat": 40.5
     },
     "calcTotal": {
-      "cal": 1036,
-      "prot": 57.8,
-      "carb": 22.7,
-      "fat": 81,
-      "grams": 541
+      "cal": 930,
+      "prot": 45.4,
+      "carb": 53.7,
+      "fat": 61.5,
+      "grams": 501
     },
     "coverage": 1,
     "inference": {
       "yields": 2,
       "reason": "multi-portion",
-      "ratio": 2.1142857142857143,
-      "perGram": 270.5,
+      "ratio": 1.7953667953667953,
+      "perGram": 250.5,
       "gramOk": true
     },
     "yieldServings": 2,
     "newPer": {
-      "cal": 518,
-      "prot": 28.9,
-      "carb": 11.4,
-      "fat": 40.5,
-      "grams": 271
+      "cal": 465,
+      "prot": 22.7,
+      "carb": 26.9,
+      "fat": 30.8,
+      "grams": 251
     },
     "servCheck": {
       "ok": true
@@ -3078,10 +3059,10 @@
     "name": "Fırında Kuzu İncik",
     "cat": "klasik",
     "stored": {
-      "cal": 619,
-      "prot": 35.8,
-      "carb": 43.9,
-      "fat": 34.1
+      "cal": 310,
+      "prot": 17.9,
+      "carb": 22,
+      "fat": 17.1
     },
     "calcTotal": {
       "cal": 1238,
@@ -3094,7 +3075,7 @@
     "inference": {
       "yields": 4,
       "reason": "multi-portion",
-      "ratio": 2,
+      "ratio": 3.9935483870967743,
       "perGram": 328.5,
       "gramOk": true
     },
@@ -3162,26 +3143,26 @@
       "fat": 28.4
     },
     "calcTotal": {
-      "cal": 793,
-      "prot": 50.1,
-      "carb": 18.4,
-      "fat": 56.7,
+      "cal": 791,
+      "prot": 47.6,
+      "carb": 32.5,
+      "fat": 51.2,
       "grams": 447
     },
     "coverage": 1,
     "inference": {
       "yields": 2,
       "reason": "multi-portion",
-      "ratio": 1.9974811083123425,
+      "ratio": 1.9924433249370277,
       "perGram": 223.5,
       "gramOk": true
     },
     "yieldServings": 2,
     "newPer": {
-      "cal": 397,
-      "prot": 25.1,
-      "carb": 9.2,
-      "fat": 28.4,
+      "cal": 396,
+      "prot": 23.8,
+      "carb": 16.3,
+      "fat": 25.6,
       "grams": 224
     },
     "servCheck": {
@@ -3194,33 +3175,33 @@
     "name": "Etli Kabak Dolma",
     "cat": "sebze",
     "stored": {
-      "cal": 310,
-      "prot": 18,
-      "carb": 28,
-      "fat": 14
-    },
-    "calcTotal": {
-      "cal": 4576,
-      "prot": 118.7,
-      "carb": 1002.5,
-      "fat": 70.9,
-      "grams": 8807
-    },
-    "coverage": 1,
-    "inference": {
-      "yields": 30,
-      "reason": "large-batch",
-      "ratio": 14.761290322580646,
-      "perGram": 293.56666666666666,
-      "gramOk": true
-    },
-    "yieldServings": 30,
-    "newPer": {
       "cal": 153,
       "prot": 4,
       "carb": 33.4,
-      "fat": 2.4,
-      "grams": 294
+      "fat": 2.4
+    },
+    "calcTotal": {
+      "cal": 1101,
+      "prot": 48.2,
+      "carb": 89.8,
+      "fat": 65.5,
+      "grams": 1604
+    },
+    "coverage": 1,
+    "inference": {
+      "yields": 6,
+      "reason": "multi-portion",
+      "ratio": 7.196078431372549,
+      "perGram": 267.3333333333333,
+      "gramOk": true
+    },
+    "yieldServings": 6,
+    "newPer": {
+      "cal": 184,
+      "prot": 8,
+      "carb": 15,
+      "fat": 10.9,
+      "grams": 267
     },
     "servCheck": {
       "ok": true
@@ -3232,10 +3213,10 @@
     "name": "Etli Bamya",
     "cat": "sebze",
     "stored": {
-      "cal": 211,
-      "prot": 13.2,
-      "carb": 11.7,
-      "fat": 13.4
+      "cal": 158,
+      "prot": 9.9,
+      "carb": 8.8,
+      "fat": 10.1
     },
     "calcTotal": {
       "cal": 633,
@@ -3248,7 +3229,7 @@
     "inference": {
       "yields": 4,
       "reason": "multi-portion",
-      "ratio": 3,
+      "ratio": 4.006329113924051,
       "perGram": 274.5,
       "gramOk": true
     },
@@ -3270,10 +3251,10 @@
     "name": "Etli Türlü",
     "cat": "sebze",
     "stored": {
-      "cal": 275,
-      "prot": 15.4,
-      "carb": 25.5,
-      "fat": 13.8
+      "cal": 206,
+      "prot": 11.5,
+      "carb": 19.2,
+      "fat": 10.3
     },
     "calcTotal": {
       "cal": 824,
@@ -3286,7 +3267,7 @@
     "inference": {
       "yields": 4,
       "reason": "multi-portion",
-      "ratio": 2.9963636363636366,
+      "ratio": 4,
       "perGram": 310.75,
       "gramOk": true
     },
@@ -3308,31 +3289,31 @@
     "name": "Zeytinyağlı Pırasa",
     "cat": "sebze",
     "stored": {
-      "cal": 176,
-      "prot": 2.4,
-      "carb": 23.7,
-      "fat": 8.8
+      "cal": 294,
+      "prot": 4,
+      "carb": 39.5,
+      "fat": 14.7
     },
     "calcTotal": {
-      "cal": 882,
-      "prot": 11.9,
-      "carb": 118.4,
+      "cal": 875,
+      "prot": 11.8,
+      "carb": 116.8,
       "fat": 44.1,
-      "grams": 817
+      "grams": 815
     },
     "coverage": 1,
     "inference": {
       "yields": 3,
       "reason": "multi-portion",
-      "ratio": 5.011363636363637,
-      "perGram": 272.3333333333333,
+      "ratio": 2.9761904761904763,
+      "perGram": 271.6666666666667,
       "gramOk": true
     },
     "yieldServings": 3,
     "newPer": {
-      "cal": 294,
-      "prot": 4,
-      "carb": 39.5,
+      "cal": 292,
+      "prot": 3.9,
+      "carb": 38.9,
       "fat": 14.7,
       "grams": 272
     },
@@ -3346,10 +3327,10 @@
     "name": "Zeytinyağlı Enginar",
     "cat": "sebze",
     "stored": {
-      "cal": 155,
-      "prot": 6.4,
-      "carb": 24.3,
-      "fat": 5.7
+      "cal": 207,
+      "prot": 8.5,
+      "carb": 32.4,
+      "fat": 7.6
     },
     "calcTotal": {
       "cal": 1241,
@@ -3361,8 +3342,8 @@
     "coverage": 1,
     "inference": {
       "yields": 6,
-      "reason": "large-batch",
-      "ratio": 8.006451612903225,
+      "reason": "multi-portion",
+      "ratio": 5.995169082125604,
       "perGram": 303.6666666666667,
       "gramOk": true
     },
@@ -3384,10 +3365,10 @@
     "name": "Barbunya Pilaki",
     "cat": "vegan",
     "stored": {
-      "cal": 281,
-      "prot": 13,
-      "carb": 41.9,
-      "fat": 7.8
+      "cal": 421,
+      "prot": 19.4,
+      "carb": 62.9,
+      "fat": 11.7
     },
     "calcTotal": {
       "cal": 1684,
@@ -3398,19 +3379,19 @@
     },
     "coverage": 1,
     "inference": {
-      "yields": 4,
+      "yields": 3,
       "reason": "multi-portion",
-      "ratio": 5.99288256227758,
-      "perGram": 238.25,
+      "ratio": 4,
+      "perGram": 317.6666666666667,
       "gramOk": true
     },
-    "yieldServings": 4,
+    "yieldServings": 3,
     "newPer": {
-      "cal": 421,
-      "prot": 19.4,
-      "carb": 62.9,
-      "fat": 11.7,
-      "grams": 238
+      "cal": 561,
+      "prot": 25.9,
+      "carb": 83.9,
+      "fat": 15.6,
+      "grams": 318
     },
     "servCheck": {
       "ok": true
@@ -3428,27 +3409,27 @@
       "fat": 9.6
     },
     "calcTotal": {
-      "cal": 1069,
-      "prot": 48.1,
-      "carb": 150.7,
+      "cal": 1034,
+      "prot": 47.4,
+      "carb": 142.8,
       "fat": 28.9,
-      "grams": 774
+      "grams": 764
     },
     "coverage": 1,
     "inference": {
       "yields": 3,
       "reason": "multi-portion",
-      "ratio": 3.002808988764045,
-      "perGram": 258,
+      "ratio": 2.904494382022472,
+      "perGram": 254.66666666666666,
       "gramOk": true
     },
     "yieldServings": 3,
     "newPer": {
-      "cal": 356,
-      "prot": 16,
-      "carb": 50.2,
+      "cal": 345,
+      "prot": 15.8,
+      "carb": 47.6,
       "fat": 9.6,
-      "grams": 258
+      "grams": 255
     },
     "servCheck": {
       "ok": true
@@ -3466,27 +3447,27 @@
       "fat": 12.9
     },
     "calcTotal": {
-      "cal": 1173,
-      "prot": 21.1,
-      "carb": 190.8,
+      "cal": 1137,
+      "prot": 20.3,
+      "carb": 182.9,
       "fat": 38.8,
-      "grams": 873
+      "grams": 863
     },
     "coverage": 1,
     "inference": {
       "yields": 3,
       "reason": "multi-portion",
-      "ratio": 3,
-      "perGram": 291,
+      "ratio": 2.9079283887468033,
+      "perGram": 287.6666666666667,
       "gramOk": true
     },
     "yieldServings": 3,
     "newPer": {
-      "cal": 391,
-      "prot": 7,
-      "carb": 63.6,
+      "cal": 379,
+      "prot": 6.8,
+      "carb": 61,
       "fat": 12.9,
-      "grams": 291
+      "grams": 288
     },
     "servCheck": {
       "ok": true
@@ -3504,25 +3485,32 @@
       "fat": 9
     },
     "calcTotal": {
-      "cal": 904,
-      "prot": 13.6,
-      "carb": 150.7,
-      "fat": 26.7,
-      "grams": 624
+      "cal": 935,
+      "prot": 15.2,
+      "carb": 156.2,
+      "fat": 26.9,
+      "grams": 632
     },
-    "coverage": 0.8333333333333334,
+    "coverage": 1,
     "inference": {
-      "yields": null,
-      "reason": "low-coverage"
+      "yields": 2,
+      "reason": "multi-portion",
+      "ratio": 2.921875,
+      "perGram": 316,
+      "gramOk": true
     },
-    "yieldServings": null,
-    "newPer": null,
+    "yieldServings": 2,
+    "newPer": {
+      "cal": 468,
+      "prot": 7.6,
+      "carb": 78.1,
+      "fat": 13.5,
+      "grams": 316
+    },
     "servCheck": {
       "ok": true
     },
-    "missing": [
-      "Arpa şehriye"
-    ]
+    "missing": []
   },
   {
     "id": "r_hamsi_tava",
@@ -3567,33 +3555,33 @@
     "name": "Balık Ekmek",
     "cat": "sandvic",
     "stored": {
-      "cal": 387,
-      "prot": 29.3,
-      "carb": 4.9,
-      "fat": 27.6
-    },
-    "calcTotal": {
-      "cal": 1039,
-      "prot": 75.6,
-      "carb": 10.5,
-      "fat": 76.6,
-      "grams": 511
-    },
-    "coverage": 1,
-    "inference": {
-      "yields": 2,
-      "reason": "multi-portion",
-      "ratio": 2.6847545219638245,
-      "perGram": 255.5,
-      "gramOk": true
-    },
-    "yieldServings": 2,
-    "newPer": {
       "cal": 520,
       "prot": 37.8,
       "carb": 5.3,
-      "fat": 38.3,
-      "grams": 256
+      "fat": 38.3
+    },
+    "calcTotal": {
+      "cal": 1429,
+      "prot": 80.6,
+      "carb": 131,
+      "fat": 63.1,
+      "grams": 661
+    },
+    "coverage": 1,
+    "inference": {
+      "yields": 3,
+      "reason": "multi-portion",
+      "ratio": 2.748076923076923,
+      "perGram": 220.33333333333334,
+      "gramOk": true
+    },
+    "yieldServings": 3,
+    "newPer": {
+      "cal": 476,
+      "prot": 26.9,
+      "carb": 43.7,
+      "fat": 21,
+      "grams": 220
     },
     "servCheck": {
       "ok": true
@@ -3611,67 +3599,65 @@
       "fat": 38.3
     },
     "calcTotal": {
-      "cal": 912,
-      "prot": 22.5,
-      "carb": 38.5,
-      "fat": 76.5,
-      "grams": 353
+      "cal": 714,
+      "prot": 23.1,
+      "carb": 41.3,
+      "fat": 53.2,
+      "grams": 400
     },
-    "coverage": 0.875,
+    "coverage": 1,
     "inference": {
       "yields": 2,
       "reason": "multi-portion",
-      "ratio": 2,
-      "perGram": 176.5,
+      "ratio": 1.5657894736842106,
+      "perGram": 200,
       "gramOk": true
     },
     "yieldServings": 2,
     "newPer": {
-      "cal": 456,
-      "prot": 11.3,
-      "carb": 19.3,
-      "fat": 38.3,
-      "grams": 177
+      "cal": 357,
+      "prot": 11.6,
+      "carb": 20.7,
+      "fat": 26.6,
+      "grams": 200
     },
     "servCheck": {
       "ok": true
     },
-    "missing": [
-      "Rus salatası"
-    ]
+    "missing": []
   },
   {
     "id": "r_simit",
     "name": "Simit",
     "cat": "hamur",
     "stored": {
-      "cal": 310,
-      "prot": 9,
-      "carb": 55,
-      "fat": 6
+      "cal": 642,
+      "prot": 18.4,
+      "carb": 96.9,
+      "fat": 21.3
     },
     "calcTotal": {
-      "cal": 3210,
-      "prot": 92.1,
-      "carb": 484.5,
-      "fat": 106.4,
-      "grams": 1115
+      "cal": 3266,
+      "prot": 95.7,
+      "carb": 464.7,
+      "fat": 120.5,
+      "grams": 1106
     },
     "coverage": 1,
     "inference": {
       "yields": 5,
-      "reason": "large-batch",
-      "ratio": 10.35483870967742,
-      "perGram": 223,
+      "reason": "multi-portion",
+      "ratio": 5.087227414330218,
+      "perGram": 221.2,
       "gramOk": true
     },
     "yieldServings": 5,
     "newPer": {
-      "cal": 642,
-      "prot": 18.4,
-      "carb": 96.9,
-      "fat": 21.3,
-      "grams": 223
+      "cal": 653,
+      "prot": 19.1,
+      "carb": 92.9,
+      "fat": 24.1,
+      "grams": 221
     },
     "servCheck": {
       "ok": true
@@ -3683,10 +3669,10 @@
     "name": "Poğaça (Peynirli)",
     "cat": "hamur",
     "stored": {
-      "cal": 220,
-      "prot": 6,
-      "carb": 22,
-      "fat": 12
+      "cal": 601,
+      "prot": 18.2,
+      "carb": 68.9,
+      "fat": 27.6
     },
     "calcTotal": {
       "cal": 3603,
@@ -3698,8 +3684,8 @@
     "coverage": 1,
     "inference": {
       "yields": 6,
-      "reason": "large-batch",
-      "ratio": 16.37727272727273,
+      "reason": "multi-portion",
+      "ratio": 5.995008319467554,
       "perGram": 214,
       "gramOk": true
     },
@@ -3721,10 +3707,10 @@
     "name": "Açma",
     "cat": "hamur",
     "stored": {
-      "cal": 260,
-      "prot": 7,
-      "carb": 32,
-      "fat": 11
+      "cal": 829,
+      "prot": 15.9,
+      "carb": 99.9,
+      "fat": 40.2
     },
     "calcTotal": {
       "cal": 4143,
@@ -3736,8 +3722,8 @@
     "coverage": 1,
     "inference": {
       "yields": 5,
-      "reason": "large-batch",
-      "ratio": 15.934615384615384,
+      "reason": "multi-portion",
+      "ratio": 4.997587454764777,
       "perGram": 225.6,
       "gramOk": true
     },
@@ -3759,33 +3745,33 @@
     "name": "Ispanaklı Börek",
     "cat": "hamur",
     "stored": {
-      "cal": 280,
-      "prot": 10,
-      "carb": 28,
-      "fat": 14
-    },
-    "calcTotal": {
-      "cal": 2609,
-      "prot": 116.1,
-      "carb": 54.3,
-      "fat": 217.3,
-      "grams": 1560
-    },
-    "coverage": 1,
-    "inference": {
-      "yields": 7,
-      "reason": "large-batch",
-      "ratio": 9.317857142857143,
-      "perGram": 222.85714285714286,
-      "gramOk": true
-    },
-    "yieldServings": 7,
-    "newPer": {
       "cal": 373,
       "prot": 16.6,
       "carb": 7.8,
-      "fat": 31,
-      "grams": 223
+      "fat": 31
+    },
+    "calcTotal": {
+      "cal": 2291,
+      "prot": 79.1,
+      "carb": 147.3,
+      "fat": 159,
+      "grams": 1440
+    },
+    "coverage": 1,
+    "inference": {
+      "yields": 6,
+      "reason": "multi-portion",
+      "ratio": 6.142091152815014,
+      "perGram": 240,
+      "gramOk": true
+    },
+    "yieldServings": 6,
+    "newPer": {
+      "cal": 382,
+      "prot": 13.2,
+      "carb": 24.6,
+      "fat": 26.5,
+      "grams": 240
     },
     "servCheck": {
       "ok": true
@@ -3797,33 +3783,33 @@
     "name": "Baklava (Fıstıklı)",
     "cat": "tatli",
     "stored": {
-      "cal": 420,
-      "prot": 6,
-      "carb": 50,
-      "fat": 24
-    },
-    "calcTotal": {
-      "cal": 7189,
-      "prot": 217.8,
-      "carb": 475.2,
-      "fat": 508.4,
-      "grams": 2265
-    },
-    "coverage": 1,
-    "inference": {
-      "yields": 19,
-      "reason": "large-batch",
-      "ratio": 17.116666666666667,
-      "perGram": 119.21052631578948,
-      "gramOk": true
-    },
-    "yieldServings": 19,
-    "newPer": {
       "cal": 378,
       "prot": 11.5,
       "carb": 25,
-      "fat": 26.8,
-      "grams": 119
+      "fat": 26.8
+    },
+    "calcTotal": {
+      "cal": 6131,
+      "prot": 94.4,
+      "carb": 785.2,
+      "fat": 313.8,
+      "grams": 1865
+    },
+    "coverage": 1,
+    "inference": {
+      "yields": 16,
+      "reason": "large-batch",
+      "ratio": 16.219576719576718,
+      "perGram": 116.5625,
+      "gramOk": true
+    },
+    "yieldServings": 16,
+    "newPer": {
+      "cal": 383,
+      "prot": 5.9,
+      "carb": 49.1,
+      "fat": 19.6,
+      "grams": 117
     },
     "servCheck": {
       "ok": true
@@ -3835,10 +3821,10 @@
     "name": "Künefe",
     "cat": "tatli",
     "stored": {
-      "cal": 457,
-      "prot": 8.3,
-      "carb": 64.7,
-      "fat": 19.1
+      "cal": 355,
+      "prot": 6.5,
+      "carb": 50.4,
+      "fat": 14.9
     },
     "calcTotal": {
       "cal": 3196,
@@ -3850,8 +3836,8 @@
     "coverage": 1,
     "inference": {
       "yields": 9,
-      "reason": "multi-portion",
-      "ratio": 6.993435448577681,
+      "reason": "large-batch",
+      "ratio": 9.002816901408451,
       "perGram": 125.66666666666667,
       "gramOk": true
     },
@@ -3873,10 +3859,10 @@
     "name": "Kazandibi",
     "cat": "tatli",
     "stored": {
-      "cal": 247,
-      "prot": 4.4,
-      "carb": 41,
-      "fat": 7.5
+      "cal": 197,
+      "prot": 3.5,
+      "carb": 32.8,
+      "fat": 6
     },
     "calcTotal": {
       "cal": 1974,
@@ -3887,19 +3873,19 @@
     },
     "coverage": 1,
     "inference": {
-      "yields": 10,
-      "reason": "multi-portion",
-      "ratio": 7.991902834008097,
-      "perGram": 134.5,
+      "yields": 11,
+      "reason": "large-batch",
+      "ratio": 10.02030456852792,
+      "perGram": 122.27272727272727,
       "gramOk": true
     },
-    "yieldServings": 10,
+    "yieldServings": 11,
     "newPer": {
-      "cal": 197,
-      "prot": 3.5,
-      "carb": 32.8,
-      "fat": 6,
-      "grams": 135
+      "cal": 179,
+      "prot": 3.2,
+      "carb": 29.8,
+      "fat": 5.5,
+      "grams": 122
     },
     "servCheck": {
       "ok": true
@@ -3911,10 +3897,10 @@
     "name": "Tavuk Göğsü Tatlısı",
     "cat": "tatli",
     "stored": {
-      "cal": 215,
-      "prot": 7.2,
-      "carb": 35.9,
-      "fat": 4.9
+      "cal": 172,
+      "prot": 5.8,
+      "carb": 28.7,
+      "fat": 3.9
     },
     "calcTotal": {
       "cal": 1719,
@@ -3925,19 +3911,19 @@
     },
     "coverage": 1,
     "inference": {
-      "yields": 10,
-      "reason": "multi-portion",
-      "ratio": 7.995348837209303,
-      "perGram": 137.6,
+      "yields": 11,
+      "reason": "large-batch",
+      "ratio": 9.994186046511627,
+      "perGram": 125.0909090909091,
       "gramOk": true
     },
-    "yieldServings": 10,
+    "yieldServings": 11,
     "newPer": {
-      "cal": 172,
-      "prot": 5.8,
-      "carb": 28.7,
-      "fat": 3.9,
-      "grams": 138
+      "cal": 156,
+      "prot": 5.2,
+      "carb": 26.1,
+      "fat": 3.6,
+      "grams": 125
     },
     "servCheck": {
       "ok": true
@@ -3949,10 +3935,10 @@
     "name": "Muhallebi",
     "cat": "tatli",
     "stored": {
-      "cal": 208,
-      "prot": 4.4,
-      "carb": 37.4,
-      "fat": 4.7
+      "cal": 166,
+      "prot": 3.5,
+      "carb": 29.9,
+      "fat": 3.8
     },
     "calcTotal": {
       "cal": 1662,
@@ -3963,19 +3949,19 @@
     },
     "coverage": 1,
     "inference": {
-      "yields": 10,
-      "reason": "multi-portion",
-      "ratio": 7.990384615384615,
-      "perGram": 129,
+      "yields": 11,
+      "reason": "large-batch",
+      "ratio": 10.012048192771084,
+      "perGram": 117.27272727272727,
       "gramOk": true
     },
-    "yieldServings": 10,
+    "yieldServings": 11,
     "newPer": {
-      "cal": 166,
-      "prot": 3.5,
-      "carb": 29.9,
-      "fat": 3.8,
-      "grams": 129
+      "cal": 151,
+      "prot": 3.2,
+      "carb": 27.2,
+      "fat": 3.4,
+      "grams": 117
     },
     "servCheck": {
       "ok": true
@@ -3987,10 +3973,10 @@
     "name": "Tulumba Tatlısı",
     "cat": "tatli",
     "stored": {
-      "cal": 380,
-      "prot": 4,
-      "carb": 54,
-      "fat": 18
+      "cal": 520,
+      "prot": 2.8,
+      "carb": 39.5,
+      "fat": 39.3
     },
     "calcTotal": {
       "cal": 7284,
@@ -4003,7 +3989,7 @@
     "inference": {
       "yields": 14,
       "reason": "large-batch",
-      "ratio": 19.16842105263158,
+      "ratio": 14.007692307692308,
       "perGram": 121.71428571428571,
       "gramOk": true
     },
@@ -4025,10 +4011,10 @@
     "name": "Lokma",
     "cat": "tatli",
     "stored": {
-      "cal": 280,
-      "prot": 3,
-      "carb": 42,
-      "fat": 12
+      "cal": 436,
+      "prot": 1.9,
+      "carb": 37,
+      "fat": 31.4
     },
     "calcTotal": {
       "cal": 6970,
@@ -4041,7 +4027,7 @@
     "inference": {
       "yields": 16,
       "reason": "large-batch",
-      "ratio": 24.892857142857142,
+      "ratio": 15.986238532110091,
       "perGram": 118.625,
       "gramOk": true
     },
@@ -4063,10 +4049,10 @@
     "name": "İrmik Helvası",
     "cat": "tatli",
     "stored": {
-      "cal": 326,
-      "prot": 5.2,
-      "carb": 56,
-      "fat": 9.5
+      "cal": 279,
+      "prot": 4.5,
+      "carb": 48,
+      "fat": 8.1
     },
     "calcTotal": {
       "cal": 1956,
@@ -4079,7 +4065,7 @@
     "inference": {
       "yields": 7,
       "reason": "multi-portion",
-      "ratio": 6,
+      "ratio": 7.010752688172043,
       "perGram": 119.71428571428571,
       "gramOk": true
     },
@@ -4175,10 +4161,10 @@
     "name": "Yeşil Mercimek Salatası",
     "cat": "salata",
     "stored": {
-      "cal": 222,
-      "prot": 10.8,
-      "carb": 31.7,
-      "fat": 6.3
+      "cal": 370,
+      "prot": 17.9,
+      "carb": 52.8,
+      "fat": 10.6
     },
     "calcTotal": {
       "cal": 1111,
@@ -4191,7 +4177,7 @@
     "inference": {
       "yields": 3,
       "reason": "multi-portion",
-      "ratio": 5.004504504504505,
+      "ratio": 3.002702702702703,
       "perGram": 256.3333333333333,
       "gramOk": true
     },
@@ -4219,25 +4205,25 @@
       "fat": 26
     },
     "calcTotal": {
-      "cal": 717,
-      "prot": 52,
-      "carb": 17.1,
-      "fat": 48.9,
-      "grams": 520
+      "cal": 618,
+      "prot": 39.9,
+      "carb": 49.4,
+      "fat": 29.5,
+      "grams": 480
     },
     "coverage": 1,
     "inference": {
       "yields": 1,
       "reason": "stored-ok",
-      "ratio": 1.49375
+      "ratio": 1.2875
     },
     "yieldServings": 1,
     "newPer": {
-      "cal": 717,
-      "prot": 52,
-      "carb": 17.1,
-      "fat": 48.9,
-      "grams": 520
+      "cal": 618,
+      "prot": 39.9,
+      "carb": 49.4,
+      "fat": 29.5,
+      "grams": 480
     },
     "servCheck": {
       "ok": false,
@@ -4246,7 +4232,7 @@
         200,
         450
       ],
-      "val": 520
+      "val": 480
     },
     "missing": []
   },
@@ -4255,33 +4241,33 @@
     "name": "Beyti Kebap",
     "cat": "klasik",
     "stored": {
-      "cal": 560,
-      "prot": 30,
-      "carb": 32,
-      "fat": 34
+      "cal": 510,
+      "prot": 28.2,
+      "carb": 5.7,
+      "fat": 41.7
     },
     "calcTotal": {
-      "cal": 1020,
-      "prot": 56.3,
-      "carb": 11.4,
-      "fat": 83.4,
-      "grams": 479
+      "cal": 914,
+      "prot": 44,
+      "carb": 42.4,
+      "fat": 63.9,
+      "grams": 439
     },
     "coverage": 1,
     "inference": {
       "yields": 2,
       "reason": "multi-portion",
-      "ratio": 1.8214285714285714,
-      "perGram": 239.5,
+      "ratio": 1.7921568627450981,
+      "perGram": 219.5,
       "gramOk": true
     },
     "yieldServings": 2,
     "newPer": {
-      "cal": 510,
-      "prot": 28.2,
-      "carb": 5.7,
-      "fat": 41.7,
-      "grams": 240
+      "cal": 457,
+      "prot": 22,
+      "carb": 21.2,
+      "fat": 32,
+      "grams": 220
     },
     "servCheck": {
       "ok": true
@@ -4293,10 +4279,10 @@
     "name": "Patlıcan Kebabı",
     "cat": "klasik",
     "stored": {
-      "cal": 419,
-      "prot": 21.8,
-      "carb": 37.9,
-      "fat": 22.3
+      "cal": 209,
+      "prot": 10.9,
+      "carb": 19,
+      "fat": 11.1
     },
     "calcTotal": {
       "cal": 837,
@@ -4309,7 +4295,7 @@
     "inference": {
       "yields": 4,
       "reason": "multi-portion",
-      "ratio": 1.9976133651551313,
+      "ratio": 4.0047846889952154,
       "perGram": 350.75,
       "gramOk": true
     },
@@ -4331,10 +4317,10 @@
     "name": "Testi Kebabı",
     "cat": "klasik",
     "stored": {
-      "cal": 432,
-      "prot": 24.9,
-      "carb": 33.4,
-      "fat": 23.3
+      "cal": 288,
+      "prot": 16.6,
+      "carb": 22.2,
+      "fat": 15.5
     },
     "calcTotal": {
       "cal": 864,
@@ -4347,7 +4333,7 @@
     "inference": {
       "yields": 3,
       "reason": "multi-portion",
-      "ratio": 2,
+      "ratio": 3,
       "perGram": 307,
       "gramOk": true
     },
@@ -4369,33 +4355,33 @@
     "name": "Çöp Şiş",
     "cat": "klasik",
     "stored": {
-      "cal": 380,
-      "prot": 34,
-      "carb": 8,
-      "fat": 24
-    },
-    "calcTotal": {
-      "cal": 886,
-      "prot": 55.5,
-      "carb": 18.2,
-      "fat": 66.4,
-      "grams": 454
-    },
-    "coverage": 1,
-    "inference": {
-      "yields": 2,
-      "reason": "multi-portion",
-      "ratio": 2.331578947368421,
-      "perGram": 227,
-      "gramOk": true
-    },
-    "yieldServings": 2,
-    "newPer": {
       "cal": 443,
       "prot": 27.8,
       "carb": 9.1,
-      "fat": 33.2,
-      "grams": 227
+      "fat": 33.2
+    },
+    "calcTotal": {
+      "cal": 780,
+      "prot": 43.2,
+      "carb": 49.2,
+      "fat": 46.9,
+      "grams": 414
+    },
+    "coverage": 1,
+    "inference": {
+      "yields": 1,
+      "reason": "multi-portion",
+      "ratio": 1.7607223476297968,
+      "perGram": 414,
+      "gramOk": true
+    },
+    "yieldServings": 1,
+    "newPer": {
+      "cal": 780,
+      "prot": 43.2,
+      "carb": 49.2,
+      "fat": 46.9,
+      "grams": 414
     },
     "servCheck": {
       "ok": true
@@ -4413,27 +4399,27 @@
       "fat": 14.4
     },
     "calcTotal": {
-      "cal": 1013,
-      "prot": 40.1,
-      "carb": 91.7,
+      "cal": 1002,
+      "prot": 39.8,
+      "carb": 89.3,
       "fat": 57.5,
-      "grams": 1384
+      "grams": 1381
     },
     "coverage": 1,
     "inference": {
       "yields": 4,
       "reason": "multi-portion",
-      "ratio": 4.003952569169961,
-      "perGram": 346,
+      "ratio": 3.960474308300395,
+      "perGram": 345.25,
       "gramOk": true
     },
     "yieldServings": 4,
     "newPer": {
-      "cal": 253,
+      "cal": 251,
       "prot": 10,
-      "carb": 22.9,
+      "carb": 22.3,
       "fat": 14.4,
-      "grams": 346
+      "grams": 345
     },
     "servCheck": {
       "ok": true
@@ -4451,26 +4437,26 @@
       "fat": 25.2
     },
     "calcTotal": {
-      "cal": 1200,
-      "prot": 50.6,
-      "carb": 82.6,
-      "fat": 75.6,
+      "cal": 1198,
+      "prot": 48,
+      "carb": 96.7,
+      "fat": 70.1,
       "grams": 1023
     },
     "coverage": 1,
     "inference": {
       "yields": 3,
       "reason": "multi-portion",
-      "ratio": 3,
+      "ratio": 2.995,
       "perGram": 341,
       "gramOk": true
     },
     "yieldServings": 3,
     "newPer": {
-      "cal": 400,
-      "prot": 16.9,
-      "carb": 27.5,
-      "fat": 25.2,
+      "cal": 399,
+      "prot": 16,
+      "carb": 32.2,
+      "fat": 23.4,
       "grams": 341
     },
     "servCheck": {
@@ -4483,42 +4469,36 @@
     "name": "Kadınbudu Köfte",
     "cat": "klasik",
     "stored": {
-      "cal": 428,
-      "prot": 7.5,
-      "carb": 9.1,
-      "fat": 40
-    },
-    "calcTotal": {
-      "cal": 2569,
-      "prot": 45,
-      "carb": 54.4,
-      "fat": 239.8,
-      "grams": 662
-    },
-    "coverage": 1,
-    "inference": {
-      "yields": 4,
-      "reason": "multi-portion",
-      "ratio": 6.002336448598131,
-      "perGram": 165.5,
-      "gramOk": false
-    },
-    "yieldServings": 4,
-    "newPer": {
       "cal": 642,
       "prot": 11.3,
       "carb": 13.6,
-      "fat": 60,
-      "grams": 166
+      "fat": 60
+    },
+    "calcTotal": {
+      "cal": 2562,
+      "prot": 44.9,
+      "carb": 52.8,
+      "fat": 239.8,
+      "grams": 660
+    },
+    "coverage": 1,
+    "inference": {
+      "yields": 2,
+      "reason": "multi-portion",
+      "ratio": 3.9906542056074765,
+      "perGram": 330,
+      "gramOk": true
+    },
+    "yieldServings": 2,
+    "newPer": {
+      "cal": 1281,
+      "prot": 22.5,
+      "carb": 26.4,
+      "fat": 119.9,
+      "grams": 330
     },
     "servCheck": {
-      "ok": false,
-      "reason": "too-light",
-      "range": [
-        200,
-        450
-      ],
-      "val": 166
+      "ok": true
     },
     "missing": []
   },
@@ -4533,26 +4513,26 @@
       "fat": 24.2
     },
     "calcTotal": {
-      "cal": 1654,
-      "prot": 99.3,
-      "carb": 94.9,
-      "fat": 96.7,
+      "cal": 1649,
+      "prot": 94.2,
+      "carb": 123.1,
+      "fat": 85.8,
       "grams": 1193
     },
     "coverage": 1,
     "inference": {
       "yields": 4,
       "reason": "multi-portion",
-      "ratio": 3.995169082125604,
+      "ratio": 3.9830917874396135,
       "perGram": 298.25,
       "gramOk": true
     },
     "yieldServings": 4,
     "newPer": {
-      "cal": 414,
-      "prot": 24.8,
-      "carb": 23.7,
-      "fat": 24.2,
+      "cal": 412,
+      "prot": 23.6,
+      "carb": 30.8,
+      "fat": 21.5,
       "grams": 298
     },
     "servCheck": {
@@ -4565,33 +4545,33 @@
     "name": "Sulu Köfte",
     "cat": "klasik",
     "stored": {
-      "cal": 387,
-      "prot": 16.1,
-      "carb": 39.6,
-      "fat": 18.7
+      "cal": 516,
+      "prot": 21.4,
+      "carb": 52.8,
+      "fat": 25
     },
     "calcTotal": {
-      "cal": 1549,
-      "prot": 64.3,
-      "carb": 158.3,
+      "cal": 1542,
+      "prot": 64.2,
+      "carb": 156.7,
       "fat": 74.9,
-      "grams": 899
+      "grams": 897
     },
     "coverage": 1,
     "inference": {
       "yields": 3,
       "reason": "multi-portion",
-      "ratio": 4.002583979328166,
-      "perGram": 299.6666666666667,
+      "ratio": 2.988372093023256,
+      "perGram": 299,
       "gramOk": true
     },
     "yieldServings": 3,
     "newPer": {
-      "cal": 516,
+      "cal": 514,
       "prot": 21.4,
-      "carb": 52.8,
+      "carb": 52.2,
       "fat": 25,
-      "grams": 300
+      "grams": 299
     },
     "servCheck": {
       "ok": true
@@ -4603,10 +4583,10 @@
     "name": "Etli Taze Fasulye",
     "cat": "sebze",
     "stored": {
-      "cal": 321,
-      "prot": 21.6,
-      "carb": 41.9,
-      "fat": 8.5
+      "cal": 535,
+      "prot": 36,
+      "carb": 69.8,
+      "fat": 14.1
     },
     "calcTotal": {
       "cal": 1605,
@@ -4619,7 +4599,7 @@
     "inference": {
       "yields": 3,
       "reason": "multi-portion",
-      "ratio": 5,
+      "ratio": 3,
       "perGram": 297,
       "gramOk": true
     },
@@ -4641,10 +4621,10 @@
     "name": "Tavuk Sote",
     "cat": "pratik",
     "stored": {
-      "cal": 256,
-      "prot": 27.7,
-      "carb": 17.8,
-      "fat": 9.2
+      "cal": 171,
+      "prot": 18.5,
+      "carb": 11.9,
+      "fat": 6.1
     },
     "calcTotal": {
       "cal": 512,
@@ -4657,7 +4637,7 @@
     "inference": {
       "yields": 3,
       "reason": "multi-portion",
-      "ratio": 2,
+      "ratio": 2.9941520467836256,
       "perGram": 269,
       "gramOk": true
     },
@@ -4679,10 +4659,10 @@
     "name": "Mercimekli Bulgur Pilavı",
     "cat": "vegan",
     "stored": {
-      "cal": 311,
-      "prot": 11.7,
-      "carb": 50.8,
-      "fat": 7.9
+      "cal": 414,
+      "prot": 15.6,
+      "carb": 67.7,
+      "fat": 10.5
     },
     "calcTotal": {
       "cal": 1242,
@@ -4695,7 +4675,7 @@
     "inference": {
       "yields": 3,
       "reason": "multi-portion",
-      "ratio": 3.9935691318327975,
+      "ratio": 3,
       "perGram": 319.3333333333333,
       "gramOk": true
     },
@@ -4717,33 +4697,33 @@
     "name": "Perde Pilavı",
     "cat": "klasik",
     "stored": {
-      "cal": 561,
-      "prot": 18.7,
-      "carb": 89.2,
-      "fat": 14.1
+      "cal": 1123,
+      "prot": 37.3,
+      "carb": 178.5,
+      "fat": 28.2
     },
     "calcTotal": {
-      "cal": 2245,
-      "prot": 74.6,
-      "carb": 356.9,
-      "fat": 56.4,
-      "grams": 716
+      "cal": 2209,
+      "prot": 73.9,
+      "carb": 349,
+      "fat": 56.3,
+      "grams": 706
     },
     "coverage": 1,
     "inference": {
       "yields": 2,
       "reason": "multi-portion",
-      "ratio": 4.001782531194296,
-      "perGram": 358,
+      "ratio": 1.9670525378450578,
+      "perGram": 353,
       "gramOk": true
     },
     "yieldServings": 2,
     "newPer": {
-      "cal": 1123,
-      "prot": 37.3,
-      "carb": 178.5,
+      "cal": 1105,
+      "prot": 37,
+      "carb": 174.5,
       "fat": 28.2,
-      "grams": 358
+      "grams": 353
     },
     "servCheck": {
       "ok": true
@@ -4761,27 +4741,27 @@
       "fat": 13.3
     },
     "calcTotal": {
-      "cal": 1219,
-      "prot": 34.9,
-      "carb": 180.9,
+      "cal": 1183,
+      "prot": 34.2,
+      "carb": 173,
       "fat": 39.8,
-      "grams": 940
+      "grams": 930
     },
     "coverage": 1,
     "inference": {
       "yields": 3,
       "reason": "multi-portion",
-      "ratio": 3.002463054187192,
-      "perGram": 313.3333333333333,
+      "ratio": 2.913793103448276,
+      "perGram": 310,
       "gramOk": true
     },
     "yieldServings": 3,
     "newPer": {
-      "cal": 406,
-      "prot": 11.6,
-      "carb": 60.3,
+      "cal": 394,
+      "prot": 11.4,
+      "carb": 57.7,
       "fat": 13.3,
-      "grams": 313
+      "grams": 310
     },
     "servCheck": {
       "ok": true
@@ -4799,25 +4779,25 @@
       "fat": 26
     },
     "calcTotal": {
-      "cal": 348,
-      "prot": 18.5,
-      "carb": 10.1,
+      "cal": 361,
+      "prot": 18.6,
+      "carb": 12.9,
       "fat": 26.1,
-      "grams": 285
+      "grams": 287
     },
     "coverage": 1,
     "inference": {
       "yields": 1,
       "reason": "stored-ok",
-      "ratio": 1.0235294117647058
+      "ratio": 1.061764705882353
     },
     "yieldServings": 1,
     "newPer": {
-      "cal": 348,
-      "prot": 18.5,
-      "carb": 10.1,
+      "cal": 361,
+      "prot": 18.6,
+      "carb": 12.9,
       "fat": 26.1,
-      "grams": 285
+      "grams": 287
     },
     "servCheck": {
       "ok": true
@@ -4901,33 +4881,33 @@
     "name": "Kol Böreği",
     "cat": "hamur",
     "stored": {
-      "cal": 310,
-      "prot": 10,
-      "carb": 32,
-      "fat": 16
-    },
-    "calcTotal": {
-      "cal": 2769,
-      "prot": 119.3,
-      "carb": 34.2,
-      "fat": 239,
-      "grams": 1091
-    },
-    "coverage": 1,
-    "inference": {
-      "yields": 5,
-      "reason": "large-batch",
-      "ratio": 8.932258064516128,
-      "perGram": 218.2,
-      "gramOk": true
-    },
-    "yieldServings": 5,
-    "newPer": {
       "cal": 554,
       "prot": 23.9,
       "carb": 6.8,
-      "fat": 47.8,
-      "grams": 218
+      "fat": 47.8
+    },
+    "calcTotal": {
+      "cal": 2346,
+      "prot": 70,
+      "carb": 158.2,
+      "fat": 161.2,
+      "grams": 931
+    },
+    "coverage": 1,
+    "inference": {
+      "yields": 4,
+      "reason": "multi-portion",
+      "ratio": 4.234657039711191,
+      "perGram": 232.75,
+      "gramOk": true
+    },
+    "yieldServings": 4,
+    "newPer": {
+      "cal": 587,
+      "prot": 17.5,
+      "carb": 39.6,
+      "fat": 40.3,
+      "grams": 233
     },
     "servCheck": {
       "ok": true
@@ -4939,10 +4919,10 @@
     "name": "Talaş Böreği",
     "cat": "hamur",
     "stored": {
-      "cal": 420,
-      "prot": 18,
-      "carb": 30,
-      "fat": 26
+      "cal": 902,
+      "prot": 19.2,
+      "carb": 67.4,
+      "fat": 61.7
     },
     "calcTotal": {
       "cal": 6316,
@@ -4954,8 +4934,8 @@
     "coverage": 1,
     "inference": {
       "yields": 7,
-      "reason": "large-batch",
-      "ratio": 15.038095238095238,
+      "reason": "multi-portion",
+      "ratio": 7.0022172949002215,
       "perGram": 228,
       "gramOk": true
     },
@@ -4977,33 +4957,33 @@
     "name": "Patatesli Börek",
     "cat": "hamur",
     "stored": {
-      "cal": 260,
-      "prot": 7,
-      "carb": 32,
-      "fat": 12
+      "cal": 467,
+      "prot": 15.4,
+      "carb": 22.1,
+      "fat": 35.4
     },
     "calcTotal": {
-      "cal": 2334,
-      "prot": 76.8,
-      "carb": 110.6,
-      "fat": 177.1,
-      "grams": 1259
+      "cal": 2017,
+      "prot": 39.8,
+      "carb": 203.6,
+      "fat": 118.7,
+      "grams": 1139
     },
     "coverage": 1,
     "inference": {
       "yields": 5,
-      "reason": "large-batch",
-      "ratio": 8.976923076923077,
-      "perGram": 251.8,
+      "reason": "multi-portion",
+      "ratio": 4.319057815845825,
+      "perGram": 227.8,
       "gramOk": true
     },
     "yieldServings": 5,
     "newPer": {
-      "cal": 467,
-      "prot": 15.4,
-      "carb": 22.1,
-      "fat": 35.4,
-      "grams": 252
+      "cal": 403,
+      "prot": 8,
+      "carb": 40.7,
+      "fat": 23.7,
+      "grams": 228
     },
     "servCheck": {
       "ok": true
@@ -5015,33 +4995,33 @@
     "name": "Kıymalı Börek",
     "cat": "hamur",
     "stored": {
-      "cal": 290,
-      "prot": 12,
-      "carb": 28,
-      "fat": 15
-    },
-    "calcTotal": {
-      "cal": 2518,
-      "prot": 103.7,
-      "carb": 35.3,
-      "fat": 217.2,
-      "grams": 1086
-    },
-    "coverage": 1,
-    "inference": {
-      "yields": 5,
-      "reason": "large-batch",
-      "ratio": 8.682758620689656,
-      "perGram": 217.2,
-      "gramOk": true
-    },
-    "yieldServings": 5,
-    "newPer": {
       "cal": 504,
       "prot": 20.7,
       "carb": 7.1,
-      "fat": 43.4,
-      "grams": 217
+      "fat": 43.4
+    },
+    "calcTotal": {
+      "cal": 2201,
+      "prot": 66.7,
+      "carb": 128.3,
+      "fat": 158.9,
+      "grams": 966
+    },
+    "coverage": 1,
+    "inference": {
+      "yields": 4,
+      "reason": "multi-portion",
+      "ratio": 4.367063492063492,
+      "perGram": 241.5,
+      "gramOk": true
+    },
+    "yieldServings": 4,
+    "newPer": {
+      "cal": 550,
+      "prot": 16.7,
+      "carb": 32.1,
+      "fat": 39.7,
+      "grams": 242
     },
     "servCheck": {
       "ok": true
@@ -5053,32 +5033,32 @@
     "name": "Kuşbaşılı Pide",
     "cat": "hamur",
     "stored": {
-      "cal": 464,
-      "prot": 14.2,
-      "carb": 32.1,
-      "fat": 31.1
+      "cal": 618,
+      "prot": 19,
+      "carb": 42.8,
+      "fat": 41.4
     },
     "calcTotal": {
-      "cal": 1854,
-      "prot": 56.9,
-      "carb": 128.4,
-      "fat": 124.2,
+      "cal": 1146,
+      "prot": 61.4,
+      "carb": 154.9,
+      "fat": 30.9,
       "grams": 687
     },
     "coverage": 1,
     "inference": {
       "yields": 3,
       "reason": "multi-portion",
-      "ratio": 3.9956896551724137,
+      "ratio": 1.854368932038835,
       "perGram": 229,
       "gramOk": true
     },
     "yieldServings": 3,
     "newPer": {
-      "cal": 618,
-      "prot": 19,
-      "carb": 42.8,
-      "fat": 41.4,
+      "cal": 382,
+      "prot": 20.5,
+      "carb": 51.6,
+      "fat": 10.3,
       "grams": 229
     },
     "servCheck": {
@@ -5091,33 +5071,33 @@
     "name": "Kaşarlı Pide",
     "cat": "hamur",
     "stored": {
-      "cal": 416,
-      "prot": 12.2,
-      "carb": 23.2,
-      "fat": 30.4
+      "cal": 693,
+      "prot": 20.3,
+      "carb": 38.6,
+      "fat": 50.7
     },
     "calcTotal": {
-      "cal": 2080,
-      "prot": 60.9,
-      "carb": 115.9,
-      "fat": 152.2,
+      "cal": 1372,
+      "prot": 65.4,
+      "carb": 142.4,
+      "fat": 58.9,
       "grams": 472
     },
     "coverage": 1,
     "inference": {
-      "yields": 3,
+      "yields": 2,
       "reason": "multi-portion",
-      "ratio": 5,
-      "perGram": 157.33333333333334,
+      "ratio": 1.97979797979798,
+      "perGram": 236,
       "gramOk": true
     },
-    "yieldServings": 3,
+    "yieldServings": 2,
     "newPer": {
-      "cal": 693,
-      "prot": 20.3,
-      "carb": 38.6,
-      "fat": 50.7,
-      "grams": 157
+      "cal": 686,
+      "prot": 32.7,
+      "carb": 71.2,
+      "fat": 29.5,
+      "grams": 236
     },
     "servCheck": {
       "ok": true
@@ -5129,33 +5109,33 @@
     "name": "Ramazan Pidesi",
     "cat": "hamur",
     "stored": {
-      "cal": 291,
-      "prot": 8.8,
-      "carb": 56.9,
-      "fat": 2.9
-    },
-    "calcTotal": {
-      "cal": 2040,
-      "prot": 61.4,
-      "carb": 398.3,
-      "fat": 20.2,
-      "grams": 904
-    },
-    "coverage": 1,
-    "inference": {
-      "yields": 5,
-      "reason": "multi-portion",
-      "ratio": 7.010309278350515,
-      "perGram": 180.8,
-      "gramOk": true
-    },
-    "yieldServings": 5,
-    "newPer": {
       "cal": 408,
       "prot": 12.3,
       "carb": 79.7,
-      "fat": 4,
-      "grams": 181
+      "fat": 4
+    },
+    "calcTotal": {
+      "cal": 2021,
+      "prot": 61.6,
+      "carb": 402.5,
+      "fat": 16.3,
+      "grams": 906
+    },
+    "coverage": 1,
+    "inference": {
+      "yields": 4,
+      "reason": "multi-portion",
+      "ratio": 4.953431372549019,
+      "perGram": 226.5,
+      "gramOk": true
+    },
+    "yieldServings": 4,
+    "newPer": {
+      "cal": 505,
+      "prot": 15.4,
+      "carb": 100.6,
+      "fat": 4.1,
+      "grams": 227
     },
     "servCheck": {
       "ok": true
@@ -5167,32 +5147,32 @@
     "name": "Etli Ekmek (Konya)",
     "cat": "hamur",
     "stored": {
-      "cal": 463,
-      "prot": 11.7,
-      "carb": 32.4,
-      "fat": 31.8
+      "cal": 617,
+      "prot": 15.6,
+      "carb": 43.1,
+      "fat": 42.4
     },
     "calcTotal": {
-      "cal": 1852,
-      "prot": 46.9,
-      "carb": 129.4,
-      "fat": 127.1,
+      "cal": 1145,
+      "prot": 51.4,
+      "carb": 155.9,
+      "fat": 33.8,
       "grams": 665
     },
     "coverage": 1,
     "inference": {
       "yields": 3,
       "reason": "multi-portion",
-      "ratio": 4,
+      "ratio": 1.8557536466774716,
       "perGram": 221.66666666666666,
       "gramOk": true
     },
     "yieldServings": 3,
     "newPer": {
-      "cal": 617,
-      "prot": 15.6,
-      "carb": 43.1,
-      "fat": 42.4,
+      "cal": 382,
+      "prot": 17.1,
+      "carb": 52,
+      "fat": 11.3,
       "grams": 222
     },
     "servCheck": {
@@ -5243,10 +5223,10 @@
     "name": "Cacık",
     "cat": "meze",
     "stored": {
-      "cal": 96,
-      "prot": 4.1,
-      "carb": 7.6,
-      "fat": 5.9
+      "cal": 64,
+      "prot": 2.7,
+      "carb": 5.1,
+      "fat": 3.9
     },
     "calcTotal": {
       "cal": 192,
@@ -5259,7 +5239,7 @@
     "inference": {
       "yields": 3,
       "reason": "multi-portion",
-      "ratio": 2,
+      "ratio": 3,
       "perGram": 145,
       "gramOk": true
     },
@@ -5281,10 +5261,10 @@
     "name": "Fava",
     "cat": "meze",
     "stored": {
-      "cal": 247,
-      "prot": 10.8,
-      "carb": 27.8,
-      "fat": 11.3
+      "cal": 329,
+      "prot": 14.3,
+      "carb": 37,
+      "fat": 15
     },
     "calcTotal": {
       "cal": 988,
@@ -5297,7 +5277,7 @@
     "inference": {
       "yields": 3,
       "reason": "multi-portion",
-      "ratio": 4,
+      "ratio": 3.0030395136778116,
       "perGram": 142.33333333333334,
       "gramOk": true
     },
@@ -5319,10 +5299,10 @@
     "name": "Tabule",
     "cat": "salata",
     "stored": {
-      "cal": 201,
-      "prot": 5.9,
-      "carb": 33.3,
-      "fat": 6.4
+      "cal": 335,
+      "prot": 9.7,
+      "carb": 55.5,
+      "fat": 10.7
     },
     "calcTotal": {
       "cal": 1006,
@@ -5335,7 +5315,7 @@
     "inference": {
       "yields": 3,
       "reason": "multi-portion",
-      "ratio": 5.0049751243781095,
+      "ratio": 3.002985074626866,
       "perGram": 250,
       "gramOk": true
     },
@@ -5357,33 +5337,33 @@
     "name": "Zerde",
     "cat": "tatli",
     "stored": {
-      "cal": 195,
-      "prot": 1.9,
-      "carb": 43,
-      "fat": 2.2
-    },
-    "calcTotal": {
-      "cal": 1367,
-      "prot": 13.6,
-      "carb": 300.8,
-      "fat": 15.4,
-      "grams": 1152
-    },
-    "coverage": 1,
-    "inference": {
-      "yields": 9,
-      "reason": "multi-portion",
-      "ratio": 7.01025641025641,
-      "perGram": 128,
-      "gramOk": true
-    },
-    "yieldServings": 9,
-    "newPer": {
       "cal": 152,
       "prot": 1.5,
       "carb": 33.4,
-      "fat": 1.7,
-      "grams": 128
+      "fat": 1.7
+    },
+    "calcTotal": {
+      "cal": 1367,
+      "prot": 13.3,
+      "carb": 301.3,
+      "fat": 15.3,
+      "grams": 1148
+    },
+    "coverage": 1,
+    "inference": {
+      "yields": 10,
+      "reason": "large-batch",
+      "ratio": 8.993421052631579,
+      "perGram": 114.8,
+      "gramOk": true
+    },
+    "yieldServings": 10,
+    "newPer": {
+      "cal": 137,
+      "prot": 1.3,
+      "carb": 30.1,
+      "fat": 1.5,
+      "grams": 115
     },
     "servCheck": {
       "ok": true
@@ -5395,10 +5375,10 @@
     "name": "Un Kurabiyesi",
     "cat": "tatli",
     "stored": {
-      "cal": 120,
-      "prot": 2,
-      "carb": 14,
-      "fat": 7
+      "cal": 620,
+      "prot": 6.6,
+      "carb": 72.3,
+      "fat": 34.5
     },
     "calcTotal": {
       "cal": 3718,
@@ -5410,8 +5390,8 @@
     "coverage": 1,
     "inference": {
       "yields": 6,
-      "reason": "large-batch",
-      "ratio": 30.983333333333334,
+      "reason": "multi-portion",
+      "ratio": 5.996774193548387,
       "perGram": 128.16666666666666,
       "gramOk": true
     },
@@ -5433,10 +5413,10 @@
     "name": "Cevizli Kurabiye",
     "cat": "tatli",
     "stored": {
-      "cal": 150,
-      "prot": 3,
-      "carb": 16,
-      "fat": 9
+      "cal": 588,
+      "prot": 9.8,
+      "carb": 54.7,
+      "fat": 38.3
     },
     "calcTotal": {
       "cal": 4704,
@@ -5448,8 +5428,8 @@
     "coverage": 1,
     "inference": {
       "yields": 8,
-      "reason": "large-batch",
-      "ratio": 31.36,
+      "reason": "multi-portion",
+      "ratio": 8,
       "perGram": 120.375,
       "gramOk": true
     },
@@ -5471,33 +5451,33 @@
     "name": "Katmer (Antep)",
     "cat": "tatli",
     "stored": {
-      "cal": 464,
-      "prot": 15,
-      "carb": 37.1,
-      "fat": 29.7
-    },
-    "calcTotal": {
-      "cal": 1854,
-      "prot": 60,
-      "carb": 148.5,
-      "fat": 118.8,
-      "grams": 393
-    },
-    "coverage": 1,
-    "inference": {
-      "yields": 3,
-      "reason": "multi-portion",
-      "ratio": 3.9956896551724137,
-      "perGram": 131,
-      "gramOk": true
-    },
-    "yieldServings": 3,
-    "newPer": {
       "cal": 618,
       "prot": 20,
       "carb": 49.5,
-      "fat": 39.6,
-      "grams": 131
+      "fat": 39.6
+    },
+    "calcTotal": {
+      "cal": 1351,
+      "prot": 12.3,
+      "carb": 69.1,
+      "fat": 117.1,
+      "grams": 253
+    },
+    "coverage": 1,
+    "inference": {
+      "yields": 2,
+      "reason": "multi-portion",
+      "ratio": 2.186084142394822,
+      "perGram": 126.5,
+      "gramOk": true
+    },
+    "yieldServings": 2,
+    "newPer": {
+      "cal": 676,
+      "prot": 6.2,
+      "carb": 34.6,
+      "fat": 58.6,
+      "grams": 127
     },
     "servCheck": {
       "ok": true
@@ -5509,10 +5489,10 @@
     "name": "Çiğ Köfte (Sade)",
     "cat": "meze",
     "stored": {
-      "cal": 219,
-      "prot": 5.9,
-      "carb": 37.2,
-      "fat": 6.5
+      "cal": 273,
+      "prot": 7.4,
+      "carb": 46.5,
+      "fat": 8.2
     },
     "calcTotal": {
       "cal": 1093,
@@ -5525,7 +5505,7 @@
     "inference": {
       "yields": 4,
       "reason": "multi-portion",
-      "ratio": 4.9908675799086755,
+      "ratio": 4.003663003663004,
       "perGram": 133,
       "gramOk": true
     },
@@ -5697,10 +5677,10 @@
     "name": "Tavuklu Quinoa Bowl",
     "cat": "fit",
     "stored": {
-      "cal": 314,
-      "prot": 18.9,
-      "carb": 34.4,
-      "fat": 12.8
+      "cal": 236,
+      "prot": 14.2,
+      "carb": 25.8,
+      "fat": 9.6
     },
     "calcTotal": {
       "cal": 943,
@@ -5713,7 +5693,7 @@
     "inference": {
       "yields": 4,
       "reason": "multi-portion",
-      "ratio": 3.0031847133757963,
+      "ratio": 3.9957627118644066,
       "perGram": 297.25,
       "gramOk": true
     },
@@ -5779,42 +5759,40 @@
       "fat": 6
     },
     "calcTotal": {
-      "cal": 321,
-      "prot": 12.8,
-      "carb": 43.5,
+      "cal": 331,
+      "prot": 13,
+      "carb": 46.1,
       "fat": 12.1,
-      "grams": 342
+      "grams": 360
     },
-    "coverage": 0.8571428571428571,
+    "coverage": 1,
     "inference": {
       "yields": 1,
       "reason": "stored-ok",
-      "ratio": 0.9441176470588235
+      "ratio": 0.9735294117647059
     },
     "yieldServings": 1,
     "newPer": {
-      "cal": 321,
-      "prot": 12.8,
-      "carb": 43.5,
+      "cal": 331,
+      "prot": 13,
+      "carb": 46.1,
       "fat": 12.1,
-      "grams": 342
+      "grams": 360
     },
     "servCheck": {
       "ok": true
     },
-    "missing": [
-      "Yaban mersini"
-    ]
+    "missing": []
   },
   {
     "id": "r_fit_levrek",
     "name": "Fırında Levrek",
     "cat": "fit",
     "stored": {
-      "cal": 240,
-      "prot": 32,
-      "carb": 4,
-      "fat": 11
+      "cal": 275,
+      "prot": 37.8,
+      "carb": 5.2,
+      "fat": 12.2
     },
     "calcTotal": {
       "cal": 549,
@@ -5827,7 +5805,7 @@
     "inference": {
       "yields": 2,
       "reason": "multi-portion",
-      "ratio": 2.2875,
+      "ratio": 1.9963636363636363,
       "perGram": 253,
       "gramOk": true
     },
@@ -5935,25 +5913,25 @@
       "fat": 14
     },
     "calcTotal": {
-      "cal": 669,
-      "prot": 49.9,
-      "carb": 74.9,
-      "fat": 20.7,
-      "grams": 500
+      "cal": 674,
+      "prot": 50.4,
+      "carb": 75.8,
+      "fat": 20.8,
+      "grams": 525
     },
-    "coverage": 0.875,
+    "coverage": 1,
     "inference": {
       "yields": 1,
       "reason": "stored-ok",
-      "ratio": 1.4543478260869565
+      "ratio": 1.4652173913043478
     },
     "yieldServings": 1,
     "newPer": {
-      "cal": 669,
-      "prot": 49.9,
-      "carb": 74.9,
-      "fat": 20.7,
-      "grams": 500
+      "cal": 674,
+      "prot": 50.4,
+      "carb": 75.8,
+      "fat": 20.8,
+      "grams": 525
     },
     "servCheck": {
       "ok": false,
@@ -5962,44 +5940,42 @@
         200,
         450
       ],
-      "val": 500
+      "val": 525
     },
-    "missing": [
-      "Karışık yeşillik"
-    ]
+    "missing": []
   },
   {
     "id": "r_fit_kabak_dolma",
     "name": "Tavuklu Kabak Dolması (Fit)",
     "cat": "fit",
     "stored": {
-      "cal": 240,
-      "prot": 24,
-      "carb": 18,
-      "fat": 8
-    },
-    "calcTotal": {
-      "cal": 3122,
-      "prot": 94.5,
-      "carb": 745.7,
-      "fat": 18,
-      "grams": 6401
-    },
-    "coverage": 1,
-    "inference": {
-      "yields": 20,
-      "reason": "large-batch",
-      "ratio": 13.008333333333333,
-      "perGram": 320.05,
-      "gramOk": true
-    },
-    "yieldServings": 20,
-    "newPer": {
       "cal": 156,
       "prot": 4.7,
       "carb": 37.3,
-      "fat": 0.9,
-      "grams": 320
+      "fat": 0.9
+    },
+    "calcTotal": {
+      "cal": 395,
+      "prot": 39.8,
+      "carb": 34.3,
+      "fat": 13.7,
+      "grams": 1007
+    },
+    "coverage": 1,
+    "inference": {
+      "yields": 3,
+      "reason": "multi-portion",
+      "ratio": 2.532051282051282,
+      "perGram": 335.6666666666667,
+      "gramOk": true
+    },
+    "yieldServings": 3,
+    "newPer": {
+      "cal": 132,
+      "prot": 13.3,
+      "carb": 11.4,
+      "fat": 4.6,
+      "grams": 336
     },
     "servCheck": {
       "ok": true
@@ -6059,21 +6035,26 @@
       "prot": 17,
       "carb": 53.7,
       "fat": 13.3,
-      "grams": 406
+      "grams": 410
     },
-    "coverage": 0.8333333333333334,
+    "coverage": 1,
     "inference": {
-      "yields": null,
-      "reason": "low-coverage"
+      "yields": 1,
+      "reason": "stored-ok",
+      "ratio": 1.3928571428571428
     },
-    "yieldServings": null,
-    "newPer": null,
+    "yieldServings": 1,
+    "newPer": {
+      "cal": 390,
+      "prot": 17,
+      "carb": 53.7,
+      "fat": 13.3,
+      "grams": 410
+    },
     "servCheck": {
       "ok": true
     },
-    "missing": [
-      "Buz"
-    ]
+    "missing": []
   },
   {
     "id": "r_fit_yulaf_pancake",
@@ -6124,27 +6105,25 @@
       "fat": 5.6
     },
     "calcTotal": {
-      "cal": 545,
-      "prot": 33.2,
-      "carb": 85.6,
-      "fat": 11.1,
-      "grams": 380
+      "cal": 371,
+      "prot": 25.1,
+      "carb": 46.6,
+      "fat": 10.7,
+      "grams": 340
     },
     "coverage": 1,
     "inference": {
       "yields": 1,
-      "reason": "multi-portion",
-      "ratio": 1.9963369963369964,
-      "perGram": 380,
-      "gramOk": true
+      "reason": "stored-ok",
+      "ratio": 1.358974358974359
     },
     "yieldServings": 1,
     "newPer": {
-      "cal": 545,
-      "prot": 33.2,
-      "carb": 85.6,
-      "fat": 11.1,
-      "grams": 380
+      "cal": 371,
+      "prot": 25.1,
+      "carb": 46.6,
+      "fat": 10.7,
+      "grams": 340
     },
     "servCheck": {
       "ok": true
@@ -6156,10 +6135,10 @@
     "name": "Karnabahar Bazlı Pizza",
     "cat": "fit",
     "stored": {
-      "cal": 280,
-      "prot": 18,
-      "carb": 18,
-      "fat": 14
+      "cal": 125,
+      "prot": 8.8,
+      "carb": 11.8,
+      "fat": 5.8
     },
     "calcTotal": {
       "cal": 499,
@@ -6172,7 +6151,7 @@
     "inference": {
       "yields": 4,
       "reason": "multi-portion",
-      "ratio": 1.7821428571428573,
+      "ratio": 3.992,
       "perGram": 285.25,
       "gramOk": true
     },
@@ -6232,33 +6211,33 @@
     "name": "Kabak Spagetti",
     "cat": "fit",
     "stored": {
-      "cal": 220,
-      "prot": 20,
-      "carb": 14,
-      "fat": 11
-    },
-    "calcTotal": {
-      "cal": 2180,
-      "prot": 64.6,
-      "carb": 486.2,
-      "fat": 28.2,
-      "grams": 4462
-    },
-    "coverage": 1,
-    "inference": {
-      "yields": 14,
-      "reason": "large-batch",
-      "ratio": 9.909090909090908,
-      "perGram": 318.7142857142857,
-      "gramOk": true
-    },
-    "yieldServings": 14,
-    "newPer": {
       "cal": 156,
       "prot": 4.6,
       "carb": 34.7,
-      "fat": 2,
-      "grams": 319
+      "fat": 2
+    },
+    "calcTotal": {
+      "cal": 448,
+      "prot": 29.4,
+      "carb": 31.1,
+      "fat": 25.5,
+      "grams": 862
+    },
+    "coverage": 1,
+    "inference": {
+      "yields": 3,
+      "reason": "multi-portion",
+      "ratio": 2.871794871794872,
+      "perGram": 287.3333333333333,
+      "gramOk": true
+    },
+    "yieldServings": 3,
+    "newPer": {
+      "cal": 149,
+      "prot": 9.8,
+      "carb": 10.4,
+      "fat": 8.5,
+      "grams": 287
     },
     "servCheck": {
       "ok": true
@@ -6308,33 +6287,33 @@
     "name": "Nohut Curry",
     "cat": "vegan",
     "stored": {
-      "cal": 376,
-      "prot": 17.7,
-      "carb": 56.2,
-      "fat": 10.3
+      "cal": 501,
+      "prot": 23.5,
+      "carb": 74.9,
+      "fat": 13.7
     },
     "calcTotal": {
-      "cal": 1502,
-      "prot": 70.6,
-      "carb": 224.7,
-      "fat": 41.1,
-      "grams": 954
+      "cal": 2688,
+      "prot": 77.8,
+      "carb": 262.2,
+      "fat": 162.7,
+      "grams": 948
     },
     "coverage": 1,
     "inference": {
       "yields": 3,
       "reason": "multi-portion",
-      "ratio": 3.99468085106383,
-      "perGram": 318,
+      "ratio": 5.365269461077844,
+      "perGram": 316,
       "gramOk": true
     },
     "yieldServings": 3,
     "newPer": {
-      "cal": 501,
-      "prot": 23.5,
-      "carb": 74.9,
-      "fat": 13.7,
-      "grams": 318
+      "cal": 896,
+      "prot": 25.9,
+      "carb": 87.4,
+      "fat": 54.2,
+      "grams": 316
     },
     "servCheck": {
       "ok": true
@@ -6346,33 +6325,33 @@
     "name": "Mercimek Köri",
     "cat": "vegan",
     "stored": {
-      "cal": 299,
-      "prot": 19,
-      "carb": 48.5,
-      "fat": 3.5
+      "cal": 225,
+      "prot": 14.3,
+      "carb": 36.4,
+      "fat": 2.6
     },
     "calcTotal": {
-      "cal": 898,
-      "prot": 57.1,
-      "carb": 145.6,
-      "fat": 10.5,
-      "grams": 1279
+      "cal": 2085,
+      "prot": 64.3,
+      "carb": 183.1,
+      "fat": 132,
+      "grams": 1273
     },
     "coverage": 1,
     "inference": {
       "yields": 4,
-      "reason": "multi-portion",
-      "ratio": 3.0033444816053514,
-      "perGram": 319.75,
+      "reason": "large-batch",
+      "ratio": 9.266666666666667,
+      "perGram": 318.25,
       "gramOk": true
     },
     "yieldServings": 4,
     "newPer": {
-      "cal": 225,
-      "prot": 14.3,
-      "carb": 36.4,
-      "fat": 2.6,
-      "grams": 320
+      "cal": 521,
+      "prot": 16.1,
+      "carb": 45.8,
+      "fat": 33,
+      "grams": 318
     },
     "servCheck": {
       "ok": true
@@ -6384,33 +6363,33 @@
     "name": "Patlıcanlı Humus Bowl",
     "cat": "vegan",
     "stored": {
-      "cal": 340,
-      "prot": 12,
-      "carb": 38,
-      "fat": 18
+      "cal": 201,
+      "prot": 9.3,
+      "carb": 20.7,
+      "fat": 10.2
     },
     "calcTotal": {
-      "cal": 805,
-      "prot": 37.1,
-      "carb": 82.7,
-      "fat": 40.7,
-      "grams": 1214
+      "cal": 698,
+      "prot": 25.1,
+      "carb": 114.2,
+      "fat": 19.9,
+      "grams": 1174
     },
     "coverage": 1,
     "inference": {
       "yields": 4,
       "reason": "multi-portion",
-      "ratio": 2.3676470588235294,
-      "perGram": 303.5,
+      "ratio": 3.472636815920398,
+      "perGram": 293.5,
       "gramOk": true
     },
     "yieldServings": 4,
     "newPer": {
-      "cal": 201,
-      "prot": 9.3,
-      "carb": 20.7,
-      "fat": 10.2,
-      "grams": 304
+      "cal": 175,
+      "prot": 6.3,
+      "carb": 28.6,
+      "fat": 5,
+      "grams": 294
     },
     "servCheck": {
       "ok": true
@@ -6466,30 +6445,34 @@
       "fat": 7.7
     },
     "calcTotal": {
-      "cal": 262,
-      "prot": 9,
-      "carb": 28.5,
-      "fat": 15.3,
-      "grams": 501
+      "cal": 174,
+      "prot": 2.3,
+      "carb": 11.1,
+      "fat": 14.3,
+      "grams": 151
     },
     "coverage": 1,
     "inference": {
-      "yields": 2,
-      "reason": "multi-portion",
-      "ratio": 2,
-      "perGram": 250.5,
-      "gramOk": true
+      "yields": 1,
+      "reason": "stored-ok",
+      "ratio": 1.3282442748091603
     },
-    "yieldServings": 2,
+    "yieldServings": 1,
     "newPer": {
-      "cal": 131,
-      "prot": 4.5,
-      "carb": 14.3,
-      "fat": 7.7,
-      "grams": 251
+      "cal": 174,
+      "prot": 2.3,
+      "carb": 11.1,
+      "fat": 14.3,
+      "grams": 151
     },
     "servCheck": {
-      "ok": true
+      "ok": false,
+      "reason": "too-light",
+      "range": [
+        200,
+        450
+      ],
+      "val": 151
     },
     "missing": []
   },
@@ -6504,83 +6487,78 @@
       "fat": 16
     },
     "calcTotal": {
-      "cal": 154,
-      "prot": 7.4,
-      "carb": 21.2,
-      "fat": 6,
-      "grams": 259
+      "cal": 413,
+      "prot": 37.9,
+      "carb": 26.3,
+      "fat": 21.6,
+      "grams": 439
     },
-    "coverage": 0.875,
+    "coverage": 1,
     "inference": {
       "yields": 1,
-      "reason": "stored-too-high",
-      "ratio": 0.55,
-      "flag": true
+      "reason": "stored-ok",
+      "ratio": 1.475
     },
     "yieldServings": 1,
     "newPer": {
-      "cal": 154,
-      "prot": 7.4,
-      "carb": 21.2,
-      "fat": 6,
-      "grams": 259
+      "cal": 413,
+      "prot": 37.9,
+      "carb": 26.3,
+      "fat": 21.6,
+      "grams": 439
     },
     "servCheck": {
       "ok": true
     },
-    "missing": [
-      "Sert tofu"
-    ]
+    "missing": []
   },
   {
     "id": "r_vegan_buda_bowl",
     "name": "Vegan Buda Bowl",
     "cat": "vegan",
     "stored": {
-      "cal": 372,
-      "prot": 13.2,
-      "carb": 56.8,
-      "fat": 11.5
+      "cal": 558,
+      "prot": 19.9,
+      "carb": 85.3,
+      "fat": 17.3
     },
     "calcTotal": {
-      "cal": 1116,
-      "prot": 39.7,
-      "carb": 170.5,
-      "fat": 34.5,
-      "grams": 546
+      "cal": 1122,
+      "prot": 40.2,
+      "carb": 171.4,
+      "fat": 34.6,
+      "grams": 571
     },
-    "coverage": 0.875,
+    "coverage": 1,
     "inference": {
       "yields": 2,
       "reason": "multi-portion",
-      "ratio": 3,
-      "perGram": 273,
+      "ratio": 2.010752688172043,
+      "perGram": 285.5,
       "gramOk": true
     },
     "yieldServings": 2,
     "newPer": {
-      "cal": 558,
-      "prot": 19.9,
-      "carb": 85.3,
+      "cal": 561,
+      "prot": 20.1,
+      "carb": 85.7,
       "fat": 17.3,
-      "grams": 273
+      "grams": 286
     },
     "servCheck": {
       "ok": true
     },
-    "missing": [
-      "Karışık yeşillik"
-    ]
+    "missing": []
   },
   {
     "id": "r_vegan_burger",
     "name": "Vegan Mercimek Burger",
     "cat": "vegan",
     "stored": {
-      "cal": 413,
-      "prot": 22.1,
-      "carb": 73.2,
-      "fat": 4.7
+      "cal": 617,
+      "prot": 33,
+      "carb": 109.2,
+      "fat": 7
     },
     "calcTotal": {
       "cal": 1234,
@@ -6593,7 +6571,7 @@
     "inference": {
       "yields": 2,
       "reason": "multi-portion",
-      "ratio": 2.9878934624697338,
+      "ratio": 2,
       "perGram": 244,
       "gramOk": true
     },
@@ -6653,33 +6631,33 @@
     "name": "Sebzeli Vegan Dürüm",
     "cat": "vegan",
     "stored": {
-      "cal": 380,
-      "prot": 12,
-      "carb": 52,
-      "fat": 14
+      "cal": 847,
+      "prot": 40.8,
+      "carb": 145.4,
+      "fat": 15.3
     },
     "calcTotal": {
-      "cal": 1693,
-      "prot": 81.5,
-      "carb": 290.7,
-      "fat": 30.5,
-      "grams": 702
+      "cal": 1519,
+      "prot": 73.5,
+      "carb": 251.7,
+      "fat": 30.1,
+      "grams": 662
     },
     "coverage": 1,
     "inference": {
       "yields": 2,
       "reason": "multi-portion",
-      "ratio": 4.455263157894737,
-      "perGram": 351,
+      "ratio": 1.7933884297520661,
+      "perGram": 331,
       "gramOk": true
     },
     "yieldServings": 2,
     "newPer": {
-      "cal": 847,
-      "prot": 40.8,
-      "carb": 145.4,
-      "fat": 15.3,
-      "grams": 351
+      "cal": 760,
+      "prot": 36.8,
+      "carb": 125.9,
+      "fat": 15.1,
+      "grams": 331
     },
     "servCheck": {
       "ok": true
@@ -6691,33 +6669,33 @@
     "name": "Karnabahar Çorbası",
     "cat": "corba",
     "stored": {
-      "cal": 137,
-      "prot": 4.3,
-      "carb": 20.8,
-      "fat": 5.1
-    },
-    "calcTotal": {
-      "cal": 410,
-      "prot": 12.9,
-      "carb": 62.3,
-      "fat": 15.4,
-      "grams": 1322
-    },
-    "coverage": 1,
-    "inference": {
-      "yields": 4,
-      "reason": "multi-portion",
-      "ratio": 2.9927007299270074,
-      "perGram": 330.5,
-      "gramOk": true
-    },
-    "yieldServings": 4,
-    "newPer": {
       "cal": 103,
       "prot": 3.2,
       "carb": 15.6,
-      "fat": 3.9,
-      "grams": 331
+      "fat": 3.9
+    },
+    "calcTotal": {
+      "cal": 322,
+      "prot": 6.1,
+      "carb": 44.9,
+      "fat": 14.5,
+      "grams": 972
+    },
+    "coverage": 1,
+    "inference": {
+      "yields": 3,
+      "reason": "multi-portion",
+      "ratio": 3.1262135922330097,
+      "perGram": 324,
+      "gramOk": true
+    },
+    "yieldServings": 3,
+    "newPer": {
+      "cal": 107,
+      "prot": 2,
+      "carb": 15,
+      "fat": 4.8,
+      "grams": 324
     },
     "servCheck": {
       "ok": true
@@ -6729,33 +6707,33 @@
     "name": "Brokoli Çorbası",
     "cat": "corba",
     "stored": {
-      "cal": 161,
-      "prot": 6.5,
-      "carb": 25.7,
-      "fat": 5.4
-    },
-    "calcTotal": {
-      "cal": 484,
-      "prot": 19.5,
-      "carb": 77,
-      "fat": 16.2,
-      "grams": 1437
-    },
-    "coverage": 1,
-    "inference": {
-      "yields": 4,
-      "reason": "multi-portion",
-      "ratio": 3.0062111801242235,
-      "perGram": 359.25,
-      "gramOk": true
-    },
-    "yieldServings": 4,
-    "newPer": {
       "cal": 121,
       "prot": 4.9,
       "carb": 19.3,
-      "fat": 4.1,
-      "grams": 359
+      "fat": 4.1
+    },
+    "calcTotal": {
+      "cal": 348,
+      "prot": 8.2,
+      "carb": 50.5,
+      "fat": 14.7,
+      "grams": 1037
+    },
+    "coverage": 1,
+    "inference": {
+      "yields": 3,
+      "reason": "multi-portion",
+      "ratio": 2.87603305785124,
+      "perGram": 345.6666666666667,
+      "gramOk": true
+    },
+    "yieldServings": 3,
+    "newPer": {
+      "cal": 116,
+      "prot": 2.7,
+      "carb": 16.8,
+      "fat": 4.9,
+      "grams": 346
     },
     "servCheck": {
       "ok": true
@@ -6767,32 +6745,32 @@
     "name": "Bal Kabağı Çorbası",
     "cat": "corba",
     "stored": {
-      "cal": 172,
-      "prot": 3.6,
-      "carb": 28.8,
-      "fat": 6.2
+      "cal": 129,
+      "prot": 2.7,
+      "carb": 21.6,
+      "fat": 4.7
     },
     "calcTotal": {
-      "cal": 515,
-      "prot": 10.9,
-      "carb": 86.5,
-      "fat": 18.6,
-      "grams": 1449
+      "cal": 1108,
+      "prot": 14.5,
+      "carb": 105.3,
+      "fat": 79.4,
+      "grams": 1446
     },
     "coverage": 1,
     "inference": {
       "yields": 4,
-      "reason": "multi-portion",
-      "ratio": 2.994186046511628,
-      "perGram": 362.25,
+      "reason": "large-batch",
+      "ratio": 8.589147286821705,
+      "perGram": 361.5,
       "gramOk": true
     },
     "yieldServings": 4,
     "newPer": {
-      "cal": 129,
-      "prot": 2.7,
-      "carb": 21.6,
-      "fat": 4.7,
+      "cal": 277,
+      "prot": 3.6,
+      "carb": 26.3,
+      "fat": 19.9,
       "grams": 362
     },
     "servCheck": {
@@ -6805,10 +6783,10 @@
     "name": "Nohutlu Akdeniz Salatası",
     "cat": "salata",
     "stored": {
-      "cal": 221,
-      "prot": 10.2,
-      "carb": 35.4,
-      "fat": 5.8
+      "cal": 185,
+      "prot": 8.5,
+      "carb": 29.6,
+      "fat": 4.8
     },
     "calcTotal": {
       "cal": 1110,
@@ -6821,7 +6799,7 @@
     "inference": {
       "yields": 6,
       "reason": "multi-portion",
-      "ratio": 5.02262443438914,
+      "ratio": 6,
       "perGram": 244.16666666666666,
       "gramOk": true
     },
@@ -6843,50 +6821,48 @@
     "name": "Falafel Bowl",
     "cat": "vegan",
     "stored": {
-      "cal": 420,
-      "prot": 16,
-      "carb": 46,
-      "fat": 18
+      "cal": 568,
+      "prot": 28.1,
+      "carb": 91.9,
+      "fat": 11.9
     },
     "calcTotal": {
-      "cal": 2839,
-      "prot": 140.5,
-      "carb": 459.3,
-      "fat": 59.7,
-      "grams": 1542
+      "cal": 2851,
+      "prot": 141.6,
+      "carb": 461.1,
+      "fat": 59.9,
+      "grams": 1592
     },
-    "coverage": 0.875,
+    "coverage": 1,
     "inference": {
       "yields": 5,
       "reason": "multi-portion",
-      "ratio": 6.7595238095238095,
-      "perGram": 308.4,
+      "ratio": 5.019366197183099,
+      "perGram": 318.4,
       "gramOk": true
     },
     "yieldServings": 5,
     "newPer": {
-      "cal": 568,
-      "prot": 28.1,
-      "carb": 91.9,
-      "fat": 11.9,
-      "grams": 308
+      "cal": 570,
+      "prot": 28.3,
+      "carb": 92.2,
+      "fat": 12,
+      "grams": 318
     },
     "servCheck": {
       "ok": true
     },
-    "missing": [
-      "Karışık yeşillik"
-    ]
+    "missing": []
   },
   {
     "id": "r_salata_yunan",
     "name": "Yunan Salatası",
     "cat": "salata",
     "stored": {
-      "cal": 227,
-      "prot": 8,
-      "carb": 15.4,
-      "fat": 16.2
+      "cal": 152,
+      "prot": 5.3,
+      "carb": 10.5,
+      "fat": 10.8
     },
     "calcTotal": {
       "cal": 456,
@@ -6899,7 +6875,7 @@
     "inference": {
       "yields": 3,
       "reason": "multi-portion",
-      "ratio": 2.0088105726872247,
+      "ratio": 3,
       "perGram": 228.33333333333334,
       "gramOk": true
     },
@@ -6921,10 +6897,10 @@
     "name": "Karpuz-Feta Salatası",
     "cat": "salata",
     "stored": {
-      "cal": 180,
-      "prot": 7,
-      "carb": 22,
-      "fat": 8
+      "cal": 152,
+      "prot": 6.4,
+      "carb": 12.7,
+      "fat": 9.3
     },
     "calcTotal": {
       "cal": 303,
@@ -6937,7 +6913,7 @@
     "inference": {
       "yields": 2,
       "reason": "multi-portion",
-      "ratio": 1.6833333333333333,
+      "ratio": 1.993421052631579,
       "perGram": 190,
       "gramOk": true
     },
@@ -6959,40 +6935,43 @@
     "name": "Akdeniz Salatası",
     "cat": "salata",
     "stored": {
-      "cal": 220,
-      "prot": 10,
-      "carb": 18,
-      "fat": 14
-    },
-    "calcTotal": {
-      "cal": 5906,
-      "prot": 19.6,
-      "carb": 42.7,
-      "fat": 644,
-      "grams": 1560
-    },
-    "coverage": 0.8888888888888888,
-    "inference": {
-      "yields": 6,
-      "reason": "large-batch",
-      "ratio": 26.845454545454544,
-      "perGram": 260,
-      "gramOk": true
-    },
-    "yieldServings": 6,
-    "newPer": {
       "cal": 984,
       "prot": 3.3,
       "carb": 7.1,
-      "fat": 107.3,
-      "grams": 260
+      "fat": 107.3
+    },
+    "calcTotal": {
+      "cal": 648,
+      "prot": 21,
+      "carb": 45.4,
+      "fat": 47.9,
+      "grams": 1034
+    },
+    "coverage": 1,
+    "inference": {
+      "yields": 1,
+      "reason": "stored-too-high",
+      "ratio": 0.6585365853658537,
+      "flag": true
+    },
+    "yieldServings": 1,
+    "newPer": {
+      "cal": 648,
+      "prot": 21,
+      "carb": 45.4,
+      "fat": 47.9,
+      "grams": 1034
     },
     "servCheck": {
-      "ok": true
+      "ok": false,
+      "reason": "too-heavy",
+      "range": [
+        150,
+        350
+      ],
+      "val": 1034
     },
-    "missing": [
-      "Karışık yeşillik"
-    ]
+    "missing": []
   },
   {
     "id": "r_salata_avokado_ton",
@@ -7005,25 +6984,37 @@
       "fat": 22
     },
     "calcTotal": {
-      "cal": 498,
-      "prot": 10.5,
-      "carb": 46.4,
-      "fat": 35.9,
-      "grams": 940
+      "cal": 510,
+      "prot": 11.6,
+      "carb": 48.2,
+      "fat": 36.1,
+      "grams": 990
     },
-    "coverage": 0.7142857142857143,
+    "coverage": 0.8571428571428571,
     "inference": {
-      "yields": null,
-      "reason": "low-coverage"
+      "yields": 1,
+      "reason": "stored-ok",
+      "ratio": 1.5
     },
-    "yieldServings": null,
-    "newPer": null,
+    "yieldServings": 1,
+    "newPer": {
+      "cal": 510,
+      "prot": 11.6,
+      "carb": 48.2,
+      "fat": 36.1,
+      "grams": 990
+    },
     "servCheck": {
-      "ok": true
+      "ok": false,
+      "reason": "too-heavy",
+      "range": [
+        150,
+        350
+      ],
+      "val": 990
     },
     "missing": [
-      "Ton balığı (suda)",
-      "Karışık yeşillik"
+      "Ton balığı (suda)"
     ]
   },
   {
@@ -7075,26 +7066,26 @@
       "fat": 20.4
     },
     "calcTotal": {
-      "cal": 495,
-      "prot": 15.9,
-      "carb": 21.8,
-      "fat": 40.8,
+      "cal": 471,
+      "prot": 7.3,
+      "carb": 48.2,
+      "fat": 30.4,
       "grams": 234
     },
     "coverage": 0.8571428571428571,
     "inference": {
       "yields": 1,
       "reason": "multi-portion",
-      "ratio": 1.9959677419354838,
+      "ratio": 1.8991935483870968,
       "perGram": 234,
       "gramOk": true
     },
     "yieldServings": 1,
     "newPer": {
-      "cal": 495,
-      "prot": 15.9,
-      "carb": 21.8,
-      "fat": 40.8,
+      "cal": 471,
+      "prot": 7.3,
+      "carb": 48.2,
+      "fat": 30.4,
       "grams": 234
     },
     "servCheck": {
@@ -7145,10 +7136,10 @@
     "name": "Ev Yapımı Granola",
     "cat": "fit",
     "stored": {
-      "cal": 316,
-      "prot": 8.5,
-      "carb": 29.5,
-      "fat": 20.2
+      "cal": 443,
+      "prot": 11.9,
+      "carb": 41.3,
+      "fat": 28.3
     },
     "calcTotal": {
       "cal": 2214,
@@ -7159,19 +7150,19 @@
     },
     "coverage": 1,
     "inference": {
-      "yields": 5,
+      "yields": 3,
       "reason": "multi-portion",
-      "ratio": 7.006329113924051,
-      "perGram": 90.8,
+      "ratio": 4.997742663656885,
+      "perGram": 151.33333333333334,
       "gramOk": false
     },
-    "yieldServings": 5,
+    "yieldServings": 3,
     "newPer": {
-      "cal": 443,
-      "prot": 11.9,
-      "carb": 41.3,
-      "fat": 28.3,
-      "grams": 91
+      "cal": 738,
+      "prot": 19.8,
+      "carb": 68.8,
+      "fat": 47.2,
+      "grams": 151
     },
     "servCheck": {
       "ok": false,
@@ -7180,7 +7171,7 @@
         200,
         450
       ],
-      "val": 91
+      "val": 151
     },
     "missing": []
   },
@@ -7195,31 +7186,39 @@
       "fat": 16
     },
     "calcTotal": {
-      "cal": 549,
-      "prot": 18.4,
-      "carb": 83.5,
-      "fat": 17.9,
-      "grams": 447
+      "cal": 1782,
+      "prot": 61.2,
+      "carb": 125.6,
+      "fat": 128.4,
+      "grams": 448
     },
     "coverage": 0.8571428571428571,
     "inference": {
-      "yields": 1,
-      "reason": "stored-ok",
-      "ratio": 1.444736842105263
+      "yields": 3,
+      "reason": "multi-portion",
+      "ratio": 4.689473684210526,
+      "perGram": 149.33333333333334,
+      "gramOk": false
     },
-    "yieldServings": 1,
+    "yieldServings": 3,
     "newPer": {
-      "cal": 549,
-      "prot": 18.4,
-      "carb": 83.5,
-      "fat": 17.9,
-      "grams": 447
+      "cal": 594,
+      "prot": 20.4,
+      "carb": 41.9,
+      "fat": 42.8,
+      "grams": 149
     },
     "servCheck": {
-      "ok": true
+      "ok": false,
+      "reason": "too-light",
+      "range": [
+        200,
+        450
+      ],
+      "val": 149
     },
     "missing": [
-      "Yaban mersini"
+      "Bademli"
     ]
   },
   {
@@ -7233,27 +7232,27 @@
       "fat": 17.2
     },
     "calcTotal": {
-      "cal": 704,
-      "prot": 21.9,
-      "carb": 82.9,
-      "fat": 34.3,
-      "grams": 427
+      "cal": 723,
+      "prot": 23.1,
+      "carb": 76.3,
+      "fat": 39,
+      "grams": 424
     },
     "coverage": 1,
     "inference": {
       "yields": 1,
       "reason": "multi-portion",
-      "ratio": 2,
-      "perGram": 427,
+      "ratio": 2.053977272727273,
+      "perGram": 424,
       "gramOk": true
     },
     "yieldServings": 1,
     "newPer": {
-      "cal": 704,
-      "prot": 21.9,
-      "carb": 82.9,
-      "fat": 34.3,
-      "grams": 427
+      "cal": 723,
+      "prot": 23.1,
+      "carb": 76.3,
+      "fat": 39,
+      "grams": 424
     },
     "servCheck": {
       "ok": true
@@ -7265,50 +7264,54 @@
     "name": "Berry Smoothie Bowl",
     "cat": "fit",
     "stored": {
-      "cal": 240,
-      "prot": 8,
-      "carb": 42,
-      "fat": 6
-    },
-    "calcTotal": {
-      "cal": 389,
-      "prot": 10.6,
-      "carb": 65.6,
-      "fat": 11.8,
-      "grams": 502
-    },
-    "coverage": 0.8571428571428571,
-    "inference": {
-      "yields": 2,
-      "reason": "multi-portion",
-      "ratio": 1.6208333333333333,
-      "perGram": 251,
-      "gramOk": true
-    },
-    "yieldServings": 2,
-    "newPer": {
       "cal": 195,
       "prot": 5.3,
       "carb": 32.8,
-      "fat": 5.9,
-      "grams": 251
+      "fat": 5.9
+    },
+    "calcTotal": {
+      "cal": 943,
+      "prot": 29,
+      "carb": 93,
+      "fat": 58.3,
+      "grams": 573
+    },
+    "coverage": 1,
+    "inference": {
+      "yields": 3,
+      "reason": "multi-portion",
+      "ratio": 4.835897435897436,
+      "perGram": 191,
+      "gramOk": false
+    },
+    "yieldServings": 3,
+    "newPer": {
+      "cal": 314,
+      "prot": 9.7,
+      "carb": 31,
+      "fat": 19.4,
+      "grams": 191
     },
     "servCheck": {
-      "ok": true
+      "ok": false,
+      "reason": "too-light",
+      "range": [
+        200,
+        450
+      ],
+      "val": 191
     },
-    "missing": [
-      "Donmuş yaban mersini"
-    ]
+    "missing": []
   },
   {
     "id": "r_fit_avokado_kase",
     "name": "Avokadolu Yumurta Kasesi",
     "cat": "fit",
     "stored": {
-      "cal": 303,
-      "prot": 10.9,
-      "carb": 19.4,
-      "fat": 22.6
+      "cal": 202,
+      "prot": 7.3,
+      "carb": 12.9,
+      "fat": 15
     },
     "calcTotal": {
       "cal": 606,
@@ -7321,7 +7324,7 @@
     "inference": {
       "yields": 3,
       "reason": "multi-portion",
-      "ratio": 2,
+      "ratio": 3,
       "perGram": 273.3333333333333,
       "gramOk": true
     },
@@ -7349,30 +7352,36 @@
       "fat": 9.2
     },
     "calcTotal": {
-      "cal": 398,
-      "prot": 12.8,
-      "carb": 50,
-      "fat": 18.3,
-      "grams": 368
+      "cal": 1585,
+      "prot": 20,
+      "carb": 87.5,
+      "fat": 139.9,
+      "grams": 362
     },
     "coverage": 1,
     "inference": {
-      "yields": 1,
+      "yields": 6,
       "reason": "multi-portion",
-      "ratio": 2,
-      "perGram": 368,
-      "gramOk": true
+      "ratio": 7.964824120603015,
+      "perGram": 60.333333333333336,
+      "gramOk": false
     },
-    "yieldServings": 1,
+    "yieldServings": 6,
     "newPer": {
-      "cal": 398,
-      "prot": 12.8,
-      "carb": 50,
-      "fat": 18.3,
-      "grams": 368
+      "cal": 264,
+      "prot": 3.3,
+      "carb": 14.6,
+      "fat": 23.3,
+      "grams": 60
     },
     "servCheck": {
-      "ok": true
+      "ok": false,
+      "reason": "too-light",
+      "range": [
+        200,
+        450
+      ],
+      "val": 60
     },
     "missing": []
   },
@@ -7381,10 +7390,10 @@
     "name": "Kuzu Güveç",
     "cat": "klasik",
     "stored": {
-      "cal": 416,
-      "prot": 24.6,
-      "carb": 29.5,
-      "fat": 23.2
+      "cal": 277,
+      "prot": 16.4,
+      "carb": 19.7,
+      "fat": 15.5
     },
     "calcTotal": {
       "cal": 831,
@@ -7397,7 +7406,7 @@
     "inference": {
       "yields": 3,
       "reason": "multi-portion",
-      "ratio": 1.9975961538461537,
+      "ratio": 3,
       "perGram": 280.3333333333333,
       "gramOk": true
     },
@@ -7425,27 +7434,27 @@
       "fat": 9
     },
     "calcTotal": {
-      "cal": 1139,
-      "prot": 56.8,
-      "carb": 164.7,
-      "fat": 26.9,
-      "grams": 948
+      "cal": 1103,
+      "prot": 56.1,
+      "carb": 156.8,
+      "fat": 26.8,
+      "grams": 938
     },
     "coverage": 1,
     "inference": {
       "yields": 3,
       "reason": "multi-portion",
-      "ratio": 2.9973684210526317,
-      "perGram": 316,
+      "ratio": 2.9026315789473682,
+      "perGram": 312.6666666666667,
       "gramOk": true
     },
     "yieldServings": 3,
     "newPer": {
-      "cal": 380,
-      "prot": 18.9,
-      "carb": 54.9,
-      "fat": 9,
-      "grams": 316
+      "cal": 368,
+      "prot": 18.7,
+      "carb": 52.3,
+      "fat": 8.9,
+      "grams": 313
     },
     "servCheck": {
       "ok": true
@@ -7605,33 +7614,33 @@
     "name": "Karışık Izgara",
     "cat": "klasik",
     "stored": {
-      "cal": 488,
-      "prot": 36.5,
-      "carb": 33.8,
-      "fat": 26.1
-    },
-    "calcTotal": {
-      "cal": 1248,
-      "prot": 90.4,
-      "carb": 69.6,
-      "fat": 73.6,
-      "grams": 800
-    },
-    "coverage": 1,
-    "inference": {
-      "yields": 3,
-      "reason": "multi-portion",
-      "ratio": 2.557377049180328,
-      "perGram": 266.6666666666667,
-      "gramOk": true
-    },
-    "yieldServings": 3,
-    "newPer": {
       "cal": 416,
       "prot": 30.1,
       "carb": 23.2,
-      "fat": 24.5,
-      "grams": 267
+      "fat": 24.5
+    },
+    "calcTotal": {
+      "cal": 1143,
+      "prot": 78.1,
+      "carb": 100.6,
+      "fat": 54.2,
+      "grams": 760
+    },
+    "coverage": 1,
+    "inference": {
+      "yields": 2,
+      "reason": "multi-portion",
+      "ratio": 2.7475961538461537,
+      "perGram": 380,
+      "gramOk": true
+    },
+    "yieldServings": 2,
+    "newPer": {
+      "cal": 572,
+      "prot": 39.1,
+      "carb": 50.3,
+      "fat": 27.1,
+      "grams": 380
     },
     "servCheck": {
       "ok": true
@@ -7649,27 +7658,27 @@
       "fat": 13.6
     },
     "calcTotal": {
-      "cal": 674,
-      "prot": 44,
-      "carb": 41.4,
-      "fat": 40.8,
-      "grams": 863
+      "cal": 586,
+      "prot": 37.3,
+      "carb": 24,
+      "fat": 39.9,
+      "grams": 513
     },
     "coverage": 1,
     "inference": {
-      "yields": 3,
+      "yields": 2,
       "reason": "multi-portion",
-      "ratio": 2.9955555555555557,
-      "perGram": 287.6666666666667,
+      "ratio": 2.6044444444444443,
+      "perGram": 256.5,
       "gramOk": true
     },
-    "yieldServings": 3,
+    "yieldServings": 2,
     "newPer": {
-      "cal": 225,
-      "prot": 14.7,
-      "carb": 13.8,
-      "fat": 13.6,
-      "grams": 288
+      "cal": 293,
+      "prot": 18.7,
+      "carb": 12,
+      "fat": 20,
+      "grams": 257
     },
     "servCheck": {
       "ok": true
@@ -7681,10 +7690,10 @@
     "name": "Kıymalı Bezelye",
     "cat": "sebze",
     "stored": {
-      "cal": 242,
-      "prot": 12.1,
-      "carb": 22.6,
-      "fat": 11.9
+      "cal": 363,
+      "prot": 18.2,
+      "carb": 34,
+      "fat": 17.8
     },
     "calcTotal": {
       "cal": 726,
@@ -7697,7 +7706,7 @@
     "inference": {
       "yields": 2,
       "reason": "multi-portion",
-      "ratio": 3,
+      "ratio": 2,
       "perGram": 329.5,
       "gramOk": true
     },
@@ -7795,33 +7804,33 @@
     "name": "Hamsi Pilavı",
     "cat": "klasik",
     "stored": {
-      "cal": 435,
-      "prot": 19.1,
-      "carb": 58.5,
-      "fat": 14.1
+      "cal": 653,
+      "prot": 28.6,
+      "carb": 87.7,
+      "fat": 21.2
     },
     "calcTotal": {
-      "cal": 1305,
-      "prot": 57.2,
-      "carb": 175.4,
-      "fat": 42.3,
-      "grams": 590
+      "cal": 1270,
+      "prot": 56.5,
+      "carb": 167.5,
+      "fat": 42.2,
+      "grams": 580
     },
     "coverage": 1,
     "inference": {
       "yields": 2,
       "reason": "multi-portion",
-      "ratio": 3,
-      "perGram": 295,
+      "ratio": 1.9448698315467075,
+      "perGram": 290,
       "gramOk": true
     },
     "yieldServings": 2,
     "newPer": {
-      "cal": 653,
-      "prot": 28.6,
-      "carb": 87.7,
-      "fat": 21.2,
-      "grams": 295
+      "cal": 635,
+      "prot": 28.3,
+      "carb": 83.8,
+      "fat": 21.1,
+      "grams": 290
     },
     "servCheck": {
       "ok": true
@@ -7833,10 +7842,10 @@
     "name": "Patatesli Köfte",
     "cat": "klasik",
     "stored": {
-      "cal": 427,
-      "prot": 23.2,
-      "carb": 37.2,
-      "fat": 20.8
+      "cal": 285,
+      "prot": 15.5,
+      "carb": 24.8,
+      "fat": 13.8
     },
     "calcTotal": {
       "cal": 854,
@@ -7849,7 +7858,7 @@
     "inference": {
       "yields": 3,
       "reason": "multi-portion",
-      "ratio": 2,
+      "ratio": 2.9964912280701754,
       "perGram": 271.6666666666667,
       "gramOk": true
     },
@@ -7871,10 +7880,10 @@
     "name": "Sebzeli Tavuk Sote",
     "cat": "klasik",
     "stored": {
-      "cal": 269,
-      "prot": 25.4,
-      "carb": 23.8,
-      "fat": 9.3
+      "cal": 179,
+      "prot": 16.9,
+      "carb": 15.9,
+      "fat": 6.2
     },
     "calcTotal": {
       "cal": 538,
@@ -7887,7 +7896,7 @@
     "inference": {
       "yields": 3,
       "reason": "multi-portion",
-      "ratio": 2,
+      "ratio": 3.005586592178771,
       "perGram": 364.6666666666667,
       "gramOk": true
     },
@@ -7909,10 +7918,10 @@
     "name": "Etli Pırasa",
     "cat": "sebze",
     "stored": {
-      "cal": 223,
-      "prot": 10.9,
-      "carb": 23.8,
-      "fat": 10.3
+      "cal": 297,
+      "prot": 14.5,
+      "carb": 31.8,
+      "fat": 13.7
     },
     "calcTotal": {
       "cal": 890,
@@ -7925,7 +7934,7 @@
     "inference": {
       "yields": 3,
       "reason": "multi-portion",
-      "ratio": 3.991031390134529,
+      "ratio": 2.9966329966329965,
       "perGram": 307.6666666666667,
       "gramOk": true
     },
@@ -7947,10 +7956,10 @@
     "name": "Etli Kereviz",
     "cat": "sebze",
     "stored": {
-      "cal": 216,
-      "prot": 10.7,
-      "carb": 26.7,
-      "fat": 8.6
+      "cal": 180,
+      "prot": 8.9,
+      "carb": 22.3,
+      "fat": 7.2
     },
     "calcTotal": {
       "cal": 1081,
@@ -7963,7 +7972,7 @@
     "inference": {
       "yields": 6,
       "reason": "multi-portion",
-      "ratio": 5.00462962962963,
+      "ratio": 6.0055555555555555,
       "perGram": 270.5,
       "gramOk": true
     },
@@ -8029,26 +8038,26 @@
       "fat": 29.4
     },
     "calcTotal": {
-      "cal": 822,
-      "prot": 44.6,
-      "carb": 30.1,
-      "fat": 58.7,
+      "cal": 820,
+      "prot": 42,
+      "carb": 44.2,
+      "fat": 53.2,
       "grams": 709
     },
     "coverage": 1,
     "inference": {
       "yields": 2,
       "reason": "multi-portion",
-      "ratio": 2,
+      "ratio": 1.9951338199513382,
       "perGram": 354.5,
       "gramOk": true
     },
     "yieldServings": 2,
     "newPer": {
-      "cal": 411,
-      "prot": 22.3,
-      "carb": 15.1,
-      "fat": 29.4,
+      "cal": 410,
+      "prot": 21,
+      "carb": 22.1,
+      "fat": 26.6,
       "grams": 355
     },
     "servCheck": {
@@ -8061,10 +8070,10 @@
     "name": "Karnıyarık Köfte",
     "cat": "klasik",
     "stored": {
-      "cal": 388,
-      "prot": 21.6,
-      "carb": 36.8,
-      "fat": 19.1
+      "cal": 194,
+      "prot": 10.8,
+      "carb": 18.4,
+      "fat": 9.6
     },
     "calcTotal": {
       "cal": 776,
@@ -8077,7 +8086,7 @@
     "inference": {
       "yields": 4,
       "reason": "multi-portion",
-      "ratio": 2,
+      "ratio": 4,
       "perGram": 348.75,
       "gramOk": true
     },
@@ -8137,10 +8146,10 @@
     "name": "Tavuk Şinitzel",
     "cat": "klasik",
     "stored": {
-      "cal": 503,
-      "prot": 21,
-      "carb": 20.7,
-      "fat": 37
+      "cal": 754,
+      "prot": 31.5,
+      "carb": 31,
+      "fat": 55.5
     },
     "calcTotal": {
       "cal": 1508,
@@ -8153,7 +8162,7 @@
     "inference": {
       "yields": 2,
       "reason": "multi-portion",
-      "ratio": 2.9980119284294235,
+      "ratio": 2,
       "perGram": 234.5,
       "gramOk": true
     },
@@ -8181,27 +8190,27 @@
       "fat": 22.7
     },
     "calcTotal": {
-      "cal": 753,
-      "prot": 41.4,
-      "carb": 42.8,
+      "cal": 745,
+      "prot": 41.2,
+      "carb": 41.2,
       "fat": 45.3,
-      "grams": 417
+      "grams": 415
     },
     "coverage": 1,
     "inference": {
       "yields": 1,
       "reason": "multi-portion",
-      "ratio": 1.9973474801061009,
-      "perGram": 417,
+      "ratio": 1.976127320954907,
+      "perGram": 415,
       "gramOk": true
     },
     "yieldServings": 1,
     "newPer": {
-      "cal": 753,
-      "prot": 41.4,
-      "carb": 42.8,
+      "cal": 745,
+      "prot": 41.2,
+      "carb": 41.2,
       "fat": 45.3,
-      "grams": 417
+      "grams": 415
     },
     "servCheck": {
       "ok": true
@@ -8213,10 +8222,10 @@
     "name": "Etli Yeşil Mercimek",
     "cat": "klasik",
     "stored": {
-      "cal": 414,
-      "prot": 27.7,
-      "carb": 45.2,
-      "fat": 13.9
+      "cal": 622,
+      "prot": 41.6,
+      "carb": 67.9,
+      "fat": 20.9
     },
     "calcTotal": {
       "cal": 1243,
@@ -8229,7 +8238,7 @@
     "inference": {
       "yields": 2,
       "reason": "multi-portion",
-      "ratio": 3.002415458937198,
+      "ratio": 1.9983922829581993,
       "perGram": 326.5,
       "gramOk": true
     },
@@ -8257,27 +8266,27 @@
       "fat": 15.7
     },
     "calcTotal": {
-      "cal": 674,
-      "prot": 34.5,
-      "carb": 64.3,
+      "cal": 663,
+      "prot": 34.3,
+      "carb": 61.9,
       "fat": 31.3,
-      "grams": 654
+      "grams": 651
     },
     "coverage": 1,
     "inference": {
       "yields": 2,
       "reason": "multi-portion",
-      "ratio": 2,
-      "perGram": 327,
+      "ratio": 1.967359050445104,
+      "perGram": 325.5,
       "gramOk": true
     },
     "yieldServings": 2,
     "newPer": {
-      "cal": 337,
-      "prot": 17.3,
-      "carb": 32.2,
+      "cal": 332,
+      "prot": 17.2,
+      "carb": 31,
       "fat": 15.7,
-      "grams": 327
+      "grams": 326
     },
     "servCheck": {
       "ok": true
@@ -8289,10 +8298,10 @@
     "name": "Kazan Kebabı",
     "cat": "klasik",
     "stored": {
-      "cal": 464,
-      "prot": 26.3,
-      "carb": 41.2,
-      "fat": 23.6
+      "cal": 232,
+      "prot": 13.2,
+      "carb": 20.6,
+      "fat": 11.8
     },
     "calcTotal": {
       "cal": 928,
@@ -8305,7 +8314,7 @@
     "inference": {
       "yields": 4,
       "reason": "multi-portion",
-      "ratio": 2,
+      "ratio": 4,
       "perGram": 328.5,
       "gramOk": true
     },
@@ -8365,10 +8374,10 @@
     "name": "Sebze Çorbası",
     "cat": "corba",
     "stored": {
-      "cal": 115,
-      "prot": 2.8,
-      "carb": 18.2,
-      "fat": 4.2
+      "cal": 87,
+      "prot": 2.1,
+      "carb": 13.7,
+      "fat": 3.1
     },
     "calcTotal": {
       "cal": 346,
@@ -8381,7 +8390,7 @@
     "inference": {
       "yields": 4,
       "reason": "multi-portion",
-      "ratio": 3.008695652173913,
+      "ratio": 3.9770114942528734,
       "perGram": 350.5,
       "gramOk": true
     },
@@ -8403,10 +8412,10 @@
     "name": "Kremalı Mantar Çorbası",
     "cat": "corba",
     "stored": {
-      "cal": 246,
-      "prot": 7.9,
-      "carb": 17.4,
-      "fat": 17
+      "cal": 185,
+      "prot": 5.9,
+      "carb": 13,
+      "fat": 12.7
     },
     "calcTotal": {
       "cal": 739,
@@ -8419,7 +8428,7 @@
     "inference": {
       "yields": 4,
       "reason": "multi-portion",
-      "ratio": 3.0040650406504064,
+      "ratio": 3.9945945945945946,
       "perGram": 312,
       "gramOk": true
     },
@@ -8485,58 +8494,65 @@
       "fat": 5
     },
     "calcTotal": {
-      "cal": 106,
-      "prot": 0.5,
-      "carb": 1.2,
-      "fat": 11.4,
-      "grams": 823
+      "cal": 366,
+      "prot": 9.6,
+      "carb": 53.5,
+      "fat": 12.5,
+      "grams": 893
     },
-    "coverage": 0.8,
+    "coverage": 1,
     "inference": {
-      "yields": null,
-      "reason": "low-coverage"
+      "yields": 3,
+      "reason": "multi-portion",
+      "ratio": 2.2875,
+      "perGram": 297.6666666666667,
+      "gramOk": true
     },
-    "yieldServings": null,
-    "newPer": null,
+    "yieldServings": 3,
+    "newPer": {
+      "cal": 122,
+      "prot": 3.2,
+      "carb": 17.8,
+      "fat": 4.2,
+      "grams": 298
+    },
     "servCheck": {
       "ok": true
     },
-    "missing": [
-      "Arpa şehriye"
-    ]
+    "missing": []
   },
   {
     "id": "r_tavuk_suyu_corbasi",
     "name": "Tavuk Suyu Çorbası",
     "cat": "corba",
     "stored": {
-      "cal": 180,
-      "prot": 14,
-      "carb": 14,
-      "fat": 7
+      "cal": 348,
+      "prot": 21.5,
+      "carb": 29.8,
+      "fat": 16.1
     },
     "calcTotal": {
-      "cal": 696,
-      "prot": 42.9,
-      "carb": 59.5,
-      "fat": 32.2,
-      "grams": 523
+      "cal": 629,
+      "prot": 40.6,
+      "carb": 46.1,
+      "fat": 31.9,
+      "grams": 505
     },
     "coverage": 1,
     "inference": {
       "yields": 2,
       "reason": "multi-portion",
-      "ratio": 3.8666666666666667,
-      "perGram": 261.5,
+      "ratio": 1.8074712643678161,
+      "perGram": 252.5,
       "gramOk": true
     },
     "yieldServings": 2,
     "newPer": {
-      "cal": 348,
-      "prot": 21.5,
-      "carb": 29.8,
-      "fat": 16.1,
-      "grams": 262
+      "cal": 315,
+      "prot": 20.3,
+      "carb": 23.1,
+      "fat": 16,
+      "grams": 253
     },
     "servCheck": {
       "ok": true
@@ -8548,10 +8564,10 @@
     "name": "Bezelye Çorbası",
     "cat": "corba",
     "stored": {
-      "cal": 166,
-      "prot": 6.1,
-      "carb": 19,
-      "fat": 7.7
+      "cal": 125,
+      "prot": 4.6,
+      "carb": 14.3,
+      "fat": 5.8
     },
     "calcTotal": {
       "cal": 499,
@@ -8564,7 +8580,7 @@
     "inference": {
       "yields": 4,
       "reason": "multi-portion",
-      "ratio": 3.0060240963855422,
+      "ratio": 3.992,
       "perGram": 321.75,
       "gramOk": true
     },
@@ -8624,10 +8640,10 @@
     "name": "Lahana Çorbası",
     "cat": "corba",
     "stored": {
-      "cal": 137,
-      "prot": 3.2,
-      "carb": 22.1,
-      "fat": 4.9
+      "cal": 103,
+      "prot": 2.4,
+      "carb": 16.6,
+      "fat": 3.7
     },
     "calcTotal": {
       "cal": 411,
@@ -8640,7 +8656,7 @@
     "inference": {
       "yields": 4,
       "reason": "multi-portion",
-      "ratio": 3,
+      "ratio": 3.9902912621359223,
       "perGram": 374.75,
       "gramOk": true
     },
@@ -8668,27 +8684,27 @@
       "fat": 7.7
     },
     "calcTotal": {
-      "cal": 450,
-      "prot": 13.7,
-      "carb": 47.3,
+      "cal": 440,
+      "prot": 13.5,
+      "carb": 45,
       "fat": 23.2,
-      "grams": 1082
+      "grams": 1079
     },
     "coverage": 1,
     "inference": {
       "yields": 3,
       "reason": "multi-portion",
-      "ratio": 3,
-      "perGram": 360.6666666666667,
+      "ratio": 2.933333333333333,
+      "perGram": 359.6666666666667,
       "gramOk": true
     },
     "yieldServings": 3,
     "newPer": {
-      "cal": 150,
-      "prot": 4.6,
-      "carb": 15.8,
+      "cal": 147,
+      "prot": 4.5,
+      "carb": 15,
       "fat": 7.7,
-      "grams": 361
+      "grams": 360
     },
     "servCheck": {
       "ok": true
@@ -8700,10 +8716,10 @@
     "name": "Analı Kızlı",
     "cat": "corba",
     "stored": {
-      "cal": 276,
-      "prot": 12,
-      "carb": 41.4,
-      "fat": 8
+      "cal": 460,
+      "prot": 20,
+      "carb": 69,
+      "fat": 13.3
     },
     "calcTotal": {
       "cal": 1381,
@@ -8714,28 +8730,22 @@
     },
     "coverage": 1,
     "inference": {
-      "yields": 3,
+      "yields": 2,
       "reason": "multi-portion",
-      "ratio": 5.003623188405797,
-      "perGram": 184.66666666666666,
-      "gramOk": false
+      "ratio": 3.002173913043478,
+      "perGram": 277,
+      "gramOk": true
     },
-    "yieldServings": 3,
+    "yieldServings": 2,
     "newPer": {
-      "cal": 460,
-      "prot": 20,
-      "carb": 69,
-      "fat": 13.3,
-      "grams": 185
+      "cal": 691,
+      "prot": 30.1,
+      "carb": 103.5,
+      "fat": 19.9,
+      "grams": 277
     },
     "servCheck": {
-      "ok": false,
-      "reason": "too-light",
-      "range": [
-        250,
-        450
-      ],
-      "val": 185
+      "ok": true
     },
     "missing": []
   },
@@ -8788,26 +8798,26 @@
       "fat": 12
     },
     "calcTotal": {
-      "cal": 518,
-      "prot": 30,
-      "carb": 4.7,
-      "fat": 41.9,
+      "cal": 512,
+      "prot": 22.3,
+      "carb": 47,
+      "fat": 25.4,
       "grams": 251
     },
     "coverage": 1,
     "inference": {
       "yields": 1,
       "reason": "multi-portion",
-      "ratio": 1.85,
+      "ratio": 1.8285714285714285,
       "perGram": 251,
       "gramOk": true
     },
     "yieldServings": 1,
     "newPer": {
-      "cal": 518,
-      "prot": 30,
-      "carb": 4.7,
-      "fat": 41.9,
+      "cal": 512,
+      "prot": 22.3,
+      "carb": 47,
+      "fat": 25.4,
       "grams": 251
     },
     "servCheck": {
@@ -8894,10 +8904,10 @@
     "name": "Patates Püresi",
     "cat": "pratik",
     "stored": {
-      "cal": 205,
-      "prot": 4.3,
-      "carb": 27.9,
-      "fat": 8.9
+      "cal": 307,
+      "prot": 6.4,
+      "carb": 41.9,
+      "fat": 13.4
     },
     "calcTotal": {
       "cal": 614,
@@ -8910,7 +8920,7 @@
     "inference": {
       "yields": 2,
       "reason": "multi-portion",
-      "ratio": 2.995121951219512,
+      "ratio": 2,
       "perGram": 290.5,
       "gramOk": true
     },
@@ -8970,33 +8980,33 @@
     "name": "Pirinçli Bulgur Pilavı",
     "cat": "pratik",
     "stored": {
-      "cal": 383,
-      "prot": 9.2,
-      "carb": 73.5,
-      "fat": 6.6
+      "cal": 255,
+      "prot": 6.1,
+      "carb": 49,
+      "fat": 4.4
     },
     "calcTotal": {
-      "cal": 765,
-      "prot": 18.3,
-      "carb": 146.9,
+      "cal": 747,
+      "prot": 18,
+      "carb": 142.9,
       "fat": 13.2,
-      "grams": 669
+      "grams": 664
     },
     "coverage": 1,
     "inference": {
       "yields": 3,
       "reason": "multi-portion",
-      "ratio": 1.9973890339425588,
-      "perGram": 223,
+      "ratio": 2.929411764705882,
+      "perGram": 221.33333333333334,
       "gramOk": true
     },
     "yieldServings": 3,
     "newPer": {
-      "cal": 255,
-      "prot": 6.1,
-      "carb": 49,
+      "cal": 249,
+      "prot": 6,
+      "carb": 47.6,
       "fat": 4.4,
-      "grams": 223
+      "grams": 221
     },
     "servCheck": {
       "ok": true
@@ -9164,10 +9174,10 @@
     "name": "Etli Patlıcan",
     "cat": "sebze",
     "stored": {
-      "cal": 276,
-      "prot": 22.8,
-      "carb": 36.8,
-      "fat": 6.8
+      "cal": 138,
+      "prot": 11.4,
+      "carb": 18.4,
+      "fat": 3.4
     },
     "calcTotal": {
       "cal": 552,
@@ -9178,19 +9188,19 @@
     },
     "coverage": 1,
     "inference": {
-      "yields": 4,
+      "yields": 5,
       "reason": "multi-portion",
-      "ratio": 2,
-      "perGram": 341.25,
+      "ratio": 4,
+      "perGram": 273,
       "gramOk": true
     },
-    "yieldServings": 4,
+    "yieldServings": 5,
     "newPer": {
-      "cal": 138,
-      "prot": 11.4,
-      "carb": 18.4,
-      "fat": 3.4,
-      "grams": 341
+      "cal": 110,
+      "prot": 9.1,
+      "carb": 14.7,
+      "fat": 2.7,
+      "grams": 273
     },
     "servCheck": {
       "ok": true
@@ -9278,10 +9288,10 @@
     "name": "Patlıcan Bastı",
     "cat": "sebze",
     "stored": {
-      "cal": 243,
-      "prot": 4.8,
-      "carb": 27.1,
-      "fat": 14.8
+      "cal": 146,
+      "prot": 2.9,
+      "carb": 16.3,
+      "fat": 8.9
     },
     "calcTotal": {
       "cal": 728,
@@ -9294,7 +9304,7 @@
     "inference": {
       "yields": 5,
       "reason": "multi-portion",
-      "ratio": 2.9958847736625516,
+      "ratio": 4.986301369863014,
       "perGram": 281.6,
       "gramOk": true
     },
@@ -9316,33 +9326,33 @@
     "name": "Kabak Mücver",
     "cat": "sebze",
     "stored": {
-      "cal": 240,
-      "prot": 10,
-      "carb": 14,
-      "fat": 16
-    },
-    "calcTotal": {
-      "cal": 2546,
-      "prot": 66.3,
-      "carb": 492.7,
-      "fat": 64.1,
-      "grams": 4293
-    },
-    "coverage": 1,
-    "inference": {
-      "yields": 15,
-      "reason": "large-batch",
-      "ratio": 10.608333333333333,
-      "perGram": 286.2,
-      "gramOk": true
-    },
-    "yieldServings": 15,
-    "newPer": {
       "cal": 170,
       "prot": 4.4,
       "carb": 32.8,
-      "fat": 4.3,
-      "grams": 286
+      "fat": 4.3
+    },
+    "calcTotal": {
+      "cal": 811,
+      "prot": 30.9,
+      "carb": 36.7,
+      "fat": 61.4,
+      "grams": 673
+    },
+    "coverage": 1,
+    "inference": {
+      "yields": 3,
+      "reason": "multi-portion",
+      "ratio": 4.770588235294118,
+      "perGram": 224.33333333333334,
+      "gramOk": true
+    },
+    "yieldServings": 3,
+    "newPer": {
+      "cal": 270,
+      "prot": 10.3,
+      "carb": 12.2,
+      "fat": 20.5,
+      "grams": 224
     },
     "servCheck": {
       "ok": true
@@ -9354,33 +9364,33 @@
     "name": "Zeytinyağlı Kabak",
     "cat": "sebze",
     "stored": {
-      "cal": 160,
-      "prot": 4,
-      "carb": 14,
-      "fat": 10
-    },
-    "calcTotal": {
-      "cal": 4172,
-      "prot": 86.6,
-      "carb": 978.7,
-      "fat": 51.2,
-      "grams": 8398
-    },
-    "coverage": 1,
-    "inference": {
-      "yields": 29,
-      "reason": "large-batch",
-      "ratio": 26.075,
-      "perGram": 289.58620689655174,
-      "gramOk": true
-    },
-    "yieldServings": 29,
-    "newPer": {
       "cal": 144,
       "prot": 3,
       "carb": 33.7,
-      "fat": 1.8,
-      "grams": 290
+      "fat": 1.8
+    },
+    "calcTotal": {
+      "cal": 701,
+      "prot": 16.2,
+      "carb": 66.8,
+      "fat": 45.8,
+      "grams": 1196
+    },
+    "coverage": 1,
+    "inference": {
+      "yields": 4,
+      "reason": "multi-portion",
+      "ratio": 4.868055555555555,
+      "perGram": 299,
+      "gramOk": true
+    },
+    "yieldServings": 4,
+    "newPer": {
+      "cal": 175,
+      "prot": 4.1,
+      "carb": 16.7,
+      "fat": 11.5,
+      "grams": 299
     },
     "servCheck": {
       "ok": true
@@ -9430,10 +9440,10 @@
     "name": "Sebze Güveç",
     "cat": "sebze",
     "stored": {
-      "cal": 214,
-      "prot": 4.3,
-      "carb": 27,
-      "fat": 11.1
+      "cal": 171,
+      "prot": 3.5,
+      "carb": 21.6,
+      "fat": 8.9
     },
     "calcTotal": {
       "cal": 855,
@@ -9446,7 +9456,7 @@
     "inference": {
       "yields": 5,
       "reason": "multi-portion",
-      "ratio": 3.9953271028037385,
+      "ratio": 5,
       "perGram": 274.8,
       "gramOk": true
     },
@@ -9506,10 +9516,10 @@
     "name": "Lahana Sote",
     "cat": "sebze",
     "stored": {
-      "cal": 148,
-      "prot": 2.6,
-      "carb": 15.3,
-      "fat": 9.6
+      "cal": 222,
+      "prot": 3.9,
+      "carb": 22.9,
+      "fat": 14.4
     },
     "calcTotal": {
       "cal": 444,
@@ -9522,7 +9532,7 @@
     "inference": {
       "yields": 2,
       "reason": "multi-portion",
-      "ratio": 3,
+      "ratio": 2,
       "perGram": 331.5,
       "gramOk": true
     },
@@ -9544,33 +9554,33 @@
     "name": "Şöbiyet",
     "cat": "tatli",
     "stored": {
-      "cal": 440,
-      "prot": 7,
-      "carb": 48,
-      "fat": 24
-    },
-    "calcTotal": {
-      "cal": 5417,
-      "prot": 121.8,
-      "carb": 452.9,
-      "fat": 361.5,
-      "grams": 1710
-    },
-    "coverage": 1,
-    "inference": {
-      "yields": 14,
-      "reason": "large-batch",
-      "ratio": 12.311363636363636,
-      "perGram": 122.14285714285714,
-      "gramOk": true
-    },
-    "yieldServings": 14,
-    "newPer": {
       "cal": 387,
       "prot": 8.7,
       "carb": 32.4,
-      "fat": 25.8,
-      "grams": 122
+      "fat": 25.8
+    },
+    "calcTotal": {
+      "cal": 4888,
+      "prot": 60.1,
+      "carb": 607.9,
+      "fat": 264.2,
+      "grams": 1510
+    },
+    "coverage": 1,
+    "inference": {
+      "yields": 13,
+      "reason": "large-batch",
+      "ratio": 12.630490956072352,
+      "perGram": 116.15384615384616,
+      "gramOk": true
+    },
+    "yieldServings": 13,
+    "newPer": {
+      "cal": 376,
+      "prot": 4.6,
+      "carb": 46.8,
+      "fat": 20.3,
+      "grams": 116
     },
     "servCheck": {
       "ok": true
@@ -9582,32 +9592,32 @@
     "name": "Havuç Dilimi",
     "cat": "tatli",
     "stored": {
-      "cal": 380,
-      "prot": 5,
-      "carb": 42,
-      "fat": 22
-    },
-    "calcTotal": {
-      "cal": 5926,
-      "prot": 137.4,
-      "carb": 440.2,
-      "fat": 421.6,
-      "grams": 1815
-    },
-    "coverage": 1,
-    "inference": {
-      "yields": 15,
-      "reason": "large-batch",
-      "ratio": 15.594736842105263,
-      "perGram": 121,
-      "gramOk": true
-    },
-    "yieldServings": 15,
-    "newPer": {
       "cal": 395,
       "prot": 9.2,
       "carb": 29.3,
-      "fat": 28.1,
+      "fat": 28.1
+    },
+    "calcTotal": {
+      "cal": 5292,
+      "prot": 63.3,
+      "carb": 626.2,
+      "fat": 304.9,
+      "grams": 1575
+    },
+    "coverage": 1,
+    "inference": {
+      "yields": 13,
+      "reason": "large-batch",
+      "ratio": 13.39746835443038,
+      "perGram": 121.15384615384616,
+      "gramOk": true
+    },
+    "yieldServings": 13,
+    "newPer": {
+      "cal": 407,
+      "prot": 4.9,
+      "carb": 48.2,
+      "fat": 23.5,
       "grams": 121
     },
     "servCheck": {
@@ -9620,33 +9630,33 @@
     "name": "Saray Sarması",
     "cat": "tatli",
     "stored": {
-      "cal": 420,
-      "prot": 6,
-      "carb": 46,
-      "fat": 24
-    },
-    "calcTotal": {
-      "cal": 5327,
-      "prot": 112.3,
-      "carb": 431.3,
-      "fat": 367.5,
-      "grams": 1665
-    },
-    "coverage": 1,
-    "inference": {
-      "yields": 14,
-      "reason": "large-batch",
-      "ratio": 12.683333333333334,
-      "perGram": 118.92857142857143,
-      "gramOk": true
-    },
-    "yieldServings": 14,
-    "newPer": {
       "cal": 381,
       "prot": 8,
       "carb": 30.8,
-      "fat": 26.3,
-      "grams": 119
+      "fat": 26.3
+    },
+    "calcTotal": {
+      "cal": 4798,
+      "prot": 50.6,
+      "carb": 586.3,
+      "fat": 270.2,
+      "grams": 1465
+    },
+    "coverage": 1,
+    "inference": {
+      "yields": 12,
+      "reason": "large-batch",
+      "ratio": 12.593175853018373,
+      "perGram": 122.08333333333333,
+      "gramOk": true
+    },
+    "yieldServings": 12,
+    "newPer": {
+      "cal": 400,
+      "prot": 4.2,
+      "carb": 48.9,
+      "fat": 22.5,
+      "grams": 122
     },
     "servCheck": {
       "ok": true
@@ -9658,10 +9668,10 @@
     "name": "Hanım Göbeği",
     "cat": "tatli",
     "stored": {
-      "cal": 340,
-      "prot": 5,
-      "carb": 48,
-      "fat": 14
+      "cal": 227,
+      "prot": 3.2,
+      "carb": 44.9,
+      "fat": 4.2
     },
     "calcTotal": {
       "cal": 2723,
@@ -9674,7 +9684,7 @@
     "inference": {
       "yields": 12,
       "reason": "large-batch",
-      "ratio": 8.008823529411766,
+      "ratio": 11.995594713656388,
       "perGram": 123.91666666666667,
       "gramOk": true
     },
@@ -9696,10 +9706,10 @@
     "name": "Kalburabastı",
     "cat": "tatli",
     "stored": {
-      "cal": 320,
-      "prot": 5,
-      "carb": 42,
-      "fat": 14
+      "cal": 378,
+      "prot": 4.7,
+      "carb": 61.5,
+      "fat": 13
     },
     "calcTotal": {
       "cal": 4920,
@@ -9712,7 +9722,7 @@
     "inference": {
       "yields": 13,
       "reason": "large-batch",
-      "ratio": 15.375,
+      "ratio": 13.015873015873016,
       "perGram": 120.23076923076923,
       "gramOk": true
     },
@@ -9734,10 +9744,10 @@
     "name": "Ayva Tatlısı",
     "cat": "tatli",
     "stored": {
-      "cal": 232,
-      "prot": 1.1,
-      "carb": 46.6,
-      "fat": 5.8
+      "cal": 174,
+      "prot": 0.8,
+      "carb": 35,
+      "fat": 4.4
     },
     "calcTotal": {
       "cal": 1392,
@@ -9750,7 +9760,7 @@
     "inference": {
       "yields": 8,
       "reason": "multi-portion",
-      "ratio": 6,
+      "ratio": 8,
       "perGram": 120.125,
       "gramOk": true
     },
@@ -9772,10 +9782,10 @@
     "name": "Kuru İncir Tatlısı",
     "cat": "tatli",
     "stored": {
-      "cal": 189,
-      "prot": 3.5,
-      "carb": 34,
-      "fat": 5.2
+      "cal": 157,
+      "prot": 2.9,
+      "carb": 28.3,
+      "fat": 4.3
     },
     "calcTotal": {
       "cal": 944,
@@ -9788,7 +9798,7 @@
     "inference": {
       "yields": 6,
       "reason": "multi-portion",
-      "ratio": 4.994708994708994,
+      "ratio": 6.012738853503185,
       "perGram": 128.5,
       "gramOk": true
     },
@@ -9810,10 +9820,10 @@
     "name": "İrmik Tatlısı (Şerbetli)",
     "cat": "tatli",
     "stored": {
-      "cal": 340,
-      "prot": 6,
-      "carb": 54,
-      "fat": 11
+      "cal": 277,
+      "prot": 4.2,
+      "carb": 48.2,
+      "fat": 7.8
     },
     "calcTotal": {
       "cal": 3595,
@@ -9826,7 +9836,7 @@
     "inference": {
       "yields": 13,
       "reason": "large-batch",
-      "ratio": 10.573529411764707,
+      "ratio": 12.978339350180505,
       "perGram": 116.23076923076923,
       "gramOk": true
     },
@@ -9848,10 +9858,10 @@
     "name": "Kemalpaşa Tatlısı",
     "cat": "tatli",
     "stored": {
-      "cal": 269,
-      "prot": 4.8,
-      "carb": 59.6,
-      "fat": 1.8
+      "cal": 215,
+      "prot": 3.9,
+      "carb": 47.7,
+      "fat": 1.4
     },
     "calcTotal": {
       "cal": 2148,
@@ -9863,8 +9873,8 @@
     "coverage": 1,
     "inference": {
       "yields": 10,
-      "reason": "multi-portion",
-      "ratio": 7.985130111524164,
+      "reason": "large-batch",
+      "ratio": 9.990697674418605,
       "perGram": 115.9,
       "gramOk": true
     },
@@ -9886,32 +9896,32 @@
     "name": "Tahin Helvası",
     "cat": "tatli",
     "stored": {
-      "cal": 330,
-      "prot": 6.5,
-      "carb": 36.1,
-      "fat": 19.5
+      "cal": 495,
+      "prot": 9.8,
+      "carb": 54.2,
+      "fat": 29.2
     },
     "calcTotal": {
-      "cal": 1981,
-      "prot": 39.2,
-      "carb": 216.8,
-      "fat": 116.8,
+      "cal": 2133,
+      "prot": 46.3,
+      "carb": 192,
+      "fat": 143,
       "grams": 419
     },
     "coverage": 1,
     "inference": {
       "yields": 4,
       "reason": "multi-portion",
-      "ratio": 6.003030303030303,
+      "ratio": 4.3090909090909095,
       "perGram": 104.75,
       "gramOk": true
     },
     "yieldServings": 4,
     "newPer": {
-      "cal": 495,
-      "prot": 9.8,
-      "carb": 54.2,
-      "fat": 29.2,
+      "cal": 533,
+      "prot": 11.6,
+      "carb": 48,
+      "fat": 35.8,
       "grams": 105
     },
     "servCheck": {
@@ -9924,33 +9934,33 @@
     "name": "Sütlü Nuriye",
     "cat": "tatli",
     "stored": {
-      "cal": 280,
-      "prot": 8,
-      "carb": 42,
-      "fat": 9
-    },
-    "calcTotal": {
-      "cal": 4652,
-      "prot": 123.8,
-      "carb": 352.9,
-      "fat": 316.6,
-      "grams": 1668
-    },
-    "coverage": 1,
-    "inference": {
-      "yields": 14,
-      "reason": "large-batch",
-      "ratio": 16.614285714285714,
-      "perGram": 119.14285714285714,
-      "gramOk": true
-    },
-    "yieldServings": 14,
-    "newPer": {
       "cal": 332,
       "prot": 8.8,
       "carb": 25.2,
-      "fat": 22.6,
-      "grams": 119
+      "fat": 22.6
+    },
+    "calcTotal": {
+      "cal": 4123,
+      "prot": 62.1,
+      "carb": 507.9,
+      "fat": 219.3,
+      "grams": 1468
+    },
+    "coverage": 1,
+    "inference": {
+      "yields": 12,
+      "reason": "large-batch",
+      "ratio": 12.418674698795181,
+      "perGram": 122.33333333333333,
+      "gramOk": true
+    },
+    "yieldServings": 12,
+    "newPer": {
+      "cal": 344,
+      "prot": 5.2,
+      "carb": 42.3,
+      "fat": 18.3,
+      "grams": 122
     },
     "servCheck": {
       "ok": true
@@ -9962,10 +9972,10 @@
     "name": "Vezir Parmağı",
     "cat": "tatli",
     "stored": {
-      "cal": 300,
-      "prot": 5,
-      "carb": 44,
-      "fat": 12
+      "cal": 219,
+      "prot": 2.9,
+      "carb": 44.8,
+      "fat": 3.5
     },
     "calcTotal": {
       "cal": 2404,
@@ -9978,7 +9988,7 @@
     "inference": {
       "yields": 11,
       "reason": "large-batch",
-      "ratio": 8.013333333333334,
+      "ratio": 10.97716894977169,
       "perGram": 119.36363636363636,
       "gramOk": true
     },
@@ -10006,32 +10016,32 @@
       "fat": 26
     },
     "calcTotal": {
-      "cal": 487,
-      "prot": 31.5,
-      "carb": 8.9,
-      "fat": 35.5,
-      "grams": 347
+      "cal": 1046,
+      "prot": 50.1,
+      "carb": 122.4,
+      "fat": 37.9,
+      "grams": 547
     },
-    "coverage": 0.8571428571428571,
+    "coverage": 1,
     "inference": {
-      "yields": 1,
-      "reason": "stored-ok",
-      "ratio": 0.9365384615384615
+      "yields": 2,
+      "reason": "multi-portion",
+      "ratio": 2.0115384615384615,
+      "perGram": 273.5,
+      "gramOk": true
     },
-    "yieldServings": 1,
+    "yieldServings": 2,
     "newPer": {
-      "cal": 487,
-      "prot": 31.5,
-      "carb": 8.9,
-      "fat": 35.5,
-      "grams": 347
+      "cal": 523,
+      "prot": 25.1,
+      "carb": 61.2,
+      "fat": 19,
+      "grams": 274
     },
     "servCheck": {
       "ok": true
     },
-    "missing": [
-      "Hamburger ekmeği"
-    ]
+    "missing": []
   },
   {
     "id": "r_sucuklu_tost",
@@ -10044,24 +10054,24 @@
       "fat": 26
     },
     "calcTotal": {
-      "cal": 540,
-      "prot": 31.5,
-      "carb": 4.4,
-      "fat": 44.1,
+      "cal": 536,
+      "prot": 26.4,
+      "carb": 32.6,
+      "fat": 33.2,
       "grams": 195
     },
     "coverage": 1,
     "inference": {
       "yields": 1,
       "reason": "stored-ok",
-      "ratio": 1.125
+      "ratio": 1.1166666666666667
     },
     "yieldServings": 1,
     "newPer": {
-      "cal": 540,
-      "prot": 31.5,
-      "carb": 4.4,
-      "fat": 44.1,
+      "cal": 536,
+      "prot": 26.4,
+      "carb": 32.6,
+      "fat": 33.2,
       "grams": 195
     },
     "servCheck": {
@@ -10080,25 +10090,27 @@
       "fat": 30
     },
     "calcTotal": {
-      "cal": 660,
-      "prot": 40.9,
-      "carb": 6.5,
-      "fat": 52.3,
-      "grams": 268
+      "cal": 1050,
+      "prot": 45.9,
+      "carb": 127,
+      "fat": 38.8,
+      "grams": 418
     },
     "coverage": 1,
     "inference": {
-      "yields": 1,
-      "reason": "stored-ok",
-      "ratio": 1.1785714285714286
+      "yields": 2,
+      "reason": "multi-portion",
+      "ratio": 1.875,
+      "perGram": 209,
+      "gramOk": true
     },
-    "yieldServings": 1,
+    "yieldServings": 2,
     "newPer": {
-      "cal": 660,
-      "prot": 40.9,
-      "carb": 6.5,
-      "fat": 52.3,
-      "grams": 268
+      "cal": 525,
+      "prot": 23,
+      "carb": 63.5,
+      "fat": 19.4,
+      "grams": 209
     },
     "servCheck": {
       "ok": true
@@ -10110,33 +10122,33 @@
     "name": "Köfte Ekmek",
     "cat": "sandvic",
     "stored": {
-      "cal": 480,
-      "prot": 24,
-      "carb": 46,
-      "fat": 22
-    },
-    "calcTotal": {
-      "cal": 1216,
-      "prot": 51.9,
-      "carb": 177.2,
-      "fat": 51.7,
-      "grams": 520
-    },
-    "coverage": 1,
-    "inference": {
-      "yields": 2,
-      "reason": "multi-portion",
-      "ratio": 2.533333333333333,
-      "perGram": 260,
-      "gramOk": true
-    },
-    "yieldServings": 2,
-    "newPer": {
       "cal": 608,
       "prot": 26,
       "carb": 88.6,
-      "fat": 25.9,
-      "grams": 260
+      "fat": 25.9
+    },
+    "calcTotal": {
+      "cal": 1607,
+      "prot": 56.9,
+      "carb": 297.7,
+      "fat": 38.2,
+      "grams": 670
+    },
+    "coverage": 1,
+    "inference": {
+      "yields": 3,
+      "reason": "multi-portion",
+      "ratio": 2.643092105263158,
+      "perGram": 223.33333333333334,
+      "gramOk": true
+    },
+    "yieldServings": 3,
+    "newPer": {
+      "cal": 536,
+      "prot": 19,
+      "carb": 99.2,
+      "fat": 12.7,
+      "grams": 223
     },
     "servCheck": {
       "ok": true
@@ -10190,25 +10202,25 @@
       "fat": 24
     },
     "calcTotal": {
-      "cal": 676,
-      "prot": 49.3,
-      "carb": 14.1,
-      "fat": 47.6,
-      "grams": 392
+      "cal": 571,
+      "prot": 37,
+      "carb": 45.1,
+      "fat": 28.1,
+      "grams": 352
     },
     "coverage": 1,
     "inference": {
       "yields": 1,
       "reason": "stored-ok",
-      "ratio": 1.2518518518518518
+      "ratio": 1.0574074074074074
     },
     "yieldServings": 1,
     "newPer": {
-      "cal": 676,
-      "prot": 49.3,
-      "carb": 14.1,
-      "fat": 47.6,
-      "grams": 392
+      "cal": 571,
+      "prot": 37,
+      "carb": 45.1,
+      "fat": 28.1,
+      "grams": 352
     },
     "servCheck": {
       "ok": false,
@@ -10217,7 +10229,7 @@
         150,
         350
       ],
-      "val": 392
+      "val": 352
     },
     "missing": []
   },
@@ -10232,25 +10244,32 @@
       "fat": 9
     },
     "calcTotal": {
-      "cal": 143,
-      "prot": 1.4,
-      "carb": 4.1,
-      "fat": 14.4,
-      "grams": 72
+      "cal": 211,
+      "prot": 6.2,
+      "carb": 17.3,
+      "fat": 15.6,
+      "grams": 472
     },
-    "coverage": 0.8333333333333334,
+    "coverage": 1,
     "inference": {
-      "yields": null,
-      "reason": "low-coverage"
+      "yields": 2,
+      "reason": "multi-portion",
+      "ratio": 1.7583333333333333,
+      "perGram": 236,
+      "gramOk": true
     },
-    "yieldServings": null,
-    "newPer": null,
+    "yieldServings": 2,
+    "newPer": {
+      "cal": 106,
+      "prot": 3.1,
+      "carb": 8.7,
+      "fat": 7.8,
+      "grams": 236
+    },
     "servCheck": {
       "ok": true
     },
-    "missing": [
-      "Marul"
-    ]
+    "missing": []
   },
   {
     "id": "r_beyaz_lahana_salata",
@@ -10295,33 +10314,33 @@
     "name": "Patates Salatası",
     "cat": "salata",
     "stored": {
-      "cal": 236,
+      "cal": 237,
       "prot": 5.8,
-      "carb": 29.5,
+      "carb": 29.6,
       "fat": 11.2
     },
     "calcTotal": {
-      "cal": 710,
-      "prot": 17.5,
-      "carb": 88.8,
+      "cal": 722,
+      "prot": 17.6,
+      "carb": 91.6,
       "fat": 33.5,
-      "grams": 798
+      "grams": 800
     },
     "coverage": 1,
     "inference": {
       "yields": 3,
       "reason": "multi-portion",
-      "ratio": 3.0084745762711864,
-      "perGram": 266,
+      "ratio": 3.0464135021097047,
+      "perGram": 266.6666666666667,
       "gramOk": true
     },
     "yieldServings": 3,
     "newPer": {
-      "cal": 237,
-      "prot": 5.8,
-      "carb": 29.6,
+      "cal": 241,
+      "prot": 5.9,
+      "carb": 30.5,
       "fat": 11.2,
-      "grams": 266
+      "grams": 267
     },
     "servCheck": {
       "ok": true
@@ -10381,30 +10400,34 @@
       "fat": 7.7
     },
     "calcTotal": {
-      "cal": 242,
-      "prot": 8.6,
-      "carb": 24.5,
-      "fat": 15.3,
-      "grams": 460
+      "cal": 154,
+      "prot": 1.9,
+      "carb": 7.1,
+      "fat": 14.3,
+      "grams": 110
     },
     "coverage": 1,
     "inference": {
-      "yields": 2,
-      "reason": "multi-portion",
-      "ratio": 2,
-      "perGram": 230,
-      "gramOk": true
+      "yields": 1,
+      "reason": "stored-ok",
+      "ratio": 1.2727272727272727
     },
-    "yieldServings": 2,
+    "yieldServings": 1,
     "newPer": {
-      "cal": 121,
-      "prot": 4.3,
-      "carb": 12.3,
-      "fat": 7.7,
-      "grams": 230
+      "cal": 154,
+      "prot": 1.9,
+      "carb": 7.1,
+      "fat": 14.3,
+      "grams": 110
     },
     "servCheck": {
-      "ok": true
+      "ok": false,
+      "reason": "too-light",
+      "range": [
+        150,
+        350
+      ],
+      "val": 110
     },
     "missing": []
   },
@@ -10413,10 +10436,10 @@
     "name": "Çiğ Börek (Tatar)",
     "cat": "hamur",
     "stored": {
-      "cal": 340,
-      "prot": 14,
-      "carb": 32,
-      "fat": 18
+      "cal": 1064,
+      "prot": 12.4,
+      "carb": 48.2,
+      "fat": 90.6
     },
     "calcTotal": {
       "cal": 6383,
@@ -10428,8 +10451,8 @@
     "coverage": 1,
     "inference": {
       "yields": 6,
-      "reason": "large-batch",
-      "ratio": 18.773529411764706,
+      "reason": "multi-portion",
+      "ratio": 5.99906015037594,
       "perGram": 238,
       "gramOk": true
     },
@@ -10451,10 +10474,10 @@
     "name": "Haşhaşlı Çörek",
     "cat": "hamur",
     "stored": {
-      "cal": 280,
-      "prot": 7,
-      "carb": 32,
-      "fat": 14
+      "cal": 767,
+      "prot": 19.1,
+      "carb": 105.7,
+      "fat": 29.8
     },
     "calcTotal": {
       "cal": 3066,
@@ -10466,8 +10489,8 @@
     "coverage": 1,
     "inference": {
       "yields": 4,
-      "reason": "large-batch",
-      "ratio": 10.95,
+      "reason": "multi-portion",
+      "ratio": 3.997392438070404,
       "perGram": 238.25,
       "gramOk": true
     },
@@ -10489,32 +10512,32 @@
     "name": "Tahinli Çörek",
     "cat": "hamur",
     "stored": {
-      "cal": 320,
-      "prot": 7,
-      "carb": 38,
-      "fat": 16
+      "cal": 682,
+      "prot": 18.2,
+      "carb": 99,
+      "fat": 24.2
     },
     "calcTotal": {
-      "cal": 3408,
-      "prot": 90.9,
-      "carb": 494.9,
-      "fat": 120.8,
+      "cal": 3560,
+      "prot": 98,
+      "carb": 470.1,
+      "fat": 147,
       "grams": 1064
     },
     "coverage": 1,
     "inference": {
       "yields": 5,
-      "reason": "large-batch",
-      "ratio": 10.65,
+      "reason": "multi-portion",
+      "ratio": 5.219941348973607,
       "perGram": 212.8,
       "gramOk": true
     },
     "yieldServings": 5,
     "newPer": {
-      "cal": 682,
-      "prot": 18.2,
-      "carb": 99,
-      "fat": 24.2,
+      "cal": 712,
+      "prot": 19.6,
+      "carb": 94,
+      "fat": 29.4,
       "grams": 213
     },
     "servCheck": {
@@ -10527,36 +10550,40 @@
     "name": "Karışık Pide",
     "cat": "hamur",
     "stored": {
-      "cal": 517,
-      "prot": 14.4,
-      "carb": 29,
-      "fat": 38
+      "cal": 1034,
+      "prot": 28.9,
+      "carb": 58,
+      "fat": 76.1
     },
     "calcTotal": {
-      "cal": 2068,
-      "prot": 57.7,
-      "carb": 115.9,
-      "fat": 152.1,
+      "cal": 1360,
+      "prot": 62.2,
+      "carb": 142.4,
+      "fat": 58.9,
       "grams": 462
     },
     "coverage": 1,
     "inference": {
-      "yields": 2,
-      "reason": "multi-portion",
-      "ratio": 4,
-      "perGram": 231,
-      "gramOk": true
+      "yields": 1,
+      "reason": "stored-ok",
+      "ratio": 1.3152804642166345
     },
-    "yieldServings": 2,
+    "yieldServings": 1,
     "newPer": {
-      "cal": 1034,
-      "prot": 28.9,
-      "carb": 58,
-      "fat": 76.1,
-      "grams": 231
+      "cal": 1360,
+      "prot": 62.2,
+      "carb": 142.4,
+      "fat": 58.9,
+      "grams": 462
     },
     "servCheck": {
-      "ok": true
+      "ok": false,
+      "reason": "too-heavy",
+      "range": [
+        120,
+        350
+      ],
+      "val": 462
     },
     "missing": []
   },
@@ -10565,33 +10592,33 @@
     "name": "Yufkalı Mantı (Açma)",
     "cat": "hamur",
     "stored": {
-      "cal": 391,
-      "prot": 21.5,
-      "carb": 7.6,
-      "fat": 30.6
+      "cal": 521,
+      "prot": 28.6,
+      "carb": 10.1,
+      "fat": 40.8
     },
     "calcTotal": {
-      "cal": 1564,
-      "prot": 85.8,
-      "carb": 30.2,
-      "fat": 122.4,
-      "grams": 791
+      "cal": 1246,
+      "prot": 48.8,
+      "carb": 123.2,
+      "fat": 64,
+      "grams": 671
     },
     "coverage": 1,
     "inference": {
       "yields": 3,
       "reason": "multi-portion",
-      "ratio": 4,
-      "perGram": 263.6666666666667,
+      "ratio": 2.3915547024952017,
+      "perGram": 223.66666666666666,
       "gramOk": true
     },
     "yieldServings": 3,
     "newPer": {
-      "cal": 521,
-      "prot": 28.6,
-      "carb": 10.1,
-      "fat": 40.8,
-      "grams": 264
+      "cal": 415,
+      "prot": 16.3,
+      "carb": 41.1,
+      "fat": 21.3,
+      "grams": 224
     },
     "servCheck": {
       "ok": true
@@ -10641,32 +10668,32 @@
     "name": "Kuzu Etli Pide",
     "cat": "hamur",
     "stored": {
-      "cal": 471,
-      "prot": 11.6,
-      "carb": 31.9,
-      "fat": 33
+      "cal": 628,
+      "prot": 15.5,
+      "carb": 42.5,
+      "fat": 44
     },
     "calcTotal": {
-      "cal": 1885,
-      "prot": 46.5,
-      "carb": 127.5,
-      "fat": 132,
+      "cal": 1177,
+      "prot": 51,
+      "carb": 154,
+      "fat": 38.7,
       "grams": 638
     },
     "coverage": 1,
     "inference": {
       "yields": 3,
       "reason": "multi-portion",
-      "ratio": 4.002123142250531,
+      "ratio": 1.874203821656051,
       "perGram": 212.66666666666666,
       "gramOk": true
     },
     "yieldServings": 3,
     "newPer": {
-      "cal": 628,
-      "prot": 15.5,
-      "carb": 42.5,
-      "fat": 44,
+      "cal": 392,
+      "prot": 17,
+      "carb": 51.3,
+      "fat": 12.9,
       "grams": 213
     },
     "servCheck": {
@@ -10717,10 +10744,10 @@
     "name": "Fırında Makarna",
     "cat": "hamur",
     "stored": {
-      "cal": 684,
-      "prot": 26.5,
-      "carb": 57.2,
-      "fat": 38.6
+      "cal": 456,
+      "prot": 17.7,
+      "carb": 38.1,
+      "fat": 25.7
     },
     "calcTotal": {
       "cal": 1367,
@@ -10733,7 +10760,7 @@
     "inference": {
       "yields": 3,
       "reason": "multi-portion",
-      "ratio": 1.9985380116959064,
+      "ratio": 2.9978070175438596,
       "perGram": 226,
       "gramOk": true
     },
@@ -10835,10 +10862,10 @@
     "name": "Yoğurtlu Patlıcan",
     "cat": "meze",
     "stored": {
-      "cal": 224,
-      "prot": 4.6,
-      "carb": 18.4,
-      "fat": 16.2
+      "cal": 112,
+      "prot": 2.3,
+      "carb": 9.2,
+      "fat": 8.1
     },
     "calcTotal": {
       "cal": 447,
@@ -10849,19 +10876,19 @@
     },
     "coverage": 1,
     "inference": {
-      "yields": 4,
+      "yields": 5,
       "reason": "multi-portion",
-      "ratio": 1.9955357142857142,
-      "perGram": 161,
+      "ratio": 3.9910714285714284,
+      "perGram": 128.8,
       "gramOk": true
     },
-    "yieldServings": 4,
+    "yieldServings": 5,
     "newPer": {
-      "cal": 112,
-      "prot": 2.3,
-      "carb": 9.2,
-      "fat": 8.1,
-      "grams": 161
+      "cal": 89,
+      "prot": 1.8,
+      "carb": 7.4,
+      "fat": 6.5,
+      "grams": 129
     },
     "servCheck": {
       "ok": true
@@ -10873,10 +10900,10 @@
     "name": "Acuka (Antep)",
     "cat": "meze",
     "stored": {
-      "cal": 283,
-      "prot": 5,
-      "carb": 9,
-      "fat": 27.3
+      "cal": 566,
+      "prot": 10.1,
+      "carb": 18,
+      "fat": 54.6
     },
     "calcTotal": {
       "cal": 1131,
@@ -10889,7 +10916,7 @@
     "inference": {
       "yields": 2,
       "reason": "multi-portion",
-      "ratio": 3.9964664310954063,
+      "ratio": 1.9982332155477032,
       "perGram": 118.5,
       "gramOk": true
     },
@@ -10911,10 +10938,10 @@
     "name": "Cevizli Biber Mezesi",
     "cat": "meze",
     "stored": {
-      "cal": 220,
-      "prot": 6,
-      "carb": 14,
-      "fat": 16
+      "cal": 592,
+      "prot": 28.8,
+      "carb": 67,
+      "fat": 24.5
     },
     "calcTotal": {
       "cal": 2367,
@@ -10926,8 +10953,8 @@
     "coverage": 1,
     "inference": {
       "yields": 4,
-      "reason": "large-batch",
-      "ratio": 10.75909090909091,
+      "reason": "multi-portion",
+      "ratio": 3.998310810810811,
       "perGram": 140.5,
       "gramOk": true
     },
@@ -10949,10 +10976,10 @@
     "name": "Pırasa Salatası",
     "cat": "meze",
     "stored": {
-      "cal": 132,
-      "prot": 2.9,
-      "carb": 24,
-      "fat": 3.7
+      "cal": 95,
+      "prot": 2.1,
+      "carb": 17.1,
+      "fat": 2.6
     },
     "calcTotal": {
       "cal": 662,
@@ -10965,7 +10992,7 @@
     "inference": {
       "yields": 7,
       "reason": "multi-portion",
-      "ratio": 5.015151515151516,
+      "ratio": 6.968421052631579,
       "perGram": 131.57142857142858,
       "gramOk": true
     },
@@ -10993,34 +11020,30 @@
       "fat": 16
     },
     "calcTotal": {
-      "cal": 290,
-      "prot": 1.3,
+      "cal": 500,
+      "prot": 30.3,
       "carb": 10.9,
-      "fat": 28.2,
+      "fat": 38.2,
       "grams": 245
     },
     "coverage": 1,
     "inference": {
-      "yields": 1,
-      "reason": "stored-ok",
-      "ratio": 1.2083333333333333
+      "yields": 2,
+      "reason": "multi-portion",
+      "ratio": 2.0833333333333335,
+      "perGram": 122.5,
+      "gramOk": true
     },
-    "yieldServings": 1,
+    "yieldServings": 2,
     "newPer": {
-      "cal": 290,
-      "prot": 1.3,
-      "carb": 10.9,
-      "fat": 28.2,
-      "grams": 245
+      "cal": 250,
+      "prot": 15.2,
+      "carb": 5.5,
+      "fat": 19.1,
+      "grams": 123
     },
     "servCheck": {
-      "ok": false,
-      "reason": "too-heavy",
-      "range": [
-        80,
-        200
-      ],
-      "val": 245
+      "ok": true
     },
     "missing": []
   },
@@ -11029,33 +11052,33 @@
     "name": "Yoğurtlu Kabak Kızartması",
     "cat": "meze",
     "stored": {
-      "cal": 220,
-      "prot": 5,
-      "carb": 14,
-      "fat": 16
-    },
-    "calcTotal": {
-      "cal": 3122,
-      "prot": 64.1,
-      "carb": 708.3,
-      "fat": 48.3,
-      "grams": 6147
-    },
-    "coverage": 1,
-    "inference": {
-      "yields": 44,
-      "reason": "large-batch",
-      "ratio": 14.190909090909091,
-      "perGram": 139.70454545454547,
-      "gramOk": true
-    },
-    "yieldServings": 44,
-    "newPer": {
       "cal": 71,
       "prot": 1.5,
       "carb": 16.1,
-      "fat": 1.1,
-      "grams": 140
+      "fat": 1.1
+    },
+    "calcTotal": {
+      "cal": 524,
+      "prot": 11.3,
+      "carb": 25.5,
+      "fat": 44.2,
+      "grams": 747
+    },
+    "coverage": 1,
+    "inference": {
+      "yields": 5,
+      "reason": "multi-portion",
+      "ratio": 7.380281690140845,
+      "perGram": 149.4,
+      "gramOk": true
+    },
+    "yieldServings": 5,
+    "newPer": {
+      "cal": 105,
+      "prot": 2.3,
+      "carb": 5.1,
+      "fat": 8.8,
+      "grams": 149
     },
     "servCheck": {
       "ok": true
@@ -11067,33 +11090,33 @@
     "name": "Cevizli Tarator",
     "cat": "meze",
     "stored": {
-      "cal": 326,
-      "prot": 6.2,
-      "carb": 5.9,
-      "fat": 33.1
-    },
-    "calcTotal": {
-      "cal": 1957,
-      "prot": 37,
-      "carb": 35.2,
-      "fat": 198.5,
-      "grams": 420
-    },
-    "coverage": 1,
-    "inference": {
-      "yields": 4,
-      "reason": "multi-portion",
-      "ratio": 6.0030674846625764,
-      "perGram": 105,
-      "gramOk": true
-    },
-    "yieldServings": 4,
-    "newPer": {
       "cal": 489,
       "prot": 9.3,
       "carb": 8.8,
-      "fat": 49.6,
-      "grams": 105
+      "fat": 49.6
+    },
+    "calcTotal": {
+      "cal": 1878,
+      "prot": 36.4,
+      "carb": 64.8,
+      "fat": 174.4,
+      "grams": 444
+    },
+    "coverage": 1,
+    "inference": {
+      "yields": 3,
+      "reason": "multi-portion",
+      "ratio": 3.8404907975460123,
+      "perGram": 148,
+      "gramOk": true
+    },
+    "yieldServings": 3,
+    "newPer": {
+      "cal": 626,
+      "prot": 12.1,
+      "carb": 21.6,
+      "fat": 58.1,
+      "grams": 148
     },
     "servCheck": {
       "ok": true
@@ -11107,7 +11130,7 @@
     "stored": {
       "cal": 223,
       "prot": 10.4,
-      "carb": 5.7,
+      "carb": 5.8,
       "fat": 18.2
     },
     "calcTotal": {
