@@ -1583,33 +1583,60 @@ function _getBuiltinRecipes() {
 }
 
 function _mergeRecipes(builtIn, cloud) {
-  // Cloud tarifler built-in ile aynı id'ye sahipse cloud versiyonu kazanır
-  var merged = builtIn.slice();
-  var idSet = {};
-  for (var i = 0; i < merged.length; i++) idSet[merged[i].id] = true;
+  // Cloud tarifler built-in ile aynı id'ye sahipse cloud versiyonu kazanır.
+  // Field-level merge: cloud'da olan alanlar built-in'i ezer; cloud'da olmayan
+  // alanlar built-in'den korunur. Bu sayede admin sadece img güncellese bile
+  // diğer alanlar (ing, steps vs.) düşmez.
+  var byId = {};
+  for (var i = 0; i < builtIn.length; i++) {
+    if (builtIn[i] && builtIn[i].id) byId[builtIn[i].id] = builtIn[i];
+  }
   for (var j = 0; j < cloud.length; j++) {
-    if (!idSet[cloud[j].id]) {
-      merged.push(cloud[j]);
-      idSet[cloud[j].id] = true;
+    var c = cloud[j];
+    if (!c || !c.id) continue;
+    if (byId[c.id]) {
+      // Field-level override: cloud non-undefined alanlar üste yazar
+      var merged = Object.assign({}, byId[c.id]);
+      Object.keys(c).forEach(function(k){
+        if (c[k] !== undefined && c[k] !== null && c[k] !== '') merged[k] = c[k];
+      });
+      byId[c.id] = merged;
+    } else {
+      byId[c.id] = c;
     }
   }
-  return merged;
+  // Built-in sırasını koru, sonuna yeni cloud-only tarifleri ekle
+  var out = [], seen = {};
+  for (var k = 0; k < builtIn.length; k++) {
+    var bi = builtIn[k];
+    if (bi && bi.id && byId[bi.id]) { out.push(byId[bi.id]); seen[bi.id] = true; }
+  }
+  Object.keys(byId).forEach(function(id){ if(!seen[id]) out.push(byId[id]); });
+  return out;
 }
 
 async function loadRecipesFromFirebase() {
   if (_recipesLoaded && RECIPES.length) return;
   var builtIn = _getBuiltinRecipes();
 
-  // Önce built-in + cache ile hızlı başlat
+  // Cache TTL: 5 dk (admin güncellemeleri 5 dk içinde yansır).
+  // Daha hızlı yansıma için: arka planda meta/recipes.updatedAt damgasını
+  // kontrol edip cache eski ise revalidate et.
   var cached = localStorage.getItem('fs_recipes_cache');
   var cacheTime = parseInt(localStorage.getItem('fs_recipes_cache_time') || '0');
+  var cachedVersion = localStorage.getItem('fs_recipes_cache_ver') || '';
   var now = Date.now();
-  if (cached && (now - cacheTime) < 30 * 60 * 1000) {
+  var cacheAge = now - cacheTime;
+  var cacheFresh = cached && cacheAge < 5 * 60 * 1000;
+
+  if (cacheFresh) {
     try {
       var parsed = JSON.parse(cached);
       if (parsed && parsed.length) {
         RECIPES = _mergeRecipes(builtIn, parsed);
         _recipesLoaded = true;
+        // Arka planda versiyon kontrolü — değişmişse sessizce yenile
+        _backgroundRevalidateRecipes(builtIn, cachedVersion);
         return;
       }
     } catch(e) {}
@@ -1624,6 +1651,14 @@ async function loadRecipesFromFirebase() {
       localStorage.setItem('fs_recipes_cache', JSON.stringify(cloudRecipes));
       localStorage.setItem('fs_recipes_cache_time', String(now));
     }
+    // Versiyon damgası
+    try {
+      var metaSnap = await db.collection('meta').doc('recipes').get();
+      if (metaSnap.exists) {
+        var v = String(metaSnap.data().updatedAt || '');
+        if (v) localStorage.setItem('fs_recipes_cache_ver', v);
+      }
+    } catch(eMeta) {}
     RECIPES = _mergeRecipes(builtIn, cloudRecipes);
     _recipesLoaded = true;
   } catch(e) {
@@ -1639,6 +1674,31 @@ async function loadRecipesFromFirebase() {
     RECIPES = builtIn;
     _recipesLoaded = true;
   }
+}
+
+// Arka planda meta/recipes.updatedAt damgasını kontrol eder; cache versiyonu
+// eskiyse sessizce yeniden çeker. Bu sayede admin güncellemeleri en geç
+// bir sonraki sayfa yüklemesinde (cache fresh olsa bile) yansır.
+async function _backgroundRevalidateRecipes(builtIn, cachedVersion) {
+  if (typeof db === 'undefined') return;
+  try {
+    var metaSnap = await db.collection('meta').doc('recipes').get();
+    if (!metaSnap.exists) return;
+    var v = String(metaSnap.data().updatedAt || '');
+    if (!v || v === cachedVersion) return; // değişiklik yok
+
+    // Versiyon değişmiş — cloud'u tekrar çek
+    var snap = await db.collection('recipes').orderBy('name').get();
+    var cloudRecipes = snap.docs.map(function(d) { return {id: d.id, ...d.data()}; });
+    if (cloudRecipes.length) {
+      localStorage.setItem('fs_recipes_cache', JSON.stringify(cloudRecipes));
+      localStorage.setItem('fs_recipes_cache_time', String(Date.now()));
+      localStorage.setItem('fs_recipes_cache_ver', v);
+      RECIPES = _mergeRecipes(builtIn, cloudRecipes);
+      // Eğer tarif listesi UI'sı açıksa yenile
+      try { if (typeof renderRecipeList === 'function') renderRecipeList(); } catch(e){}
+    }
+  } catch(e) { /* sessiz */ }
 }
 
 
