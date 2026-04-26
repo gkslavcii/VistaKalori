@@ -108,6 +108,16 @@
       if(sLower.indexOf(ZERO_AMOUNT_PHRASES[z])===0) return null;
     }
 
+    // Parantez içinde gram/ml: "1 kutu (160g)", "yarım demet (~30g)" → 160g/30g öncelikli
+    var parenWeight=s.match(/\(\s*~?\s*(\d+(?:[.,]\d+)?)\s*(g|gr|gram|kg|ml|l|lt|litre)\s*\)/i);
+    if(parenWeight){
+      var pn=parseFloat(parenWeight[1].replace(',','.'));
+      var pu=parenWeight[2].toLowerCase();
+      if(pu==='gr'||pu==='gram') pu='g';
+      if(pu==='lt'||pu==='litre') pu='l';
+      return {value:pn, unit:pu, raw:s};
+    }
+
     // "yarım bardak", "çeyrek limon" gibi kelime-numeral varyantları
     // Eğer baştaki kelime WORD_NUMERALS'taysa, onu sayıya çevirip tekrar parse et
     var firstWord=sLower.split(/\s+/)[0];
