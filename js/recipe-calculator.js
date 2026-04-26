@@ -407,6 +407,21 @@
     }
     var per=hm.per100g||{cal:0,prot:0,carb:0,fat:0};
     var f=g.grams/100;
+    var micro=null;
+    if(hm.micro){
+      micro={
+        fiber:(hm.micro.fiber||0)*f,
+        sodium:(hm.micro.sodium||0)*f,
+        ca:(hm.micro.ca||0)*f,
+        fe:(hm.micro.fe||0)*f,
+        k:(hm.micro.k||0)*f,
+        mg:(hm.micro.mg||0)*f,
+        vitC:(hm.micro.vitC||0)*f,
+        vitA:(hm.micro.vitA||0)*f,
+        b12:(hm.micro.b12||0)*f,
+        folat:(hm.micro.folat||0)*f
+      };
+    }
     return {
       matched:true,
       grams:g.grams,
@@ -416,6 +431,7 @@
         carb:(per.carb||0)*f,
         fat:(per.fat||0)*f
       },
+      micro:micro,
       hammadde:hm,
       conversion:g,
       reason:'ok'
@@ -446,7 +462,9 @@
   function calcRecipe(recipe){
     var ings=(recipe&&recipe.ingredients)||[];
     var total={cal:0,prot:0,carb:0,fat:0,grams:0};
+    var microTotal={fiber:0,sodium:0,ca:0,fe:0,k:0,mg:0,vitC:0,vitA:0,b12:0,folat:0};
     var matched=0;
+    var microMatched=0; // mikro verisi olan eşleşmiş malzeme sayısı
     var missing=[];
     var breakdown=[];
 
@@ -458,6 +476,7 @@
         matched:c.matched,
         grams:c.grams,
         macro:c.macro,
+        micro:c.micro,
         hammadde:c.hammadde?c.hammadde.name:null,
         reason:c.reason
       });
@@ -468,6 +487,10 @@
         total.carb+=c.macro.carb;
         total.fat+=c.macro.fat;
         total.grams+=c.grams;
+        if(c.micro){
+          microMatched++;
+          for(var k in microTotal){ if(microTotal.hasOwnProperty(k)) microTotal[k]+=c.micro[k]||0; }
+        }
       } else {
         missing.push({name:ing.item||ing.name, reason:c.reason});
       }
@@ -481,10 +504,19 @@
       fat:total.fat/servings,
       grams:total.grams/servings
     };
+    var microPer={};
+    for(var mk in microTotal){ if(microTotal.hasOwnProperty(mk)) microPer[mk]=microTotal[mk]/servings; }
 
     return {
       total:_round(total),
       perServing:_round(per),
+      microTotal:_roundMicro(microTotal),
+      microPerServing:_roundMicro(microPer),
+      microCoverage:{
+        matched:microMatched,
+        total:matched, // micro coverage'ı eşleşmiş malzemeler üzerinden hesapla
+        ratio:matched?microMatched/matched:0
+      },
       servings:servings,
       coverage:{
         matched:matched,
@@ -494,6 +526,22 @@
       },
       breakdown:breakdown
     };
+  }
+
+  function _roundMicro(o){
+    var r={};
+    // fiber: 1 ondalık · sodium/k/ca/mg: tamsayı · fe/vitC: 1 ondalık · b12: 2 ondalık · vitA/folat: tamsayı
+    r.fiber=Math.round((o.fiber||0)*10)/10;
+    r.sodium=Math.round(o.sodium||0);
+    r.ca=Math.round(o.ca||0);
+    r.fe=Math.round((o.fe||0)*10)/10;
+    r.k=Math.round(o.k||0);
+    r.mg=Math.round(o.mg||0);
+    r.vitC=Math.round((o.vitC||0)*10)/10;
+    r.vitA=Math.round(o.vitA||0);
+    r.b12=Math.round((o.b12||0)*100)/100;
+    r.folat=Math.round(o.folat||0);
+    return r;
   }
 
   function _round(o){

@@ -289,6 +289,99 @@ function setRecipeScale(s) {
     b.style.background = parseFloat(b.dataset.s) === s ? 'var(--accent)' : 'var(--glass)';
     b.style.color = parseFloat(b.dataset.s) === s ? '#fff' : 'var(--text2)';
   });
+  // Mikro besin panelini de güncelle
+  var microWrap=document.getElementById('rdMicroWrap');
+  if(microWrap){
+    var wasOpen=microWrap.querySelector('details')&&microWrap.querySelector('details').open;
+    microWrap.innerHTML=buildMicroPanel(r,ingList,s);
+    if(wasOpen){
+      var d=microWrap.querySelector('details'); if(d) d.open=true;
+    }
+  }
+}
+
+// ═══ MİKRO BESİN PANELİ ═══
+// DRI / DV referans değerler (yetişkin günlük) — TÜBER 2022 + USDA DV 2020
+var MICRO_DV={
+  fiber:{label:'Lif',unit:'g',dv:28,icon:'🌾',color:'#a7e8a4'},
+  sodium:{label:'Sodyum',unit:'mg',dv:2300,icon:'🧂',color:'#ffcc55',warnHigh:true},
+  ca:{label:'Kalsiyum',unit:'mg',dv:1000,icon:'🦴',color:'#22d3ee'},
+  fe:{label:'Demir',unit:'mg',dv:13,icon:'🩸',color:'#ff7a7a'},
+  k:{label:'Potasyum',unit:'mg',dv:3500,icon:'🍌',color:'#ffd166'},
+  mg:{label:'Magnezyum',unit:'mg',dv:400,icon:'🌿',color:'#7ee787'},
+  vitC:{label:'C Vit.',unit:'mg',dv:90,icon:'🍊',color:'#ff6b3d'},
+  vitA:{label:'A Vit.',unit:'µg',dv:900,icon:'🥕',color:'#f0a030'},
+  b12:{label:'B12',unit:'µg',dv:2.4,icon:'🥚',color:'#c084fc'},
+  folat:{label:'Folat (B9)',unit:'µg',dv:400,icon:'🥬',color:'#3dd68c'}
+};
+
+function buildMicroPanel(r, ingList, scale){
+  if(!window.RecipeCalculator||!ingList||!ingList.length){
+    return '';
+  }
+  // Hesapla
+  var ings=ingList.map(function(i){
+    if(typeof i==='string') return {item:i,amount:''};
+    return {item:i.item||i.name||'',amount:i.amount||''};
+  });
+  var yld=r.yieldServings||(parseFloat(r.serv)||1);
+  var res;
+  try{
+    res=window.RecipeCalculator.calcRecipe({ingredients:ings,serv:String(yld)});
+  }catch(e){return '';}
+  var m=res.microPerServing;
+  if(!m) return '';
+
+  // Coverage kontrolü — hiç mikro veri yoksa gösterme
+  var cov=res.microCoverage;
+  if(!cov||cov.matched===0) return '';
+  var covPct=Math.round(cov.ratio*100);
+
+  // Scale uygulanır
+  var s=scale||1;
+  var rows=Object.keys(MICRO_DV).map(function(k){
+    var def=MICRO_DV[k];
+    var val=(m[k]||0)*s;
+    var dvPct=Math.round((val/def.dv)*100);
+    // Sodium için "üst sınır" bağlamı: %50+ kötü; diğerleri için %20+ iyi
+    var barColor=def.color;
+    var pctLabel=dvPct+'%';
+    if(def.warnHigh){
+      pctLabel=dvPct+'%';
+      if(dvPct>=50) barColor='#ff5c5c';
+      else if(dvPct>=25) barColor='#f0a030';
+    }
+    var barW=Math.min(100,dvPct);
+    var displayVal=val<10?val.toFixed(1):Math.round(val);
+    return '<div style="display:flex;align-items:center;gap:6px;padding:5px 0;font-size:.7rem">'
+      +'<div style="width:90px;display:flex;align-items:center;gap:5px;color:var(--text2);font-weight:600">'
+      +'<span style="font-size:.85rem">'+def.icon+'</span>'+def.label
+      +'</div>'
+      +'<div style="flex:1;display:flex;align-items:center;gap:6px;min-width:0">'
+      +'<div style="flex:1;height:6px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden">'
+      +'<div style="height:100%;width:'+barW+'%;background:'+barColor+';transition:width .3s"></div>'
+      +'</div>'
+      +'<div style="font-weight:700;color:var(--text);min-width:64px;text-align:right;font-size:.66rem">'
+      +displayVal+def.unit+' <span style="opacity:.55">·'+pctLabel+'</span>'
+      +'</div>'
+      +'</div>'
+      +'</div>';
+  }).join('');
+
+  var covWarn=covPct<100
+    ? '<div style="font-size:.6rem;color:var(--text2);margin-top:6px;padding:5px 8px;background:rgba(240,160,48,.08);border-left:2px solid #f0a030;border-radius:4px">⚠️ Mikro besin verisi malzemelerin %'+covPct+'\'inde mevcut — değerler tahminîdir.</div>'
+    : '';
+
+  return '<details style="background:var(--glass);border:1px solid var(--border);border-radius:10px;padding:8px 12px">'
+    +'<summary style="cursor:pointer;font-size:.76rem;font-weight:700;color:var(--text);display:flex;align-items:center;justify-content:space-between;list-style:none">'
+    +'<span>🧪 Mikro Besinler <span style="opacity:.55;font-weight:500;font-size:.68rem">(porsiyon başına · %DV)</span></span>'
+    +'<span style="font-size:.7rem;opacity:.6">▾</span>'
+    +'</summary>'
+    +'<div id="rdMicroBody" style="margin-top:8px">'
+    +rows
+    +covWarn
+    +'</div>'
+    +'</details>';
 }
 
 function openRecipeDetail(idx){
@@ -382,6 +475,11 @@ function openRecipeDetail(idx){
         <span style="color:#22d3ee">K <span id="rdScaleCarb">${r.carb||0}g</span> <span style="opacity:.6;font-size:.6rem">${cPct}%</span></span>
         <span style="color:#ffcc55">Y <span id="rdScaleFat">${r.fat||0}g</span> <span style="opacity:.6;font-size:.6rem">${fPct}%</span></span>
       </div>
+    </div>
+
+    <!-- Mikro besin paneli (toggle) -->
+    <div id="rdMicroWrap" style="margin-bottom:12px">
+      ${buildMicroPanel(r, ingList, _recipeScale)}
     </div>
 
     <!-- Sekmeler -->
