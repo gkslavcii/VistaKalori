@@ -849,9 +849,45 @@ updateHeader=function(){
 var _origRenderStats=renderStats;
 renderStats=function(){
   _origRenderStats();
-  // Append weight chart to stats container
   var container=document.getElementById('statsContainer');
   if(!container)return;
+
+  // ── Sağlık Yaşı Kartı (en üste) ──
+  try{
+    if(window.HealthAge){
+      var haHtml=window.HealthAge.renderCard();
+      if(haHtml){
+        var firstCard=container.querySelector('.stat-card');
+        if(firstCard) firstCard.insertAdjacentHTML('beforebegin', haHtml);
+        else container.insertAdjacentHTML('afterbegin', haHtml);
+      }
+    }
+  }catch(e){ console.warn('[HealthAge render]',e); }
+
+  // ── Aylık Karne Erişim Kartı ──
+  try{
+    if(window.MonthlyReport){
+      var months=window.MonthlyReport.listAvailableMonths(6);
+      if(months.length){
+        var pillsHtml=months.map(function(m){
+          return '<button onclick="MonthlyReport.openMonth('+m.year+','+m.month+')" '
+            +'style="background:var(--glass);border:1px solid var(--border);color:var(--text);padding:8px 12px;border-radius:18px;font-weight:700;font-size:.7rem;cursor:pointer;white-space:nowrap;display:inline-flex;align-items:center;gap:6px">'
+            +'📅 '+m.monthName+' '+m.year+' <span style="color:var(--text2);font-weight:500;font-size:.62rem">('+m.totalMeals+' öğün)</span></button>';
+        }).join('');
+        var mrCard='<div class="stat-card" style="animation-delay:.06s">'
+          +'<h3>📚 Aylık Karneler</h3>'
+          +'<p style="font-size:.72rem;color:var(--text2);margin-bottom:10px;line-height:1.5">Her ay sonunda otomatik üretilir. Eski karneleri istediğin zaman aç ⏰</p>'
+          +'<div style="display:flex;gap:6px;flex-wrap:wrap">'+pillsHtml+'</div>'
+          +'</div>';
+        // Sağlık Yaşı'nın altına yerleştir
+        var haCard=container.querySelector('.stat-card');
+        if(haCard) haCard.insertAdjacentHTML('afterend', mrCard);
+        else container.insertAdjacentHTML('afterbegin', mrCard);
+      }
+    }
+  }catch(e){ console.warn('[MonthlyReport render]',e); }
+
+  // Append weight chart to stats container
   var log=getWeightLog();
   if(log.length<2)return; // Need at least 2 entries
 
@@ -993,6 +1029,11 @@ function completeOnboarding(){
 
 // Onboarding check on page load (for non-logged-in users)
 setTimeout(checkOnboarding,2800);
+
+// Aylık karne kontrolü — geçen ay henüz gösterilmemişse modal aç
+setTimeout(function(){
+  try{ if(window.MonthlyReport) window.MonthlyReport.checkAndShow(); }catch(e){ console.warn('[MonthlyReport]',e); }
+},4500);
 
 /* ═══════════════════════════════════════════
    ⑦ BİLDİRİM PWA UYARISI
