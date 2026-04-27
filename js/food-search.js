@@ -1987,12 +1987,29 @@ function renderStats(){
     onReportPeriodChange();
   });
 
-  // Grafikleri çiz — innerHTML set edildikten sonra (layout settle için setTimeout)
-  setTimeout(function(){
+  // Grafikleri çiz — canvas parent boyutu hazır olana kadar rAF ile bekle
+  var _statsRetry=0;
+  function _drawStatsCharts(){
     if(typeof Chart==='undefined'){
-      console.warn('[stats] Chart.js yüklenmemiş, grafikler atlandı');
+      if(_statsRetry++<20){ requestAnimationFrame(_drawStatsCharts); return; }
+      console.warn('[stats] Chart.js yüklenmemiş (20 retry sonrası vazgeçildi)');
       return;
     }
+    var probe=document.getElementById('calTrendChart');
+    if(!probe){
+      if(_statsRetry++<20){ requestAnimationFrame(_drawStatsCharts); return; }
+      console.warn('[stats] calTrendChart canvas bulunamadı (DOM hazır değil)');
+      return;
+    }
+    // Parent boyutu yeterli mi?
+    var parent=probe.parentElement;
+    var rect=parent?parent.getBoundingClientRect():{width:0,height:0};
+    if(rect.width<10 || rect.height<10){
+      if(_statsRetry++<30){ requestAnimationFrame(_drawStatsCharts); return; }
+      console.warn('[stats] canvas parent boyutu sıfır kaldı:',rect);
+      // Yine de devam et, belki layout sonradan düzelir
+    }
+    console.log('[stats] charts init, retry='+_statsRetry+' parent='+rect.width.toFixed(0)+'x'+rect.height.toFixed(0));
     var isDark=document.documentElement.getAttribute('data-theme')!=='light';
     var gridColor=isDark?'rgba(255,255,255,.06)':'rgba(0,0,0,.06)';
     var textColor=isDark?'#6b7094':'#6b7084';
@@ -2081,7 +2098,10 @@ function renderStats(){
       });
     }
     }catch(e){ console.error('[stats] weeklyMacro error:',e); }
-  },50);
+    console.log('[stats] charts done');
+  }
+  // İlk denemeyi rAF ile başlat — DOM mutations + layout settle için
+  requestAnimationFrame(function(){ requestAnimationFrame(_drawStatsCharts); });
 }
 
 function generateReportSection(){
